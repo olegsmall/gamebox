@@ -61,7 +61,6 @@ typings/
 .next
 
 .idea/
-public/
 *.tmp
 ~*.docx
 package-lock.json
