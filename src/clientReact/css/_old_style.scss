@@ -1,0 +1,100 @@
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  color: beige;
+}
+
+/*.my-image {*/
+body{
+  background-image: url("/image/spiral.jpg");
+  /*background-color: beige;*/
+  /*height: 1000px;*/
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.my-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: beige;
+}
+
+.fa{
+  color: beige;
+}
+
+.mid {
+  background: rgba(38,28,28,0.5);
+}
+
+a.nav-link.h5{
+  color: beige;
+}
+
+#lienLogin{
+  color: inherit;
+}
+
+#lienLogin:hover{
+  text-decoration: none;
+}
+
+.navbar-toggler{
+  background-color: beige!important;
+}
+/*carusel*/
+.carousel {
+  height: 50% !important;
+}
+.carousel-caption {
+  height: 20%;
+}
+/*footer*/
+
+/*card*/
+.card-body{
+  background-color: beige;
+}
+div.card-footer{
+  background-color: beige;
+}
+input.form-control{
+  background-color: beige;
+}
+i.fa.fa-star-o {
+  color: orange!important;
+  font-size: 20px;
+}
+.card-text{
+  height: 50%!important;
+}
+
+/* Log in */
+#login{
+  margin: 13rem;
+
+}
+#inputPassword{
+  border-style: none none solid none;
+}
+
+#inputEmail{
+  border-style: none none solid none;
+}
+
+/*Sign Up*/
+h3.text-center.text-light{
+  color: beige!important;
+}
+#signUp{
+  margin: 7rem;
+}
