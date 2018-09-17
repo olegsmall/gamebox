@@ -1,6 +1,4 @@
 const UserService = require('../services/user.services');
-const passport = require('passport');
-// const LocalStrategy = require('passport-local').Strategy;
 
 exports.createUser = async function(req, res) {
 
@@ -46,21 +44,6 @@ exports.getUsers = async function(req, res, next) {
 };
 
 exports.authenticate = async function(req, res, next) {
-
-  passport.authenticate('local',
-    function(err, user, info) {
-      return err
-        ? next(err)
-        : user
-          ? req.logIn(user, function(err) {
-            return err
-              ? next(err)
-              : res.redirect('/private');
-          })
-          : res.redirect('/');
-    }
-  )(req, res, next);
-
 
   // try {
   //
