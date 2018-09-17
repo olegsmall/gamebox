@@ -1,6 +1,9 @@
 import React from 'react';
 // import ReactPropTypes from 'prop-types';
 import Header from './header/Header';
+import MainPageContent from './content/MainPageContent';
+import Footer from './footer/Footer';
+
 
 require('../css/main.scss');
 
@@ -40,8 +43,10 @@ class App extends React.Component{
     return (
       <div className={'App'}>
         <Header message={this.state.pageHeader}/>
+        <MainPageContent />
         <div>
         </div>
+        <Footer />
       </div>
     );
   }

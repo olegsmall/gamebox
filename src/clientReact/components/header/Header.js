@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactPropTypes from 'prop-types';
+import Login from '../header/user/Login';
+import Signup from '../header/user/Signup';
 
 const Header = ({message}) => {
   return (
@@ -32,12 +34,8 @@ const Header = ({message}) => {
             </ul>
           </div>
           <form className="form-inline mt-2">
-            <button className="btn btn-outline-warning my-2 my-sm-0 mr-2" type="submit">
-              <a id="lienLogin" href="login.html">Log in</a>
-            </button>
-            <button className="btn btn-outline-warning my-2 my-sm-0 mr-5" type="submit">
-              <a id="lienSignUp" href="signUp.html">Sign up</a>
-            </button>
+            <Login />
+            <Signup />
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
