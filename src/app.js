@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import hanlebars from 'express-handlebars';
 const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 // import path from 'path';
 import {publicDir, port} from './config/app.config';
@@ -36,7 +37,10 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+var User = require('./models/user');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 /*
 * body-parser extracts the entire body portion of an incoming request and assigns it to req.body.
