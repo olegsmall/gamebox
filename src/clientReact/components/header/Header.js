@@ -1,14 +1,23 @@
 import React from 'react';
-import ReactPropTypes from 'prop-types';
-import Login from '../header/user/Login';
-import Signup from '../header/user/Signup';
+// import ReactPropTypes from 'prop-types';
+import AuthMenuPanel from './AuthMenuPanel';
+import ReactDom from 'react-dom';
+import MainPage from '../content/MainPage';
+// import Signup from '../header/user/Signup';
 
-const Header = ({message}) => {
+const Header = () => {
+  const goHome = (e)=>{
+    e.preventDefault();
+    ReactDom.render(
+      <MainPage />,
+      document.getElementById('contentContainer')
+    );
+  };
   return (
     <header>
       <div className="mr-5 ml-5">
         <nav className="navbar navbar-expand-lg  navbar fixed-top navbar-inverse mid">
-          <a className="navbar-brand" href="#"><img src="/image/logo5.jpg" width="90" height="65"/></a>
+          <div className="navbar-brand btn" href={''} onClick={goHome}><img src="/image/logo5.jpg" width="90" height="65"/></div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon-light"></span>
@@ -17,7 +26,7 @@ const Header = ({message}) => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav mr-auto mt-lg-0">
               <li className="nav-item">
-                <a className="nav-link h5" href="#">Home</a>
+                <a className="nav-link h5" href={''} onClick={goHome}>Home</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link h5" href="#">About</a>
@@ -34,8 +43,7 @@ const Header = ({message}) => {
             </ul>
           </div>
           <form className="form-inline mt-2">
-            <Login />
-            <Signup />
+            <AuthMenuPanel />
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
@@ -45,13 +53,13 @@ const Header = ({message}) => {
   );
 };
 
-// React properties validation. Validates the type of properties
-Header.propTypes = {
-  message: ReactPropTypes.string.isRequired
-};
-// Default values for react properties
-Header.defaultProps = {
-  message: 'Hello Default Props!'
-};
+// // React properties validation. Validates the type of properties
+// Header.propTypes = {
+//   message: ReactPropTypes.string.isRequired
+// };
+// // Default values for react properties
+// Header.defaultProps = {
+//   message: 'Hello Default Props!'
+// };
 
 export default Header;
