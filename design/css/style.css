@@ -51,13 +51,21 @@ a.nav-link.h5{
 .navbar-toggler{
     background-color: beige!important;
 }
-/*carusel*/
-.carousel {
-    height: 50% !important;
-}
-.carousel-caption {
-    height: 20%;
-}
+/*carousel*/
+/*.swipe {*/
+    /*overflow: hidden;*/
+    /*visibility: hidden;*/
+    /*position: relative;*/
+/*}*/
+/*.swipe-wrap {*/
+    /*overflow: hidden;*/
+    /*position: relative;*/
+/*}*/
+/*.swipe-wrap > div {*/
+    /*float: left;*/
+    /*width: 100%;*/
+    /*position: relative;*/
+/*}*/
 /*footer*/
 
 /*card*/
@@ -80,15 +88,8 @@ i.fa.fa-star-o {
 
 /* Log in */
 #login{
-    margin: 13rem;
-
-}
-#inputPassword{
-    border-style: none none solid none;
-}
-
-#inputEmail{
-    border-style: none none solid none;
+    margin-top: 12rem;
+    margin-bottom: 12rem;
 }
 
 /*Sign Up*/
@@ -96,5 +97,6 @@ h3.text-center.text-light{
     color: beige!important;
 }
 #signUp{
-    margin: 7rem;
+    margin-top: 12rem;
+    margin-bottom: 12rem;
 }
