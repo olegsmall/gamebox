@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactPropTypes from 'prop-types';
-import Content from "../content/Content";
 
 
-const Content = ({message}) => {
+
+const MainPageContent = () => {
   return (
     <div>
       <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -45,7 +45,6 @@ const Content = ({message}) => {
           <span className="sr-only">Next</span>
         </a>
       </div>
-      <!--cards-row1-->
       <h2 className="mt-5 ml-5 text-light">Lorem ipsum</h2>
       <h4 className="ml-5 text-light">Integer faucibus quam quis massa condimentum, ut vestibulum nisl gravida.
         Suspendisse
@@ -103,7 +102,6 @@ const Content = ({message}) => {
             </div>
         </div>
       </div>
-      <!--cards-row2-->
       <h2 className="mt-5 ml-5 text-light">Lorem ipsum</h2>
       <h4 className="ml-5 text-light">Integer faucibus quam quis massa condimentum, ut vestibulum nisl gravida.
         Suspendisse
@@ -165,13 +163,4 @@ const Content = ({message}) => {
   );
 };
 
-// React properties validation. Validates the type of properties
-Content.propTypes = {
-  message: ReactPropTypes.string
-};
-// Default values for react properties
-Content.defaultProps = {
-  message: 'Hello Default Props!'
-};
-
-export default Content;
+export default MainPageContent;
