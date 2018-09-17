@@ -14,7 +14,7 @@ export const port = env.PORT || 8080;
 
 // Database connection
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/gamebox', { useMongoClient: true });
+mongoose.connect('mongodb://localhost:27017/gamebox', { useNewUrlParser: true });
 export { mongoose };
 
 

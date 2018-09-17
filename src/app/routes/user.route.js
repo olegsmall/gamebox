@@ -1,13 +1,15 @@
 import express from 'express';
 
-// Importin Controller
+// Importing Controller
 import UserController from '../controllers/user.controller';
 
 const router = express.Router();
 
-router.get('/signeup', UserController.createUser);
+router.post('/register',UserController.createUser);
 
+router.post('/login',UserController.authenticate);
 
+router.get('/get-users',UserController.getUsers);
 
 
 module.exports = router;
