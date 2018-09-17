@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import hanlebars from 'express-handlebars';
+const passport = require('passport');
+
 // import path from 'path';
 import {publicDir, port} from './config/app.config';
 
@@ -24,6 +26,16 @@ const app = express();
 
 //Allow serving static files from public (publicDir) folder
 app.use(express.static(publicDir));
+
+
+app.use(require('express-session')({
+  secret: 'kd93k ds93kjf asdf_o3=asdfpj3jfpasjd',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 
 /*
