@@ -4,6 +4,10 @@ const User = require('../models/user.model');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+
 exports.createUser = async function(user) {
 
   // Creating a new Mongoose Object by using the new keyword
@@ -47,15 +51,15 @@ exports.getUsers = async function(query, page, limit) {
 
 exports.authenticate = async function(email, password) {
 
-  passport.use(new LocalStrategy(
-    function(username, password, done) {
-      User.findOne({ username: username }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user || !user.validPassword(password)) {
-          return done(null, false, { message: 'Incorrect username or password' });
-        }
-        return done(null, user);
-      });
-    }
-  ));
+  // passport.use(new LocalStrategy(
+  //   function(username, password, done) {
+  //     User.findOne({ username: username }, function (err, user) {
+  //       if (err) { return done(err); }
+  //       if (!user || !user.validPassword(password)) {
+  //         return done(null, false, { message: 'Incorrect username or password' });
+  //       }
+  //       return done(null, user);
+  //     });
+  //   }
+  // ));
 };
