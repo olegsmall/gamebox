@@ -3,7 +3,7 @@ import ReactPropTypes from 'prop-types';
 
 
 
-const MainPageContent = () => {
+const MainPage = () => {
   return (
     <div>
       <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -163,4 +163,4 @@ const MainPageContent = () => {
   );
 };
 
-export default MainPageContent;
+export default MainPage;
