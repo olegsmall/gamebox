@@ -1,32 +1,38 @@
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
-// const passport = require('passport');
-// const LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport');
 
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+var LocalStrategy = require('passport-local').Strategy;
 
-exports.createUser = async function(user) {
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-  // Creating a new Mongoose Object by using the new keyword
-  let newUser = new User({
-    username: user.username,
-    email: user.email,
-    avatar: user.avatar,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    password: await bcrypt.hash(user.password, 10)
+//TODO : Return an error when user was not registerd
+
+exports.createUser = async function(req) {
+  let newUser = await User.register(new User({
+    username : req.body.username,
+    email: req.body.email,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    avatar: req.body.avatar,
+  }),req.body.password, (err, user) => {
+    if (err) {
+      console.log(err);
+      throw Error(err);
+    }
   });
+  console.log('show user', newUser);
 
-
-  let userBD = await User.findOne({email: newUser.email});
-  if(userBD === null) {
-    // Saving the User
-    return await newUser.save();
+  if(newUser) {
+    return newUser;
   }
   throw Error('User already exists');
+
+  // passport.authenticate('local', {failureRedirect: '/user/home'});
+
 };
 
 exports.getUsers = async function(query, page, limit) {
@@ -49,17 +55,6 @@ exports.getUsers = async function(query, page, limit) {
 };
 
 
-exports.authenticate = async function(email, password) {
+exports.authenticate = async function(req, res, next) {
 
-  // passport.use(new LocalStrategy(
-  //   function(username, password, done) {
-  //     User.findOne({ username: username }, function (err, user) {
-  //       if (err) { return done(err); }
-  //       if (!user || !user.validPassword(password)) {
-  //         return done(null, false, { message: 'Incorrect username or password' });
-  //       }
-  //       return done(null, user);
-  //     });
-  //   }
-  // ));
 };

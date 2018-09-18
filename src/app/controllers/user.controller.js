@@ -1,26 +1,16 @@
 const UserService = require('../services/user.services');
 
+
 exports.createUser = async function(req, res) {
-
-  let user = {
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    avatar: req.body.avatar
-  };
-
   try {
 
-    let newUser = await UserService.createUser(user);
+    let newUser = await UserService.createUser(req);
     return res.status(201).json({status: 201, data: newUser, message: 'User Created Successfully'});
 
   }catch(e){
     return res.status(400).json({status: 400, message: e.message});
   }
 };
-
 
 exports.getUsers = async function(req, res, next) {
 
@@ -44,31 +34,27 @@ exports.getUsers = async function(req, res, next) {
 };
 
 exports.authenticate = async function(req, res, next) {
+  try {
+    let user = await UserService.authenticate(req.body.email, req.body.password);
 
-  // try {
-  //
-  //   let user = await UserService.authenticate(req.body.email, req.body.password);
-  //
-  //   // Return the users list with the appropriate HTTP Status Code and Message.
-  //   return res.status(200).json({status: 200, data: user, message: 'Authenticate successfully'});
-  //
-  // } catch(e) {
-  //
-  //   //Return an Error Response Message with Code and the Error Message.
-  //   return res.status(400).json({status: 400, message: e.message});
-  //
-  // }
+    // Return the users list with the appropriate HTTP Status Code and Message.
+    return res.status(200).json({status: 200, data: user, message: 'Authenticate successfully'});
 
+  } catch(e) {
 
+    //Return an Error Response Message with Code and the Error Message.
+    return res.status(400).json({status: 400, message: e.message});
+  }
 };
 
-module.exports.logout = function(req, res) {
+exports.logout = async function(req, res) {
   req.logout();
   res.redirect('/');
 };
 
 exports.checkAuth = function (req, res, next){
-  req.isAuthenticated()
-    ? next()
-    : res.redirect('/');
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
 };

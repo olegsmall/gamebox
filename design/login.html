@@ -52,17 +52,28 @@
 <!-- Log in -->
 <div id="login" class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
-            <h3 class="text-center text-light">Log in</h3>
-                <form class="mt-3">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+        <div class="col-md-5">
+            <h3 class="text-center text-light mb-4">Log in</h3>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <button class="btn btn-primary btn-block btn-sm"><a class="text-light" href="https://www.facebook.com/"><i class="fa fa-facebook-square mr-2"></i>Continue with Facebook</a></button>
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    <div class="form-group col-md-6">
+                        <button class="btn btn-primary btn-block btn-sm"><a class="text-light" href="https://www.google.ca/"><i class="fa fa-google-plus-square mr-2"></i>Continue with Google</a></button>
                     </div>
-                    <button type="submit" class="btn btn-warning btn-block mt-3">Submit</button>
-                </form>
+                </div>
+            </form>
+            <p class="text-center text-light">OR</p>
+            <form class="mt-3">
+                <div class="form-group">
+                    <input type="email" class="form-control form-control-sm" id="inputEmail" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-sm" id="inputPassword" placeholder="Password">
+                </div>
+                    <button type="submit" class="btn btn-warning btn-sm btn-block mt-4">Submit</button>
+            </form>
         </div>
     </div>
 </div>
