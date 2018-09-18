@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './header/Header';
 import MainPage from './content/MainPage';
 import Footer from './footer/Footer';
-import ReactDom from "react-dom";
+import ReactDom from 'react-dom';
 
 
 require('../css/main.scss');
