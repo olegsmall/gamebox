@@ -1,8 +1,9 @@
 import React from 'react';
 // import ReactPropTypes from 'prop-types';
 import Header from './header/Header';
-import MainPageContent from './content/MainPageContent';
+import MainPage from './content/MainPage';
 import Footer from './footer/Footer';
+import ReactDom from "react-dom";
 
 
 require('../css/main.scss');
@@ -34,6 +35,10 @@ class App extends React.Component{
   //component mount method, guaranteed that component was mounted
   componentDidMount(){
     //code for ajax, timers, listeners
+    ReactDom.render(
+      <MainPage />,
+      document.getElementById('mainContent')
+    );
   }
   componentWillUnmount(){
     // clean timers and listeners
@@ -42,10 +47,8 @@ class App extends React.Component{
   render(){
     return (
       <div className={'App'}>
-        <Header message={this.state.pageHeader}/>
-        <MainPageContent />
-        <div>
-        </div>
+        <Header/>
+        <div id="mainContent"></div>
         <Footer />
       </div>
     );
