@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>AdminGameBox</title>
+    <link href="./assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="./assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    <link href="./assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
+    <link href="assets/css/main.min.css" rel="stylesheet" />
+</head>
+
+<body class="fixed-navbar">
+    <div class="page-wrapper">
+        <!-- Header-->
+        <header class="header">
+            <div class="page-brand">
+                <a class="link" href="administrator.html">
+                    <span class="brand">Admin
+                        <span class="brand-tip">GameBox</span>
+                    </span>
+                    <span class="brand-mini">AGB</span>
+                </a>
+            </div>
+            <div class="flexbox flex-1">
+                <!-- Top-Left Toolbar-->
+                <ul class="nav navbar-toolbar">
+                    <li>
+                        <a class="nav-link sidebar-toggler js-sidebar-toggler"><i class="ti-menu"></i></a>
+                    </li>
+                    <li>
+                        <form class="navbar-search" action="javascript:;">
+                            <div class="rel">
+                                <span class="search-icon"><i class="ti-search"></i></span>
+                                <input class="form-control" placeholder="Search here...">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+                <!-- Top-Right Toolbar-->
+                <ul class="nav navbar-toolbar">
+                    <li class="dropdown dropdown-user">
+                        <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
+                            <img src="./assets/img/admin-avatar.png" />
+                            <span></span>Admin<i class="fa fa-angle-down m-l-5"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="profile.html"><i class="fa fa-user"></i>Profile</a>
+                            <a class="dropdown-item" href="index.html"><i class="fa fa-home"></i>GameBox</a>
+                            <!--<a class="dropdown-item" href="javascript:;"><i class="fa fa-support"></i>Support</a>-->
+                            <li class="dropdown-divider"></li>
+                            <a class="dropdown-item" href="login.html"><i class="fa fa-power-off"></i>Logout</a>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- Sidebar-->
+        <nav class="page-sidebar" id="sidebar">
+            <div id="sidebar-collapse">
+                <div class="admin-block d-flex">
+                    <div>
+                        <img src="./assets/img/admin-avatar.png" width="45px" />
+                    </div>
+                    <div class="admin-info">
+                        <div class="font-strong">James Brown</div><small>Administrator</small></div>
+                </div>
+                <ul class="side-menu metismenu">
+                    <li>
+                        <a class="active" href="administrator.html"><i class="sidebar-item-icon fa fa-th-large"></i>
+                            <span class="nav-label">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailbox.html"><i class="sidebar-item-icon fa fa-envelope"></i>
+                            <span class="nav-label">Inbox</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon ti-user"></i>
+                            <span class="nav-label">Members</span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="#">All members</a>
+                            </li>
+                            <li>
+                                <a href="#">Add Member</a>
+                            </li>
+                            <li>
+                                <a href="#">Block Member</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="profile.html"><i class="sidebar-item-icon fa fa-user"></i>
+                            <span class="nav-label">Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="content-wrapper">
+            <!-- Page Content -->
+            <div class="page-content fade-in-up">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ibox bg-danger color-white widget-stat">
+                            <div class="ibox-body">
+                                <h2 class="m-b-5 font-strong">201</h2>
+                                <div class="m-b-5">ALL MEMBERS</div><i class="ti-user widget-stat-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ibox bg-success color-white widget-stat">
+                            <div class="ibox-body">
+                                <h2 class="m-b-5 font-strong">20</h2>
+                                <div class="m-b-5">BLOCKED MEMBERS</div><i class="fa fa-user-secret widget-stat-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ibox">
+                            <div class="ibox-head">
+                                <div class="ibox-title">Messages</div>
+                            </div>
+                            <div class="ibox-body">
+                                <ul class="media-list media-list-divider m-0">
+                                    <li class="media">
+                                        <a class="media-img" href="javascript:;">
+                                            <img class="img-circle" src="./assets/img/users/u1.jpg" width="40" />
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="media-heading">Jeanne Gonzalez <small class="float-right text-muted">12:05</small></div>
+                                            <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <a class="media-img" href="javascript:;">
+                                            <img class="img-circle" src="./assets/img/users/u2.jpg" width="40" />
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="media-heading">Becky Brooks <small class="float-right text-muted">1 hrs ago</small></div>
+                                            <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <a class="media-img" href="javascript:;">
+                                            <img class="img-circle" src="./assets/img/users/u3.jpg" width="40" />
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="media-heading">Frank Cruz <small class="float-right text-muted">3 hrs ago</small></div>
+                                            <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <a class="media-img" href="javascript:;">
+                                            <img class="img-circle" src="./assets/img/users/u6.jpg" width="40" />
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="media-heading">Connor Perez <small class="float-right text-muted">Today</small></div>
+                                            <div class="font-13">Lorem Ipsum is simply dummy text of the printing and typesetting.</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ibox">
+                            <div class="ibox-head">
+                                <div class="ibox-title">Best Sellers</div>
+                            </div>
+                            <div class="ibox-body">
+                                <ul class="media-list media-list-divider m-0">
+                                    <li class="media">
+                                        <a class="media-img" href="javascript:;">
+                                            <img src="./assets/img/image.jpg" width="50px;" />
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="media-heading">
+                                                <a href="javascript:;">Game</a>
+                                                <span class="font-16 float-right">1200</span>
+                                            </div>
+                                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <a class="media-img" href="javascript:;">
+                                            <img src="./assets/img/image.jpg" width="50px;" />
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="media-heading">
+                                                <a href="javascript:;">Game</a>
+                                                <span class="font-16 float-right">1150</span>
+                                            </div>
+                                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <a class="media-img" href="javascript:;">
+                                            <img src="./assets/img/image.jpg" width="50px;" />
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="media-heading">
+                                                <a href="javascript:;">Game</a>
+                                                <span class="font-16 float-right">800</span>
+                                            </div>
+                                            <div class="font-13">Lorem Ipsum is simply dummy text.</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="ibox-footer text-center">
+                                <a href="javascript:;">View All Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <!-- Footer -->
+            <footer class="page-footer">
+                <div class="font-13">2018 © <b>GameBox</b> - All rights reserved.</div>
+                <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts-->
+    <script src="./assets/vendors/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="./assets/vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
+    <script src="./assets/vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./assets/vendors/metisMenu/dist/metisMenu.min.js" type="text/javascript"></script>
+    </body>
+
+</html>
