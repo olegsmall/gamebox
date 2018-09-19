@@ -50,6 +50,7 @@ a:hover {
 
 a.nav-link.h5{
     color: beige;
+    tab-size: 20px;
 }
 
 .navbar-toggler{
