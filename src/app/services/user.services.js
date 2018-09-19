@@ -1,41 +1,40 @@
 // const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
-const passport = require('passport');
+import ResponseException from './ResponseException';
+// const passport = require('passport');
 
-var LocalStrategy = require('passport-local').Strategy;
+// var LocalStrategy = require('passport-local').Strategy;
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 //TODO : Return an error when user was not registerd
 
-exports.createUser = async function(req) {
-  let newUser = await User.register(new User({
-    username : req.body.username,
-    email: req.body.email,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    avatar: req.body.avatar,
-  }),req.body.password, (err, user) => {
-    if (err) {
-      console.log(err);
-      throw Error(err);
-    }
-  });
-  console.log('show user', newUser);
+exports.createUser = async function (req) {
 
-  if(newUser) {
-    return newUser;
+  // Validation
+  // let result;
+  //Is user name is already in database.
+  const user = await User.findOne({email: req.body.email});
+  if (user) throw new ResponseException(409, 'User already exists');
+  else {
+    const newUser = new User({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone,
+      address: req.body.address,
+      password: req.body.password,
+    });
+    const savedUser = await newUser.save();
+    return savedUser;
+
   }
-  throw Error('User already exists');
-
-  // passport.authenticate('local', {failureRedirect: '/user/home'});
-
 };
 
-exports.getUsers = async function(query, page, limit) {
+exports.getUsers = async function (query, page, limit) {
 
   // Options setup for the mongoose paginate
   let options = {
@@ -55,6 +54,6 @@ exports.getUsers = async function(query, page, limit) {
 };
 
 
-exports.authenticate = async function(req, res, next) {
-
-};
+// exports.authenticate = async function (req, res, next) {
+//
+// };

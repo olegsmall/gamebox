@@ -1,5 +1,6 @@
 import React from 'react';
-import Axios from "axios";
+import { Redirect } from 'react-router-dom';
+import Axios from 'axios';
 
 class LoginPage extends React.Component{
   constructor(props) {
@@ -7,6 +8,7 @@ class LoginPage extends React.Component{
     this.state = {
       userEmail: '',
       userPassword: '',
+      redirectTo: null,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,15 +29,29 @@ class LoginPage extends React.Component{
   handleSubmit(event) {
     event.preventDefault();
 
-    //TODO: finish AJAX request
+    const self = this;
     Axios.post('/user/login', {
       email: this.state.userEmail,
       password: this.state.userPassword,
     })
-      .then((res) => {
+      .then(function(res){
+        console.log('login response: ');
         console.log(res);
+        if (res.status === 200){
+          // update app.js state
+          debugger;
+          self.props.updateUser({
+            loggedIn: true,
+            email: res.data.email,
+          });
+        }
+        //update the state to redirect to home
+        self.setState({
+          redirectTo: '/'
+        });
       })
       .catch((error) => {
+        console.log('login error: ')
         console.log(error);
       });
   }
@@ -89,8 +105,8 @@ class LoginPage extends React.Component{
           </div>
         </div>
       </div>
-  );
+    );
   }
-  }
+}
 
-  export default LoginPage;
+export default LoginPage;

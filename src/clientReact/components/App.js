@@ -4,6 +4,10 @@ import Header from './header/Header';
 import MainPage from './content/MainPage';
 import Footer from './footer/Footer';
 import ReactDom from 'react-dom';
+import { Route, Link } from 'react-router-dom';
+import LoginPage from './content/LoginPage';
+import SignUpPage from './content/SignUpPage';
+import axios from 'axios';
 
 
 require('../css/main.scss');
@@ -23,7 +27,10 @@ class App extends React.Component{
   //Using class constructor for a state props
   constructor(props){
     super(props);
-    this.state = { pageHeader: 'Naming Contests state props'};
+    this.state = {
+      loggedIn: false,
+      email: null,
+    };
   }
 
   //Using class property for a state
@@ -34,21 +41,63 @@ class App extends React.Component{
   // Life cycle methods
   //component mount method, guaranteed that component was mounted
   componentDidMount(){
-    //code for ajax, timers, listeners
-    ReactDom.render(
-      <MainPage />,
-      document.getElementById('mainContent')
-    );
+    this.getUser();
   }
   componentWillUnmount(){
     // clean timers and listeners
   }
 
+  updateUser (userObject) {
+    this.setState(userObject);
+  }
+
+  getUser() {
+    axios.get('/user/').then(response => {
+      console.log('Get user response: ');
+      console.log(response.data);
+      if (response.data.user) {
+        console.log('Get User: There is a user saved in the server session: ');
+
+        this.setState({
+          loggedIn: true,
+          email: response.data.user.email
+        });
+      } else {
+        console.log('Get user: no user');
+        this.setState({
+          loggedIn: false,
+          email: null
+        });
+      }
+    });
+  }
   render(){
     return (
       <div className={'App'}>
-        <Header/>
-        <div id="mainContent"></div>
+        <Header updateUser={this.updateUser} loggedIn={this.state.loggedIn}/>
+        {this.state.loggedIn &&
+        <p>Join the party, {this.state.email}!</p>
+        }
+        <div id="mainContent">
+          {/* Routes to different components */}
+          <Route
+            exact path="/"
+            component={MainPage} />
+          <Route
+            path="/login"
+            render={() =>
+              <LoginPage
+                updateUser={this.updateUser}
+              />}
+          />
+          <Route
+            path="/signup"
+            render={() =>
+              <SignUpPage
+                signup={this.signup}
+              />}
+          />
+        </div>
         <Footer />
       </div>
     );

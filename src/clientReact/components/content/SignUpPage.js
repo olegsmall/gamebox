@@ -33,13 +33,15 @@ class SignUpPage extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    Axios.post('/user/register', {
+    //TODO: validation of form data.
+
+    Axios.post('/user', {
       firstName: this.state.userFirstName,
       lastName: this.state.userLastName,
-      username: this.state.userFirstName, //delete
       email: this.state.userEmail,
+      phone: this.state.userPhone,
+      address: this.state.userAddress,
       password: this.state.userPassword,
-      avatar: '',
     })
       .then((res) => {
         console.log(res);
