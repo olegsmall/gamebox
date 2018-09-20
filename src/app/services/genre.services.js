@@ -19,6 +19,7 @@ exports.createGenre = function(req) {
   }
 
   try {
+
     // Save genre in DB and return result
     return new Genre({ name: name}).save();
 
