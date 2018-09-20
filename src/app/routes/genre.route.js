@@ -5,9 +5,9 @@ const router = express.Router();
 import GenreController from '../controllers/genre.controller';
 
 
-router.get('/', GenreController.listGenres);
+router.get('/', GenreController.getGenres);
 router.post('/create', GenreController.createGenre);
-router.put('/update/:id', GenreController.updateGenre);
-router.delete('/remove/:id', GenreController.deleteGenre);
+router.put('/update', GenreController.updateGenre);
+router.delete('/remove', GenreController.deleteGenre);
 
 module.exports = router;

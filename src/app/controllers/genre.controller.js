@@ -11,9 +11,9 @@ exports.createGenre = async function(req, res) {
 };
 
 
-exports.listGenres = async function(req, res) {
+exports.getGenres = async function(req, res) {
   try {
-    let genres = await GenreService.listGenres(req);
+    let genres = await GenreService.getGenres(req);
     return res.status(201).json({status: 201, data: genres, message: 'Genres list'});
 
   } catch(e){

@@ -1,7 +1,7 @@
 const Genre = require('../models/genre.model');
 
 // Display list of all Genre.
-exports.listGenres = function() {
+exports.getGenres = function() {
 
   // Search for genres
   return Genre.find().sort([['name', 'ascending']]);
@@ -44,7 +44,7 @@ exports.deleteGenre = function(req) {
 
   try {
     // Delete a genre.
-    return Genre.findByIdAndRemove(req.body.id);
+    return Genre.findOneAndDelete({_id: req.body.id});
 
   } catch (e) {
     throw {error: e, message: 'Error on genre delete.'};
