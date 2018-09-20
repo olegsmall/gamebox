@@ -3,7 +3,7 @@ const { mongoose } = require('../../config/app.config');
 const Schema = mongoose.Schema;
 
 const GenreSchema = new Schema({
-  name: {type: String, required: true, min: 4, max: 20},
+  name: {type: String, required: true, min: 3, max: 20, useCreateIndex: true},
 });
 
 // Virtual for this book instance URL.

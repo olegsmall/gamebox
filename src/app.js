@@ -51,7 +51,7 @@ app.use(
 );
 
 app.use( (req, res, next) => {
-  console.log('req.session', req.session);
+  // console.log('req.session', req.session);
   return next();
 });
 
@@ -85,6 +85,7 @@ app.set('views', __dirname + '/app/views');
 app.use('/', require('./app/routes/index.route'));
 app.use('/user', require('./app/routes/user.route'));
 app.use('/admin', require('./app/routes/admin.route'));
+app.use('/genre', require('./app/routes/genre.route'));
 
 app.listen(port, () =>{
   console.info('Express listening on port ', port);

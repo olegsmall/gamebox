@@ -2,21 +2,14 @@
 // const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 import ResponseException from './ResponseException';
-// const passport = require('passport');
 
-// var LocalStrategy = require('passport-local').Strategy;
 
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-
-//TODO : Return an error when user was not registerd
 
 exports.createUser = async function (req) {
 
   // Validation
   // let result;
-  //Is user name is already in database.
+  //If user name is already in database.
   const user = await User.findOne({email: req.body.email});
   if (user) throw new ResponseException(409, 'User already exists');
   else {
@@ -30,7 +23,6 @@ exports.createUser = async function (req) {
     });
     const savedUser = await newUser.save();
     return savedUser;
-
   }
 };
 
