@@ -1,19 +1,27 @@
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Arial, Helvetica, sans-serif !important;
+  background-color: #1D224B !important; }
 
 img {
   color: beige; }
 
 /*.my-image {*/
-body {
-  background-image: url("/image/spiral.jpg");
-  /*background-color: beige;*/
-  /*height: 1000px;*/
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
-  position: relative; }
+/*body{*/
+/*background-image: url("../image/spiral.jpg");*/
+/*!*background-color: beige;*!*/
+/*!*height: 1000px;*!*/
+/*background-position: center;*/
+/*background-repeat: repeat;*/
+/*background-size: cover;*/
+/*position: relative;*/
+/*}*/
+a {
+  color: black; }
+
+a:hover {
+  color: black;
+  text-decoration: none; }
 
 .my-text {
   text-align: center;
@@ -30,25 +38,12 @@ body {
   background: rgba(38, 28, 28, 0.5); }
 
 a.nav-link.h5 {
-  color: beige; }
-
-#lienLogin {
-  color: inherit; }
-
-#lienLogin:hover {
-  text-decoration: none; }
+  color: beige;
+  tab-size: 20px; }
 
 .navbar-toggler {
   background-color: beige !important; }
 
-/*carusel*/
-.carousel {
-  height: 50% !important; }
-
-.carousel-caption {
-  height: 20%; }
-
-/*footer*/
 /*card*/
 .card-body {
   background-color: beige; }
@@ -66,20 +61,14 @@ i.fa.fa-star-o {
 .card-text {
   height: 50% !important; }
 
-/* Log in */
-#login {
-  margin: 13rem; }
+/* Log in and Sign Up*/
+#login, #signUp {
+  margin-top: 12rem;
+  margin-bottom: 12rem; }
 
-#inputPassword {
-  border-style: none none solid none; }
+#lienLogin, #lienSignUp {
+  color: inherit; }
 
-#inputEmail {
-  border-style: none none solid none; }
-
-/*Sign Up*/
-h3.text-center.text-light {
-  color: beige !important; }
-
-#signUp {
-  margin: 7rem; }
+#lienLogin:hover, #lienSignUp {
+  text-decoration: none; }
 
