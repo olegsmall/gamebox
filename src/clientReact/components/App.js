@@ -8,6 +8,7 @@ import { Route, Link } from 'react-router-dom';
 import LoginPage from './content/LoginPage';
 import SignUpPage from './content/SignUpPage';
 import axios from 'axios';
+import GamePage from './content/GamePage/GamePage';
 
 
 require('../css/main.scss');
@@ -97,6 +98,9 @@ class App extends React.Component{
                 signup={this.signup}
               />}
           />
+          <Route
+            path="/game"
+            component={GamePage} />
         </div>
         <Footer />
       </div>

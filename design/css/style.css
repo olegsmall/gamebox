@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat');
+
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif!important;
+    font-family: 'Montserrat', sans-serif!important;
     background-color: #1D224B!important;
 }
 
@@ -29,6 +31,10 @@ a {
 a:hover {
     color: black;
     text-decoration: none;
+}
+
+p {
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .my-text {
@@ -89,4 +95,19 @@ i.fa.fa-star-o {
     text-decoration: none;
 }
 
+/* Game page */
+/*#gamePage {*/
+    /*margin-top: 8rem;*/
+/*}*/
 
+/*.btnGamePage {*/
+    /*background-color: #77C548;*/
+/*}*/
+
+/* Style mobile */
+/*@media only screen and (max-width: 600px) {*/
+    /*#gamePage {*/
+        /*margin-top: 10rem;*/
+    /*}*/
+
+/*}*/
