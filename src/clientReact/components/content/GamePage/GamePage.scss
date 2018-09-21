@@ -1,0 +1,15 @@
+#gamePage {
+  margin-top: 8rem;
+}
+
+.btnGamePage {
+  background-color: #77C548;
+}
+
+//Style mobile
+@media only screen and (max-width: 600px) {
+  #gamePage {
+    margin-top: 10rem;
+  }
+
+}
