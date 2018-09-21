@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import LoginPage from '../content/LoginPage';
 import SignUpPage from '../content/SignUpPage';
+import {Route, Link} from 'react-router-dom';
 
 class AuthPanel extends React.Component {
 
@@ -24,8 +25,9 @@ class AuthPanel extends React.Component {
   render() {
     return (
       <div>
-        <button className="btn btn-outline-warning my-2 my-sm-0 mr-2" onClick={this.onLogin}>
-          <a id="lienLogin" href={''}>Log in</a>
+        <button className="btn btn-outline-warning my-2 my-sm-0 mr-2">
+          <Link to={'/login'}>Log in</Link>
+          {/*<a id="lienLogin" href={''}></a>*/}
         </button>
         <button className="btn btn-outline-warning my-2 my-sm-0 mr-5" onClick={this.onSignUp}>
           <a id="lienSignUp" href={''}>Sign up</a>
