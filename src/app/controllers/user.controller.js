@@ -1,13 +1,20 @@
+import ResponseException from '../services/ResponseException';
+
 const UserService = require('../services/user.services');
 
 
-exports.createUser = async function(req, res) {
+exports.createUser = async function(req, res, next) {
   try {
-
-    let newUser = await UserService.createUser(req);
+    console.log('Creating new User');
+    let newUser = await UserService.createUser(req, res, next);
     return res.status(201).json({status: 201, data: newUser, message: 'User Created Successfully'});
 
   }catch(e){
+    // if (e.code === 400)
+    //   return res.status(400).json({status: 400, message: e.message});
+    if(e instanceof ResponseException && e.code === 409)
+      return res.status(409).json({status: 409, message: e.message});
+
     return res.status(400).json({status: 400, message: e.message});
   }
 };

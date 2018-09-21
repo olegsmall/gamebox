@@ -1,8 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import hanlebars from 'express-handlebars';
-const passport = require('passport');
+// import hanlebars from 'express-handlebars';
+// const passport = require('passport');
+const morgan = require('morgan');
+import session from 'express-session';
+import passport from './app/passport';
 
 // import path from 'path';
 import {publicDir, port} from './config/app.config';
@@ -24,13 +27,7 @@ const app = express();
 //   // dest: path.join(__dirname, 'public/css')
 // }));
 
-//Allow serving static files from public (publicDir) folder
-app.use(express.static(publicDir));
-
-
-app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(morgan('dev'));
 
 /*
 * body-parser extracts the entire body portion of an incoming request and assigns it to req.body.
@@ -40,6 +37,29 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({extended: true}));
 //If the body of incoming request is a json object then assign it to req.body property
 app.use(bodyParser.json());
+
+//Allow serving static files from public (publicDir) folder
+app.use(express.static(publicDir));
+
+
+app.use(
+  session({
+    secret: 'krjoooe-ttlldj',
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
+app.use( (req, res, next) => {
+  // console.log('req.session', req.session);
+  return next();
+});
+
+//Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 /*
 * Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
@@ -65,6 +85,7 @@ app.set('views', __dirname + '/app/views');
 app.use('/', require('./app/routes/index.route'));
 app.use('/user', require('./app/routes/user.route'));
 app.use('/admin', require('./app/routes/admin.route'));
+app.use('/genre', require('./app/routes/genre.route'));
 
 app.listen(port, () =>{
   console.info('Express listening on port ', port);
