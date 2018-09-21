@@ -1,31 +1,35 @@
 import React from 'react';
 
-const Footer = ({message}) => {
+const Footer = () => {
   return (
     <div>
-    <footer className="page-footer font-small teal pt-4">
-      <div className="container-fluid text-center text-md-left">
-        <div className="row">
-          <div className="col-md-5 mt-md-0 mt-2 ml-5">
-            <h2 className="text-uppercase font-weight-bold text-light">Footer text 1</h2>
-            <p className="text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint,
-              nulla, nihil
-              repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis</p>
-          </div>
-          <hr className="clearfix w-100 d-md-none pb-3"/>
-            <div className="col-md-5 mb-md-0 mb-2 ml-5 ">
-              <h2 className="text-uppercase font-weight-bold text-light">Footer text 2</h2>
-              <p className="text-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga
-                perferendis modi
-                earum commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam</p>
+      {/* Footer */}
+      <footer className="page-footer font-small teal pt-4">
+        <div className="container-fluid text-center text-md-left">
+          <div className="row">
+            <div className="col-md-5 mt-md-0 mt-2 ml-5">
+              <h5 className="text-uppercase font-weight-bold text-light">Footer text 1</h5>
+              <p className="text-light">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
+                repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis
+              </p>
             </div>
+            <hr className="clearfix w-100 d-md-none pb-3"/>
+            <div className="col-md-5 mb-md-0 mb-2 ml-5 ">
+              <h5 className="text-uppercase font-weight-bold text-light">Footer text 2</h5>
+              <p className="text-light">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi
+                earum commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+      {/*<!-- Footer Elements -->*/}
       <div className="container text-center">
         <div className="py-5">
           <div className="mb-5">
-            <a className="fb-ic"><i className="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i></a>
+            <a className="fb-ic"><i className="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
             <a className="tw-ic"> <i className="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
             <a className="gplus-ic"><i className="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"></i> </a>
             <a className="li-ic"><i className="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
@@ -34,8 +38,9 @@ const Footer = ({message}) => {
           </div>
         </div>
       </div>
+      {/*<!-- Copyright -->*/}
       <div className="footer-copyright text-center py-3 h5 text-light">© 2018 Copyright: Dream Team #1 with love</div>
-   </div>
+    </div>
   );
 };
 

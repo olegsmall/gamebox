@@ -75,7 +75,8 @@ class App extends React.Component{
   render(){
     return (
       <div className={'App'}>
-        <Header updateUser={this.updateUser} loggedIn={this.state.loggedIn}/>
+        <Header loggedIn={this.state.loggedIn}/>
+        {/*<Header updateUser={(userObject)=>this.updateUser(userObject)} loggedIn={this.state.loggedIn}/>*/}
         {this.state.loggedIn &&
         <p>Join the party, {this.state.email}!</p>
         }
@@ -88,7 +89,7 @@ class App extends React.Component{
             path="/login"
             render={() =>
               <LoginPage
-                updateUser={this.updateUser}
+                updateUser={'sdfsdf'}
               />}
           />
           <Route

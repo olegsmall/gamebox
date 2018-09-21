@@ -5,6 +5,7 @@ import Axios from 'axios';
 class LoginPage extends React.Component{
   constructor(props) {
     super(props);
+    debugger;
     this.state = {
       userEmail: '',
       userPassword: '',
