@@ -4,8 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node_modules/.bin/nodemon --exec node_modules/.bin/babel-node app.js --ignore public/",
-    "dev": "node_modules/.bin/webpack -wd"
+    "start": "npm run server",
+    "server": "node_modules/.bin/nodemon --exec node_modules/.bin/babel-node app.js --ignore public/",
+    "dev": "npm run client",
+    "client": "node_modules/.bin/webpack -wd",
+    "all": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -42,6 +45,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
+    "concurrently": "^4.0.1",
     "css-loader": "^1.0.0",
     "eslint": "^5.5.0",
     "eslint-plugin-react": "^7.11.1",
