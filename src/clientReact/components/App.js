@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import LoginPage from './content/LoginPage';
 import SignUpPage from './content/SignUpPage';
 import axios from 'axios';
-import AllGamesPage from "./content/AllGamesPage";
+import AllGamesPage from './content/AllGamesPage/AllGamesPage';
 import GamePage from './content/GamePage/GamePage';
 
 
@@ -100,7 +100,7 @@ class App extends React.Component {
               render={() => <SignUpPage/>}
             />
             <Route
-              path="/product"
+              exact path="/product"
               render={() => <AllGamesPage/>}
             />
             <Route

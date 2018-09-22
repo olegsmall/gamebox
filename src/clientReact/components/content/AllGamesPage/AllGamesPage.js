@@ -1,6 +1,20 @@
 import React from 'react';
+import Axios from "axios";
 
 class AllGamesPage extends React.Component {
+
+  componentDidMount(){
+
+    // Fetching data for product list
+    Axios.get('/product')
+      .then((res) => {
+        // handle success
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   render() {
     return (
