@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="row ml-5">
+                <div class="row ml-sm-0 ml-md-5">
                     <div class="col-md-6">
                         <p class="text-light">Product seller : Piotr</p>
                         <p class="text-light">Type : Game</p>
@@ -98,7 +98,7 @@
                         <p class="text-light">Genre : Strategy, Adventure, etc.</p>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-block mt-5 mb-3 btnGamePage">Add to cart</button>
+                        <button class="btn btn-block mt-5 mb- btnGamePage">Add to cart</button>
                         <button class="btn btn-block btnGamePage">Rent the game</button>
                     </div>
                 </div>
@@ -107,24 +107,58 @@
     </div>
 </div>
 <div class="container">
-    <div class="row justify-content-center">
-        <h3 class="text-light mb-4">Description</h3>
-    </div>
-</div>
-<div class="container mb-5">
     <div class="row">
-        <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores beatae dicta enim et ex facere
-            id necessitatibus odit omnis, optio quae quam qui quia quis quisquam saepe unde vitae?
-        </p>
-        <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
-            delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae, saepe,
-            similique sit tempora voluptas.</p>
-        <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
-            delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae, saepe,
-            similique sit tempora voluptas.</p>
+        <div class="col">
+            <h3 class="text-light mb-4 text-center">Description</h3>
+            <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores beatae dicta enim et ex facere
+                id necessitatibus odit omnis, optio quae quam qui quia quis quisquam saepe unde vitae?
+            </p>
+            <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
+                delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae, saepe,
+                similique sit tempora voluptas.</p>
+            <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
+                delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae, saepe,
+                similique sit tempora voluptas.</p>
+            </div>
     </div>
 </div>
 
+<!-- Comments -->
+<div class="card-body mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-nowrap">
+                <form>
+                    <section id="rate" class="my-5 text-light">Rate the game
+                        <div class="form-check form-check-inline ml-md-5">
+                            <span><i class="fa fa-star-o"></i></span>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <span><i class="fa fa-star-o"></i></span>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <span><i class="fa fa-star-o"></i></span>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <span><i class="fa fa-star-o"></i></span>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <span><i class="fa fa-star-o"></i></span>
+                        </div>
+                    </section>
+                    <h5 id="marginCom" class="text-light">Write a comment</h5>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-pencil"></i></span>
+                        </div>
+                        <textarea class="form-control form-control-lg font-input" name="comments" placeholder="Your comments" rows="5"></textarea>
+                    </div>
+                    <input type="submit" value="Send" class="btn btn-sm btn-block btnGamePage">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!--footer-->
 <footer class="page-footer font-small teal pt-4">
     <div class="container-fluid text-center text-md-left">
