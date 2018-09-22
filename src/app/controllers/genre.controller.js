@@ -21,6 +21,15 @@ exports.getGenres = async function(req, res) {
   }
 };
 
+exports.getGenre = async function(req, res) {
+  try {
+    let genre = await GenreService.getGenre(req);
+    return res.status(201).json({status: 201, data: genre, message: 'One genre'});
+
+  } catch(e){
+    return res.status(409).json({status: 409, message: e.message});
+  }
+};
 
 exports.updateGenre = async function(req, res) {
   try {

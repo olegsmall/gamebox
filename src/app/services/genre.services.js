@@ -4,10 +4,14 @@ const Genre = require('../models/genre.model');
 exports.getGenres = function() {
 
   // Search for genres
-  let test =  Genre.find().sort([['name', 'ascending']]);
+  // let test =  Genre.find().sort([['name', 'ascending']]);
   return Genre.find().sort([['name', 'ascending']]);
 };
 
+exports.getGenre = function(req) {
+  // Get genre with specified id
+  return req.params.id;
+};
 
 exports.createGenre = function(req) {
 
