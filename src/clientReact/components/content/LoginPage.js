@@ -5,7 +5,6 @@ import Axios from 'axios';
 class LoginPage extends React.Component{
   constructor(props) {
     super(props);
-    debugger;
     this.state = {
       userEmail: '',
       userPassword: '',
@@ -40,7 +39,6 @@ class LoginPage extends React.Component{
         console.log(res);
         if (res.status === 200){
           // update app.js state
-          debugger;
           self.props.updateUser({
             loggedIn: true,
             email: res.data.email,

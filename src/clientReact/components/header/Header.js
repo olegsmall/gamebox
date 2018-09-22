@@ -3,22 +3,16 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import MainPage from '../content/MainPage';
 import AuthPanel from './AuthPanel';
+import {Link} from 'react-router-dom';
 
 const Header = () => {
-  const onHome = (e) => {
-    e.preventDefault();
-    // ReactDom.render(
-    //   <MainPage/>,
-    //   document.getElementById('mainContent')
-    // );
-  };
   return (
     <header>
       <div className="mr-5 ml-5">
         <nav className="navbar navbar-expand-lg  navbar fixed-top navbar-inverse mid">
-          <a className="navbar-brand" href={''} onClick={onHome}>
+          <Link className="navbar-brand" to={'/'}>
             <img src="image/freelogo.PNG" width="90" height="50"/>
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -33,13 +27,13 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav mr-auto mt-lg-0">
               <li className="nav-item">
-                <a className="nav-link" href="" onClick={onHome}>Home</a>
+                <Link className="nav-link" to={'/'}>Home</Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">About</a>
               </li>
               <li className=" nav-item">
-                <a className=" nav-link" href="#">Games</a>
+                <Link className=" nav-link" to={'/product'}>Games</Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">Help</a>
