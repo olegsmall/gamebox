@@ -100,13 +100,12 @@ class App extends React.Component {
               render={() => <SignUpPage/>}
             />
             <Route
-              path="/game"
+              path="/product"
               render={() => <AllGamesPage/>}
             />
             <Route
-              path="/game/:id-game"
+              path="/product/:id-game"
               component={GamePage} />
-          </div>
           </div>
           <Footer/>
         </div>
