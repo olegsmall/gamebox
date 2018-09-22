@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import LoginPage from './content/LoginPage';
 import SignUpPage from './content/SignUpPage';
 import axios from 'axios';
+import AllGamesPage from "./content/AllGamesPage";
 
 
 require('../css/main.scss');
@@ -96,6 +97,10 @@ class App extends React.Component {
             <Route
               path="/user/signup"
               render={() => <SignUpPage/>}
+            />
+            <Route
+              path="/game"
+              render={() => <AllGamesPage/>}
             />
           </div>
           <Footer/>
