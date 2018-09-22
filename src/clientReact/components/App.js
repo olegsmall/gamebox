@@ -8,6 +8,7 @@ import LoginPage from './content/LoginPage';
 import SignUpPage from './content/SignUpPage';
 import axios from 'axios';
 import AllGamesPage from "./content/AllGamesPage";
+import GamePage from './content/GamePage/GamePage';
 
 
 require('../css/main.scss');
@@ -102,6 +103,10 @@ class App extends React.Component {
               path="/game"
               render={() => <AllGamesPage/>}
             />
+            <Route
+              path="/game/:id-game"
+              component={GamePage} />
+          </div>
           </div>
           <Footer/>
         </div>

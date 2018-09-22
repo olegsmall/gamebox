@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.css">
 </head>
 <body>
 <header>
@@ -50,32 +49,21 @@
     </div>
 </header>
     <!-- Carousel -->
-        <div id="slider" class="owl-carousel">
-                <div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
                     <img class="d-block w-100" src="image/image_carusel3.jpg" alt="First slide">
                 </div>
-                <div>
+                <div class="swiper-slide">
                     <img class="d-block w-100" src="image/image_carusel1.jpg" alt="Second slide">
                 </div>
-                <div>
+                <div class="swiper-slide">
                     <img class="d-block w-100" src="image/image_carusel2.jpg" alt="Third slide">
                 </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <!--<div class="swiper-container">-->
-            <!--<div class="swiper-wrapper">-->
-                <!--<div class="swiper-slide">-->
-                    <!--<img class="d-block w-100" src="image/image_carusel3.jpg" alt="First slide">-->
-                <!--</div>-->
-                <!--<div class="swiper-slide">-->
-                    <!--<img class="d-block w-100" src="image/image_carusel1.jpg" alt="Second slide">-->
-                <!--</div>-->
-                <!--<div class="swiper-slide">-->
-                    <!--<img class="d-block w-100" src="image/image_carusel2.jpg" alt="Third slide">-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="swiper-button-prev"></div>-->
-            <!--<div class="swiper-button-next"></div>-->
-        <!--</div>-->
     <!--cards-row1-->
     <h2 class="mt-5 ml-5 text-light">Lorem ipsum</h2>
     <h4 class="ml-5 text-light">Integer faucibus quam quis massa condimentum, ut vestibulum nisl gravida. Suspendisse
@@ -210,14 +198,11 @@
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3 h5 text-light">© 2018 Copyright: Dream Team #1 with love</div>
 
-<!-- Carousel script -->
-
-
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -225,24 +210,19 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+<!-- Carousel script -->
 <script>
-  // let mySwiper = new Swiper('.swiper-container', {
-  //   speed: 400,
-  //   direction: 'horizontal',
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   }
-  // });
-
-  let owl = $('.owl-carousel');
-  owl.owlCarousel({
-    items:1,
-    loop:true,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:5000,
-    autoplayHoverPause:true
+  let mySwiper = new Swiper('.swiper-container', {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
   });
 </script>
 
