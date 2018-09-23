@@ -47,8 +47,8 @@ exports.updateProduct = async function(req, res) {
 
 exports.deleteProduct = async function(req, res) {
   try {
-    let genre = await ProductService.deleteProduct(req.params.id);
-    return res.status(201).json({status: 201, products: genre, message: 'Product deleted successfully'});
+    let product = await ProductService.deleteProduct(req.params.id);
+    return res.status(201).json({status: 201, products: product, message: 'Product deleted successfully'});
 
   } catch(e){
     return res.status(409).json({status: 409, message: e.message});
