@@ -4,20 +4,20 @@ import ProductCard from './ProductCard/ProductCard';
 
 class AllGamesPage extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      products:[]
+      products: []
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // Fetching data for product list
     axios.get('/product')
       .then((res) => {
         // handle success
         // console.log(res.data.data.docs);
-        this.setState({products: res.data.data.docs});
+        this.setState({products: res.data.products.docs});
       })
       .catch((error) => {
         console.log(error);
@@ -31,12 +31,13 @@ class AllGamesPage extends React.Component {
         <div className="card-deck m-5">
 
           {this.state.products.map((product, index) => (
-              <ProductCard key={product._id} product={product}/>
-            ))}
+            <ProductCard key={product._id} product={product}/>
+          ))}
 
         </div>
       </div>
     );
   }
 }
+
 export default AllGamesPage;

@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../header/Header';
 import MainPage from '../content/MainPage';
 import Footer from '../footer/Footer';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import LoginPage from '../content/LoginPage';
 import SignUpPage from '../content/SignUpPage';
 import axios from 'axios';
@@ -77,41 +77,39 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <div className={'App'}>
-          <Header loggedIn={this.state.loggedIn}/>
-          {/*<Header updateUser={(userObject)=>this.updateUser(userObject)} loggedIn={this.state.loggedIn}/>*/}
-          {this.state.loggedIn &&
-          <p>Join the party, {this.state.email}!</p>
-          }
-          <div id="mainContent">
-            {/* Routes to different components */}
-            <Route
-              exact path="/"
-              render={() => <MainPage/>}/>
-            <Route
-              path="/user/login"
-              render={() =>
-                <LoginPage
-                  updateUser={'sdfsdf'}
-                />}
-            />
-            <Route
-              path="/user/signup"
-              render={() => <SignUpPage/>}
-            />
-            <Route
-              exact path="/product"
-              render={() => <AllGamesPage/>}
-            />
-            <Route
-              path="/product/:idgame"
-              render={() => <GamePage/>}
-            />
-          </div>
-          <Footer/>
+      <div className={'App'}>
+        <Header loggedIn={this.state.loggedIn}/>
+        {/*<Header updateUser={(userObject)=>this.updateUser(userObject)} loggedIn={this.state.loggedIn}/>*/}
+        {this.state.loggedIn &&
+        <p>Join the party, {this.state.email}!</p>
+        }
+        <div id="mainContent">
+          {/* Routes to different components */}
+          <Route
+            exact path="/"
+            render={() => <MainPage/>}/>
+          <Route
+            path="/user/login"
+            render={() =>
+              <LoginPage
+                updateUser={'sdfsdf'}
+              />}
+          />
+          <Route
+            path="/user/signup"
+            render={() => <SignUpPage/>}
+          />
+          <Route
+            exact path="/product"
+            render={() => <AllGamesPage/>}
+          />
+          <Route
+            path="/product/:idgame"
+            render={() => <GamePage/>}
+          />
         </div>
-      </Router>
+        <Footer/>
+      </div>
     );
   }
 }
