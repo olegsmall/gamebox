@@ -35,13 +35,19 @@ exports.getProduct = async function(req, res) {
   }
 };
 
-// exports.updateProduct = async function(req, res, next) {
-//
-// };
-//
+exports.updateProduct = async function(req, res, next) {
+  try {
+    let product = await ProductService.updateProduct(req);
+    return res.status(201).json({status: 201, data: product, message: 'Product updated successfully'});
+
+  } catch(e){
+    return res.status(409).json({status: 409, message: e.message});
+  }
+};
+
 exports.deleteProduct = async function(req, res) {
   try {
-    let genre = await ProductService.deleteProduct(req.body.id);
+    let genre = await ProductService.deleteProduct(req.params.id);
     return res.status(201).json({status: 201, data: genre, message: 'Product deleted successfully'});
 
   } catch(e){

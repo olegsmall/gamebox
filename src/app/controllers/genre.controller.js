@@ -43,8 +43,7 @@ exports.updateGenre = async function(req, res) {
 
 exports.deleteGenre = async function(req, res) {
   try {
-    console.log(req.param.id, req.body.id);
-    let genre = await GenreService.deleteGenre(req.param.id);
+    let genre = await GenreService.deleteGenre(req.params.id);
     return res.status(201).json({status: 201, data: genre, message: 'Genre removed successfully'});
 
   } catch(e){

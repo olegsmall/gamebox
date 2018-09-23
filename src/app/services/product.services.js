@@ -15,7 +15,7 @@ exports.createProduct = function (req) {
         genres: docs,
         price: req.body.price,
         status: req.body.status,
-      });
+    });
       return product.save();
     });
   } catch (e) {
@@ -42,7 +42,33 @@ exports.getProduct = function (id) {
     return promise.then((doc) => { return doc; });
 
   } catch (e) {
-    throw {message: 'Error on get product'};
+    throw {error: e, message: 'Error on get product'};
+  }
+};
+
+exports.updateProduct = async function(req) {
+  try {
+    let product = new Product({
+      title: req.body.title,
+      description: req.body.description,
+      images: req.body.images,
+      genres: req.body.genres,
+      price: req.body.price,
+      status: req.body.status,
+    });
+
+    return Product.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      description: req.body.description,
+      images: req.body.images,
+      genres: req.body.genres,
+      price: req.body.price,
+      status: req.body.status,
+    }, { new: true });
+    // return promise.then((doc) => { return doc; });
+
+  } catch(e){
+    throw {error: e, message: 'Error on product update'};
   }
 };
 

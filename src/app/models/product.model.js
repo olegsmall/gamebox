@@ -24,12 +24,13 @@ const ProductSchema = new Schema({
     type: String,
     required: [true, 'Title is required'],
     minlength: [4, 'Title should have at least 4 symbols'],
-    maxlength: [40, 'Title maximum lenght is 40 symbols']
+    maxlength: [40, 'Title maximum length is 40 symbols']
   },
   description: {
     type: String,
     required: true,
-    minlength: 10
+    minlength: [10, 'Description minimum lenght is 10 symbols'],
+    maxlength: [500, 'Description maximum length is 500 symbols']
   },
   images: [{
     type: String,

@@ -24,7 +24,7 @@ exports.createGenre = function(req) {
 exports.updateGenre = function(req) {
   try {
     // Trim and update a genre.
-    return Genre.findByIdAndUpdate(req.body.id, { name: req.body.name.trim() }, { new: true });
+    return Genre.findByIdAndUpdate(req.params.id, { name: req.body.name.trim() }, { new: true });
 
   } catch (e) {
     throw {error: e, message: 'Error on genre update.'};
