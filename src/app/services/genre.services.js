@@ -2,31 +2,19 @@ const Genre = require('../models/genre.model');
 
 // Display list of all Genre.
 exports.getGenres = function() {
-
   // Search for genres
-  // let test =  Genre.find().sort([['name', 'ascending']]);
   return Genre.find().sort([['name', 'ascending']]);
 };
 
-exports.getGenre = function(req) {
+exports.getGenre = function(id) {
   // Get genre with specified id
-  return req.params.id;
+  return Genre.findById(id);
 };
 
 exports.createGenre = function(req) {
-
-  //Trim data.
-  const name = req.body.name.trim();
-
-  //Check data length.
-  if(name.length < 3) {
-    throw Error('Genre length should be more than 3 letters');
-  }
-
   try {
-
-    // Save genre in DB and return result
-    return new Genre({ name: name}).save();
+    // Trim and Save genre in DB and return result
+    return new Genre({ name: req.body.name.trim() }).save();
 
   } catch (e) {
     throw {error: e, message: 'Error on genre creation.'};
@@ -34,22 +22,19 @@ exports.createGenre = function(req) {
 };
 
 exports.updateGenre = function(req) {
-
   try {
-
-    // Modify a genre.
-    return Genre.findOneAndUpdate({_id: req.body.id}, {name: req.body.name}, { new: true });
+    // Trim and update a genre.
+    return Genre.findByIdAndUpdate(req.body.id, { name: req.body.name.trim() }, { new: true });
 
   } catch (e) {
     throw {error: e, message: 'Error on genre update.'};
   }
 };
 
-exports.deleteGenre = function(req) {
-
+exports.deleteGenre = function(id) {
   try {
     // Delete a genre.
-    return Genre.findOneAndDelete({_id: req.body.id});
+    return Genre.findByIdAndDelete(id);
 
   } catch (e) {
     throw {error: e, message: 'Error on genre delete.'};
