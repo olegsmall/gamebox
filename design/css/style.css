@@ -10,20 +10,6 @@ img {
     color: beige;
 }
 
-/*.my-image {*/
-/*body{*/
-    /*background-image: url("../image/spiral.jpg");*/
-    /*!*background-color: beige;*!*/
-    /*!*height: 1000px;*!*/
-    /*background-position: center;*/
-    /*background-repeat: repeat;*/
-    /*background-size: cover;*/
-    /*position: relative;*/
-
-
-
-/*}*/
-
 a {
     color: black;
 }
@@ -64,9 +50,9 @@ a.nav-link.h5{
 }
 
 /*card*/
-.card-body{
-    background-color: beige;
-}
+/*.card-body{*/
+    /*background-color: beige;*/
+/*}*/
 div.card-footer{
     background-color: beige;
 }
@@ -74,7 +60,7 @@ input.form-control{
     background-color: beige;
 }
 i.fa.fa-star-o {
-    color: orange!important;
+    color: #70BE49!important;
     font-size: 20px;
 }
 .card-text{
@@ -96,18 +82,32 @@ i.fa.fa-star-o {
 }
 
 /* Game page */
-/*#gamePage {*/
-    /*margin-top: 8rem;*/
-/*}*/
+#gamePage {
+    margin-top: 8rem;
+}
 
-/*.btnGamePage {*/
-    /*background-color: #77C548;*/
-/*}*/
+.btnGamePage {
+    background-color: #026E00;
+}
+
+#rate {
+    font-size: 1.25rem;
+}
+
+.fa-pencil {
+    color: black;
+}
+
+#marginCom {
+    margin-bottom: 1rem;
+}
 
 /* Style mobile */
-/*@media only screen and (max-width: 600px) {*/
-    /*#gamePage {*/
-        /*margin-top: 10rem;*/
-    /*}*/
+@media only screen and (max-width: 600px) {
+    #gamePage {
+        margin-top: 10rem;
+    }
 
-/*}*/
+}
+
+

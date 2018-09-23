@@ -138,9 +138,9 @@ class SignUpPage extends React.Component {
                 </div>
                 <div className="form-group col-md-6">
                   <input
+                    name="userPasswordConf"
                     type="password"
                     className="form-control form-control-sm"
-                    name="userPasswordConfirmation"
                     placeholder="Confirm your password"
                     value={this.state.userPasswordConf}
                     onChange={this.handleInputChange}/>

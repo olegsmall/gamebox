@@ -56,3 +56,19 @@ exports.getProducts = function(req) {
     throw {message: 'Error on get products'};
   }
 };
+
+exports.getProduct = function(req) {
+
+  // // Check the existence of the query parameters, If the exists doesn't exists assign a default value
+  // let page = req.body.page ? req.body.page : 1;
+  // let limit = req.body.limit ? req.body.limit : 10;
+
+  try{
+    // req.params.id - id of product
+    return req.params.id;
+    // return Product.paginate(req.body.query, {page: page, limit: limit, populate: 'genre'});
+
+  } catch (e) {
+    throw {message: 'Error on get product'};
+  }
+};

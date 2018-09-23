@@ -3,11 +3,11 @@ import React from 'react';
 import Header from './header/Header';
 import MainPage from './content/MainPage';
 import Footer from './footer/Footer';
-import ReactDom from 'react-dom';
-import { Route, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import LoginPage from './content/LoginPage';
 import SignUpPage from './content/SignUpPage';
 import axios from 'axios';
+import AllGamesPage from './content/AllGamesPage/AllGamesPage';
 import GamePage from './content/GamePage/GamePage';
 
 
@@ -22,11 +22,11 @@ require('../css/main.scss');
 // };
 
 //New syntax can be used for components with state or life cycle methods
-class App extends React.Component{
+class App extends React.Component {
   //we can use constructor for initializing state properties
   //or class property instead.
   //Using class constructor for a state props
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       loggedIn: false,
@@ -41,14 +41,15 @@ class App extends React.Component{
 
   // Life cycle methods
   //component mount method, guaranteed that component was mounted
-  componentDidMount(){
+  componentDidMount() {
     this.getUser();
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     // clean timers and listeners
   }
 
-  updateUser (userObject) {
+  updateUser(userObject) {
     this.setState(userObject);
   }
 
@@ -72,39 +73,43 @@ class App extends React.Component{
       }
     });
   }
-  render(){
+
+  render() {
     return (
-      <div className={'App'}>
-        <Header loggedIn={this.state.loggedIn}/>
-        {/*<Header updateUser={(userObject)=>this.updateUser(userObject)} loggedIn={this.state.loggedIn}/>*/}
-        {this.state.loggedIn &&
-        <p>Join the party, {this.state.email}!</p>
-        }
-        <div id="mainContent">
-          {/* Routes to different components */}
-          <Route
-            exact path="/"
-            component={MainPage} />
-          <Route
-            path="/login"
-            render={() =>
-              <LoginPage
-                updateUser={'sdfsdf'}
-              />}
-          />
-          <Route
-            path="/signup"
-            render={() =>
-              <SignUpPage
-                signup={this.signup}
-              />}
-          />
-          <Route
-            path="/game"
-            component={GamePage} />
+      <Router>
+        <div className={'App'}>
+          <Header loggedIn={this.state.loggedIn}/>
+          {/*<Header updateUser={(userObject)=>this.updateUser(userObject)} loggedIn={this.state.loggedIn}/>*/}
+          {this.state.loggedIn &&
+          <p>Join the party, {this.state.email}!</p>
+          }
+          <div id="mainContent">
+            {/* Routes to different components */}
+            <Route
+              exact path="/"
+              render={()=><MainPage/>}/>
+            <Route
+              path="/user/login"
+              render={() =>
+                <LoginPage
+                  updateUser={'sdfsdf'}
+                />}
+            />
+            <Route
+              path="/user/signup"
+              render={() => <SignUpPage/>}
+            />
+            <Route
+              exact path="/product"
+              render={() => <AllGamesPage/>}
+            />
+            <Route
+              path="/product/:id-game"
+              component={GamePage} />
+          </div>
+          <Footer/>
         </div>
-        <Footer />
-      </div>
+      </Router>
     );
   }
 }
