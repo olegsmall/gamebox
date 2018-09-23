@@ -3,32 +3,59 @@ const mongoosePaginate = require('mongoose-paginate');
 
 const Schema = mongoose.Schema;
 
-const PriceSchema = new Schema({
+const PriceSubSchema = new Schema({
   sell: Number,
   rent: Number
 },{ _id : false });
 
-const RentSchema = new Schema({
+const RentSubSchema = new Schema({
   from:  Date,
   due_back: Date,
   to_user: {type: Schema.ObjectId, ref: 'User'}
 },{ _id : false });
 
-const SoldSchema = new Schema({
+const SoldSubSchema = new Schema({
   date: Date,
   to_user: {type: Schema.ObjectId, ref: 'User'}
 },{ _id : false });
 
 const ProductSchema = new Schema({
-  title: {type: String, required: true, min: 4, max: 40},
-  description: {type: String, required: true, min: 20},
-  images: [{type: String, required: false}],
-  // owner: {type: Schema.Types.ObjectId, ref: 'User', required: true},
-  genre: [{type: Schema.ObjectId, ref: 'Genre', required: true}],
-  price: [PriceSchema],
-  status: [{type: String, enum: ['For rent', 'For sale', 'Rented', 'Sold'], required: true}],
-  rented: [RentSchema],
-  sold: [SoldSchema]
+  title: {
+    type: String,
+    required: [true, 'Title is required'],
+    minlength: [4, 'Title should have at least 4 symbols'],
+    maxlength: [40, 'Title maximum lenght is 40 symbols']
+  },
+  description: {
+    type: String,
+    required: true,
+    minlength: 10
+  },
+  images: [{
+    type: String,
+    required: false
+  }],
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: false // TO CHANGE
+  },
+  genres: {
+    type: [Schema.ObjectId],
+    ref: 'Genres',
+    required: true,
+    validate: [(value) => value.length > 0, 'At least one genre should be chosen'],
+  },
+  status: {
+    type: [String],
+    enum: ['For rent', 'For sale', 'Rented', 'Sold'],
+    required: true,
+    validate: [(value) => value.length > 0, 'Status should be indicated'],
+  },
+
+  price: PriceSubSchema,
+  // rented: [RentSubSchema],
+  // sold: [SoldSubSchema]
 });
 
 ProductSchema.plugin(mongoosePaginate);

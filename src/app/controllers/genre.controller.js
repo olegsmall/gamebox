@@ -1,16 +1,5 @@
 const GenreService = require('../services/genre.services');
 
-exports.createGenre = async function(req, res) {
-  try {
-    let newGenre = await GenreService.createGenre(req);
-    return res.status(201).json({status: 201, data: newGenre, message: 'Genre created successfully'});
-
-  } catch(e){
-    return res.status(409).json({status: 409, message: e.message});
-  }
-};
-
-
 exports.getGenres = async function(req, res) {
   try {
     let genres = await GenreService.getGenres(req);
@@ -23,8 +12,18 @@ exports.getGenres = async function(req, res) {
 
 exports.getGenre = async function(req, res) {
   try {
-    let genre = await GenreService.getGenre(req);
+    let genre = await GenreService.getGenre(req.params.id);
     return res.status(201).json({status: 201, data: genre, message: 'One genre'});
+
+  } catch(e){
+    return res.status(409).json({status: 409, message: e.message});
+  }
+};
+
+exports.createGenre = async function(req, res) {
+  try {
+    let newGenre = await GenreService.createGenre(req);
+    return res.status(201).json({status: 201, data: newGenre, message: 'Genre created successfully'});
 
   } catch(e){
     return res.status(409).json({status: 409, message: e.message});
@@ -44,7 +43,8 @@ exports.updateGenre = async function(req, res) {
 
 exports.deleteGenre = async function(req, res) {
   try {
-    let genre = await GenreService.deleteGenre(req);
+    console.log(req.param.id, req.body.id);
+    let genre = await GenreService.deleteGenre(req.param.id);
     return res.status(201).json({status: 201, data: genre, message: 'Genre removed successfully'});
 
   } catch(e){
