@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import App from './components/App';
+import App from './components/App/App';
 import {BrowserRouter} from 'react-router-dom'; //don't need to specify localhost url in axios http address
 
 ReactDom.render(

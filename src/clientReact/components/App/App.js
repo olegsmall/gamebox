@@ -1,17 +1,18 @@
 import React from 'react';
 // import ReactPropTypes from 'prop-types';
-import Header from './header/Header';
-import MainPage from './content/MainPage';
-import Footer from './footer/Footer';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import LoginPage from './content/LoginPage';
-import SignUpPage from './content/SignUpPage';
+import Header from '../header/Header';
+import MainPage from '../content/MainPage';
+import Footer from '../footer/Footer';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import LoginPage from '../content/LoginPage';
+import SignUpPage from '../content/SignUpPage';
 import axios from 'axios';
-import AllGamesPage from './content/AllGamesPage/AllGamesPage';
-import GamePage from './content/GamePage/GamePage';
+import AllGamesPage from '../content/AllGamesPage/AllGamesPage';
+import GamePage from '../content/GamePage/GamePage';
 
+require('./App.scss');
 
-require('../css/main.scss');
+require('../../css/main.scss');
 
 // Sytax for components without state (faster)
 // const App = () => {
@@ -87,7 +88,7 @@ class App extends React.Component {
             {/* Routes to different components */}
             <Route
               exact path="/"
-              render={()=><MainPage/>}/>
+              render={() => <MainPage/>}/>
             <Route
               path="/user/login"
               render={() =>
@@ -104,8 +105,9 @@ class App extends React.Component {
               render={() => <AllGamesPage/>}
             />
             <Route
-              path="/product/:id-game"
-              component={GamePage} />
+              path="/product/:idgame"
+              render={() => <GamePage/>}
+            />
           </div>
           <Footer/>
         </div>

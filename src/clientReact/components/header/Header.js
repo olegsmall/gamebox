@@ -1,7 +1,5 @@
 import React from 'react';
 // import ReactPropTypes from 'prop-types';
-import ReactDom from 'react-dom';
-import MainPage from '../content/MainPage';
 import AuthPanel from './AuthPanel';
 import {Link} from 'react-router-dom';
 
@@ -50,7 +48,11 @@ const Header = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"/>
-            <button className="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button
+              className="btn btn-sm btn-outline-success my-2 my-sm-0"
+              type="submit">
+              Search
+            </button>
           </form>
         </nav>
       </div>

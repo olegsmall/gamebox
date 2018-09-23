@@ -15,9 +15,9 @@ class GamePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id={"GamePage"}>
         <div id="gamePage">
-          <h3 className="text-light text-center mb-4">Game Name</h3>
+          <h3 className="text-light text-center mb-4">Game's Name</h3>
           <div className="container mb-4">
             <div className="row">
               <div className="col-md-5">

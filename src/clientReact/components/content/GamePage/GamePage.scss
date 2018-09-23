@@ -1,27 +1,34 @@
-#gamePage {
-  margin-top: 8rem;
-}
+#GamePage{
 
-.btnGamePage {
-  background-color: #026E00;
-}
-
-#rate {
-  font-size: 1.25rem;
-}
-
-.fa-pencil {
-  color: black;
-}
-
-#marginCom {
-  margin-bottom: 1rem;
-}
-
-//Style mobile
-@media only screen and (max-width: 600px) {
   #gamePage {
-    margin-top: 10rem;
+    margin-top: 8rem;
   }
 
+  .btnGamePage {
+    background-color: #026E00;
+  }
+
+  #rate {
+    font-size: 1.25rem;
+  }
+
+  .fa-pencil {
+    color: black;
+  }
+
+  #marginCom {
+    margin-bottom: 1rem;
+  }
+
+  //Style mobile
+  @media only screen and (max-width: 600px) {
+    #gamePage {
+      margin-top: 10rem;
+    }
+
+  }
 }
+
+
+
+
