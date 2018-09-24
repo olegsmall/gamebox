@@ -15,14 +15,6 @@ require('./App.scss');
 
 require('../../css/main.scss');
 
-// Sytax for components without state (faster)
-// const App = () => {
-//   return (
-//
-//
-//   );
-// };
-
 //New syntax can be used for components with state or life cycle methods
 class App extends React.Component {
   //we can use constructor for initializing state properties
@@ -128,8 +120,8 @@ class App extends React.Component {
               render={() => <AllGamesPage/>}
             />
             <Route
-              path="/product/:idgame"
-              render={() => <GamePage/>}
+              path="/product/:gameId"
+              component={GamePage}
             />
           </Switch>
         </div>

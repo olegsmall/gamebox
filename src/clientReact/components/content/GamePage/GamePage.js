@@ -1,20 +1,23 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from "./Carousel/Carousel";
+
 require('./GamePage.scss');
 
 class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [{_id: }]
-    }
+      product: {}
+    };
   }
 
   componentDidMount() {
-    axios.get('/product')
-      .then( (res) => {
-        this.setState({products: res.data.products.docs});
+    // debugger;
+    axios.get('/product/' + this.props.match.params.gameId)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({product: res.data.product});
       })
       .catch((error) => {
         console.log(error);
@@ -25,12 +28,12 @@ class GamePage extends React.Component {
     return (
       <div id={"GamePage"}>
         <div id="gamePage">
-          <h3 className="text-light text-center mb-4">{this.props.product.title}</h3>
+          <h3 className="text-light text-center mb-4">{this.state.product.title}</h3>
           <div className="container mb-4">
             <div className="row">
               <div className="col-md-5">
                 <img id="imageMainGame" className="img-thumbnail" src="image/img6.jpg" alt="First slide"/>
-                <Carousel />
+                <Carousel/>
               </div>
               <div className="col-md-6">
                 <div className="row ml-sm-0 ml-md-5">
@@ -56,26 +59,28 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <h3 className="text-light mb-4 text-center">Description</h3>
-                <p className="text-light">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores beatae dicta enim et ex facere
-                  id necessitatibus odit omnis, optio quae quam qui quia quis quisquam saepe unde vitae?
-                </p>
-                <p className="text-light">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
-                  delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae, saepe,
-                  similique sit tempora voluptas.
-                </p>
-                <p className="text-light">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
-                  delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae, saepe,
-                  similique sit tempora voluptas.
-                </p>
-              </div>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h3 className="text-light mb-4 text-center">Description</h3>
+              <p className="text-light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores beatae dicta enim et ex facere
+                id necessitatibus odit omnis, optio quae quam qui quia quis quisquam saepe unde vitae?
+              </p>
+              <p className="text-light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
+                delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae,
+                saepe,
+                similique sit tempora voluptas.
+              </p>
+              <p className="text-light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
+                delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae,
+                saepe,
+                similique sit tempora voluptas.
+              </p>
             </div>
+          </div>
         </div>
         <div className="card-body mb-5">
           <div className="container">
