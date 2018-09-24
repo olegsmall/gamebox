@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 import Axios from 'axios';
 
 class LoginPage extends React.Component {
@@ -8,7 +8,6 @@ class LoginPage extends React.Component {
     this.state = {
       userEmail: '',
       userPassword: '',
-      redirectTo: null,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -44,11 +43,9 @@ class LoginPage extends React.Component {
             email: res.data.user.email,
             user: res.data.user,
           });
+          self.props.history.push('/user');
         }
-        //update the state to redirect to home
-        self.setState({
-          redirectTo: '/'
-        });
+
       })
       .catch((error) => {
         console.log('login error: ')
@@ -109,4 +106,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

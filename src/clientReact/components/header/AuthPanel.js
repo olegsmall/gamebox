@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, withRouter } from 'react-router-dom';
 
 class AuthPanel extends React.Component {
 
@@ -12,10 +12,9 @@ class AuthPanel extends React.Component {
   }
 
   handleLogout(e){
-    debugger;
     e.preventDefault();
     this.props.logoutUser();
-    this.props.history.pushState(null, '/');
+    this.props.history.push('/');
   }
 
   render() {
@@ -52,4 +51,4 @@ class AuthPanel extends React.Component {
   }
 }
 
-export default AuthPanel;
+export default withRouter(AuthPanel);

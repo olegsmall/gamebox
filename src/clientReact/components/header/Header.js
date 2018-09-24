@@ -48,6 +48,7 @@ class Header extends React.Component {
             </div>
             <form className="form-inline mt-2">
               <AuthPanel
+                history={this.props.history}
                 logoutUser={this.props.logoutUser}
                 loggedIn={this.props.loggedIn}
               />

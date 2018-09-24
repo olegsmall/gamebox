@@ -3,12 +3,13 @@ import React from 'react';
 import Header from '../header/Header';
 import MainPage from '../content/MainPage';
 import Footer from '../footer/Footer';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import LoginPage from '../content/LoginPage';
 import SignUpPage from '../content/SignUpPage';
 import axios from 'axios';
 import AllGamesPage from '../content/AllGamesPage/AllGamesPage';
 import GamePage from '../content/GamePage/GamePage';
+import UserPage from '../content/UserPage/UserPage';
 
 require('./App.scss');
 
@@ -93,36 +94,44 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <div className={'App'}>
         <Header
+          history={this.props.history}
           logoutUser={this.logoutUser}
           loggedIn={this.state.loggedIn}
         />
         <div id="mainContent">
           {/* Routes to different components */}
-          <Route
-            exact path="/"
-            render={() => <MainPage/>}/>
-          <Route
-            path="/user/login"
-            render={() =>
-              <LoginPage
-                updateUser={this.updateUser}
-              />}
-          />
-          <Route
-            path="/user/signup"
-            render={() => <SignUpPage/>}
-          />
-          <Route
-            exact path="/product"
-            render={() => <AllGamesPage/>}
-          />
-          <Route
-            path="/product/:idgame"
-            render={() => <GamePage/>}
-          />
+          <Switch>
+            <Route
+              exact path="/"
+              render={() => <MainPage/>}/>
+            <Route
+              path="/user/login"
+              render={() =>
+                <LoginPage
+                  updateUser={this.updateUser}
+                />}
+            />
+            <Route
+              path="/user/signup"
+              render={() => <SignUpPage/>}
+            />
+            <Route
+              exac path="/user"
+              render={() => <UserPage/>}
+            />
+            <Route
+              exact path="/product"
+              render={() => <AllGamesPage/>}
+            />
+            <Route
+              path="/product/:idgame"
+              render={() => <GamePage/>}
+            />
+          </Switch>
         </div>
         <Footer/>
       </div>
