@@ -1,8 +1,8 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import Axios from 'axios';
 
-class LoginPage extends React.Component{
+class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,14 +34,15 @@ class LoginPage extends React.Component{
       email: this.state.userEmail,
       password: this.state.userPassword,
     })
-      .then(function(res){
+      .then(function (res) {
         console.log('login response: ');
         console.log(res);
-        if (res.status === 200){
+        if (res.status === 200) {
           // update app.js state
           self.props.updateUser({
             loggedIn: true,
-            email: res.data.email,
+            email: res.data.user.email,
+            user: res.data.user,
           });
         }
         //update the state to redirect to home

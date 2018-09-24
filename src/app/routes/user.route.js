@@ -1,32 +1,15 @@
 import express from 'express';
-const passport = require('passport');
 const router = express.Router();
+const passport = require('passport');
 
 // Importing Controller
 import UserController from '../controllers/user.controller';
 
 router.post('/',UserController.createUser);
 
-router.post(
-  '/login',
-  function (req, res, next) {
-    console.log('routes/user.js, login, req.body: ');
-    console.log(req.body)
-    next();
-  },
-  passport.authenticate('local'),
-  (req, res) => {
-    console.log('logged in', req.user);
-    let userInfo = {
-      email: req.user.email
-    };
-    res.send(userInfo);
-  }
-);
+router.post('/login', passport.authenticate('local'), UserController.authenticate);
 
 router.get('/', (req, res, next) => {
-  console.log('===== user!!======')
-  console.log(req.user)
   if (req.user) {
     res.json({ user: req.user });
   } else {

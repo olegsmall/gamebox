@@ -32,7 +32,11 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       email: null,
+      user: null,
     };
+
+    this.updateUser = this.updateUser.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
   }
 
   //Using class property for a state
@@ -55,34 +59,46 @@ class App extends React.Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
-      console.log('Get user response: ');
-      console.log(response.data);
-      if (response.data.user) {
-        console.log('Get User: There is a user saved in the server session: ');
-
+    axios.get('/user/').then(res => {
+      if (res.data.user) {
         this.setState({
           loggedIn: true,
-          email: response.data.user.email
+          email: res.data.user.email,
+          user: res.data.user,
         });
       } else {
-        console.log('Get user: no user');
         this.setState({
           loggedIn: false,
-          email: null
+          email: null,
+          user: null
         });
       }
+    });
+  }
+
+  logoutUser() {
+    // event.preventDefault();
+    axios.post('/user/logout').then(response => {
+      console.log(response.data);
+      if (response.status === 200) {
+        this.updateUser({
+          loggedIn: false,
+          email: null,
+          user: null
+        });
+      }
+    }).catch(error => {
+      console.log('Logout error');
     });
   }
 
   render() {
     return (
       <div className={'App'}>
-        <Header loggedIn={this.state.loggedIn}/>
-        {/*<Header updateUser={(userObject)=>this.updateUser(userObject)} loggedIn={this.state.loggedIn}/>*/}
-        {this.state.loggedIn &&
-        <p>Join the party, {this.state.email}!</p>
-        }
+        <Header
+          logoutUser={this.logoutUser}
+          loggedIn={this.state.loggedIn}
+        />
         <div id="mainContent">
           {/* Routes to different components */}
           <Route
@@ -92,7 +108,7 @@ class App extends React.Component {
             path="/user/login"
             render={() =>
               <LoginPage
-                updateUser={'sdfsdf'}
+                updateUser={this.updateUser}
               />}
           />
           <Route

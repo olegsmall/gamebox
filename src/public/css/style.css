@@ -1,21 +1,27 @@
-#gamePage {
+
+#GamePage #gamePage {
   margin-top: 8rem; }
 
-.btnGamePage {
+#GamePage .btnGamePage {
   background-color: #026E00; }
 
-#rate {
+#GamePage #rate {
   font-size: 1.25rem; }
 
-.fa-pencil {
+#GamePage .fa-pencil {
   color: black; }
 
-#marginCom {
+#GamePage #marginCom {
   margin-bottom: 1rem; }
 
 @media only screen and (max-width: 600px) {
-  #gamePage {
+  #GamePage #gamePage {
     margin-top: 10rem; } }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif !important;
+  background-color: #1D224B !important; }
 
 body {
   margin: 0;
@@ -64,9 +70,6 @@ a.nav-link.h5 {
   background-color: beige !important; }
 
 /*card*/
-.card-body {
-  background-color: beige; }
-
 div.card-footer {
   background-color: beige; }
 

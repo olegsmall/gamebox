@@ -1,5 +1,4 @@
 import ResponseException from '../services/ResponseException';
-
 const UserService = require('../services/user.services');
 
 
@@ -40,13 +39,16 @@ exports.getUsers = async function(req, res, next) {
   }
 };
 
-exports.authenticate = async function(req, res, next) {
+exports.authenticate = function(req, res) {
   try {
-    let user = await UserService.authenticate(req.body.email, req.body.password);
-
-    // Return the users list with the appropriate HTTP Status Code and Message.
-    return res.status(200).json({status: 200, data: user, message: 'Authenticate successfully'});
-
+    const user = {
+      id: req.user._id,
+      email: req.user.email,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      phone: req.user.phone
+    };
+    res.status(200).json({status: 200, user: user, message: 'Authenticate successfully'});
   } catch(e) {
 
     //Return an Error Response Message with Code and the Error Message.

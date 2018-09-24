@@ -1,14 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-// import hanlebars from 'express-handlebars';
-// const passport = require('passport');
-const morgan = require('morgan');
+import morgan from 'morgan';
 import session from 'express-session';
 import passport from './app/passport';
+// import MongoStore from 'connect-mongo'(session);
+const MongoStore = require('connect-mongo')(session);
 
 // import path from 'path';
-import {publicDir, port} from './config/app.config';
+import {publicDir, port, mongoose} from './config/app.config';
 
 // import style from 'clientReact/css/main.scss';
 
@@ -45,13 +45,14 @@ app.use(express.static(publicDir));
 app.use(
   session({
     secret: 'krjoooe-ttlldj',
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
     resave: false,
     saveUninitialized: false
   })
 );
 
 app.use( (req, res, next) => {
-  // console.log('req.session', req.session);
+  console.log('req.session', req.session);
   return next();
 });
 

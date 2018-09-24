@@ -5,14 +5,16 @@ import ResponseException from './ResponseException';
 
 
 
+
 exports.createUser = async function (req) {
 
   // Validation
   // let result;
   //If user name is already in database.
   const user = await User.findOne({email: req.body.email});
-  if (user) throw new ResponseException(409, 'User already exists');
-  else {
+  if (user) {
+    throw new ResponseException(409, 'User already exists');
+  } else {
     const newUser = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -21,8 +23,7 @@ exports.createUser = async function (req) {
       address: req.body.address,
       password: req.body.password,
     });
-    const savedUser = await newUser.save();
-    return savedUser;
+    return await newUser.save();
   }
 };
 
@@ -46,6 +47,6 @@ exports.getUsers = async function (query, page, limit) {
 };
 
 
-// exports.authenticate = async function (req, res, next) {
+// exports.authenticate = function (req, res) {
 //
 // };

@@ -1,20 +1,52 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import LoginPage from '../content/LoginPage';
-import SignUpPage from '../content/SignUpPage';
-import {Link} from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 class AuthPanel extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectTo: null,
+    };
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(e){
+    debugger;
+    e.preventDefault();
+    this.props.logoutUser();
+    this.props.history.pushState(null, '/');
+  }
+
   render() {
+
+    let buttons;
+
+    if (this.props.loggedIn) {
+      buttons =
+        <div>
+          <button className="btn btn-outline-warning my-2 my-sm-0 mr-2">
+            <Link to={'/user/'}>Profile</Link>
+          </button>
+          <button className="btn btn-outline-warning my-2 my-sm-0 mr-5">
+            <a onClick={this.handleLogout}>Log out</a>
+          </button>
+        </div>;
+    } else {
+      buttons =
+        <div>
+          <button className="btn btn-outline-warning my-2 my-sm-0 mr-2">
+            <Link id="lienLogin" to={'/user/login'}>Log in</Link>
+          </button>
+          <button className="btn btn-outline-warning my-2 my-sm-0 mr-5">
+            <Link id="lienSignUp" to={'/user/signup'}>Sign up</Link>
+          </button>
+        </div>;
+    }
+
     return (
       <div>
-        <button className="btn btn-outline-warning my-2 my-sm-0 mr-2">
-          <Link id="lienLogin" to={'/user/login'}>Log in</Link>
-        </button>
-        <button className="btn btn-outline-warning my-2 my-sm-0 mr-5">
-          <Link id="lienSignUp" to={'/user/signup'}>Sign up</Link>
-        </button>
+        {buttons}
       </div>
     );
   }
