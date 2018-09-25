@@ -1,4 +1,4 @@
-#GamePage{
+.GamePage{
 
   #gamePage {
     margin-top: 8rem;
@@ -20,7 +20,6 @@
     margin-bottom: 1rem;
   }
 
-  //Style mobile
   @media only screen and (max-width: 600px) {
     #gamePage {
       margin-top: 10rem;

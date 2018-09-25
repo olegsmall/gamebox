@@ -31,7 +31,7 @@ class GamePage extends React.Component {
     const mainImage = (this.state.product.images && this.state.product.images.length > 0)? this.state.product.images[0] : '';
     const mainImageSrc = '/image/' + mainImage;
     return (
-      <div id={"GamePage"}>
+      <div className={"GamePage"}>
         <div id="gamePage">
           <h3 className="text-light text-center mb-4">{this.state.product.title}</h3>
           <div className="container mb-4">
