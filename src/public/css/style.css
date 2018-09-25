@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat);
 
 #GamePage #gamePage {
   margin-top: 8rem; }
@@ -18,10 +19,11 @@
   #GamePage #gamePage {
     margin-top: 10rem; } }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif !important;
-  background-color: #1D224B !important; }
+.App { }
+  .App body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif !important;
+    background-color: #1D224B !important; }
 
 body {
   margin: 0;

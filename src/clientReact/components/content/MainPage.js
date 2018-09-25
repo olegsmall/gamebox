@@ -5,16 +5,20 @@ import ReactPropTypes from 'prop-types';
 const MainPage = () => {
   return (
     <div>
-      <div id="slider" className="owl-carousel">
-        <div>
-          <img className="d-block w-100" src="image/image_carusel3.jpg" alt="First slide"/>
+      <div className="swiper-container">
+        <div className="swiper-wrapper">
+          <div className="swiper-slide">
+            <img className="d-block w-100" src="image/image_carusel3.jpg" alt="First slide"/>
+          </div>
+          <div className="swiper-slide">
+            <img className="d-block w-100" src="image/image_carusel1.jpg" alt="Second slide"/>
+          </div>
+          <div className="swiper-slide">
+            <img className="d-block w-100" src="image/image_carusel2.jpg" alt="Third slide"/>
+          </div>
         </div>
-        <div>
-          <img className="d-block w-100" src="image/image_carusel1.jpg" alt="Second slide"/>
-        </div>
-        <div>
-          <img className="d-block w-100" src="image/image_carusel2.jpg" alt="Third slide"/>
-        </div>
+        <div className="swiper-button-prev"></div>
+        <div className="swiper-button-next"></div>
       </div>
 
       <h2 className="mt-5 ml-5 text-light">Lorem ipsum</h2>
