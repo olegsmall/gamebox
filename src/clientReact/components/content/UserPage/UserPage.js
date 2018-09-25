@@ -6,7 +6,7 @@ class UserPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={'UserPage'}>
         <div id="hi-bg" className="alert alert-secondary h3 text-light" role="alert">
           <div className="container">Hi, Johnathan</div>
         </div>
@@ -32,6 +32,12 @@ class UserPage extends React.Component {
                     <p className="text-light">
                       <img src="/image/add.png" alt="add-game" width="50" height="50" className="mr-3"/>
                       Add game for sale, rent
+                    </p>
+                  </a>
+                  <a href="editAccount.html">
+                    <p className="text-light">
+                      <img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>
+                      Edit your account details
                     </p>
                   </a>
                   <a href="editAccount.html">
