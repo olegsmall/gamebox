@@ -9,7 +9,7 @@ class ProductCard extends React.Component {
   render() {
     const product = this.props.product;
 
-    const genres = product.genre.map(genre => genre.name + ' ');
+    const genres = product.genres.map(genre => genre.name + ' ');
 
     return (
       <div className="card">

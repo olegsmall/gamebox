@@ -14,7 +14,7 @@ class Header extends React.Component {
         <div className="mr-5 ml-5">
           <nav className="navbar navbar-expand-lg  navbar fixed-top navbar-inverse mid">
             <Link className="navbar-brand" to={'/'}>
-              <img src="image/freelogo.PNG" width="90" height="50"/>
+              <img src="image/logo3.PNG" width="60" height="60"/>
             </Link>
             <button
               className="navbar-toggler"
@@ -30,23 +30,29 @@ class Header extends React.Component {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav mr-auto mt-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/'}>Home</Link>
+                  <Link className="nav-link text-light" to={'/'}>Home</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">About</a>
+                  <a className="nav-link text-light" href="#">About</a>
                 </li>
                 <li className=" nav-item">
-                  <Link className=" nav-link" to={'/product'}>Games</Link>
+                  <Link className=" nav-link text-light" to={'/product'}>Games</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Help</a>
+                  <a className="nav-link text-light" href="#">Help</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Blog</a>
+                  <a className="nav-link text-light" href="#">Blog</a>
                 </li>
               </ul>
             </div>
             <form className="form-inline mt-2">
+              <a href="#" className="user-icon">
+                <i className="fa fa-user-o fa-2x mr-3"
+                   // style="color:green"
+                   aria-hidden="true">
+                </i>
+              </a>
               <AuthPanel
                 history={this.props.history}
                 logoutUser={this.props.logoutUser}

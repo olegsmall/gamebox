@@ -7,13 +7,7 @@ require('./GamePage.scss');
 class GamePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      product: {}
-    };
-  }
 
-  componentDidMount() {
-    // debugger;
     axios.get('/product/' + this.props.match.params.gameId)
       .then((res) => {
         console.log(res.data);
@@ -22,9 +16,20 @@ class GamePage extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+
+    this.state = {
+      product: {}
+    };
+  }
+
+  componentDidMount() {
+    // debugger;
   }
 
   render() {
+    console.log(this.state.product);
+    const mainImage = (this.state.product.images && this.state.product.images.length > 0)? this.state.product.images[0] : '';
+    const mainImageSrc = '/image/' + mainImage;
     return (
       <div id={"GamePage"}>
         <div id="gamePage">
@@ -32,7 +37,7 @@ class GamePage extends React.Component {
           <div className="container mb-4">
             <div className="row">
               <div className="col-md-5">
-                <img id="imageMainGame" className="img-thumbnail" src="image/img6.jpg" alt="First slide"/>
+                <img id="imageMainGame" className="img-thumbnail" src={mainImageSrc} alt={this.state.product.title}/>
                 <Carousel/>
               </div>
               <div className="col-md-6">
@@ -48,7 +53,7 @@ class GamePage extends React.Component {
                     <p className="text-light">Rent price : 30$</p>
                   </div>
                   <div className="col-md-12 mt-3">
-                    <p className="text-light">Genre : Strategy, Adventure, etc.</p>
+                    <p className="text-light">Genre : {this.state.product.genres}</p>
                   </div>
                   <div className="col-md-6">
                     <button className="btn btn-block mt-5 mb- btnGamePage">Add to cart</button>
@@ -64,20 +69,7 @@ class GamePage extends React.Component {
             <div className="col">
               <h3 className="text-light mb-4 text-center">Description</h3>
               <p className="text-light">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores beatae dicta enim et ex facere
-                id necessitatibus odit omnis, optio quae quam qui quia quis quisquam saepe unde vitae?
-              </p>
-              <p className="text-light">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
-                delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae,
-                saepe,
-                similique sit tempora voluptas.
-              </p>
-              <p className="text-light">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
-                delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae,
-                saepe,
-                similique sit tempora voluptas.
+                {this.state.product.description}
               </p>
             </div>
           </div>
