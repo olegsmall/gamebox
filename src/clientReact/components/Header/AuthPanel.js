@@ -24,20 +24,20 @@ class AuthPanel extends React.Component {
     if (this.props.loggedIn) {
       buttons =
         <div>
-          <button className="btn btn-sm btn-success my-2 my-sm-0 mr-2">
+          <button className="btn btn-sm btn-outline-success my-2 my-sm-0 mr-2">
             <Link to={'/user/'}>Profile</Link>
           </button>
-          <button className="btn btn-sm btn-success my-2 my-sm-0 mr-5">
+          <button className="btn btn-sm btn-outline-success my-2 my-sm-0 mr-5">
             <a onClick={this.handleLogout}>Log out</a>
           </button>
         </div>;
     } else {
       buttons =
         <div>
-          <button className="btn btn-sm btn-success my-2 my-sm-0 mr-2">
+          <button className="btn btn-sm btn-outline-success my-2 my-sm-0 mr-2">
             <Link id="linkLogin" to={'/user/login'}>Log in</Link>
           </button>
-          <button className="btn btn-sm btn-success my-2 my-sm-0 mr-5">
+          <button className="btn btn-sm btn-outline-success my-2 my-sm-0 mr-5">
             <Link id="linkSignUp" to={'/user/signup'}>Sign up</Link>
           </button>
         </div>;

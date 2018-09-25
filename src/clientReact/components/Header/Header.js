@@ -64,7 +64,7 @@ class Header extends React.Component {
                 placeholder="Search"
                 aria-label="Search"/>
               <button
-                className="btn btn-sm btn-success my-2 my-sm-0"
+                className="btn btn-sm btn-outline-success my-2 my-sm-0"
                 type="submit">
                 Search
               </button>
