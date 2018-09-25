@@ -37,8 +37,8 @@ const ProductSchema = new Schema({
     required: false
   }],
   owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+    type: Schema.ObjectId,
+    ref: 'Users',
     required: false // TO CHANGE
   },
   genres: {
