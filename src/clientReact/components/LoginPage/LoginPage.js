@@ -100,7 +100,7 @@ class LoginPage extends React.Component {
                     value={this.state.userPassword}
                     onChange={this.handleInputChange}/>
                 </div>
-                <button type="submit" className="btn btn-warning btn-sm btn-block mt-4">Submit</button>
+                <button type="submit" className="btn btn-sm btn-block mt-4">Submit</button>
               </form>
             </div>
           </div>

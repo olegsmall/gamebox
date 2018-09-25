@@ -29,7 +29,7 @@ class ProductCard extends React.Component {
             </div>
             <div className="text-center mt-2">
               <button type="button" className="btn btn-success">rent</button>
-              <button type="button" className="btn btn-success mr-2">buy</button>
+              <button type="button" className="btn btn-success ml-1">buy</button>
             </div>
           </div>
         </div>
