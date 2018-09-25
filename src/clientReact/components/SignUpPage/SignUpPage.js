@@ -149,7 +149,7 @@ class SignUpPage extends React.Component {
                       onChange={this.handleInputChange}/>
                   </div>
                 </div>
-                <button type="submit" className="btn btn-warning btn-sm btn-block mt-3">Create your account</button>
+                <button type="submit" className="btn btn-sm btn-block mt-3">Create your account</button>
               </form>
             </div>
           </div>
