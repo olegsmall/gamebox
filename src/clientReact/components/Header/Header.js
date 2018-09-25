@@ -48,11 +48,6 @@ class Header extends React.Component {
               </ul>
             </div>
             <form className="form-inline mt-2">
-              <a href="#" className="user-icon">
-                <i className="fa fa-user-o fa-2x mr-3"
-                   aria-hidden="true">
-                </i>
-              </a>
               <AuthPanel
                 history={this.props.history}
                 logoutUser={this.props.logoutUser}
