@@ -4,13 +4,15 @@ import AuthPanel from './AuthPanel';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+require('./Header.scss');
+
 class Header extends React.Component {
 
 
   render() {
 
     return (
-      <header>
+      <header className={"Header"}>
         <div className="mr-5 ml-5">
           <nav className="navbar navbar-expand-lg  navbar fixed-top navbar-inverse mid">
             <Link className="navbar-brand" to={'/'}>
@@ -26,7 +28,6 @@ class Header extends React.Component {
               aria-label="Toggle navigation">
               <span className="navbar-toggler-icon-light"></span>
             </button>
-
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav mr-auto mt-lg-0">
                 <li className="nav-item">
@@ -49,7 +50,6 @@ class Header extends React.Component {
             <form className="form-inline mt-2">
               <a href="#" className="user-icon">
                 <i className="fa fa-user-o fa-2x mr-3"
-                   // style="color:green"
                    aria-hidden="true">
                 </i>
               </a>
@@ -64,7 +64,7 @@ class Header extends React.Component {
                 placeholder="Search"
                 aria-label="Search"/>
               <button
-                className="btn btn-sm btn-outline-success my-2 my-sm-0"
+                className="btn btn-sm btn-success my-2 my-sm-0"
                 type="submit">
                 Search
               </button>

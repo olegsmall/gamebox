@@ -1,0 +1,21 @@
+.Header {
+  .mid {
+    background: rgba(38, 28, 28, 0.5);
+  }
+
+  a.nav-link.h5 {
+    tab-size: 20px;
+  }
+
+  .fa-user-o {
+    color: green;
+  }
+
+  #linkLogin, #linkSignUp{
+    color: inherit;
+  }
+
+  #linkLogin:hover, #linkSignUp{
+    text-decoration: none;
+  }
+}
