@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-require('./ProductCard.scss');
-
 class ProductCard extends React.Component {
 
 
@@ -12,7 +10,6 @@ class ProductCard extends React.Component {
     const genres = product.genres.map(genre => genre.name + ' ');
 
     return (
-      <div className={"ProductCard"}>
         <div className="card">
           <img className="card-img-top" src={'image/' + product.images[0]} alt={product.title}/>
           <div className="card-body">
@@ -36,7 +33,6 @@ class ProductCard extends React.Component {
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }
