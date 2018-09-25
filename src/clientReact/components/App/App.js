@@ -1,11 +1,11 @@
 import React from 'react';
 // import ReactPropTypes from 'prop-types';
-import Header from '../header/Header';
+import Header from '../Header/Header';
 import MainPage from '../content/MainPage';
-import Footer from '../footer/Footer';
+import Footer from '../Footer/Footer';
 import {Route, Switch} from 'react-router-dom';
-import LoginPage from '../content/LoginPage';
-import SignUpPage from '../content/SignUpPage';
+import LoginPage from '../LoginPage/LoginPage';
+import SignUpPage from '../SignUpPage/SignUpPage';
 import axios from 'axios';
 import AllGamesPage from '../content/AllGamesPage/AllGamesPage';
 import GamePage from '../content/GamePage/GamePage';
@@ -13,7 +13,7 @@ import UserPage from '../content/UserPage/UserPage';
 
 require('./App.scss');
 
-require('../../css/main.scss');
+// require('../../css/main.scss');
 
 //New syntax can be used for components with state or life cycle methods
 class App extends React.Component {

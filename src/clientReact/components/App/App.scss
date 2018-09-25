@@ -1,4 +1,4 @@
-.App{
+
 @import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat');
 
   body {
@@ -7,13 +7,21 @@
   background-color: #1D224B!important;
 }
 
+  a {
+    color: black;
+  }
 
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
 
+  p {
+    font-family: 'Merriweather Sans', sans-serif;
+  }
 
+  .fa {
+    color: white;
+  }
 
-
-
-
-
-
-}
+//.App{}
