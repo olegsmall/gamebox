@@ -6,7 +6,7 @@ class UserPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={'UserPage'}>
         <div id="hi-bg" className="alert alert-secondary h3 text-light" role="alert">
           <div className="container">Hi, Johnathan</div>
         </div>
@@ -19,27 +19,33 @@ class UserPage extends React.Component {
                   <a href="">
                     <p className="text-light">
                       <img src="/image/history.png" alt="orders" width="50" height="50" className="mr-3"/>
-                      Your order's history
+                      Your Orders
                     </p>
                   </a>
                   <a href="">
                     <p className="text-light">
                       <img src="/image/list.png" alt="games-list" width="50" height="50" className="mr-3"/>
-                      Your games' list
+                      Your games
                     </p>
                   </a>
                   <a href="">
                     <p className="text-light">
                       <img src="/image/add.png" alt="add-game" width="50" height="50" className="mr-3"/>
-                      Add game for sale, rent
+                      Your articles
                     </p>
                   </a>
                   <a href="editAccount.html">
                     <p className="text-light">
                       <img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>
-                      Edit your account details
+                      Edit Profile
                     </p>
                   </a>
+                  {/*<a href="editAccount.html">*/}
+                    {/*<p className="text-light">*/}
+                      {/*<img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>*/}
+                      {/*Edit your account details*/}
+                    {/*</p>*/}
+                  {/*</a>*/}
                   <a href="">
                     <p className="text-light">
                       <img src="/image/logout.png" alt="logout" width="50" height="50" className="mr-3"/>
@@ -50,11 +56,7 @@ class UserPage extends React.Component {
                 <div className="col-sm-6">
                   <h5 className="text-light">Johnathan's account</h5>
                   <p className="text-light">
-                    Avatar
                     <img src="/image/img_avatar.png" alt="avatar" width="100" height="100" className="ml-3"/>
-                    <a href="#">
-                      <span className="text-light ml-2">[ edit ]</span>
-                    </a>
                   </p>
                   <p className="text-light">First name : Johnathan</p>
                   <p className="text-light">Last Name : Wendel</p>
