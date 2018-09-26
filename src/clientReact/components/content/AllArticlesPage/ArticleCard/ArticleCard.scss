@@ -18,5 +18,10 @@
     transform: scale(1.1);
   }
 
+  @media only screen and (max-width: 1000px) {
+    .imageArticle {
+      margin-bottom: 2rem;
+    }
+  }
 
 }
