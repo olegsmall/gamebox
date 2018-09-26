@@ -7,10 +7,10 @@ class ArticlePage extends  React.Component {
   constructor(props) {
     super(props);
 
-    axios.get('/blog/' + this.props.match.params.articleId)
+    axios.get('/article/' + this.props.match.params.articleId)
       .then((res) => {
         console.log(res.data);
-        this.setState({});
+        this.setState({article: res.data.article});
       })
       .catch((error) => {
         console.log(error);
@@ -22,8 +22,11 @@ class ArticlePage extends  React.Component {
   }
 
   render(){
+    const title = (this.state.article) ? this.state.article.title : '';
     return (
+
       <div className={"ArticlePage"}>
+        <h2>{title}</h2>
       </div>
     );
   }

@@ -11,7 +11,7 @@ class ArticleCard extends React.Component {
 
     return (
       <div className={"ArticleCard"}>
-        <Link to={'/product/' + article._id} href={''}>
+        <Link to={'/article/' + article._id} href={''}>
           <div className="card">
             <div className="card-body">
               <img className="img-fluid float-md-left mr-5 imageArticle" src="image/minecraft.jpg" width="250" height="150" alt="Card image"/>

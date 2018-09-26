@@ -126,15 +126,11 @@ class App extends React.Component {
               component={GamePage}
             />
             <Route
-              path="/blog"
+              exact path="/article"
               render={() => <AllArticlesPage/>}
             />
-            {/*<Route*/}
-              {/*exac path="/article/:articleId"*/}
-              {/*component={ArticlePage}*/}
-            {/*/>*/}
             <Route
-              path="/blog/article:Id"
+              path="/article/:articleId"
               component={ArticlePage}
             />
           </Switch>
