@@ -30,7 +30,12 @@ exports.getArticles = function (req) {
 exports.getArticle = function (id) {
   try {
     let promise = Article.findById(id).populate({path: 'author', select: 'firstName lastName _id'});
-    return promise.then((doc) => { return doc; });
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Article not found');
+      }
+      return doc;
+    });
 
   } catch (e) {
     throw {error: e, message: 'Error on get article'};
@@ -39,7 +44,7 @@ exports.getArticle = function (id) {
 
 exports.updateArticle = function (req) {
   try {
-    return Article.findByIdAndUpdate(req.params.id, {
+    let promise = Article.findByIdAndUpdate(req.params.id, {
       title: req.body.title,
       content: req.body.content,
       images: req.body.images,
@@ -47,6 +52,13 @@ exports.updateArticle = function (req) {
       tags: req.body.tags,
       edited: Date.now()
     }, { new: true });
+
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Article not found');
+      }
+      return doc;
+    });
 
   } catch(e){
     throw {error: e, message: 'Error on product update'};
@@ -57,7 +69,13 @@ exports.deleteArticle = function (id) {
   try {
     // Delete a article.
     let promise = Article.findByIdAndDelete(id).exec();
-    return promise.then((doc) => { return doc ;});
+
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Article not found');
+      }
+      return doc;
+    });
 
   } catch (e) {
     throw {error: e, message: 'Error on article delete.'};

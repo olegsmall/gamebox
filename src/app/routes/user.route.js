@@ -23,15 +23,9 @@ router.post('/logout', (req, res) => {
 });
 // router.post('/register',UserController.createUser);
 
-router.get('/get-users',UserController.getUsers);
+router.get('/', UserController.getUsers);
 
-router.get('/signin',(req,res) => {
-  res.send('<form method="post" action="/user/login">' +
-    '<input type="text" value="test" name="username"/>' +
-    '<input type="text" value="test" name="password"/>' +
-    '<input type="submit" value="test"/>' +
-    '</form>');
-});
+
 
 //TODO : Move auth to controller and user.services
 // router.post('/login',
