@@ -27,7 +27,6 @@ class GamePage extends React.Component {
   }
 
   render() {
-    console.log(this.state.product);
     const mainImage = (this.state.product.images && this.state.product.images.length > 0)? this.state.product.images[0] : '';
     const mainImageSrc = '/image/' + mainImage;
     return (
