@@ -9,7 +9,7 @@ class ArticleCard extends React.Component {
         <a href="#">
           <div className="card">
             <div className="card-body">
-              <img className="img-fluid float-left mr-5" src="image/minecraft.jpg" width="250" height="100" alt="Card image"/>
+              <img className="img-fluid float-md-left mr-5 imageArticle" src="image/minecraft.jpg" width="250" height="150" alt="Card image"/>
                 <h5 className="card-title text-light">Article's Name</h5>
                 <p className="card-text text-light">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.

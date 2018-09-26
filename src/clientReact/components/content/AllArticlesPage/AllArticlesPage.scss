@@ -7,4 +7,10 @@
   hr {
     border-color: #026E00;;
   }
+
+  @media only screen and (max-width: 600px) {
+    #article {
+      margin-top: 12rem;
+    }
+  }
 }
