@@ -41,8 +41,7 @@ exports.getUserProducts = async function(req) {
     let page = req.body.page ? req.body.page : 1;
     let limit = req.body.limit ? req.body.limit : 10;
 
-    let query = {owner: req.user._id};
-    let promise = Product.paginate(query, {page: page, limit: limit, populate: ['owner', 'genres']});
+    let promise = Product.paginate({owner: req.user._id}, {page: page, limit: limit, populate: {path: 'owner genres', select: 'name avatar role _id firstName lastName email'}});
 
     return promise.then((doc) => {
       if(doc === null) { throw Error('No products found'); }
@@ -50,7 +49,7 @@ exports.getUserProducts = async function(req) {
     });
 
   } catch (e) {
-
+    throw Error('Error at getUserProduct services');
   }
 };
 
