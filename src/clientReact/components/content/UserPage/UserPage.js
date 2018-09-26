@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 require('./UserPage.scss');
 
 class UserPage extends React.Component {
@@ -34,12 +34,12 @@ class UserPage extends React.Component {
                       Your articles
                     </p>
                   </a>
-                  <a href="editAccount.html">
+                  <Link to={'/edit'}>
                     <p className="text-light">
                       <img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>
                       Edit Profile
                     </p>
-                  </a>
+                  </Link>
                   {/*<a href="editAccount.html">*/}
                     {/*<p className="text-light">*/}
                       {/*<img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>*/}
