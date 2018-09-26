@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5baac265b7062025306e6b6a"},"firstName":"firstname 1","lastName":"lastname 1","email":"email-1@email.com","address":"address 1","password":"$2a$10$6/XIxvqA4G07WemK7VDGWOog/PTQ4HIcLqYwYEORphzNGR1hvCQz6","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5baac265b7062025306e6b6b"},"firstName":"firstname 2","lastName":"lastname 2","email":"email-2@email.com","address":"address 2","password":"$2a$10$6/XIxvqA4G07WemK7VDGWOog/PTQ4HIcLqYwYEORphzNGR1hvCQz6","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5baac265b7062025306e6b6c"},"firstName":"firstname 3","lastName":"lastname 3","email":"email-3@email.com","address":"address 3","password":"$2a$10$6/XIxvqA4G07WemK7VDGWOog/PTQ4HIcLqYwYEORphzNGR1hvCQz6","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5baac265b7062025306e6b6d"},"firstName":"firstname 4","lastName":"lastname 4","email":"email-4@email.com","address":"address 4","password":"$2a$10$6/XIxvqA4G07WemK7VDGWOog/PTQ4HIcLqYwYEORphzNGR1hvCQz6","__v":{"$numberInt":"0"}}

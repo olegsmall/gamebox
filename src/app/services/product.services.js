@@ -38,7 +38,13 @@ exports.getProducts = function (req) {
 exports.getProduct = function (id) {
   try {
     let promise = Product.findById(id).populate('genres').exec();
-    return promise.then((doc) => { return doc; });
+
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Product not found');
+      }
+      return doc;
+    });
 
   } catch (e) {
     throw {error: e, message: 'Error on get product'};
@@ -47,7 +53,7 @@ exports.getProduct = function (id) {
 
 exports.updateProduct = async function(req) {
   try {
-    return Product.findByIdAndUpdate(req.params.id, {
+    let promise = Product.findByIdAndUpdate(req.params.id, {
       title: req.body.title,
       description: req.body.description,
       images: req.body.images,
@@ -56,6 +62,12 @@ exports.updateProduct = async function(req) {
       status: req.body.status,
     }, { new: true });
 
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Product not found');
+      }
+      return doc;
+    });
   } catch(e){
     throw {error: e, message: 'Error on product update'};
   }
@@ -65,8 +77,13 @@ exports.deleteProduct = function(id) {
   try {
     // Delete a product.
     let promise = Product.findByIdAndDelete(id).exec();
-    return promise.then((doc) => { return doc ;});
 
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Product not found');
+      }
+      return doc;
+    });
   } catch (e) {
     throw {error: e, message: 'Error on product delete.'};
   }

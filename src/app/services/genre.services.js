@@ -8,7 +8,14 @@ exports.getGenres = function() {
 
 exports.getGenre = function(id) {
   // Get genre with specified id
-  return Genre.findById(id);
+  let promise = Genre.findById(id).exec();
+
+  return promise.then((doc) => {
+    if(doc === null) {
+      throw Error('Genre not found');
+    }
+    return doc;
+  });
 };
 
 exports.createGenre = function(req) {
@@ -24,8 +31,14 @@ exports.createGenre = function(req) {
 exports.updateGenre = function(req) {
   try {
     // Trim and update a genre.
-    return Genre.findByIdAndUpdate(req.params.id, { name: req.body.name.trim() }, { new: true });
+    let promise = Genre.findByIdAndUpdate(req.params.id, { name: req.body.name.trim() }, { new: true });
 
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Genre not found');
+      }
+      return doc;
+    });
   } catch (e) {
     throw {error: e, message: 'Error on genre update.'};
   }
@@ -34,7 +47,14 @@ exports.updateGenre = function(req) {
 exports.deleteGenre = function(id) {
   try {
     // Delete a genre.
-    return Genre.findByIdAndDelete(id);
+    let promise = Genre.findByIdAndDelete(id);
+
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Genre not found');
+      }
+      return doc;
+    });
 
   } catch (e) {
     throw {error: e, message: 'Error on genre delete.'};
