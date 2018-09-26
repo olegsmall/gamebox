@@ -9,13 +9,9 @@ router.post('/',UserController.createUser);
 
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
 
-router.get('/', (req, res, next) => {
-  if (req.user) {
-    res.json({ user: req.user });
-  } else {
-    res.json({ user: null });
-  }
-});
+router.get('/', UserController.getUser);
+
+router.put('/', UserController.updateUser);
 
 router.post('/logout', (req, res) => {
   if (req.user) {
