@@ -1,18 +1,18 @@
 .ArticleCard {
-  #cardArticle {
+  .card {
     background-color: transparent;
     border: none;
 
-    overflow: hidden;
+    overflow: visible;
   }
 
-  #bodyArticle {
+  .card-body {
     -moz-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
   }
 
-  #bodyArticle:hover{
+  .card-body:hover{
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
