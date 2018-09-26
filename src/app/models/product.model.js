@@ -38,15 +38,15 @@ const ProductSchema = new Schema({
   }],
   owner: {
     type: Schema.ObjectId,
-    ref: 'Users',
+    ref: 'User',
     required: false // TO CHANGE
   },
-  genres: {
-    type: [Schema.ObjectId],
-    ref: 'Genres',
+  genres: [{
+    type: Schema.ObjectId,
+    ref: 'Genre',
     required: true,
-    validate: [(value) => value.length > 0, 'At least one genre should be chosen'],
-  },
+    validate: [(value) => value.length < 1, 'At least one genre should be chosen'],
+  }],
   status: {
     type: [String],
     enum: ['For rent', 'For sale', 'Rented', 'Sold'],
