@@ -3,21 +3,20 @@ import React from 'react';
 require('./ArticleCard.scss');
 
 class ArticleCard extends React.Component {
-  render(){
-    return(
+  render() {
+    const article = this.props.article;
+
+    let author = (article.author) ? article.author.firstName + ' ' + article.author.lastName : 'Anonymous';
+
+    return (
       <div className={"ArticleCard"}>
         <a href="#">
           <div className="card">
             <div className="card-body">
               <img className="img-fluid float-md-left mr-5 imageArticle" src="image/minecraft.jpg" width="250" height="150" alt="Card image"/>
-                <h5 className="card-title text-light">Article's Name</h5>
-                <p className="card-text text-light">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Amet animi aperiam commodi doloremque dolores dolorum odio officia,
-                  quod sunt veritatis. Deleniti, eum fugiat labore minima molestiae natus non
-                  reiciendis repellendus!
-                </p>
-              <p className="card-text text-muted text-light">Written by : article's author</p>
+              <h5 className="card-title text-light">{article.title}</h5>
+              <p className="card-text text-light">{article.content.substring(0, 250) + '...'}</p>
+              <p className="card-text text-muted text-light">Written by : {author}</p>
             </div>
           </div>
         </a>
