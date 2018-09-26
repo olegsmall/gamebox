@@ -1,0 +1,8 @@
+{"_id":{"$oid":"5ba41b846f16083780a0d379"},"name":"Action", "__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ba6a5ce2ba560144490a3e1"},"name":"Role-Playing Game","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ba6a5e32ba560144490a3e2"},"name":"Real-Time Strategy","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ba70460f90e910dd06bbcc6"},"name":"Shooter","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ba705de9c0eae2c147aeb80"},"name":"Simulator","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ba702de9c0eae2c147aeb92"},"name":"Fighting","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ba6a5e32ba510134290a4e2"},"name":"Horror","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ba6a5e78db513147290a4e3"},"name":"Survival","__v":{"$numberInt":"0"}}

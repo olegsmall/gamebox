@@ -43,7 +43,7 @@ class Header extends React.Component {
                   <a className="nav-link text-light" href="#">Help</a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-light" to={'/blog'}>Blog</Link>
+                  <Link className="nav-link text-light" to={'/article'}>Blog</Link>
                 </li>
               </ul>
             </div>

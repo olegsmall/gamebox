@@ -2,9 +2,12 @@ const ArticleService = require('../services/article.services');
 
 exports.createArticle = async function(req, res) {
   try {
-    let newArticle = await ArticleService.createArticle(req);
-    return res.status(201).json({status: 201, article: newArticle, message: 'Article created successfully'});
-
+    if (req.user){
+      let newArticle = await ArticleService.createArticle(req);
+      return res.status(201).json({status: 201, article: newArticle, message: 'Article created successfully'});
+    } else {
+      return res.status(403.21).json({status: 403.21, message: 'Source access denied'});
+    }
   }catch(e){
     return res.status(400).json({status: 400, error: e.message, message: 'Article was not created'});
   }
@@ -13,7 +16,7 @@ exports.createArticle = async function(req, res) {
 exports.getArticles = async function(req, res) {
   try {
     let articles = await ArticleService.getArticles(req);
-    // Return the products list with the appropriate HTTP Status Code and Message.
+    // Return the articles list with the appropriate HTTP Status Code and Message.
     return res.status(200).json({status: 200, articles: articles, message: 'Articles received'});
 
   } catch(e) {
@@ -22,10 +25,20 @@ exports.getArticles = async function(req, res) {
   }
 };
 
+exports.getUserArticles = async function(req, res) {
+  try {
+    let articles = await ArticleService.getUserArticles(req);
+    return res.status(201).json({status: 201, articles: articles, message: 'User articles received'});
+
+  } catch (e) {
+    return res.status(400).json({status: 400, error: e.message, message: 'Cant get user articles'});
+  }
+};
+
 exports.getArticle = async function(req, res) {
   try {
     const article = await ArticleService.getArticle(req.params.id);
-    // Return the products list with the appropriate HTTP Status Code and Message.
+    // Return the articles list with the appropriate HTTP Status Code and Message.
     return res.status(200).json({status: 200, article: article, message: 'Article received'});
 
   }catch (e) {

@@ -11,6 +11,16 @@ exports.createProduct = async function(req, res) {
   }
 };
 
+exports.getUserProducts = async function(req, res) {
+  try {
+    let products = await ProductService.getUserProducts(req);
+    return res.status(201).json({status: 201, product: products, message: 'User products received'});
+
+  } catch (e) {
+    return res.status(400).json({status: 400, error: e.message, message: 'Cant get user products'});
+  }
+};
+
 exports.getProducts = async function(req, res) {
   try {
     let products = await ProductService.getProducts(req);

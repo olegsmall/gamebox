@@ -29,9 +29,9 @@ class UserPage extends React.Component {
       });
   }
 
-  handleEditProfile(e){
+  changeInnerComponent(e, innerName){
     e.preventDefault();
-    this.setState({innerComponent: 'EditProfile'});
+    this.setState({innerComponent: innerName});
   }
 
   goToProfile(e){
@@ -52,7 +52,7 @@ class UserPage extends React.Component {
       case 'Products':
         inner = <Products/>;
         break;
-      case 'Order':
+      case 'Orders':
         inner = <Orders/>;
         break;
       case 'EditProfile':
@@ -73,25 +73,31 @@ class UserPage extends React.Component {
 
         <div className="container d-flex flex-row mt-5">
           <div className="col-4">
-            <a href="">
+            <a onClick={(e)=>this.changeInnerComponent(e, 'Profile')} href="">
+              <p className="text-light">
+                <img src="/image/history.png" alt="orders" width="50" height="50" className="mr-3"/>
+                Profile
+              </p>
+            </a>
+            <a onClick={(e)=>this.changeInnerComponent(e, 'Orders')} href="">
               <p className="text-light">
                 <img src="/image/history.png" alt="orders" width="50" height="50" className="mr-3"/>
                 Your Orders
               </p>
             </a>
-            <a href="">
+            <a onClick={(e)=>this.changeInnerComponent(e, 'Products')} href="">
               <p className="text-light">
                 <img src="/image/list.png" alt="games-list" width="50" height="50" className="mr-3"/>
                 Your games
               </p>
             </a>
-            <a href="">
+            <a onClick={(e)=>this.changeInnerComponent(e, 'Articles')} href="">
               <p className="text-light">
                 <img src="/image/add.png" alt="add-game" width="50" height="50" className="mr-3"/>
                 Your articles
               </p>
             </a>
-            <a onClick={this.handleEditProfile.bind(this)} href={''}>
+            <a onClick={(e)=>this.changeInnerComponent(e, 'EditProfile')} href={''}>
               <p className="text-light">
                 <img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>
                 Edit Profile

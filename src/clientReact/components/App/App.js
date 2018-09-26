@@ -11,7 +11,7 @@ import AllGamesPage from '../content/AllGamesPage/AllGamesPage';
 import GamePage from '../content/GamePage/GamePage';
 import UserPage from '../content/UserPage/UserPage';
 import AllArticlesPage from '../content/AllArticlesPage/AllArticlesPage';
-import EditUserPage from '../content/EditUserPage/EditUserPage';
+import ArticlePage from '../content/ArticlePage/ArticlePage';
 
 require('./App.scss');
 
@@ -126,12 +126,12 @@ class App extends React.Component {
               component={GamePage}
             />
             <Route
-              path="/blog"
+              exact path="/article"
               render={() => <AllArticlesPage/>}
             />
             <Route
-              path="/edit"
-              render={() => <EditUserPage/>}
+              path="/article/:articleId"
+              component={ArticlePage}
             />
           </Switch>
         </div>
