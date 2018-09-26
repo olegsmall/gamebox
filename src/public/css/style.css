@@ -1,48 +1,97 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat);
+.Header .mid {
+  background: rgba(38, 28, 28, 0.85); }
 
-#GamePage #gamePage {
-  margin-top: 8rem; }
+.Header a.nav-link.h5 {
+  tab-size: 20px; }
 
-#GamePage .btnGamePage {
+.Header .fa-user-o {
+  color: green; }
+
+.Header #linkLogin, .Header #linkSignUp {
+  color: inherit; }
+
+.Header #linkLogin:hover, .Header #linkSignUp {
+  text-decoration: none; }
+
+.Footer {
+  padding: 20px;
+  background: #1d1616; }
+
+.LoginPage #LoginPage {
+  margin-top: 12rem;
+  margin-bottom: 12rem; }
+
+.LoginPage .btn.btn-sm.btn-block.mt-4 {
   background-color: #026E00; }
 
-#GamePage #rate {
+.SignUp #signUp {
+  margin-top: 12rem;
+  margin-bottom: 12rem; }
+
+.SignUp .btn.btn-sm.btn-block.mt-3 {
+  background-color: #026E00; }
+
+.AllGamesPage #games {
+  margin-top: 8rem !important; }
+
+.GamePage #gamePage {
+  margin-top: 8rem; }
+
+.GamePage .btnGamePage {
+  background-color: #026E00; }
+
+.GamePage #rate {
   font-size: 1.25rem; }
 
-#GamePage .fa-pencil {
+.GamePage .fa-pencil {
   color: black; }
 
-#GamePage #marginCom {
+.GamePage #marginCom {
   margin-bottom: 1rem; }
 
 @media only screen and (max-width: 600px) {
-  #GamePage #gamePage {
+  .GamePage #gamePage {
     margin-top: 10rem; } }
 
-.App { }
-  .App body {
-    margin: 0;
-    font-family: "Montserrat", sans-serif !important;
-    background-color: #1D224B !important; }
+
+
+
+
+
+.UserPage #hi-bg {
+  margin-top: 5.4rem;
+  background: linear-gradient(to top, #026E00, #0a568c);
+  background-color: #333333 !important;
+  border-color: #333333; }
+
+.ArticleCard #cardArticle {
+  background-color: transparent;
+  border: none;
+  overflow: hidden; }
+
+.ArticleCard #bodyArticle {
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s; }
+
+.ArticleCard #bodyArticle:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1); }
+
+.AllBlogPage #article {
+  margin-top: 8rem;
+  margin-bottom: 10rem; }
+
+.AllBlogPage hr {
+  border-color: #026E00; }
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif !important;
-  background-color: #1D224B !important; }
+  font-family: "Montserrat", sans-serif !important;
+  background-color: #46485a !important; }
 
-img {
-  color: beige; }
-
-/*.my-image {*/
-/*body{*/
-/*background-image: url("../image/spiral.jpg");*/
-/*!*background-color: beige;*!*/
-/*!*height: 1000px;*!*/
-/*background-position: center;*/
-/*background-repeat: repeat;*/
-/*background-size: cover;*/
-/*position: relative;*/
-/*}*/
 a {
   color: black; }
 
@@ -50,33 +99,11 @@ a:hover {
   color: black;
   text-decoration: none; }
 
-.my-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: beige; }
+p {
+  font-family: 'Merriweather Sans', sans-serif; }
 
 .fa {
-  color: beige; }
-
-.mid {
-  background: rgba(38, 28, 28, 0.5); }
-
-a.nav-link.h5 {
-  color: beige;
-  tab-size: 20px; }
-
-.navbar-toggler {
-  background-color: beige !important; }
-
-/*card*/
-div.card-footer {
-  background-color: beige; }
-
-input.form-control {
-  background-color: beige; }
+  color: white; }
 
 i.fa.fa-star-o {
   color: orange !important;
@@ -84,15 +111,4 @@ i.fa.fa-star-o {
 
 .card-text {
   height: 50% !important; }
-
-/* Log in and Sign Up*/
-#login, #signUp {
-  margin-top: 12rem;
-  margin-bottom: 12rem; }
-
-#lienLogin, #lienSignUp {
-  color: inherit; }
-
-#lienLogin:hover, #lienSignUp {
-  text-decoration: none; }
 
