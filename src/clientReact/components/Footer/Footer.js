@@ -1,8 +1,10 @@
 import React from 'react';
 
+require('./Footer.scss');
+
 const Footer = () => {
   return (
-    <div>
+    <div className={'Footer'}>
       <footer className="page-footer font-small teal pt-4">
         <div className="container-fluid text-center text-md-left">
           <div className="row">

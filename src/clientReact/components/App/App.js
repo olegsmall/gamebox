@@ -10,6 +10,7 @@ import axios from 'axios';
 import AllGamesPage from '../content/AllGamesPage/AllGamesPage';
 import GamePage from '../content/GamePage/GamePage';
 import UserPage from '../content/UserPage/UserPage';
+import AllArticlesPage from '../content/AllArticlesPage/AllArticlesPage';
 
 require('./App.scss');
 
@@ -122,6 +123,10 @@ class App extends React.Component {
             <Route
               path="/product/:gameId"
               component={GamePage}
+            />
+            <Route
+              path="/blog"
+              render={() => <AllArticlesPage/>}
             />
           </Switch>
         </div>

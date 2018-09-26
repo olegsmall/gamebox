@@ -56,6 +56,30 @@ exports.authenticate = function(req, res) {
   }
 };
 
+exports.getUser = function(req, res){
+  try {
+    if (req.user){
+      const user = {
+        id: req.user._id,
+        email: req.user.email,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        phone: req.user.phone
+      };
+      res.status(200).json({status: 200, user: user, message: 'Authenticate granted'});
+    } else {
+      return res.status(403.21).json({status: 403.21, message: 'Source access denied'});
+    }
+  } catch(e) {
+    //Return an Error Response Message with Code and the Error Message.
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
+exports.updateUser = function(req, res){
+
+};
+
 exports.logout = async function(req, res) {
   req.logout();
   res.redirect('/');
