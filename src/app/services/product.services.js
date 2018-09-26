@@ -67,6 +67,8 @@ exports.getProduct = function (id) {
   }
 };
 
+
+
 exports.updateProduct = async function(req) {
   try {
     let promise = Product.findByIdAndUpdate(req.params.id, {
@@ -76,6 +78,7 @@ exports.updateProduct = async function(req) {
       genres: req.body.genres,
       price: req.body.price,
       status: req.body.status,
+      edited: Date.now()
     }, { new: true });
 
     return promise.then((doc) => {

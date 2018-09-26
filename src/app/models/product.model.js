@@ -37,15 +37,14 @@ const ProductSchema = new Schema({
     required: false
   }],
   owner: {
-    type: Schema.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
     required: false // TO CHANGE
   },
   genres: [{
-    type: Schema.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Genre',
-    required: true,
-    validate: [(value) => value.length < 1, 'At least one genre should be chosen'],
+    required: true
   }],
   status: {
     type: [String],
@@ -57,7 +56,13 @@ const ProductSchema = new Schema({
   price: PriceSubSchema,
   // rented: [RentSubSchema],
   // sold: [SoldSubSchema]
+  added: {type: Date, default: Date.now()},
+  edited: {type: Date}
 });
+
+ProductSchema.path('genres').validate(function(value) {
+  return value.length;
+},'At least one genre should be chosen');
 
 ProductSchema.plugin(mongoosePaginate);
 const Product = mongoose.model('Product', ProductSchema);
