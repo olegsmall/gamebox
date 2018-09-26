@@ -2,9 +2,12 @@ const ArticleService = require('../services/article.services');
 
 exports.createArticle = async function(req, res) {
   try {
-    let newArticle = await ArticleService.createArticle(req);
-    return res.status(201).json({status: 201, article: newArticle, message: 'Article created successfully'});
-
+    if (req.user){
+      let newArticle = await ArticleService.createArticle(req);
+      return res.status(201).json({status: 201, article: newArticle, message: 'Article created successfully'});
+    } else {
+      return res.status(403.21).json({status: 403.21, message: 'Source access denied'});
+    }
   }catch(e){
     return res.status(400).json({status: 400, error: e.message, message: 'Article was not created'});
   }
