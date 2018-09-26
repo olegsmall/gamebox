@@ -125,9 +125,13 @@ class App extends React.Component {
               component={GamePage}
             />
             <Route
-              path="/blog"
+              exac path="/article"
               render={() => <AllArticlesPage/>}
             />
+            {/*<Route*/}
+              {/*exac path="/article/:articleId"*/}
+              {/*component={ArticlePage}*/}
+            {/*/>*/}
           </Switch>
         </div>
         <Footer/>

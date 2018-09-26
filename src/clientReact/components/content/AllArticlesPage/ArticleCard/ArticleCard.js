@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 require('./ArticleCard.scss');
 
@@ -10,7 +11,7 @@ class ArticleCard extends React.Component {
 
     return (
       <div className={"ArticleCard"}>
-        <a href="#">
+        <Link to={'/product/' + article._id} href={''}>
           <div className="card">
             <div className="card-body">
               <img className="img-fluid float-md-left mr-5 imageArticle" src="image/minecraft.jpg" width="250" height="150" alt="Card image"/>
@@ -19,7 +20,7 @@ class ArticleCard extends React.Component {
               <p className="card-text text-muted text-light">Written by : {author}</p>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     );
   }
