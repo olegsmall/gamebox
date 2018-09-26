@@ -4,14 +4,17 @@ const passport = require('passport');
 
 // Importing Controller
 import UserController from '../controllers/user.controller';
+import ProductController from '../controllers/product.controller';
+import ArticleController from '../controllers/article.controller';
 
 router.post('/',UserController.createUser);
-
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
-
 router.get('/', UserController.getUser);
-
 router.put('/', UserController.updateUser);
+
+router.get('/products', ProductController.getUserProducts); //Get product list of a user
+router.get('/articles', ArticleController.getUserArticles); //Get articles list of a user
+
 
 router.post('/logout', (req, res) => {
   if (req.user) {

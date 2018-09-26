@@ -12,6 +12,7 @@ exports.createProduct = function (req) {
         description: req.body.description,
         images: req.body.images,
         genres: docs,
+        owner: req.user._id,
         price: req.body.price,
         status: req.body.status,
       });
@@ -35,14 +36,29 @@ exports.getProducts = function (req) {
   }
 };
 
+exports.getUserProducts = async function(req) {
+  try {
+    let page = req.body.page ? req.body.page : 1;
+    let limit = req.body.limit ? req.body.limit : 10;
+
+    let promise = Product.paginate({owner: req.user._id}, {page: page, limit: limit, populate: {path: 'owner genres', select: 'name avatar role _id firstName lastName email'}});
+
+    return promise.then((doc) => {
+      if(doc === null) { throw Error('No products found'); }
+      return doc;
+    });
+
+  } catch (e) {
+    throw Error('Error at getUserProduct services');
+  }
+};
+
 exports.getProduct = function (id) {
   try {
     let promise = Product.findById(id).populate('genres').exec();
 
     return promise.then((doc) => {
-      if(doc === null) {
-        throw Error('Product not found');
-      }
+      if(doc === null) { throw Error('Product not found'); }
       return doc;
     });
 
@@ -63,9 +79,7 @@ exports.updateProduct = async function(req) {
     }, { new: true });
 
     return promise.then((doc) => {
-      if(doc === null) {
-        throw Error('Product not found');
-      }
+      if(doc === null) { throw Error('Product not found'); }
       return doc;
     });
   } catch(e){
@@ -79,9 +93,7 @@ exports.deleteProduct = function(id) {
     let promise = Product.findByIdAndDelete(id).exec();
 
     return promise.then((doc) => {
-      if(doc === null) {
-        throw Error('Product not found');
-      }
+      if(doc === null) { throw Error('Product not found'); }
       return doc;
     });
   } catch (e) {
