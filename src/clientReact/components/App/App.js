@@ -11,6 +11,7 @@ import AllGamesPage from '../content/AllGamesPage/AllGamesPage';
 import GamePage from '../content/GamePage/GamePage';
 import UserPage from '../content/UserPage/UserPage';
 import AllArticlesPage from '../content/AllArticlesPage/AllArticlesPage';
+import ArticlePage from '../content/ArticlePage/ArticlePage';
 
 require('./App.scss');
 
@@ -125,13 +126,17 @@ class App extends React.Component {
               component={GamePage}
             />
             <Route
-              exac path="/article"
+              path="/blog"
               render={() => <AllArticlesPage/>}
             />
             {/*<Route*/}
               {/*exac path="/article/:articleId"*/}
               {/*component={ArticlePage}*/}
             {/*/>*/}
+            <Route
+              path="/blog/article:Id"
+              component={ArticlePage}
+            />
           </Switch>
         </div>
         <Footer/>
