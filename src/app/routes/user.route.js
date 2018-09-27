@@ -12,8 +12,8 @@ router.post('/login', passport.authenticate('local'), UserController.authenticat
 router.get('/', UserController.getUser);
 router.put('/', UserController.updateUser);
 
-router.get('/products', ProductController.getUserProducts); //Get product list of a user
-router.get('/articles', ArticleController.getUserArticles); //Get articles list of a user
+router.get('/:id/articles', ArticleController.getUserArticles); //Get product list of a user
+router.get('/:id/products', ProductController.getUserProducts); //Get articles list of a user
 
 
 router.post('/logout', (req, res) => {
