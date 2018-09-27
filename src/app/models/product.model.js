@@ -48,7 +48,7 @@ const ProductSchema = new Schema({
   }],
   status: {
     type: [String],
-    enum: ['For rent', 'For sale', 'Rented', 'Sold'],
+    enum: ['for rent', 'for sale', 'rented', 'sold'],
     required: true,
     validate: [(value) => value.length > 0, 'Status should be indicated'],
   },

@@ -25,22 +25,44 @@ exports.createProduct = function (req) {
 
 exports.getProducts = function (req) {
 
-  let query = {};
-  // // Check the existence of the query parameters, If the exists doesn't exists assign a default value
-  let page = req.query.page ? Number(req.query.page) : 1;
-  let limit = req.query.limit ? Number(req.query.limit) : 10;
+  let queryOptions = {}; // Mongoose-paginator query options
+  let query = {}; // Mongoose query options
 
-  if(req.query.title) { query.title = req.query.title; }
-  if(req.query.sort_by) { query.title = req.query.sort_by; }
+  let sort = 'desc'; // Default sorting method -> Descending
+  // Populate query fields
+  queryOptions.populate = {path: 'genres owner', select: '_id name firstName lastName e-mail'};
+  // Check the existence of the query parameters, If the exists doesn't exists assign a default value
+  //Page option
+  req.query.page ? queryOptions.page = Number(req.query.page) : 1;
+  // Limit number of returning objects
+  req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10;
+  // Check if sort option is different from default(desc)
+  if(req.query.sort === 'asc') { sort = 'asc'; }
+  // Check if sorting by title is chosen
+  if(req.query.sort_by === 'title') { queryOptions.sort = { title: sort}; }
+  // Check if sorting by selling price is chosen
+  if(req.query.sort_by === 'sell') { queryOptions.sort = { 'price.sell': sort}; }
+  // Check if sorting by rent price is chosen
+  if(req.query.sort_by === 'rent') { queryOptions.sort = { 'price.rent': sort}; }
+  // Check if sorting by date is chosen
+  if(req.query.sort_by === 'date') { queryOptions.sort = { added: sort}; }
 
-  let sort = req.query.sort ? req.query.sort : 'desc';
-  let sort_by = req.query.sort_by ? req.query.sort_by : {date: -1};
-
-  console.log('req.query = ', req.query);
-  console.log('query', query);
+  // Check if searching by title (uses %LIKE%)
+  if(req.query.title) { query.title = new RegExp(req.query.title,'i'); }
+  // Check if searching by product status (for rent, for sale, sold, rented)
+  if(req.query.status.toLowerCase() === 'for rent' || req.query.status.toLowerCase() === 'for sale' || req.query.status.toLowerCase() === 'rented' || req.query.status.toLowerCase() === 'sold') {
+    query.status = req.query.status.toLowerCase();
+  }
 
   try {
-    return Product.paginate(query, {page: page, limit: limit, populate: 'genres'});
+    // Search objects with user options
+    let promise = Product.paginate(query, queryOptions);
+
+    return promise.then((doc) => {
+      if(doc === null) { throw Error('No products found'); }
+      return doc;
+    });
+
   } catch (e) {
     throw {error: e, message: 'Error on get products'};
   }
@@ -51,7 +73,7 @@ exports.getUserProducts = async function(req) {
     let page = req.body.page ? req.body.page : 1;
     let limit = req.body.limit ? req.body.limit : 10;
 
-    let promise = Product.paginate({owner: req.user._id}, {page: page, limit: limit, populate: {path: 'owner genres', select: 'name avatar role _id firstName lastName email'}});
+    let promise = Product.paginate({owner: req.params.id}, {page: page, limit: limit, populate: {path: 'owner genres', select: 'name avatar role _id firstName lastName email'}});
 
     return promise.then((doc) => {
       if(doc === null) { throw Error('No products found'); }
@@ -76,7 +98,6 @@ exports.getProduct = function (id) {
     throw {error: e, message: 'Error on get product'};
   }
 };
-
 
 
 exports.updateProduct = async function(req) {
