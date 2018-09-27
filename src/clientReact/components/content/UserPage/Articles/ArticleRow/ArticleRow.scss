@@ -1,0 +1,27 @@
+.ArticleRow {
+  .cardArticle {
+    background-color: transparent !important;
+    border-color: #026E00 !important;
+    width: 450px;
+    height: 110px;
+
+    overflow: hidden;
+  }
+
+  .card-body {
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+
+  .card-body:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  .imageArticle {
+    width: 150px;
+    height: 70px !important;
+  }
+}

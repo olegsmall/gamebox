@@ -16,14 +16,20 @@ class ArticleRow extends React.Component {
   render() {
     const article = this.props.article;
     return (
-      <div className={'card d-flex flex-row flex-nowrap'}>
-        <div><img src={'/image' + article.image[0]} alt={article.title}/></div>
-        <div>{article.title}</div>
-        <div><a href="">Edit article</a></div>
+      <div className={'ArticleRow'}>
+        <a href="#">
+          <div className="card ml-5 cardArticle">
+            <div className="card-body">
+              <img className="img-fluid float-md-left mr-4 imageArticle" src={'/image' + article.image[0]} alt={article.title}/>
+              <h5 className="card-title text-light">{article.title}</h5>
+            </div>
+            <button className="btn btn-sm btn-success"><a href="">Edit article</a></button>
+            <button className="btn btn-sm btn-success"><a href="">Delete article</a></button>
+          </div>
+        </a>
       </div>
     );
   }
-
 }
 
 export default ArticleRow;
