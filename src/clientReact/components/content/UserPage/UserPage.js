@@ -37,6 +37,11 @@ class UserPage extends React.Component {
     this.setState({innerComponent: innerName});
   }
 
+  goToProfile(e){
+    e.preventDefault();
+    this.setState({innerComponent: 'Profile'});
+  }
+
   render() {
 
     const firstName = (this.state.user !== null) ? this.state.user.firstName : '';
@@ -57,7 +62,7 @@ class UserPage extends React.Component {
         inner = <Orders/>;
         break;
       case 'EditProfile':
-        inner = <EditProfile/>;
+        inner = <EditProfile goToProfile={this.goToProfile.bind(this)}/>;
         break;
       case 'Articles':
         inner = <Articles changeInnerComponent={this.changeInnerComponent.bind(this)} user={this.state.user}/>;
@@ -75,7 +80,7 @@ class UserPage extends React.Component {
           <div className={'container'}>Hi, {firstName + ' ' + lastName}</div>
         </div>
 
-        <div className="container d-flex flex-row">
+        <div className="container d-flex flex-row mt-5">
           <div className="col-4">
             <a onClick={(e)=>this.changeInnerComponent(e, 'Profile')} href="">
               <p className="text-light">

@@ -36,7 +36,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="footer-copyright text-center py-3 h5 text-light">© 2018 Copyright: Dream Team #1 with love</div>
+      <div className="footer-copyright text-center py-3 text-light">© 2018 Copyright: Dream Team #1 with love</div>
     </div>
   );
 };
