@@ -10,7 +10,7 @@ class EditProfile extends React.Component {
 
     return (
       <div className={'EditProfile'}>
-        <form className="mt-3" onSubmit={}>
+        <form className="mt-3" >
           <div className="form-row">
             <div className="form-group col-md-6">
               <input type="text"
@@ -49,7 +49,7 @@ class EditProfile extends React.Component {
             Edit your info
           </button>
         </form>
-        <form onSubmit={}>
+        <form >
           <p className="text-light">
             Your password [ edit ]
           </p>
