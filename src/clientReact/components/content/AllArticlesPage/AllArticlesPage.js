@@ -31,7 +31,6 @@ class AllArticlesPage extends React.Component {
           {this.state.articles.map((article) => (
             <ArticleCard key={article._id} article={article}/>
           ))}
-          <hr/>
         </div>
       </div>
     );

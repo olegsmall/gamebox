@@ -25,12 +25,22 @@ exports.createProduct = function (req) {
 
 exports.getProducts = function (req) {
 
+  let query = {};
   // // Check the existence of the query parameters, If the exists doesn't exists assign a default value
-  let page = req.body.page ? req.body.page : 1;
-  let limit = req.body.limit ? req.body.limit : 10;
+  let page = req.query.page ? Number(req.query.page) : 1;
+  let limit = req.query.limit ? Number(req.query.limit) : 10;
+
+  if(req.query.title) { query.title = req.query.title; }
+  if(req.query.sort_by) { query.title = req.query.sort_by; }
+
+  let sort = req.query.sort ? req.query.sort : 'desc';
+  let sort_by = req.query.sort_by ? req.query.sort_by : {date: -1};
+
+  console.log('req.query = ', req.query);
+  console.log('query', query);
 
   try {
-    return Product.paginate(req.body.query, {page: page, limit: limit, populate: 'genres'});
+    return Product.paginate(query, {page: page, limit: limit, populate: 'genres'});
   } catch (e) {
     throw {error: e, message: 'Error on get products'};
   }
