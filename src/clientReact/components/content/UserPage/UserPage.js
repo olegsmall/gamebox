@@ -6,6 +6,7 @@ import Orders from "./Orders/Orders";
 import EditProfile from "./EditProfile/EditProfile";
 import Articles from "./Articles/Articles";
 import AddProduct from "./AddProduct/AddProduct";
+import AddArticle from "./AddArticle/AddArticle";
 
 require('./UserPage.scss');
 
@@ -47,7 +48,7 @@ class UserPage extends React.Component {
         inner = <Profile user={this.state.user}/>;
         break;
       case 'Products':
-        inner = <Products changeInnerComponent={this.changeInnerComponent.bind(this)}/>;
+        inner = <Products changeInnerComponent={this.changeInnerComponent.bind(this)} user={this.state.user}/>;
         break;
         case 'AddProduct':
         inner = <AddProduct/>;
@@ -59,7 +60,10 @@ class UserPage extends React.Component {
         inner = <EditProfile/>;
         break;
       case 'Articles':
-        inner = <Articles/>;
+        inner = <Articles changeInnerComponent={this.changeInnerComponent.bind(this)} user={this.state.user}/>;
+        break;
+        case 'AddArticle':
+        inner = <AddArticle/>;
         break;
       default :
         inner = <Profile user={this.state.user}/>;
