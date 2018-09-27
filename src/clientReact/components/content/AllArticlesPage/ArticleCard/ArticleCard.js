@@ -21,6 +21,7 @@ class ArticleCard extends React.Component {
             </div>
           </div>
         </Link>
+        <hr/>
       </div>
     );
   }

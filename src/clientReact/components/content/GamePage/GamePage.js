@@ -8,6 +8,14 @@ class GamePage extends React.Component {
   constructor(props) {
     super(props);
 
+
+
+    this.state = {
+      product: {}
+    };
+  }
+
+  componentDidMount() {
     axios.get('/product/' + this.props.match.params.gameId)
       .then((res) => {
         console.log(res.data);
@@ -16,14 +24,6 @@ class GamePage extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-
-    this.state = {
-      product: {}
-    };
-  }
-
-  componentDidMount() {
-    // debugger;
   }
 
   render() {
@@ -52,7 +52,7 @@ class GamePage extends React.Component {
                     <p className="text-light">Rent price : 30$</p>
                   </div>
                   <div className="col-md-12 mt-3">
-                    <p className="text-light">Genre : {this.state.product.genres}</p>
+                    <p className="text-light">Genre : {}</p>
                   </div>
                   <div className="col-md-6">
                     <button className="btn btn-block mt-5 mb- btnGamePage">Add to cart</button>

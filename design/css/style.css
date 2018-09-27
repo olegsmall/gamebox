@@ -115,4 +115,12 @@ i.fa.fa-star-o {
     margin-top: 8rem;
 }
 
+.cardArticle {
+    background-color: transparent!important;
+    border-color: #026E00!important;
+}
+
+.page-footer {
+    margin-top: 10rem;
+}
 
