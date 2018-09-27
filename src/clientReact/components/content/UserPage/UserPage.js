@@ -5,6 +5,7 @@ import Products from "./Products/Products";
 import Orders from "./Orders/Orders";
 import EditProfile from "./EditProfile/EditProfile";
 import Articles from "./Articles/Articles";
+import AddProduct from "./AddProduct/AddProduct";
 
 require('./UserPage.scss');
 
@@ -16,6 +17,7 @@ class UserPage extends React.Component {
       user: null,
       innerComponent: 'Profile',
     };
+    this.changeInnerComponent.bind(this);
   }
 
   componentDidMount() {
@@ -45,7 +47,10 @@ class UserPage extends React.Component {
         inner = <Profile user={this.state.user}/>;
         break;
       case 'Products':
-        inner = <Products/>;
+        inner = <Products changeInnerComponent={this.changeInnerComponent.bind(this)}/>;
+        break;
+        case 'AddProduct':
+        inner = <AddProduct/>;
         break;
       case 'Orders':
         inner = <Orders/>;

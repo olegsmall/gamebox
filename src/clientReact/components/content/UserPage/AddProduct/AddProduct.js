@@ -9,7 +9,7 @@ class AddProduct extends React.Component {
 
     return (
       <div>
-
+        <h2>Add product</h2>
       </div>
     );
   }
