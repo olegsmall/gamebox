@@ -41,7 +41,7 @@ class Articles extends React.Component {
           <button className={'btn btn-success'} onClick={this.handleAddArticle.bind(this)}>Add article</button>
         </div>
 
-        <div>
+        <div className="col-sm-8">
           {this.state.articles.map((article) => (
             <ArticleRow key={article._id} article={article}/>
           ))}
