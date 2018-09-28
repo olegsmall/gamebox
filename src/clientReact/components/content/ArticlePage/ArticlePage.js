@@ -7,6 +7,11 @@ class ArticlePage extends  React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      article: null
+    };
+  }
+  componentDidMount(){
     axios.get('/article/' + this.props.match.params.articleId)
       .then((res) => {
         console.log(res.data);
@@ -15,17 +20,13 @@ class ArticlePage extends  React.Component {
       .catch((error) => {
         console.log(error);
       });
-
-    this.state = {
-      article: {}
-    };
   }
 
   render(){
-    const title = (this.state.article) ? this.state.article.title : '';
-    const content = (this.state.article) ? this.state.article.content : '';
-    const img = (this.state.article) ? this.state.article.images[0] : '';
-    const author = (this.state.article.author) ? this.state.article.author.firstName + ' ' + this.state.article.author.lastName : 'Anonymous';
+    const title = (this.state.article !== null) ? this.state.article.title : '';
+    const content = (this.state.article !== null) ? this.state.article.content : '';
+    const img = (this.state.article !== null) ? this.state.article.images[0] : '';
+    const author = (this.state.article !== null) ? this.state.article.author.firstName + ' ' + this.state.article.author.lastName : 'Anonymous';
 
     return (
 
