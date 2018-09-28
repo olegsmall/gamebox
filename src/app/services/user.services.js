@@ -46,6 +46,29 @@ exports.getUsers = async function (query, page, limit) {
   }
 };
 
+exports.updateUser = function (req) {
+  try {
+    let promise = User.findByIdAndUpdate(req.params.id, {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      avatar: req.body.avatar,
+      phone: req.body.phone,
+      address: req.body.address,
+      password: req.body.password,
+    }, { new: true });
+
+    return promise.then((doc) => {
+      if(doc === null) {
+        throw Error('Article not found');
+      }
+      return doc;
+    });
+
+  } catch(e){
+    throw {error: e, message: 'Error at artcile update services'};
+  }
+};
 
 // exports.authenticate = function (req, res) {
 //
