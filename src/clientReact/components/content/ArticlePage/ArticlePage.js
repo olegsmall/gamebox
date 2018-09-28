@@ -24,6 +24,7 @@ class ArticlePage extends  React.Component {
   render(){
     const title = (this.state.article) ? this.state.article.title : '';
     const content = (this.state.article) ? this.state.article.content : '';
+    const img = (this.state.article) ? this.state.article.images[0] : '';
     const author = (this.state.article.author) ? this.state.article.author.firstName + ' ' + this.state.article.author.lastName : 'Anonymous';
 
     return (
