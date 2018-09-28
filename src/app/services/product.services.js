@@ -15,6 +15,10 @@ exports.createProduct = function (req) {
         owner: req.user._id,
         price: req.body.price,
         status: req.body.status,
+        esrb: req.body.esrb,
+        rating: req.body.rating,
+        sold: req.body.sold,
+        rented: req.body.rented,
       });
       return product.save();
     });
