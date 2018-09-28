@@ -25,7 +25,7 @@ class ArticlePage extends  React.Component {
   render(){
     const title = (this.state.article !== null) ? this.state.article.title : '';
     const content = (this.state.article !== null) ? this.state.article.content : '';
-    const img = (this.state.article !== null) ? this.state.article.images[0] : '';
+    const image = (this.state.article !== null) ? this.state.article.images[0] : '';
     const author = (this.state.article !== null) ? this.state.article.author.firstName + ' ' + this.state.article.author.lastName : 'Anonymous';
 
     return (
@@ -36,27 +36,27 @@ class ArticlePage extends  React.Component {
             <div className="col-sm-12 col-md-6 col-lg-7">
               <h2 className="text-light titleArticle">{title}</h2>
               <p className="text-muted text-light">Written by : {author}</p>
-              <img className="img-fluid" src="image/minecraft.jpg" alt="image"/>
+              <img className="img-fluid" src={"/image/" + image} alt="image"/>
               <p className="text-light mt-5">{content}</p>
               <div className="embed-responsive embed-responsive-16by9">
                 <iframe className="embed-responsive-item mt-5" src="video/Woman Taking A Photo.mp4"></iframe>
               </div>
               <p className="text-light mt-5">{content}</p>
-              <div className="swiper-container mt-5">
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <img className="img-fluid" src="image/image_carusel3.jpg" alt="First slide"/>
-                  </div>
-                  <div className="swiper-slide">
-                    <img className="img-fluid" src="image/image_carusel1.jpg" alt="Second slide"/>
-                  </div>
-                  <div className="swiper-slide">
-                    <img className="img-fluid" src="image/image_carusel2.jpg" alt="Third slide"/>
-                  </div>
-                </div>
-                <div className="swiper-button-prev"></div>
-                <div className="swiper-button-next"></div>
-              </div>
+              {/*<div className="swiper-container mt-5">*/}
+                {/*<div className="swiper-wrapper">*/}
+                  {/*<div className="swiper-slide">*/}
+                    {/*<img className="img-fluid" src={"/image/image_carusel3.jpg"} alt="First slide"/>*/}
+                  {/*</div>*/}
+                  {/*<div className="swiper-slide">*/}
+                    {/*<img className="img-fluid" src="image/image_carusel1.jpg" alt="Second slide"/>*/}
+                  {/*</div>*/}
+                  {/*<div className="swiper-slide">*/}
+                    {/*<img className="img-fluid" src="image/image_carusel2.jpg" alt="Third slide"/>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
+                {/*<div className="swiper-button-prev"></div>*/}
+                {/*<div className="swiper-button-next"></div>*/}
+              {/*</div>*/}
               <p className="text-light mt-5">{content}</p>
             </div>
 
