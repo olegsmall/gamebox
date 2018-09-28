@@ -88,8 +88,8 @@ class SignUpPage extends React.Component {
                       name="userAvatar"
                       type="text"
                       className="form-control form-control-sm"
-                      placeholder="First Name"
-                      value={this.state.userFirstName}
+                      placeholder="Avatar"
+                      value={this.state.userAvatar}
                       onChange={this.handleInputChange}/>
                   </div>
                   <div className="form-group col-md-6">
