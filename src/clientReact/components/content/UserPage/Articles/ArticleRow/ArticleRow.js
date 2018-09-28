@@ -17,7 +17,7 @@ class ArticleRow extends React.Component {
     const article = this.props.article;
     return (
       <div className={'card d-flex flex-row flex-nowrap'}>
-        <div><img src={'/image' + article.image[0]} alt={article.title}/></div>
+        <div><img src={'/image' + ''} alt={article.title}/></div>
         <div>{article.title}</div>
         <div><a href="">Edit article</a></div>
       </div>

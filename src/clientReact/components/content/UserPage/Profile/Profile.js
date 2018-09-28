@@ -4,6 +4,10 @@ require('./Profile.scss');
 
 class Profile extends React.Component {
 
+  handleEditPrifile(e){
+    e.preventDefault();
+    this.props.changeInnerComponent(e, 'EditProfile');
+  }
 
   render() {
 
@@ -14,7 +18,10 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <h3 className="text-center text-light mb-5">Your account</h3>
+        <div className={'d-flex flex-row flex-nowrap justify-content-between mb-5'}>
+          <h3 className="text-center text-light">Your account</h3>
+          <button className={'btn btn-success'} onClick={this.handleEditPrifile.bind(this)}>Edit profile</button>
+        </div>
         <div className={'justify-content-center'}>
           <div className={'text-center'}>
             <div className="text-light text-center mb-2">

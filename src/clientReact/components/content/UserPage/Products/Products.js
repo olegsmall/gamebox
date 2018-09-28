@@ -15,7 +15,7 @@ class Products extends React.Component {
 
   componentDidMount(){
 
-    axios.get('/user/products')
+    axios.get('/user/' + this.props.user.id + '/products')
       .then((res) => {
         // handle success
         // console.log(res.data.data.docs);

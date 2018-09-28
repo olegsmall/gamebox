@@ -50,7 +50,7 @@ class UserPage extends React.Component {
     let inner = '';
     switch (this.state.innerComponent) {
       case 'Profile':
-        inner = <Profile user={this.state.user}/>;
+        inner = <Profile changeInnerComponent={this.changeInnerComponent.bind(this)} user={this.state.user}/>;
         break;
       case 'Products':
         inner = <Products changeInnerComponent={this.changeInnerComponent.bind(this)} user={this.state.user}/>;
@@ -106,12 +106,12 @@ class UserPage extends React.Component {
                 Your articles
               </p>
             </a>
-            <a onClick={(e)=>this.changeInnerComponent(e, 'EditProfile')} href={''}>
-              <p className="text-light">
-                <img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>
-                Edit Profile
-              </p>
-            </a>
+            {/*<a onClick={(e)=>this.changeInnerComponent(e, 'EditProfile')} href={''}>*/}
+              {/*<p className="text-light">*/}
+                {/*<img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>*/}
+                {/*Edit Profile*/}
+              {/*</p>*/}
+            {/*</a>*/}
             <a href="">
               <p className="text-light">
                 <img src="/image/logout.png" alt="logout" width="50" height="50" className="mr-3"/>
