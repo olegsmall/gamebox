@@ -76,8 +76,14 @@ exports.getUser = function(req, res){
   }
 };
 
-exports.updateUser = function(req, res){
+exports.updateUser = async function(req, res){
+  try {
+    let article = await UserService.updateUser(req);
+    return res.status(201).json({status: 201, article: article, message: 'User updated successfully'});
 
+  } catch(e){
+    return res.status(409).json({status: 409, message: e.message});
+  }
 };
 
 exports.logout = async function(req, res) {

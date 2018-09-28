@@ -10,7 +10,7 @@ import ArticleController from '../controllers/article.controller';
 router.post('/',UserController.createUser);
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
 router.get('/', UserController.getUser);
-router.put('/', UserController.updateUser);
+router.put('/:id', UserController.updateUser);
 
 router.get('/:id/articles', ArticleController.getUserArticles); //Get articles list of a user
 router.get('/:id/products', ProductController.getUserProducts); //Get products list of a user
