@@ -77,7 +77,11 @@ exports.getUser = function(req, res){
 };
 
 exports.updateUser = function(req, res){
+  return res.status(200).json({status: 200, message: 'Profile data updated successfully'});
+};
 
+exports.updateUserPassword = function(req, res){
+  return res.status(200).json({status: 200, message: 'Password updated successfully'});
 };
 
 exports.logout = async function(req, res) {

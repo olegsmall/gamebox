@@ -8,6 +8,7 @@ class SignUpPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      userAvatar: '',
       userFirstName: '',
       userLastName: '',
       userEmail: '',
@@ -38,6 +39,7 @@ class SignUpPage extends React.Component {
     //TODO: validation of form data.
 
     Axios.post('/user', {
+      avatar: this.state.userAvatar,
       firstName: this.state.userFirstName,
       lastName: this.state.userLastName,
       email: this.state.userEmail,
@@ -81,6 +83,15 @@ class SignUpPage extends React.Component {
               <p className="text-center text-light">OR</p>
               <form className="mt-3" onSubmit={this.handleSubmit}>
                 <div className="form-row">
+                  <div className="form-group col-md-6">
+                    <input
+                      name="userAvatar"
+                      type="text"
+                      className="form-control form-control-sm"
+                      placeholder="First Name"
+                      value={this.state.userFirstName}
+                      onChange={this.handleInputChange}/>
+                  </div>
                   <div className="form-group col-md-6">
                     <input
                       name="userFirstName"

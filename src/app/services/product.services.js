@@ -54,9 +54,9 @@ exports.getProducts = function (req) {
   // Check if searching by title (uses %LIKE%)
   if(req.query.title) { query.title = new RegExp(req.query.title,'i'); }
   // Check if searching by product status (for rent, for sale, sold, rented)
-  if(req.query.status.toLowerCase() === 'for rent' || req.query.status.toLowerCase() === 'for sale' || req.query.status.toLowerCase() === 'rented' || req.query.status.toLowerCase() === 'sold') {
-    query.status = req.query.status.toLowerCase();
-  }
+  // if(req.query.status.toLowerCase() === 'for rent' || req.query.status.toLowerCase() === 'for sale' || req.query.status.toLowerCase() === 'rented' || req.query.status.toLowerCase() === 'sold') {
+  //   query.status = req.query.status.toLowerCase();
+  // }
 
   try {
     // Search objects with user options

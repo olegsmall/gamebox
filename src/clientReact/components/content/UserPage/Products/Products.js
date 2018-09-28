@@ -29,7 +29,7 @@ class Products extends React.Component {
 
   handleAddProduct(e){
     e.preventDefault();
-    this.props.changeInnerComponent(e, 'AddProduct');
+    this.props.changeInner('AddProduct');
   }
 
   render() {
