@@ -4,8 +4,6 @@ const User = require('../models/user.model');
 import ResponseException from './ResponseException';
 
 
-
-
 exports.createUser = async function (req) {
 
   // Validation
@@ -27,46 +25,76 @@ exports.createUser = async function (req) {
   }
 };
 
-exports.getUsers = async function (query, page, limit) {
+exports.getUsers = async function (req) {
 
-  // Options setup for the mongoose paginate
-  let options = {
-    page,
-    limit
-  };
+  let queryOptions = {}; // Mongoose-paginator query options
+  let query = {}; // Mongoose query options
+
+  let sort = 'desc'; // Default sorting method -> Descending
+  queryOptions.select = '_id avatar role firstName lastName';
+  // Check the existence of the query parameters, If the exists doesn't exists assign a default value
+  //Page option
+  req.query.page ? queryOptions.page = Number(req.query.page) : 1;
+  // Limit number of returning objects
+  req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10;
+  // Check if sort option is different from default(desc)
+  if(req.query.sort === 'asc') { sort = 'asc'; }
+  // Check if sorting by title is chosen
+  if(req.query.sort_by === 'name') { queryOptions.sort = { firstName: sort }; }
+
+  // Search by firstname query
+  if(req.query.firstName) { query.firstName = new RegExp(req.query.firstName,'i'); }
 
   // Try Catch the awaited promise to handle the error
   try {
-    let users = await User.paginate(query, options);
+    let users = User.paginate(query, queryOptions);
     // Return the user list that was returned by the mongoose promise
-    return users;
+    return users.then((docs) => {
+      if(docs === null) { throw Error('No users found'); }
+      return docs;
+    });
   } catch (e) {
     // return a Error message describing the reason
-    throw Error('Error while Paginating Users');
+    throw Error('Error at get users services');
   }
 };
 
 exports.updateUser = function (req) {
   try {
-    let promise = User.findByIdAndUpdate(req.params.id, {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      avatar: req.body.avatar,
-      phone: req.body.phone,
-      address: req.body.address,
-      password: req.body.password,
-    }, { new: true });
-
+    let promise = User.findByIdAndUpdate(
+      req.user._id,
+      {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        avatar: req.body.avatar,
+        phone: req.body.phone,
+        address: req.body.address,
+      }, {
+        fields: { password: 0 }, // Excluding password from return
+        new: true
+      });
     return promise.then((doc) => {
       if(doc === null) {
-        throw Error('Article not found');
+        throw Error('User not found');
       }
       return doc;
     });
 
   } catch(e){
-    throw {error: e, message: 'Error at artcile update services'};
+    throw {error: e, message: 'Error at user update services'};
+  }
+};
+
+exports.updateUserPassword = function (req) {
+  try {
+    User.findById(req.user._id, (err, doc) => {
+      if (err) throw Error('Error on password update');
+      doc.password = req.body.password;
+      doc.save();
+    });
+  } catch(e){
+    throw {error: e, message: 'Error at user update services'};
   }
 };
 

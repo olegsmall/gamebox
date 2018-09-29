@@ -18,16 +18,9 @@ exports.createUser = async function(req, res, next) {
   }
 };
 
-exports.getUsers = async function(req, res, next) {
-
-  // Check the existence of the query parameters, If the exists doesn't exists assign a default value
-  let page = req.query.page ? req.query.page : 1;
-  let limit = req.query.limit ? req.query.limit : 10;
-
+exports.getUsers = async function(req, res) {
   try {
-
-    let users = await UserService.getUsers({}, page, limit);
-
+    let users = await UserService.getUsers(req);
     // Return the users list with the appropriate HTTP Status Code and Message.
     return res.status(200).json({status: 200, data: users, message: 'Successfully Users Received'});
 
@@ -35,7 +28,6 @@ exports.getUsers = async function(req, res, next) {
 
     //Return an Error Response Message with Code and the Error Message.
     return res.status(400).json({status: 400, message: e.message});
-
   }
 };
 
@@ -78,16 +70,22 @@ exports.getUser = function(req, res){
 
 exports.updateUser = async function(req, res) {
   try {
-    let article = await UserService.updateUser(req);
-    return res.status(201).json({status: 201, article: article, message: 'User updated successfully'});
+    let user = await UserService.updateUser(req);
+    return res.status(201).json({status: 201, user: user, message: 'User updated successfully'});
 
   } catch (e) {
     return res.status(409).json({status: 409, message: e.message});
   }
 };
 
-exports.updateUserPassword = function(req, res){
-  return res.status(200).json({status: 200, message: 'Password updated successfully'});
+exports.updateUserPassword = async function(req, res){
+  try {
+    UserService.updateUserPassword(req);
+    return res.status(200).json({status: 200, message: 'Password updated successfully'});
+
+  } catch (e) {
+    return res.status(409).json({status: 409, message: e.message});
+  }
 };
 
 exports.logout = async function(req, res) {

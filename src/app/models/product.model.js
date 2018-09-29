@@ -62,6 +62,7 @@ const ProductSchema = new Schema({
   esrb: {type: String, enum: ['e', 'e10', 't', 'm', 'a']},
   rating: [RatingSubSchema],
   price: PriceSubSchema,
+  producer: String,
   rented: [RentSubSchema],
   sold: SoldSubSchema,
   added: {type: Date, default: Date.now()},

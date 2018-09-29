@@ -9,7 +9,8 @@ import ArticleController from '../controllers/article.controller';
 
 router.post('/',UserController.createUser);
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
-router.get('/', UserController.getUser);
+router.get('/', UserController.getUsers); // Get list of all users
+router.get('/:id', UserController.getUser); // Get user by it's id
 router.put('/', UserController.updateUser); //Update user data without password
 router.put('/password', UserController.updateUserPassword); //Change user password
 
@@ -26,8 +27,6 @@ router.post('/logout', (req, res) => {
   }
 });
 // router.post('/register',UserController.createUser);
-
-router.get('/', UserController.getUsers);
 
 
 

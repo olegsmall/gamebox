@@ -1,5 +1,5 @@
 const {mongoose} = require('../../config/app.config');
-// const mongoosePaginate = require('mongoose-paginate');
+const mongoosePaginate = require('mongoose-paginate');
 // const passportLocalMongoose = require('passport-local-mongoose');
 import bcrypt from 'bcryptjs';
 // const jwt = require('jsonwebtoken');
@@ -22,7 +22,8 @@ const UserSchema = new mongoose.Schema({
 });
 
 // UserSchema.plugin(passportLocalMongoose);
-// UserSchema.plugin(mongoosePaginate);
+UserSchema.plugin(mongoosePaginate);
+
 UserSchema.methods = {
   checkPassword: function(inputPassword) {
     return bcrypt.compareSync(inputPassword, this.password);
