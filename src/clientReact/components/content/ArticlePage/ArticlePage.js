@@ -89,7 +89,7 @@ class ArticlePage extends  React.Component {
               <a href="#">
                 <div className="card ml-5 cardArticle">
                   <div className="card-body">
-                    <img className="img-fluid float-md-left mr-4 imageArticle" src="image/minecraft.jpg" alt="Card image"/>
+                    <img className="img-fluid float-md-left mr-4 imageArticle" src="/image/minecraft.jpg" alt="Card image"/>
                     <h5 className="card-title text-light">Article's Name</h5>
                   </div>
                 </div>
