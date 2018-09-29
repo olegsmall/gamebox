@@ -68,7 +68,7 @@ exports.getUser = function(req, res){
   }
 };
 
-exports.updateUser = async function(req, res) {
+exports.updateUserInfo = async function(req, res) {
   try {
     let user = await UserService.updateUser(req);
     return res.status(201).json({status: 201, user: user, message: 'User updated successfully'});
@@ -85,6 +85,24 @@ exports.updateUserPassword = async function(req, res){
 
   } catch (e) {
     return res.status(409).json({status: 409, message: e.message});
+  }
+};
+
+exports.updateUserRole = async function (req, res) {
+  try {
+    let user = await UserService.updateUserRole(req);
+    return res.status(201).json({status: 201, user: user, message: 'User role was successfully changed'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
+exports.updateUserStatus = async function (req, res) {
+  try {
+    let user = await UserService.updateUserStatus(req);
+    return res.status(201).json({status: 201, user: user, message: 'User role was successfully changed'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
   }
 };
 

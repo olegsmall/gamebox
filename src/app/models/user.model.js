@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 // const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongoose.Schema({
-  firstName: {type: String, required: true, minlength: 3, maxlength: 25},
+  firstName: {type: String, required: [true, 'Firstname is required'], minlength: 3, maxlength: 25},
   lastName: {type: String, required: false, minlength: 3, maxlength: 25},
   email: {
     type: String,
@@ -16,9 +16,10 @@ const UserSchema = new mongoose.Schema({
   },
   avatar: {type: String, default: 'avatar img url'},
   role: {type: String, enum: ['SuperUser', 'Administrator', 'User'], default: 'User'},
+  status: {type: String, enum: ['activated', 'deactivated', 'banned'], default: 'deactivated'},
   phone: {type: String},
   address: {type: String, minlength: 5, maxlength: 25},
-  password: {type: String, minlength: 1, maxlength: 25},
+  password: {type: String, minlength: 1},
 });
 
 // UserSchema.plugin(passportLocalMongoose);

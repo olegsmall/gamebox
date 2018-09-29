@@ -59,42 +59,70 @@ exports.getUsers = async function (req) {
   }
 };
 
-exports.updateUser = function (req) {
+exports.updateUserInfo = function (req) {
   try {
-    let promise = User.findByIdAndUpdate(
-      req.user._id,
-      {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        avatar: req.body.avatar,
-        phone: req.body.phone,
-        address: req.body.address,
-      }, {
-        fields: { password: 0 }, // Excluding password from return
-        new: true
-      });
-    return promise.then((doc) => {
-      if(doc === null) {
-        throw Error('User not found');
-      }
-      return doc;
-    });
+    let promise = User.findById(req.user._id, {password: 0});
 
+    return promise.then((user) => {
+      if(user === null) { throw Error('User not found'); }
+
+      user.firstName = req.body.firstName;
+      user.lastName = req.body.lastName;
+      user.email = req.body.email;
+      user.avatar = req.body.avatar;
+      user.phone = req.body.phone;
+      user.address = req.body.address;
+
+      return user.save();
+    });
   } catch(e){
-    throw {error: e, message: 'Error at user update services'};
+    throw {error: e, message: 'Error at change user role services'};
   }
 };
 
 exports.updateUserPassword = function (req) {
   try {
-    User.findById(req.user._id, (err, doc) => {
+    return User.findById(req.user._id, (err, doc) => {
       if (err) throw Error('Error on password update');
       doc.password = req.body.password;
       doc.save();
     });
   } catch(e){
     throw {error: e, message: 'Error at user update services'};
+  }
+};
+
+
+exports.updateUserRole = function (req) {
+  try {
+    let promise = User.findById(req.body.id, {password: 0});
+    return promise.then((user) => {
+      if(user === null) {
+        throw Error('User not found');
+      }
+      user.role = req.body.role;
+      return user.save();
+    });
+  } catch(e){
+    throw {error: e, message: 'Error at change user role services'};
+  }
+};
+
+exports.updateUserStatus = function (req) {
+  try {
+    let promise = User.findById(req.body.id, {password: 0});
+
+    return promise.then((user) => {
+      if(user === null) { throw Error('User nt found'); }
+
+      user.status = req.body.status;
+
+      return user.save();
+    }, {new: true});
+
+  } catch (e) {
+    throw {error: e, message: 'Error at change user status services'};
+
   }
 };
 
