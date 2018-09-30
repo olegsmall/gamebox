@@ -106,6 +106,16 @@ exports.updateUserStatus = async function (req, res) {
   }
 };
 
+exports.banUser = async function (req, res) {
+  try {
+    let user = await UserService.banUser(req);
+    return res.status(201).json({status: 201, user: user, message: 'User was successfully banned'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
+
 exports.logout = async function(req, res) {
   req.logout();
   res.redirect('/');

@@ -104,7 +104,7 @@ exports.updateUserRole = function (req) {
       return user.save();
     });
   } catch(e){
-    throw {error: e, message: 'Error at change user role services'};
+    throw {error: e, message: 'Error at update user role services'};
   }
 };
 
@@ -113,7 +113,7 @@ exports.updateUserStatus = function (req) {
     let promise = User.findById(req.body.id, {password: 0});
 
     return promise.then((user) => {
-      if(user === null) { throw Error('User nt found'); }
+      if(user === null) { throw Error('User not found'); }
 
       user.status = req.body.status;
 
@@ -121,7 +121,27 @@ exports.updateUserStatus = function (req) {
     }, {new: true});
 
   } catch (e) {
-    throw {error: e, message: 'Error at change user status services'};
+    throw {error: e, message: 'Error at update user status services'};
+
+  }
+};
+
+exports.banUser = function (req) {
+  try {
+    let promise = User.findById(req.body.id, {password: 0});
+
+    return promise.then((user) => {
+      if(user === null) { throw Error('User not found'); }
+
+      user.status = 'banned';
+      if(req.body.banned_until) {
+        user.banned_until = req.body.banned_until;
+      }
+
+      return user.save();
+    });
+  } catch (e) {
+    throw {error: e, message: 'Error at ban services'};
 
   }
 };

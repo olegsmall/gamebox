@@ -1,8 +1,6 @@
 const {mongoose} = require('../../config/app.config');
 const mongoosePaginate = require('mongoose-paginate');
-// const passportLocalMongoose = require('passport-local-mongoose');
 import bcrypt from 'bcryptjs';
-// const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongoose.Schema({
   firstName: {type: String, required: [true, 'Firstname is required'], minlength: 3, maxlength: 25},
@@ -19,10 +17,10 @@ const UserSchema = new mongoose.Schema({
   status: {type: String, enum: ['activated', 'deactivated', 'banned'], default: 'deactivated'},
   phone: {type: String},
   address: {type: String, minlength: 5, maxlength: 25},
-  password: {type: String, minlength: 1},
+  password: {type: String, minlength: 4},
+  banned_until: {type: Date}
 });
 
-// UserSchema.plugin(passportLocalMongoose);
 UserSchema.plugin(mongoosePaginate);
 
 UserSchema.methods = {

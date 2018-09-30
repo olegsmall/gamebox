@@ -19,6 +19,7 @@ router.put('/', UserController.updateUserInfo); //Update user data without passw
 router.put('/password', UserController.updateUserPassword); //Change user password
 router.put('/role', UserController.updateUserRole); //Change user role
 router.put('/status', UserController.updateUserStatus); //Change user status
+router.put('/ban', UserController.banUser); //Change user status
 
 
 router.post('/logout', (req, res) => {
