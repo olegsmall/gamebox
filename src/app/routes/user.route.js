@@ -20,8 +20,7 @@ router.get('/:id/products', ProductController.getUserProducts); //Get products l
 router.put('/', UserController.updateUserInfo); //Update user data without password
 router.put('/password', UserController.updateUserPassword); //Change user password
 router.put('/role', UserController.updateUserRole); //Change user role
-router.put('/status', UserController.updateUserStatus); //Change user status
-router.put('/ban', UserController.banUser); //Ban user
+router.put('/:id/status', UserController.updateUserStatus); //Change user status
 router.put('/:id/rating', UserController.rateUser); //Rate user
 
 

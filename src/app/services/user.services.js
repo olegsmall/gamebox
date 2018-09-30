@@ -19,7 +19,8 @@ exports.createUser = async function (req) {
       email: req.body.email,
       phone: req.body.phone,
       address: req.body.address,
-      password: req.body.password,
+      status: {state: 'deactivated'},
+      password: req.body.password
     });
     return await newUser.save();
   }
@@ -110,12 +111,16 @@ exports.updateUserRole = function (req) {
 
 exports.updateUserStatus = function (req) {
   try {
-    let promise = User.findById(req.body.id, {password: 0});
-
+    let promise = User.findById(req.params.id, {password: 0});
     return promise.then((user) => {
       if(user === null) { throw Error('User not found'); }
+      console.log(user);
 
-      user.status = req.body.status;
+      user.status.state = req.body.state;
+      console.log(user.status.state);
+      if(req.body.expires) {
+        user.status.expires = req.body.expires;
+      }
 
       return user.save();
     }, {new: true});
@@ -179,29 +184,6 @@ exports.getUserRating = async function (req) {
   } catch (e) {
     // return a Error message describing the reason
     throw Error('Error at get user rating services');
-  }
-};
-
-
-
-exports.banUser = function (req) {
-  try {
-    let promise = User.findById(req.body.id, {password: 0});
-
-    return promise.then((user) => {
-      if(user === null) { throw Error('User not found'); }
-
-      user.ban.active = req.body.ban.active;
-      // if(req.body.ban.active) { user.status = 'banned'; }
-      if(req.body.ban.expire) {
-        user.body.ban.expire = req.body.ban.expire;
-      }
-
-      return user.save();
-    });
-  } catch (e) {
-    throw {error: e, message: 'Error at ban services'};
-
   }
 };
 

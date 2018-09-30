@@ -13,6 +13,11 @@ const RatingSubSchema = new mongoose.Schema({
   rated_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: [true, 'Voter id is required']},
 },{ _id : false });
 
+const StatusSubSchema = new mongoose.Schema({
+  state: {type: String, enum: ['activated', 'deactivated', 'banned'], default: 'deactivated'},
+  expires: {type: Date}
+},{ _id : false });
+
 
 
 const UserSchema = new mongoose.Schema({
@@ -27,17 +32,12 @@ const UserSchema = new mongoose.Schema({
   },
   avatar: {type: String, default: 'avatar img url'},
   role: {type: String, enum: ['SuperUser', 'Administrator', 'User'], default: 'User'},
-  status: {type: String, enum: ['activated', 'deactivated', 'banned'], default: 'deactivated'},
+  status: StatusSubSchema,
   phone: {type: String},
   address: {type: String, minlength: 5, maxlength: 25},
   password: {type: String, minlength: 4},
-  // banned_until: {type: Date},
   rating: [RatingSubSchema],
-  ban: {
-    active: Boolean,
-    from: Date,
-    expire: Date
-  }
+  creation_date: {type: Date, default: Date.now()}
 });
 
 UserSchema.plugin(mongoosePaginate);
