@@ -126,6 +126,38 @@ exports.updateUserStatus = function (req) {
   }
 };
 
+
+exports.rateUser = function (req) {
+  try {
+    let promise = User.findById(req.params.id, {password: 0});
+
+    return promise.then((user) => {
+      if(user === null) { throw Error('User not found'); }
+
+      // Check if user already voted
+      let votes = user.rating;
+      for(let i = 0; i < votes.length; i++) {
+        if(String(votes[i].rated_by) === String(req.user._id)) {
+          throw Error('You have already voted');
+        }
+      }
+      //Add new rating
+      user.rating.push({mark: req.body.mark, rated_by: req.user._id});
+
+      return user.save();
+    }, {new: true});
+
+  } catch (e) {
+    throw {error: e, message: 'Error at update user status services'};
+
+  }
+};
+
+
+
+
+
+
 exports.banUser = function (req) {
   try {
     let promise = User.findById(req.body.id, {password: 0});
@@ -133,9 +165,10 @@ exports.banUser = function (req) {
     return promise.then((user) => {
       if(user === null) { throw Error('User not found'); }
 
-      user.status = 'banned';
-      if(req.body.banned_until) {
-        user.banned_until = req.body.banned_until;
+      user.ban.active = req.body.ban.active;
+      // if(req.body.ban.active) { user.status = 'banned'; }
+      if(req.body.ban.expire) {
+        user.body.ban.expire = req.body.ban.expire;
       }
 
       return user.save();

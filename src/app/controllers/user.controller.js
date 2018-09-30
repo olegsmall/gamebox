@@ -100,7 +100,16 @@ exports.updateUserRole = async function (req, res) {
 exports.updateUserStatus = async function (req, res) {
   try {
     let user = await UserService.updateUserStatus(req);
-    return res.status(201).json({status: 201, user: user, message: 'User role was successfully changed'});
+    return res.status(201).json({status: 201, user: user, message: 'User status was successfully changed'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
+exports.rateUser = async function (req, res) {
+  try {
+    let user = await UserService.rateUser(req);
+    return res.status(201).json({status: 201, user: user, message: 'User was successfully rated'});
   } catch (e) {
     return res.status(400).json({status: 400, message: e.message});
   }

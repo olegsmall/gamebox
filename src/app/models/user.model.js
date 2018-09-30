@@ -2,6 +2,19 @@ const {mongoose} = require('../../config/app.config');
 const mongoosePaginate = require('mongoose-paginate');
 import bcrypt from 'bcryptjs';
 
+
+const RatingSubSchema = new mongoose.Schema({
+  mark: {
+    type: Number,
+    min: [1, 'Rating number should be between 1 and 5'],
+    max: [5, 'Rating number should be between 1 and 5'],
+    required: [true, 'Rating mark should be indicated']
+  },
+  rated_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: [true, 'Voter id is required']},
+},{ _id : false });
+
+
+
 const UserSchema = new mongoose.Schema({
   firstName: {type: String, required: [true, 'Firstname is required'], minlength: 3, maxlength: 25},
   lastName: {type: String, required: false, minlength: 3, maxlength: 25},
@@ -18,7 +31,13 @@ const UserSchema = new mongoose.Schema({
   phone: {type: String},
   address: {type: String, minlength: 5, maxlength: 25},
   password: {type: String, minlength: 4},
-  banned_until: {type: Date}
+  // banned_until: {type: Date},
+  rating: [RatingSubSchema],
+  ban: {
+    active: Boolean,
+    from: Date,
+    expire: Date
+  }
 });
 
 UserSchema.plugin(mongoosePaginate);
