@@ -17,8 +17,7 @@ exports.createProduct = function (req) {
         status: req.body.status,
         esrb: req.body.esrb,
         rating: req.body.rating,
-        sold: req.body.sold,
-        rented: req.body.rented,
+        producer: req.body.producer
       });
       return product.save();
     });
@@ -113,7 +112,9 @@ exports.updateProduct = async function(req) {
       genres: req.body.genres,
       price: req.body.price,
       status: req.body.status,
-      edited: Date.now()
+      edited: Date.now(),
+      producer: req.body.producer,
+      esrb: req.body.esrb
     }, { new: true });
 
     return promise.then((doc) => {

@@ -8,17 +8,17 @@ const PriceSubSchema = new Schema({
   rent: Number
 },{ _id : false });
 
-const RentSubSchema = new Schema({
-  from:  {type: Date, default: Date.now()},
-  to: {type: Date, required: [true, 'You should indicate end date of the rent']},
-  returned: Date,
-  holder: {type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Renter/holder id is required']}
-},{ _id : false });
-
-const SoldSubSchema = new Schema({
-  to_user: {type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Buyer id is required']},
-  date: {type: Date, default: Date.now()}
-},{ _id : false });
+// const RentSubSchema = new Schema({
+//   from:  {type: Date, default: Date.now()},
+//   to: {type: Date, required: [true, 'You should indicate end date of the rent']},
+//   returned: Date,
+//   holder: {type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Renter/holder id is required']}
+// },{ _id : false });
+//
+// const SoldSubSchema = new Schema({
+//   to_user: {type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Buyer id is required']},
+//   date: {type: Date, default: Date.now()}
+// },{ _id : false });
 
 const RatingSubSchema = new Schema({
   mark: {
@@ -63,8 +63,8 @@ const ProductSchema = new Schema({
   rating: [RatingSubSchema],
   price: PriceSubSchema,
   producer: String,
-  rented: [RentSubSchema],
-  sold: SoldSubSchema,
+  // rented: [RentSubSchema],
+  // sold: SoldSubSchema,
   added: {type: Date, default: Date.now()},
   edited: {type: Date}
 });
