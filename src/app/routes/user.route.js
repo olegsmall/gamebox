@@ -12,6 +12,8 @@ router.post('/login', passport.authenticate('local'), UserController.authenticat
 router.get('/', UserController.getUsers); // Get list of all users
 router.get('/:id', UserController.getUser); // Get user by it's id
 
+router.get('/:id/rating', UserController.getUserRating); // Get user rating by it's id
+
 router.get('/:id/articles', ArticleController.getUserArticles); //Get articles list of a user
 router.get('/:id/products', ProductController.getUserProducts); //Get products list of a user
 

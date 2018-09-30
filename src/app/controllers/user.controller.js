@@ -115,6 +115,15 @@ exports.rateUser = async function (req, res) {
   }
 };
 
+exports.getUserRating = async function (req, res) {
+  try {
+    let rating = await UserService.getUserRating(req);
+    return res.status(201).json({status: 201, rating: rating, message: 'Rating received'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
 exports.banUser = async function (req, res) {
   try {
     let user = await UserService.banUser(req);

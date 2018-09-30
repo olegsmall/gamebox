@@ -64,3 +64,21 @@ exports.deleteProduct = async function(req, res) {
     return res.status(409).json({status: 409, message: e.message});
   }
 };
+
+exports.rateProduct = async function (req, res) {
+  try {
+    let product = await ProductService.rateProduct(req);
+    return res.status(201).json({status: 201, product: product, message: 'Product was successfully rated'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
+exports.getProductRating = async function (req, res) {
+  try {
+    let rating = await ProductService.getProductRating(req);
+    return res.status(201).json({status: 201, rating: rating, message: 'Product rating received'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};

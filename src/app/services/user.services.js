@@ -137,7 +137,7 @@ exports.rateUser = function (req) {
       // Check if user already voted
       let votes = user.rating;
       for(let i = 0; i < votes.length; i++) {
-        if(String(votes[i].rated_by) === String(req.user._id)) {
+        if(String(votes[i].rated_by) === String(req.user._id) || String(req.user._id) === String(req.params.id)) {
           throw Error('You have already voted');
         }
       }
@@ -148,13 +148,39 @@ exports.rateUser = function (req) {
     }, {new: true});
 
   } catch (e) {
-    throw {error: e, message: 'Error at update user status services'};
+    throw {error: e, message: 'Error at rate user services'};
 
   }
 };
 
 
+exports.getUserRating = async function (req) {
 
+  // Try Catch the awaited promise to handle the error
+  try {
+    // Retrieve user data
+    let users = User.find({_id: req.params.id}).select('rating');
+    // Return the user list that was returned by the mongoose promise
+    return users.then((user) => {
+      if(user === null) { throw Error('No users found'); }
+
+      let summ = 0,
+        count = 0,
+        marks = user[0].rating;
+
+      // Calculating rating
+      for(let i=0; i < marks.length; i++) {
+        summ = summ + marks[i].mark;
+        count++;
+      }
+      // Returning calculated rating
+      return (summ / count).toFixed(1);
+    });
+  } catch (e) {
+    // return a Error message describing the reason
+    throw Error('Error at get user rating services');
+  }
+};
 
 
 
