@@ -57,6 +57,7 @@
 
 
 
+
 .EditProfile h3 form button.mt-3.btn.btn-sm.btn-block.mb-3 {
   background-color: #026E00 !important; }
 
@@ -67,6 +68,19 @@
 .EditProfile .buttonEditClose {
   background-color: #026CAE;
   color: #FFFFFF; }
+
+.ArticleRow .cardArticle {
+  background-color: transparent !important;
+  border-color: #026E00 !important;
+  width: 450px;
+  height: 110px;
+  overflow: hidden; }
+
+.ArticleRow .imageArticle {
+  width: 150px;
+  height: 70px !important; }
+
+
 
 
 .UserPage #hi-bg {
@@ -90,6 +104,9 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1); }
 
+.ArticleCard hr {
+  border-color: #026E00; }
+
 @media only screen and (max-width: 1000px) {
   .ArticleCard .imageArticle {
     margin-bottom: 2rem; } }
@@ -105,6 +122,33 @@
   .AllBlogPage #article {
     margin-top: 12rem; } }
 
+.ArticlePage .articlePage {
+  margin-top: 8rem; }
+
+.ArticlePage .cardArticle {
+  background-color: transparent !important;
+  border-color: #026E00 !important;
+  width: 400px;
+  height: 80px;
+  overflow: hidden; }
+
+.ArticlePage .card-body {
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s; }
+
+.ArticlePage .card-body:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1); }
+
+.ArticlePage .imageArticle {
+  width: 80px;
+  height: 50px; }
+
+@media only screen and (max-width: 600px) {
+  .ArticlePage .titleArticle {
+    margin-top: 5rem; } }
 
 body {
   margin: 0;

@@ -8,17 +8,17 @@
     overflow: hidden;
   }
 
-  .card-body {
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-  }
+  //.card-body {
+  //  -moz-transition: all 0.5s;
+  //  -webkit-transition: all 0.5s;
+  //  transition: all 0.5s;
+  //}
 
-  .card-body:hover {
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
+  //.card-body:hover {
+  //  -moz-transform: scale(1.1);
+  //  -webkit-transform: scale(1.1);
+  //  transform: scale(1.1);
+  //}
 
   .imageArticle {
     width: 150px;

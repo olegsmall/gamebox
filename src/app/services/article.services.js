@@ -123,3 +123,19 @@ exports.deleteArticle = function (id) {
     throw {error: e, message: 'Error on article delete.'};
   }
 };
+
+exports.addArticleComment = function (req) {
+  try {
+    let promise = Article.findById({_id: req.params.id});
+
+    return promise.then((article, err) => {
+      if(article === null || err) { throw Error('Article not found'); }
+
+      article.comment.push({user: req.user._id, content: req.body.content});
+
+      return article.save();
+    }, {new: true})
+  } catch(e) {
+    throw {error: e, message: 'Error on add article comment'};
+  }
+};

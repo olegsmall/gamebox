@@ -14,8 +14,7 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
-
-    axios.get('/user/' + this.props.user._id + '/articles')
+    axios.get('/user/' + this.props.user.id + '/articles')
       .then((res) => {
         // handle success
         // console.log(res.data.data.docs);
@@ -29,7 +28,7 @@ class Articles extends React.Component {
 
   handleAddArticle(e) {
     e.preventDefault();
-    this.props.changeInnerComponent(e, 'AddArticle');
+    this.props.changeInner('AddArticle');
   }
 
   render() {
@@ -41,11 +40,11 @@ class Articles extends React.Component {
           <button className={'btn btn-success'} onClick={this.handleAddArticle.bind(this)}>Add article</button>
         </div>
 
-        <div className="col-sm-8">
+        <table className="table table-bordered">
           {this.state.articles.map((article) => (
             <ArticleRow key={article._id} article={article}/>
           ))}
-        </div>
+        </table>
       </div>
     );
   }

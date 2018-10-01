@@ -66,3 +66,12 @@ exports.deleteArticle = async function(req, res) {
     return res.status(409).json({status: 409, message: e.message});
   }
 };
+
+exports.addArticleComment = async function (req, res) {
+  try {
+    let article = await ArticleService.addArticleComment(req);
+    return res.status(201).json({status: 201, article: article, message: 'Article comment added'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};

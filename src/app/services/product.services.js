@@ -1,7 +1,6 @@
 const Product = require('../models/product.model');
 const Genre = require('../models/genre.model');
 
-
 exports.createProduct = function (req) {
   try {
     let promise = Genre.find({_id: {$in: req.body.genres}}, '_id').exec();
@@ -15,6 +14,9 @@ exports.createProduct = function (req) {
         owner: req.user._id,
         price: req.body.price,
         status: req.body.status,
+        esrb: req.body.esrb,
+        rating: req.body.rating,
+        producer: req.body.producer
       });
       return product.save();
     });
@@ -50,9 +52,9 @@ exports.getProducts = function (req) {
   // Check if searching by title (uses %LIKE%)
   if(req.query.title) { query.title = new RegExp(req.query.title,'i'); }
   // Check if searching by product status (for rent, for sale, sold, rented)
-  if(req.query.status.toLowerCase() === 'for rent' || req.query.status.toLowerCase() === 'for sale' || req.query.status.toLowerCase() === 'rented' || req.query.status.toLowerCase() === 'sold') {
-    query.status = req.query.status.toLowerCase();
-  }
+  // if(req.query.status.toLowerCase() === 'for rent' || req.query.status.toLowerCase() === 'for sale' || req.query.status.toLowerCase() === 'rented' || req.query.status.toLowerCase() === 'sold') {
+  //   query.status = req.query.status.toLowerCase();
+  // }
 
   try {
     // Search objects with user options
@@ -109,7 +111,9 @@ exports.updateProduct = async function(req) {
       genres: req.body.genres,
       price: req.body.price,
       status: req.body.status,
-      edited: Date.now()
+      edited: Date.now(),
+      producer: req.body.producer,
+      esrb: req.body.esrb
     }, { new: true });
 
     return promise.then((doc) => {
@@ -135,3 +139,72 @@ exports.deleteProduct = function(id) {
   }
 };
 
+exports.rateProduct = function (req) {
+  try {
+    let promise = Product.findById(req.params.id, {password: 0});
+
+    return promise.then((product) => {
+      if(product === null) { throw Error('Product not found'); }
+
+      // Check if product already voted
+      let votes = product.rating;
+      for(let i = 0; i < votes.length; i++) {
+        if(String(votes[i].rated_by) === String(req.user._id)) {
+          throw Error('You have already voted');
+        }
+      }
+      //Add new rating
+      product.rating.push({mark: req.body.mark, rated_by: req.user._id});
+
+      return product.save();
+    }, {new: true});
+
+  } catch (e) {
+    throw {error: e, message: 'Error at rate user services'};
+
+  }
+};
+
+exports.getProductRating = async function (req) {
+
+  // Try Catch the awaited promise to handle the error
+  try {
+    // Retrieve user data
+    let product = Product.find({_id: req.params.id}).select('rating');
+    // Return the user list that was returned by the mongoose promise
+    return product.then((product) => {
+      if(product === null) { throw Error('No product found'); }
+
+      let summ = 0,
+        count = 0,
+        marks = product[0].rating;
+
+      // Calculating rating
+      for(let i=0; i < marks.length; i++) {
+        summ = summ + marks[i].mark;
+        count++;
+      }
+      // Returning calculated rating
+      return (summ / count).toFixed(1);
+    });
+  } catch (e) {
+    // return a Error message describing the reason
+    throw Error('Error at get product rating services');
+  }
+};
+
+exports.addProductComment = function (req) {
+  try {
+    let promise = Product.findById({_id: req.params.id});
+
+    return promise.then((product, err) => {
+      if(product === null || err) { throw Error('Product not found'); }
+
+      product.comment.push({user: req.user._id, content: req.body.content});
+
+      return product.save();
+    }, {new: true})
+  } catch(e) {
+    throw {error: e, message: 'Error on add product comment'};
+  }
+};

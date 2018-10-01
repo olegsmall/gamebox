@@ -15,19 +15,16 @@ class ArticleRow extends React.Component {
 
   render() {
     const article = this.props.article;
+    const image = (article.images[0]) ? '/image/' + article.images[0] : '';
     return (
-      <div className={'ArticleRow'}>
-        <a href="#">
-          <div className="card ml-5 cardArticle">
-            <div className="card-body">
-              <img className="img-fluid float-md-left mr-4 imageArticle" src={'/image' + article.image[0]} alt={article.title}/>
-              <h5 className="card-title text-light">{article.title}</h5>
-            </div>
-            <button className="btn btn-sm btn-success"><a href="">Edit article</a></button>
-            <button className="btn btn-sm btn-success"><a href="">Delete article</a></button>
-          </div>
-        </a>
-      </div>
+      <tbody className={'ArticleRow'}>
+      <tr>
+        <td><img className="img-fluid imageArticle text-light" src={image} alt={article.title}/></td>
+        <td className={'text-light'}>{article.title}</td>
+        <td><a className="btn btn-link text-light" href={''}>Edit article</a></td>
+        {/*<td><a className="btn btn-link" href={''}>Delete article</a></td>*/}
+      </tr>
+      </tbody>
     );
   }
 }
