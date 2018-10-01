@@ -2,12 +2,15 @@ import express from 'express';
 const router = express.Router();
 const passport = require('passport');
 
+import multer from 'multer';
+const upload = multer({dest: '/image/avatar/'});
+
 // Importing Controller
 import UserController from '../controllers/user.controller';
 import ProductController from '../controllers/product.controller';
 import ArticleController from '../controllers/article.controller';
 
-router.post('/',UserController.createUser);
+router.post('/', upload.single('avatar'), UserController.createUser);
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
 router.get('/', UserController.getUser);
 router.put('/', UserController.updateUser); //Update user data without password
