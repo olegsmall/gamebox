@@ -17,8 +17,9 @@ const ArticleSchema = new Schema({
     minlength: [10, 'Content minimum lenght is 10 symbols'],
     maxlength: [1500, 'Content maximum length is 1500 symbols']
   },
-  images: {type: [String], required: false},
-  video: {type: [String], required: false},
+  // images: {type: [String], required: false},
+  images: {type: String, required: false},
+  // video: {type: [String], required: false},
   tags: [String],
   created: {type: Date, default: Date.now},
   edited: {type: Date}

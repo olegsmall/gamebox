@@ -17,8 +17,7 @@ exports.createProduct = function (req) {
         status: req.body.status,
         esrb: req.body.esrb,
         rating: req.body.rating,
-        sold: req.body.sold,
-        rented: req.body.rented,
+        producer: req.body.producer
       });
       return product.save();
     });
@@ -113,7 +112,9 @@ exports.updateProduct = async function(req) {
       genres: req.body.genres,
       price: req.body.price,
       status: req.body.status,
-      edited: Date.now()
+      edited: Date.now(),
+      producer: req.body.producer,
+      esrb: req.body.esrb
     }, { new: true });
 
     return promise.then((doc) => {
@@ -136,6 +137,60 @@ exports.deleteProduct = function(id) {
     });
   } catch (e) {
     throw {error: e, message: 'Error on product delete.'};
+  }
+};
+
+exports.rateProduct = function (req) {
+  try {
+    let promise = Product.findById(req.params.id, {password: 0});
+
+    return promise.then((product) => {
+      if(product === null) { throw Error('Product not found'); }
+
+      // Check if product already voted
+      let votes = product.rating;
+      for(let i = 0; i < votes.length; i++) {
+        if(String(votes[i].rated_by) === String(req.user._id)) {
+          throw Error('You have already voted');
+        }
+      }
+      //Add new rating
+      product.rating.push({mark: req.body.mark, rated_by: req.user._id});
+
+      return product.save();
+    }, {new: true});
+
+  } catch (e) {
+    throw {error: e, message: 'Error at rate user services'};
+
+  }
+};
+
+exports.getProductRating = async function (req) {
+
+  // Try Catch the awaited promise to handle the error
+  try {
+    // Retrieve user data
+    let users = Product.find({_id: req.params.id}).select('rating');
+    // Return the user list that was returned by the mongoose promise
+    return users.then((product) => {
+      if(product === null) { throw Error('No product found'); }
+
+      let summ = 0,
+        count = 0,
+        marks = product[0].rating;
+
+      // Calculating rating
+      for(let i=0; i < marks.length; i++) {
+        summ = summ + marks[i].mark;
+        count++;
+      }
+      // Returning calculated rating
+      return (summ / count).toFixed(1);
+    });
+  } catch (e) {
+    // return a Error message describing the reason
+    throw Error('Error at get product rating services');
   }
 };
 
