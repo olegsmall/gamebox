@@ -47,11 +47,7 @@ const ProductSchema = new Schema({
     type: String,
     required: false
   }],
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: false // TO CHANGE
-  },
+  owner: {type: Schema.Types.ObjectId, ref: 'User', required: true},
   genres: [{type: Schema.Types.ObjectId, ref: 'Genre', required: true}],
   status: {
     type: [String],
@@ -63,6 +59,11 @@ const ProductSchema = new Schema({
   rating: [RatingSubSchema],
   price: PriceSubSchema,
   producer: String,
+  comment: [{
+    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    content: {type:String, minlength:10, maxlength:150},
+    date: {type: Date, default: Date.now()}
+  }],
   // rented: [RentSubSchema],
   // sold: SoldSubSchema,
   added: {type: Date, default: Date.now()},

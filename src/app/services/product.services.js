@@ -1,7 +1,6 @@
 const Product = require('../models/product.model');
 const Genre = require('../models/genre.model');
 
-
 exports.createProduct = function (req) {
   try {
     let promise = Genre.find({_id: {$in: req.body.genres}}, '_id').exec();
@@ -171,9 +170,9 @@ exports.getProductRating = async function (req) {
   // Try Catch the awaited promise to handle the error
   try {
     // Retrieve user data
-    let users = Product.find({_id: req.params.id}).select('rating');
+    let product = Product.find({_id: req.params.id}).select('rating');
     // Return the user list that was returned by the mongoose promise
-    return users.then((product) => {
+    return product.then((product) => {
       if(product === null) { throw Error('No product found'); }
 
       let summ = 0,
@@ -194,3 +193,18 @@ exports.getProductRating = async function (req) {
   }
 };
 
+exports.addProductComment = function (req) {
+  try {
+    let promise = Product.findById({_id: req.params.id});
+
+    return promise.then((product, err) => {
+      if(product === null || err) { throw Error('Product not found'); }
+
+      product.comment.push({user: req.user._id, content: req.body.content});
+
+      return product.save();
+    }, {new: true})
+  } catch(e) {
+    throw {error: e, message: 'Error on add product comment'};
+  }
+};
