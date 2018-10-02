@@ -234,7 +234,7 @@ exports.addProductToCart = function (req) {
       //Pushing object id in user's cart
       cart.cart.push(req.params.id);
       //Saving user's cart
-      // return cart.save();
+      return cart.save();
     })
   });
 };
