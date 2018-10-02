@@ -17,5 +17,7 @@ router.put('/:id/rating', ProductController.rateProduct); //Rate product
 
 router.put('/:id/comment', ProductController.addProductComment); //Comment a product
 
+router.post('/:id/cart', ProductController.addProductToCart); //Create product
+
 
 module.exports = router;

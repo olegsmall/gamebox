@@ -26,7 +26,6 @@ router.put('/role', UserController.updateUserRole); //Change user role
 router.put('/:id/status', UserController.updateUserStatus); //Change user status
 router.put('/:id/rating', UserController.rateUser); //Rate user
 
-
 router.post('/logout', (req, res) => {
   if (req.user) {
     req.logout();

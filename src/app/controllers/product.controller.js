@@ -91,3 +91,12 @@ exports.addProductComment = async function (req, res) {
     return res.status(400).json({status: 400, message: e.message});
   }
 };
+
+exports.addProductToCart = async function (req, res) {
+  try {
+    let cart = await ProductService.addProductToCart(req);
+    return res.status(201).json({status: 201, cart: cart, message: 'Product added to cart'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
