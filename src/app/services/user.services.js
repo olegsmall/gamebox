@@ -18,7 +18,7 @@ exports.createUser = async function (req) {
     if (req.file){
       avatarFilePath = '/image/avatars/' + req.file.filename;
     } else {
-      avatarFilePath = '/image/default/default_avatar';
+      avatarFilePath = '/image/default/default_avatar.png';
     }
 
     const newUser = new User({
