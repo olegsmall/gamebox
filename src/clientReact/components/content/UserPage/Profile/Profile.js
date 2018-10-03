@@ -16,7 +16,7 @@ class Profile extends React.Component {
     const email = (this.props.user !== null) ? this.props.user.email : '';
     const phone = (this.props.user !== null) ? this.props.user.phone : '';
     const address = (this.props.user !== null) ? this.props.user.address : '';
-    const avatar = (this.props.user !== null && this.props.user.avatar !== undefined) ? this.props.user.avatar : 'default/default_avatar.png';
+    const avatar = (this.props.user !== null) ? this.props.user.avatar : '';
 
 
     return (
@@ -28,7 +28,7 @@ class Profile extends React.Component {
         <div className={'justify-content-center'}>
           <div className={'text-center'}>
             <div className="text-light text-center mb-2">
-              <img src={/image/ + avatar} alt="avatar" width="100" height="100" className="ml-3"/>
+              <img src={avatar} alt="avatar" width="100" height="100" className="ml-3"/>
             </div>
             <div className="text-light mb-2">
               <i className=" ml-3 fa fa-star-o"></i>

@@ -7,6 +7,7 @@ import EditProfile from './EditProfile/EditProfile';
 import Articles from './Articles/Articles';
 import AddProduct from './AddProduct/AddProduct';
 import AddArticle from './AddArticle/AddArticle';
+import ChangePassword from './ChangePassword/ChangePassword';
 
 require('./UserPage.scss');
 
@@ -15,7 +16,6 @@ class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
       innerComponent: 'Profile',
       message: '',
     };
@@ -23,14 +23,14 @@ class UserPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/user/')
-      .then((res) => {
-        console.log(res.data);
-        this.setState({user: res.data.user});
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios.get('/user/')
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     this.setState({user: res.data.user});
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 
   handleChangeInner(e, innerName){
@@ -52,20 +52,20 @@ class UserPage extends React.Component {
   }
   render() {
 
-    const firstName = (this.state.user !== null) ? this.state.user.firstName : '';
-    const lastName = (this.state.user !== null) ? this.state.user.lastName : '';
+    const firstName = (this.props.user !== null) ? this.props.user.firstName : '';
+    const lastName = (this.props.user !== null) ? this.props.user.lastName : '';
 
     let inner = '';
     switch (this.state.innerComponent) {
     case 'Profile':
       inner = <Profile
         changeInner={this.changeInner.bind(this)}
-        user={this.state.user}/>;
+        user={this.props.user}/>;
       break;
     case 'Products':
       inner = <Products
         changeInner={this.changeInner.bind(this)}
-        user={this.state.user}/>;
+        user={this.props.user}/>;
       break;
     case 'AddProduct':
       inner = <AddProduct/>;
@@ -75,7 +75,14 @@ class UserPage extends React.Component {
       break;
     case 'EditProfile':
       inner = <EditProfile
-        user={this.state.user}
+        user={this.props.user}
+        changeInner={this.changeInner.bind(this)}
+        goToProfile={this.goToProfile.bind(this)}
+        showMessage={this.showMessage.bind(this)}/>;
+      break;
+    case 'ChangePassword':
+      inner = <ChangePassword
+        user={this.props.user}
         changeInner={this.changeInner.bind(this)}
         goToProfile={this.goToProfile.bind(this)}
         showMessage={this.showMessage.bind(this)}/>;
@@ -83,13 +90,13 @@ class UserPage extends React.Component {
     case 'Articles':
       inner = <Articles
         changeInner={this.changeInner.bind(this)}
-        user={this.state.user}/>;
+        user={this.props.user}/>;
       break;
     case 'AddArticle':
       inner = <AddArticle/>;
       break;
     default :
-      inner = <Profile user={this.state.user}/>;
+      inner = <Profile user={this.props.user}/>;
     }
 
     return (
@@ -107,6 +114,12 @@ class UserPage extends React.Component {
               <p className="text-light">
                 <img src="/image/history.png" alt="orders" width="50" height="50" className="mr-3"/>
                 Profile
+              </p>
+            </a>
+            <a onClick={(e)=>this.handleChangeInner(e, 'ChangePassword')} href="">
+              <p className="text-light">
+                <img src="/image/history.png" alt="orders" width="50" height="50" className="mr-3"/>
+                Change password
               </p>
             </a>
             <a onClick={(e)=>this.handleChangeInner(e, 'Orders')} href="">
