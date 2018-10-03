@@ -1,0 +1,332 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif!important;
+    background-color: #ffffff;
+}
+li.nav-item .nav-link {
+    color: black;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+/*menu*/
+header nav.stickytop{
+    transform: translateY(0px);
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}
+
+header nav{
+    position: fixed;
+    transform: translateY(20px);
+    transition: transform .6s, width .6s;
+    border-radius: 5px;
+    width: calc(100% - 60px);
+    left: auto;
+    margin: 0 auto;
+
+}
+
+.navbar{
+    padding: 2px!important;
+    padding-right: 2rem!important;
+    padding-left: 2rem!important;
+}
+
+#dropdownMenu i.fa.fa-user-plus{
+    color: #000000;
+    font-size: 23px;
+
+}
+
+.fa {
+    color: white;
+}
+
+
+
+.mid {
+    background: rgba(0,0,0,1);
+}
+
+/*a.nav-link.h5{*/
+    /*tab-size: 20px;*/
+/*}*/
+
+/*i.fa.fa-star-o {*/
+    /*color: orange!important;*/
+    /*font-size: 20px;*/
+/*}*/
+.card-text{
+    height: 50%!important;
+}
+img.searchImg {
+    /*width: 30px;*/
+    /*box-sizing: border-box;*/
+    /*border: 2px solid #ccc;*/
+    /*border-radius: 4px;*/
+    /*font-size: 11px;*/
+    /*background-color: white;*/
+    /*background-image: url('.image/search-icon.png');*/
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    /*padding: 5px 10px 5px 10px;*/
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin-right: 2rem;
+}
+
+a #loupe:focus{
+    width: 70%;
+}
+
+/* Log in and Sign Up*/
+#login, #signUp{
+    font-size: 10px!important;
+    /*margin-bottom: 12rem;*/
+}
+.dropdown-menu{
+    padding-left: 5%!important;
+    right:0;
+    left: auto;
+}
+.fa.fa-bars, .fa.fa-search{
+    color: black;
+    margin-top: 5px ;
+}
+
+#lienLogin, #lienSignUp{
+    color: inherit;
+}
+
+#lienLogin:hover, #lienSignUp{
+    text-decoration: none;
+}
+
+/*member page*/
+#hi-bg{
+    margin-top: 5.4rem;
+    background:linear-gradient(to top, #026E00, #0a568c) ;
+    background-color: #333333!important;
+    border-color: #333333;
+}
+/*editAccount*/
+h3 form button.mt-3.btn.btn-sm.btn-block.mb-3{
+    background-color: #026E00!important;
+}
+/*allGames*/
+#games{
+    margin-top: 8rem!important;
+}
+
+/* Yours articles */
+
+.cardArticle {
+    background-color: transparent!important;
+    border-color: #026E00!important;
+    width: 450px;
+    height: 110px;
+
+    overflow: hidden;
+}
+
+.card-body {
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.card-body:hover{
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.imageArticle {
+    width: 150px;
+    height: 70px!important;
+}
+
+/*card product*/
+.product {
+    position: relative;
+    width: 280px;
+    height: 300px;
+    /*background-image: url("../image/img1.jpg");*/
+    background-size: cover;
+    background-position: center;
+}
+
+.card{
+    border-radius: 0!important;
+}
+.inner {
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+.product:hover .inner{
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: background-color  .7s;
+    -ms-transition: background-color .7s;
+    transition: background-color .7s;
+    box-shadow: 4px 10px 10px rgba(0,0,0,0.5);
+}
+
+div.paragraphV{
+    background-color: red;
+    padding-right: 5px;
+    width: 40px;
+    margin-left: -8px;
+    margin-top: 6px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+
+
+
+}
+.paragraph {
+    display: none;
+
+}
+.product:hover .paragraph {
+    display: block;
+    animation: fadein 1.5s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+h4.paragraphV {
+    color: white;
+}
+
+/*a:hover {*/
+    /*color: black;*/
+    /*text-decoration: none!important;*/
+/*}*/
+
+.button {
+    display: none;
+    background-color: red;
+    border-color:  red;
+    padding: 5px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+}
+
+.button:hover {
+    /*background-color: lightgreen;*/
+    transition: background-color .7s;
+    box-shadow: 2px 2px 2px rgba(255,255,255,0.3);
+}
+
+.product:hover .button {
+    display: inline-block;
+    animation: fadein 1.5s;
+
+
+}
+button.button.mt-5 a{
+    color: #ffffff;
+}
+/*info*/
+.infoCard {
+    background-color: rgba(211,211,211,0.2);
+}
+
+.imgInfo {
+    width: 40px;
+    height: 40px;
+}
+
+.text {
+    font-size: 13px;
+}
+
+.imgWork {
+    width: 100px;
+    height: 100px;
+}
+/*footer*/
+.page-footer{
+    background-color: #000000;
+}
+.footer-copyright{
+    font-size: 13px;
+}
+
+/* Log in Page */
+#log {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
+
+.inputLog {
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnLog {
+    background-color: rgba(211,211,211,0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.inputLog:hover {
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.btnLog:hover {
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.line {
+    list-style-type: none;
+}
+
+.line div {
+    display: inline;
+}
+
+.line div a {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+.line-border {
+    border-right: 1px solid black;
+}
+
+#footerLog{
+    font-size: 13px;
+}
+
+/* Sign up Page */
+#sign {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
+
+.imgAvatar {
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.custom-file-label {
+    padding-right: 5rem;
+}
+
+/* Style mobile */
+@media only screen and (max-width: 600px) {
+    #log, #sign {
+        margin-top: 2rem;
+    }
+
+}

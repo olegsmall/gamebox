@@ -17,6 +17,11 @@ const ArticleSchema = new Schema({
     minlength: [10, 'Content minimum lenght is 10 symbols'],
     maxlength: [1500, 'Content maximum length is 1500 symbols']
   },
+  comment: [{
+    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    content: {type:String, minlength:10, maxlength:150},
+    date: {type: Date, default: Date.now()}
+  }],
   // images: {type: [String], required: false},
   images: {type: String, required: false},
   // video: {type: [String], required: false},

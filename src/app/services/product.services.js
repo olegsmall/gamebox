@@ -1,6 +1,8 @@
 const Product = require('../models/product.model');
 const Genre = require('../models/genre.model');
-
+const User = require('../models/user.model');
+const {mongoose} = require('../../config/app.config');
+const idvalidator = mongoose.Types.ObjectId.isValid; //Mongoose objectId validator
 
 exports.createProduct = function (req) {
   try {
@@ -171,9 +173,9 @@ exports.getProductRating = async function (req) {
   // Try Catch the awaited promise to handle the error
   try {
     // Retrieve user data
-    let users = Product.find({_id: req.params.id}).select('rating');
+    let product = Product.find({_id: req.params.id}).select('rating');
     // Return the user list that was returned by the mongoose promise
-    return users.then((product) => {
+    return product.then((product) => {
       if(product === null) { throw Error('No product found'); }
 
       let summ = 0,
@@ -194,3 +196,45 @@ exports.getProductRating = async function (req) {
   }
 };
 
+exports.addProductComment = function (req) {
+  try {
+    let promise = Product.findById({_id: req.params.id});
+
+    return promise.then((product, err) => {
+      if(product === null || err) { throw Error('Product not found'); }
+
+      product.comment.push({user: req.user._id, content: req.body.content});
+
+      return product.save();
+    }, {new: true})
+  } catch(e) {
+    throw {error: e, message: 'Error on add product comment'};
+  }
+};
+
+exports.addProductToCart = function (req) {
+  // Validating if sent product id has correct format
+  if(idvalidator(req.params.id) === false) { throw Error('Wrong product id format') }
+
+  // Querying for product id in DB
+  return Product.findById(req.params.id).exec().then((product, err) => {
+    // Checking if product exists in DB
+    if(product === null) {throw Error('Product doesn\'t exist')}
+    //Checking product status
+    if(product.status[0] === 'sold') { throw Error('Product is already sold') }
+  }).then(() => {
+    //Querying for user id in DB
+    return User.findById({_id: req.user._id}).select('cart').exec().then((cart, err) => {
+      // Checking if product id is already in the cart
+      for(let i=0; i < cart.cart.length; i++) {
+        if(String(cart.cart[i]) === req.params.id) {
+          throw Error('Product is already in your cart');
+        }
+      }
+      //Pushing object id in user's cart
+      cart.cart.push(req.params.id);
+      //Saving user's cart
+      return cart.save();
+    })
+  });
+};

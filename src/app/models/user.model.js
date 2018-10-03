@@ -37,6 +37,7 @@ const UserSchema = new mongoose.Schema({
   address: {type: String, minlength: 5, maxlength: 50},
   password: {type: String, minlength: 1},
   rating: [RatingSubSchema],
+  cart: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
   creation_date: {type: Date, default: Date.now()}
 });
 

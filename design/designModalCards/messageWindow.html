@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="alert w-50 float-right m-5" role="alert">
+        <img class="imgWindow mr-2" src="images/warning_alert_attention_search-512.png">
+        <button type="button" class="close">
+            <span class="span">&times;</span>
+        </button>
+        A simple light alert with an example link. Give it a click if you like.
+    </div>
+
+<script src="js/bootstrap.js"></script>
+
+    <script>
+        $('.alert.w-50.float-right.m-5').fadeIn(3000);
+
+        $('.alert.w-50.float-right.m-5').fadeOut(3000);
+
+        $('.span').click(function() {
+          $('.alert').hide();
+        });
+
+    </script>
+</body>
+</html>
