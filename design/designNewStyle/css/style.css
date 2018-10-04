@@ -159,17 +159,13 @@ a #loupe:focus {
     text-decoration: none;
 }
 
-/*member page*/
-#hi-bg {
-    margin-top: 5.4rem;
-    background: linear-gradient(to top, #026E00, #0a568c);
-    background-color: #333333 !important;
-    border-color: #333333;
-}
+/*user page*/
 
-/*editAccount*/
-h3 form button.mt-3.btn.btn-sm.btn-block.mb-3 {
-    background-color: #026E00 !important;
+h5 button.mt-5.mr-4.ml-5.btn-block {
+ width: 150px;
+}
+div i.fa.fa-star-o{
+    color: #b86607;
 }
 
 /*allGames*/
@@ -370,6 +366,10 @@ button.button.mt-5 a {
 
 #footerLog {
     font-size: 13px;
+}
+/*footer main page*/
+footer.page-footer .line-border{
+    border-right: 1px solid white;
 }
 
 /* Sign up Page */
