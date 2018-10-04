@@ -74,7 +74,7 @@ class EditProfile extends React.Component {
             <form className="mt-3" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group col-md-6">
-                  <Thumb file={values.avatar} user={this.props.user}/>
+                  <Thumb file={values.avatar} object={this.props.user}/>
                   <input
                     name="file"
                     type="file"

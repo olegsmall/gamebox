@@ -25,22 +25,22 @@ class Thumb extends React.Component {
   }
 
   render() {
-    const {file, user} = this.props;
+    const {file, object} = this.props;
 
-    if (!file && !user) {
+    if (!file && !object) {
       return null;
     }
 
     let thumb = '';
     if (!file) {
-      thumb = user.avatar;
+      thumb = (object.avatar)? object.avatar : object.image;
     }else {
       thumb = this.state.thumb;
     }
 
     return (<img
       src={thumb}
-      alt={'avatar'}
+      alt={'image'}
       className="img-thumbnail mt-2"
       height={200}
       width={200}

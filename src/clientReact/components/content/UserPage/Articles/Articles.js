@@ -14,6 +14,10 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
+    this.getArticles();
+  }
+
+  getArticles(){
     axios.get('/user/' + this.props.user.id + '/articles')
       .then((res) => {
         // handle success
@@ -23,7 +27,6 @@ class Articles extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-
   }
 
   handleAddArticle(e) {
@@ -42,7 +45,14 @@ class Articles extends React.Component {
 
         <table className="table table-bordered">
           {this.state.articles.map((article) => (
-            <ArticleRow key={article._id} article={article}/>
+            <ArticleRow
+              key={article._id}
+              article={article}
+              getArticles={this.getArticles.bind(this)}
+              showMessage={this.props.showMessage}
+              setArticleState={this.props.setArticleState}
+              changeInner={this.props.changeInner}
+            />
           ))}
         </table>
       </div>

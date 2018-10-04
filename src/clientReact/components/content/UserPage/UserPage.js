@@ -115,6 +115,7 @@ class UserPage extends React.Component {
           showMessage={this.showMessage.bind(this)}
           pageType={'EditArticle'}
           setArticleState={this.setArticleState.bind(this)}
+          article={this.state.articleForEdit}
         />;
         break;
       default :

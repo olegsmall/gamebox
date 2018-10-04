@@ -23,7 +23,7 @@ const ArticleSchema = new Schema({
     date: {type: Date, default: Date.now()}
   }],
   // images: {type: [String], required: false},
-  images: {type: String, required: false},
+  image: {type: String, required: false},
   // video: {type: [String], required: false},
   tags: [String],
   created: {type: Date, default: Date.now},
