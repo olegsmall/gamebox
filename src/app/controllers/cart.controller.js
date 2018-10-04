@@ -21,7 +21,7 @@ exports.getCartProducts = async function (req, res) {
 exports.deleteProductFromCart = async function (req, res) {
   try {
     let cart = await CartService.deleteProductFromCart(req);
-    return res.status(201).json({status: 201, cart: cart, message: 'Cart products received'});
+    return res.status(201).json({status: 201, cart: cart, message: 'Product successfully deleted from your cart'});
   } catch (e) {
     return res.status(400).json({status: 400, message: e.message});
   }

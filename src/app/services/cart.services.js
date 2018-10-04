@@ -20,10 +20,10 @@ exports.addProductToCart = function (req) {
 
   }).then(() => {
     //Querying for user id in DB
-    return User.findById(req.user._id).select('cart').exec().then((cart, err) => {
+    return User.findById(req.user._id).select('cart').exec().then((user, err) => {
       // Checking if product id is already in the cart
-      for(let i=0; i < cart.cart.length; i++) {
-        if(String(cart.cart[i].product) === req.params.id) {
+      for(let i=0; i < user.cart.length; i++) {
+        if(String(user.cart[i].product) === req.params.id) {
           throw Error('Product is already in your cart');
         }
       }
@@ -41,9 +41,14 @@ exports.addProductToCart = function (req) {
         pre_order_info.rent_duration = req.body.rent_duration;
       }
       //Pushing object id with pre_order information in user's cart
-      cart.cart.push(pre_order_info);
+      user.cart.push(pre_order_info);
       //Saving user's cart
-      return cart.save();
+      return user.save().then(()=> {
+        return User.findById(req.user._id).populate('cart.product').then((user, err) => {
+          if(err) { throw err; }
+          return calcCartTotals(user);
+        });
+      });
     });
   });
 };
