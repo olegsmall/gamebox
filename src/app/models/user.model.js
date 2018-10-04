@@ -58,12 +58,12 @@ UserSchema.methods = {
 };
 
 UserSchema.pre('save', function(next) {
-  console.log('saving');
+  // console.log('saving');
   if (!this.password) {
-    console.log('models/user.model.js ---- No password provided ----');
+    // console.log('models/user.model.js ---- No password provided ----');
     next();
   } else {
-    console.log('models/user.model.js hashPassword in pre save');
+    // console.log('models/user.model.js hashPassword in pre save');
     this.password = this.hashPassword(this.password);
     next();
   }

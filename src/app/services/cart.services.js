@@ -67,7 +67,7 @@ exports.deleteProductFromCart = function (req) {
   let promise = User.findOneAndUpdate(
     {_id: req.user._id},
     {$pull: {cart: {_id: req.params.id}}},
-    {new: true}).select('cart')
+    {new: true, safe: true}).select('cart')
     .populate('cart.product');
 
   return promise.then((user, err) => {

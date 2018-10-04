@@ -7,14 +7,17 @@ const OrderSchema = new Schema({
   status: {type: String, enum: ['pending', 'completed'], default: 'pending'},
   buyer: {type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Buyer id is required']},
   payment_method: {type: String, enum: ['cash', 'check', 'paypal'], required: [true, 'Choose payment method']},
-  date: {type: Date, default: Date.now()},
+  opened: {type: Date, default: Date.now()},
+  closed: {type: Date},
   transaction: [{
     product: {type: Schema.Types.ObjectId, ref: 'Product', required: [true, 'Product is required']},
     price: Number,
-    deal_type: {type: String, enum: ['sell', 'rent']},
+    rent_duration: Number,
+    deal_type: {type: String, enum: ['for sale', 'for rent']},
     seller: String,
-    date: {type: Date, default: Date.now()}
-  }]
+  }],
+  total_items: Number,
+  total_price: Number
 });
 
 OrderSchema.plugin(mongoosePaginate);
