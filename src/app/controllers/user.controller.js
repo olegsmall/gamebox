@@ -99,11 +99,18 @@ exports.getUser = function(req, res){
 exports.updateUserInfo = async function(req, res) {
   try {
     let user = await UserService.updateUserInfo(req);
+    user = {
+      id: user._id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      phone: user.phone,
+      address: user.address,
+      avatar: user.avatar
+    };
     return res.status(201).json({status: 201, user: user, message: 'User updated successfully'});
 
   } catch (e) {
-    console.log('============ UPDATING USER ==============')
-    console.log(e);
     return res.status(409).json({status: 409, message: e.message});
   }
 };

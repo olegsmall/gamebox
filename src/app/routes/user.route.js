@@ -23,11 +23,10 @@ const fileFilter = (req, file, cb) => {
 import multer from 'multer';
 
 const upload = multer({
-    storage: storage,
-    limits: {fileSize: 1024 * 1024 * 4,},
+  storage: storage,
+  limits: {fileSize: 1024 * 1024 * 4,},
   fileFilter: fileFilter
-  })
-;
+});
 
 // Importing Controller
 import UserController from '../controllers/user.controller';
@@ -46,7 +45,7 @@ router.get('/:id/rating', UserController.getUserRating); // Get user rating by i
 router.get('/:id/articles', ArticleController.getUserArticles); //Get articles list of a user
 router.get('/:id/products', ProductController.getUserProducts); //Get products list of a user
 
-router.put('/', UserController.updateUserInfo); //Update user data without password
+router.put('/', upload.single('avatar'), UserController.updateUserInfo); //Update user data without password
 router.put('/password', UserController.updateUserPassword); //Change user password
 router.put('/role', UserController.updateUserRole); //Change user role
 router.put('/:id/status', UserController.updateUserStatus); //Change user status
