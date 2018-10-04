@@ -55,9 +55,9 @@ exports.getProducts = function (req) {
   // Check if searching by title (uses %LIKE%)
   if(req.query.title) { query.title = new RegExp(req.query.title,'i'); }
   // Check if searching by product status (for rent, for sale, sold, rented)
-  // if(req.query.status.toLowerCase() === 'for rent' || req.query.status.toLowerCase() === 'for sale' || req.query.status.toLowerCase() === 'rented' || req.query.status.toLowerCase() === 'sold') {
-  //   query.status = req.query.status.toLowerCase();
-  // }
+  if(req.query.status === 'for rent' || req.query.status === 'for sale' || req.query.status === 'rented' || req.query.status === 'sold') {
+    query.status = req.query.status;
+  }
 
   try {
     // Search objects with user options
@@ -212,29 +212,4 @@ exports.addProductComment = function (req) {
   }
 };
 
-exports.addProductToCart = function (req) {
-  // Validating if sent product id has correct format
-  if(idvalidator(req.params.id) === false) { throw Error('Wrong product id format') }
 
-  // Querying for product id in DB
-  return Product.findById(req.params.id).exec().then((product, err) => {
-    // Checking if product exists in DB
-    if(product === null) {throw Error('Product doesn\'t exist')}
-    //Checking product status
-    if(product.status[0] === 'sold') { throw Error('Product is already sold') }
-  }).then(() => {
-    //Querying for user id in DB
-    return User.findById({_id: req.user._id}).select('cart').exec().then((cart, err) => {
-      // Checking if product id is already in the cart
-      for(let i=0; i < cart.cart.length; i++) {
-        if(String(cart.cart[i]) === req.params.id) {
-          throw Error('Product is already in your cart');
-        }
-      }
-      //Pushing object id in user's cart
-      cart.cart.push(req.params.id);
-      //Saving user's cart
-      return cart.save();
-    })
-  });
-};

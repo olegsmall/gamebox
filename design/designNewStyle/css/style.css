@@ -1,8 +1,10 @@
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif!important;
+    font-family: Arial, Helvetica, sans-serif !important;
     background-color: #ffffff;
+    opacity: 0.9;
 }
+
 li.nav-item .nav-link {
     color: black;
 }
@@ -11,14 +13,15 @@ a:hover {
     color: black;
     text-decoration: none;
 }
+
 /*menu*/
-header nav.stickytop{
+header nav.stickytop {
     transform: translateY(0px);
     width: 100%;
     border-radius: 0 0 5px 5px;
 }
 
-header nav{
+header nav {
     position: fixed;
     transform: translateY(20px);
     transition: transform .6s, width .6s;
@@ -29,13 +32,13 @@ header nav{
 
 }
 
-.navbar{
-    padding: 2px!important;
-    padding-right: 2rem!important;
-    padding-left: 2rem!important;
+.navbar {
+    padding: 2px !important;
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
 }
 
-#dropdownMenu i.fa.fa-user-plus{
+#dropdownMenu i.fa.fa-user-plus {
     color: #000000;
     font-size: 23px;
 
@@ -45,23 +48,72 @@ header nav{
     color: white;
 }
 
+/*promo on main page*/
 
+.promo {
+    position: absolute;
+    top: 0%;
+    left: 55%;
+    width: 100%;
+}
+.promo h5 {
+    color:white;
+    text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.2);
+ }
+
+.promo button.mt-5.mr-4.ml-5{
+     background-color: transparent!important;
+     border-color: #000000;
+     padding: 5px 32px;
+     text-decoration: none;
+     margin: 4px 2px;
+     opacity: 1;
+     border-radius: 3px;
+
+ }
+
+.promo button.ml-1:hover{
+    padding: 10px 45px;
+
+
+}
+.promo button.ml-1{
+    background-color: #81836d!important;
+    border-color: #81836d;
+    padding: 5px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    opacity: 1;
+    border-radius: 3px;
+
+}
+
+
+.promo button:hover{
+    transition: background-color .7s;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
+
+.promo button a{
+    color: black;
+}
 
 .mid {
-    background: rgba(0,0,0,1);
+    background: rgba(0, 0, 0, 1);
 }
 
 /*a.nav-link.h5{*/
-    /*tab-size: 20px;*/
+/*tab-size: 20px;*/
 /*}*/
 
 /*i.fa.fa-star-o {*/
-    /*color: orange!important;*/
-    /*font-size: 20px;*/
+/*color: orange!important;*/
+/*font-size: 20px;*/
 /*}*/
-.card-text{
-    height: 50%!important;
+.card-text {
+    height: 50% !important;
 }
+
 img.searchImg {
     /*width: 30px;*/
     /*box-sizing: border-box;*/
@@ -78,54 +130,58 @@ img.searchImg {
     margin-right: 2rem;
 }
 
-a #loupe:focus{
+a #loupe:focus {
     width: 70%;
 }
 
 /* Log in and Sign Up*/
-#login, #signUp{
-    font-size: 10px!important;
+#login, #signUp {
+    font-size: 10px !important;
     /*margin-bottom: 12rem;*/
 }
-.dropdown-menu{
-    padding-left: 5%!important;
-    right:0;
+
+.dropdown-menu {
+    padding-left: 5% !important;
+    right: 0;
     left: auto;
 }
-.fa.fa-bars, .fa.fa-search{
+
+.fa.fa-bars, .fa.fa-search {
     color: black;
-    margin-top: 5px ;
+    margin-top: 5px;
 }
 
-#lienLogin, #lienSignUp{
+#lienLogin, #lienSignUp {
     color: inherit;
 }
 
-#lienLogin:hover, #lienSignUp{
+#lienLogin:hover, #lienSignUp {
     text-decoration: none;
 }
 
 /*member page*/
-#hi-bg{
+#hi-bg {
     margin-top: 5.4rem;
-    background:linear-gradient(to top, #026E00, #0a568c) ;
-    background-color: #333333!important;
+    background: linear-gradient(to top, #026E00, #0a568c);
+    background-color: #333333 !important;
     border-color: #333333;
 }
+
 /*editAccount*/
-h3 form button.mt-3.btn.btn-sm.btn-block.mb-3{
-    background-color: #026E00!important;
+h3 form button.mt-3.btn.btn-sm.btn-block.mb-3 {
+    background-color: #026E00 !important;
 }
+
 /*allGames*/
-#games{
-    margin-top: 8rem!important;
+#games {
+    margin-top: 8rem !important;
 }
 
 /* Yours articles */
 
 .cardArticle {
-    background-color: transparent!important;
-    border-color: #026E00!important;
+    background-color: transparent !important;
+    border-color: #026E00 !important;
     width: 450px;
     height: 110px;
 
@@ -138,7 +194,7 @@ h3 form button.mt-3.btn.btn-sm.btn-block.mb-3{
     transition: all 0.5s;
 }
 
-.card-body:hover{
+.card-body:hover {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
@@ -146,7 +202,7 @@ h3 form button.mt-3.btn.btn-sm.btn-block.mb-3{
 
 .imageArticle {
     width: 150px;
-    height: 70px!important;
+    height: 70px !important;
 }
 
 /*card product*/
@@ -159,9 +215,10 @@ h3 form button.mt-3.btn.btn-sm.btn-block.mb-3{
     background-position: center;
 }
 
-.card{
-    border-radius: 0!important;
+.card {
+    border-radius: 0 !important;
 }
+
 .inner {
     position: absolute;
     background-color: transparent;
@@ -169,37 +226,41 @@ h3 form button.mt-3.btn.btn-sm.btn-block.mb-3{
     height: 100%;
 }
 
-.product:hover .inner{
+.product:hover .inner {
     background-color: rgba(0, 0, 0, 0.7);
-    -webkit-transition: background-color  .7s;
+    -webkit-transition: background-color .7s;
     -ms-transition: background-color .7s;
     transition: background-color .7s;
-    box-shadow: 4px 10px 10px rgba(0,0,0,0.5);
+    box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
-div.paragraphV{
-    background-color: red;
+div.paragraphV {
+    background-color: #ff6e00;
     padding-right: 5px;
     width: 40px;
     margin-left: -8px;
     margin-top: 6px;
-    box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
-
-
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 
 }
+
 .paragraph {
     display: none;
 
 }
+
 .product:hover .paragraph {
     display: block;
     animation: fadein 1.5s;
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 h4.paragraphV {
@@ -207,14 +268,14 @@ h4.paragraphV {
 }
 
 /*a:hover {*/
-    /*color: black;*/
-    /*text-decoration: none!important;*/
+/*color: black;*/
+/*text-decoration: none!important;*/
 /*}*/
 
 .button {
     display: none;
-    background-color: red;
-    border-color:  red;
+    background-color: #81836d;
+    border-color: #81836d;
     padding: 5px 32px;
     text-decoration: none;
     margin: 4px 2px;
@@ -223,21 +284,22 @@ h4.paragraphV {
 .button:hover {
     /*background-color: lightgreen;*/
     transition: background-color .7s;
-    box-shadow: 2px 2px 2px rgba(255,255,255,0.3);
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3);
 }
 
 .product:hover .button {
     display: inline-block;
     animation: fadein 1.5s;
 
-
 }
-button.button.mt-5 a{
+
+button.button.mt-5 a {
     color: #ffffff;
 }
+
 /*info*/
 .infoCard {
-    background-color: rgba(211,211,211,0.2);
+    background-color: rgba(211, 211, 211, 0.2);
 }
 
 .imgInfo {
@@ -253,18 +315,20 @@ button.button.mt-5 a{
     width: 100px;
     height: 100px;
 }
+
 /*footer*/
-.page-footer{
+.page-footer {
     background-color: #000000;
 }
-.footer-copyright{
+
+.footer-copyright {
     font-size: 13px;
 }
 
 /* Log in Page */
 #log {
-    margin-top: 8rem;
-    margin-bottom: 8rem;
+    margin-top: 3rem;
+    margin-bottom: 7rem;
 }
 
 .inputLog {
@@ -273,17 +337,17 @@ button.button.mt-5 a{
 }
 
 .btnLog {
-    background-color: rgba(211,211,211,0.2);
+    background-color: rgba(211, 211, 211, 0.2);
     border: 1px solid black;
     border-radius: unset;
 }
 
 .inputLog:hover {
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btnLog:hover {
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .line {
@@ -304,14 +368,14 @@ button.button.mt-5 a{
     border-right: 1px solid black;
 }
 
-#footerLog{
+#footerLog {
     font-size: 13px;
 }
 
 /* Sign up Page */
 #sign {
-    margin-top: 8rem;
-    margin-bottom: 8rem;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
 }
 
 .imgAvatar {

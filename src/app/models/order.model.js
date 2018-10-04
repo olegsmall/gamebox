@@ -11,7 +11,7 @@ const OrderSchema = new Schema({
   transaction: [{
     product: {type: Schema.Types.ObjectId, ref: 'Product', required: [true, 'Product is required']},
     price: Number,
-    type: {type: String, enum: ['sell', 'rent']},
+    deal_type: {type: String, enum: ['sell', 'rent']},
     seller: String,
     date: {type: Date, default: Date.now()}
   }]
