@@ -1,9 +1,9 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif!important;
-    background-color: #1D224B!important;
+    background-color: #ffffff!important;
 }
-a {
+li.nav-item .nav-link {
     color: black;
 }
 
@@ -11,15 +11,35 @@ a:hover {
     color: black;
     text-decoration: none;
 }
+/*menu*/
+header nav.stickytop{
+    transform: translateY(0px);
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}
 
-/*.my-text {*/
-    /*text-align: center;*/
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*transform: translate(-50%, -50%);*/
-    /*color: beige;*/
-/*}*/
+header nav{
+    position: fixed;
+    transform: translateY(20px);
+    transition: transform .6s, width .6s;
+    border-radius: 5px;
+    width: calc(100% - 60px);
+    left: auto;
+    margin: 0 auto;
+
+}
+
+.navbar{
+    padding: 2px!important;
+    padding-right: 2rem!important;
+    padding-left: 2rem!important;
+}
+
+#dropdownMenu i.fa.fa-user-plus{
+    color: #000000;
+    font-size: 23px;
+
+}
 
 .fa {
     color: white;
@@ -28,26 +48,53 @@ a:hover {
 
 
 .mid {
-    background: rgba(38,28,28,0.5);
+    background: rgba(0,0,0,1);
 }
 
-a.nav-link.h5{
-    /*color: beige;*/
-    tab-size: 20px;
-}
+/*a.nav-link.h5{*/
+    /*tab-size: 20px;*/
+/*}*/
 
-i.fa.fa-star-o {
-    color: orange!important;
-    font-size: 20px;
-}
+/*i.fa.fa-star-o {*/
+    /*color: orange!important;*/
+    /*font-size: 20px;*/
+/*}*/
 .card-text{
     height: 50%!important;
+}
+img.searchImg {
+    /*width: 30px;*/
+    /*box-sizing: border-box;*/
+    /*border: 2px solid #ccc;*/
+    /*border-radius: 4px;*/
+    /*font-size: 11px;*/
+    /*background-color: white;*/
+    /*background-image: url('.image/search-icon.png');*/
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    /*padding: 5px 10px 5px 10px;*/
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin-right: 2rem;
+}
+
+a #loupe:focus{
+    width: 70%;
 }
 
 /* Log in and Sign Up*/
 #login, #signUp{
-    margin-top: 12rem;
-    margin-bottom: 12rem;
+    font-size: 10px!important;
+    /*margin-bottom: 12rem;*/
+}
+.dropdown-menu{
+    padding-left: 5%!important;
+    right:0;
+    left: auto;
+}
+.fa.fa-bars, .fa.fa-search{
+    color: black;
+    margin-top: 5px ;
 }
 
 #lienLogin, #lienSignUp{
@@ -57,6 +104,27 @@ i.fa.fa-star-o {
 #lienLogin:hover, #lienSignUp{
     text-decoration: none;
 }
+
+/*promo on main page*/
+.promo{
+    position	: absolute;
+    top		: 200px;
+    left		: 0;
+    width		: 100%;
+}
+.promo button.button {
+    position	: absolute;
+    top		: 240px;
+    left		: 0;
+    width		: 100%;
+    background-color: red;
+    border-color:  red;
+    padding: 5px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+}
+
+
 /*member page*/
 #hi-bg{
     margin-top: 5.4rem;
@@ -100,5 +168,118 @@ h3 form button.mt-3.btn.btn-sm.btn-block.mb-3{
     width: 150px;
     height: 70px!important;
 }
+
+/*card product*/
+.product {
+    position: relative;
+    width: 280px;
+    height: 300px;
+    /*background-image: url("../image/img1.jpg");*/
+    background-size: cover;
+    background-position: center;
+}
+
+.card{
+    border-radius: 0!important;
+}
+.inner {
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+.product:hover .inner{
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: background-color  .7s;
+    -ms-transition: background-color .7s;
+    transition: background-color .7s;
+    box-shadow: 4px 10px 10px rgba(0,0,0,0.5);
+}
+
+div.paragraphV{
+    background-color: red;
+    padding-right: 5px;
+    width: 40px;
+    margin-left: -8px;
+    margin-top: 6px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+
+
+
+}
+.paragraph {
+    display: none;
+
+}
+.product:hover .paragraph {
+    display: block;
+    animation: fadein 1.5s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+h4.paragraphV {
+    color: white;
+}
+
+/*a:hover {*/
+    /*color: black;*/
+    /*text-decoration: none!important;*/
+/*}*/
+
+.button {
+    display: none;
+    background-color: red;
+    border-color:  red;
+    padding: 5px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+}
+
+.button:hover {
+    /*background-color: lightgreen;*/
+    transition: background-color .7s;
+    box-shadow: 2px 2px 2px rgba(255,255,255,0.3);
+}
+
+.product:hover .button {
+    display: inline-block;
+    animation: fadein 1.5s;
+
+
+}
+button.button.mt-5 a{
+    color: #ffffff;
+}
+/*info*/
+.infoCard {
+    background-color: lightgray;
+}
+
+.imgInfo {
+    width: 40px;
+    height: 40px;
+}
+
+.text {
+    font-size: 13px;
+}
+
+.imgWork {
+    width: 100px;
+    height: 100px;
+}
+/*footer*/
+footer{
+    background-color: #000000;
+}
+.footer-copyright{
+    font-size: 13px;
+}
+
 
 

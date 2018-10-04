@@ -13,9 +13,18 @@ exports.createUser = async function (req) {
   if (user) {
     throw new ResponseException(409, 'User already exists');
   } else {
+
+    let avatarFilePath;
+    if (req.file){
+      avatarFilePath = '/image/avatars/' + req.file.filename;
+    } else {
+      avatarFilePath = '/image/default/default_avatar';
+    }
+
     const newUser = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      avatar: avatarFilePath,
       email: req.body.email,
       phone: req.body.phone,
       address: req.body.address,
@@ -64,13 +73,16 @@ exports.updateUserInfo = function (req) {
   try {
     let promise = User.findById(req.user._id, {password: 0});
 
+
     return promise.then((user) => {
       if(user === null) { throw Error('User not found'); }
 
+      if (req.file){
+        user.avatar = '/image/avatars/' + req.file.filename;
+      }
       user.firstName = req.body.firstName;
       user.lastName = req.body.lastName;
-      user.email = req.body.email;
-      user.avatar = req.body.avatar;
+      // user.email = req.body.email;
       user.phone = req.body.phone;
       user.address = req.body.address;
 

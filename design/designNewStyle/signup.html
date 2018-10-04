@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Game Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Sign up -->
+<div id="sign" class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-3 text-center mb-0 mb-md-5">
+            <a href="#"><img src="image/logo1.png" width="80" height="80"></a>
+            <p class="mt-1">Join to GameBox</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="mt-2 mb-2 ">
+                <img class="img-thumbnail w-50 mb-3 imgAvatar" src="image/itWorks.png">
+            </div>
+            <div class="custom-file w-50">
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label inputLog" for="customFile">Avatar</label>
+            </div>
+        </div>
+        <div class="col-md-8 text-center">
+            <form class="mt-4 mt-md-2" method="post" action="#">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control inputLog" id="inputName"
+                               placeholder="First Name">
+                        <small class="form-text text-muted text-left">*Please enter your name.</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control inputLog" id="inputSurname"
+                               placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="email" class="form-control inputLog" id="inputEmail"
+                               placeholder="E-mail">
+                        <small class="form-text text-muted text-left">*Please enter email.</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control inputLog" id="inputPhoneNumber"
+                               placeholder="Phone number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control inputLog" id="inputAddress"
+                           placeholder="Address">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="password" class="form-control inputLog" id="inputPassword"
+                               placeholder="Password">
+                        <small class="form-text text-muted text-left">*Please enter password.</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="password" class="form-control inputLog" id="inputConfPassword"
+                               placeholder="Confirm your password">
+                        <small class="form-text text-muted text-left">*Please enter password.</small>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-block mt-2 btnLog">Create your account</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--footer-->
+<footer id="footerLog">
+<!-- Footer Elements -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="line">
+                <div class="line-border"><a href="#">Home</a></div>
+                <div class="line-border"><a href="#">About</a></div>
+                <div class="line-border"><a href="#">Games</a></div>
+                <div class="line-border"><a href="#">Help</a></div>
+                <div><a href="#">Blog</a></div>
+            </div>
+         </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+        <div class="col-md-6 text-center">
+            <div class="line">
+                <p>© 2018 Copyright: Dream Team #1 with love</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script>
+  //menu
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').addClass('stickytop');
+    } else {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').removeClass('stickytop');
+    }
+  });
+
+</script>
+
+</body>
+</html>

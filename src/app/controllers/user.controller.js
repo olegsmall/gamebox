@@ -5,6 +5,7 @@ const UserService = require('../services/user.services');
 exports.createUser = async function(req, res, next) {
   try {
     console.log('Creating new User');
+    console.log(req.file);
     let newUser = await UserService.createUser(req, res, next);
     return res.status(201).json({status: 201, data: newUser, message: 'User Created Successfully'});
 
@@ -38,7 +39,9 @@ exports.authenticate = function(req, res) {
       email: req.user.email,
       firstName: req.user.firstName,
       lastName: req.user.lastName,
-      phone: req.user.phone
+      phone: req.user.phone,
+      address: req.user.address,
+      avatar: req.user.avatar
     };
     res.status(200).json({status: 200, user: user, message: 'Authenticate successfully'});
   } catch(e) {
@@ -48,7 +51,7 @@ exports.authenticate = function(req, res) {
   }
 };
 
-exports.getUser = function(req, res){
+exports.getSessionUser = function(req, res){
   try {
     if (req.user){
       const user = {
@@ -56,7 +59,32 @@ exports.getUser = function(req, res){
         email: req.user.email,
         firstName: req.user.firstName,
         lastName: req.user.lastName,
-        phone: req.user.phone
+        phone: req.user.phone,
+        address: req.user.address,
+        avatar: req.user.avatar
+      };
+      res.status(200).json({status: 200, user: user, message: 'Authenticate granted'});
+    } else {
+      return res.status(403.21).json({status: 403.21, message: 'Source access denied'});
+    }
+  } catch(e) {
+    //Return an Error Response Message with Code and the Error Message.
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
+exports.getUser = function(req, res){
+  //TODO: change this method
+  try {
+    if (req.user){
+      const user = {
+        id: req.user._id,
+        email: req.user.email,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        phone: req.user.phone,
+        address: req.user.address,
+        avatar: req.user.avatar
       };
       res.status(200).json({status: 200, user: user, message: 'Authenticate granted'});
     } else {
@@ -70,10 +98,12 @@ exports.getUser = function(req, res){
 
 exports.updateUserInfo = async function(req, res) {
   try {
-    let user = await UserService.updateUser(req);
+    let user = await UserService.updateUserInfo(req);
     return res.status(201).json({status: 201, user: user, message: 'User updated successfully'});
 
   } catch (e) {
+    console.log('============ UPDATING USER ==============')
+    console.log(e);
     return res.status(409).json({status: 409, message: e.message});
   }
 };
