@@ -9,6 +9,7 @@ const upload = multer({dest: '/image/avatar/'});
 import UserController from '../controllers/user.controller';
 import ProductController from '../controllers/product.controller';
 import ArticleController from '../controllers/article.controller';
+import OrderController from "../controllers/order.controller";
 
 router.post('/', upload.single('avatar'), UserController.createUser);
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
@@ -25,6 +26,12 @@ router.put('/password', UserController.updateUserPassword); //Change user passwo
 router.put('/role', UserController.updateUserRole); //Change user role
 router.put('/:id/status', UserController.updateUserStatus); //Change user status
 router.put('/:id/rating', UserController.rateUser); //Rate user
+
+
+
+// router.get('/:id/order', OrderController.getOrders); //Get user orders
+
+
 
 router.post('/logout', (req, res) => {
   if (req.user) {

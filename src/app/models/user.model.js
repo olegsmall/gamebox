@@ -37,7 +37,12 @@ const UserSchema = new mongoose.Schema({
   address: {type: String, minlength: 5, maxlength: 50},
   password: {type: String, minlength: 1},
   rating: [RatingSubSchema],
-  cart: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
+  cart: [{
+    product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
+    rent_duration: {type: Number, max: [180, 'Maximum rent duration is 180 days']},
+    deal_type: {type: String, enum: ['for rent', 'for sale'], required: [true, 'Choose deal type']},
+    date: {type: Date}
+  }],
   creation_date: {type: Date, default: Date.now()}
 });
 
