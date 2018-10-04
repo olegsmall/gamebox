@@ -6,14 +6,14 @@ require('./Products.scss');
 
 class Products extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       products: [],
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
 
     axios.get('/user/' + this.props.user.id + '/products')
       .then((res) => {
@@ -27,7 +27,7 @@ class Products extends React.Component {
 
   }
 
-  handleAddProduct(e){
+  handleAddProduct(e) {
     e.preventDefault();
     this.props.changeInner('AddProduct');
   }
@@ -42,9 +42,11 @@ class Products extends React.Component {
         </div>
 
         <div>
-          {this.state.products.map((product)=>(
+          {this.state.products.map((product) => (
             <ProductRow key={product._id} product={product}/>
-          ))}
+            
+
+            ))}
         </div>
       </div>
     );
