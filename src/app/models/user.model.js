@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema({
     match: [/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
       'Please fill a valid email address']
   },
-  avatar: {type: String, default: 'default/default_avatar.png'},
+  avatar: {type: String, default: '/image/default/default_avatar.png'},
   role: {type: String, enum: ['SuperUser', 'Administrator', 'User'], default: 'User'},
   status: StatusSubSchema,
   phone: {type: String},

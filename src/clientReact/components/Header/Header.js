@@ -52,6 +52,7 @@ class Header extends React.Component {
                 history={this.props.history}
                 logoutUser={this.props.logoutUser}
                 loggedIn={this.props.loggedIn}
+                user={this.props.user}
               />
               <input
                 className="form-control-sm mr-sm-2"

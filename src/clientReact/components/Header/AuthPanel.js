@@ -21,7 +21,7 @@ class AuthPanel extends React.Component {
 
     let buttons;
 
-    if (this.props.loggedIn) {
+    if (this.props.user) {
       buttons =
         <div className={'d-flex flex-row flex-nowrap'}>
           <div>

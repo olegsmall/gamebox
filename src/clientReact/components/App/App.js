@@ -54,7 +54,9 @@ class App extends React.Component {
   }
 
   getUser() {
-    axios.get('/user/').then(res => {
+    axios.get('/user/session').then(res => {
+
+      console.log(res.data.user);
       if (res.data.user) {
         this.setState({
           loggedIn: true,
@@ -95,6 +97,7 @@ class App extends React.Component {
           history={this.props.history}
           logoutUser={this.logoutUser}
           loggedIn={this.state.loggedIn}
+          user={this.state.user}
         />
         <div id="mainContent">
           {/* Routes to different components */}
@@ -115,7 +118,7 @@ class App extends React.Component {
             />
             <Route
               exac path="/user"
-              render={() => <UserPage/>}
+              render={() => <UserPage user={this.state.user}/>}
             />
             <Route
               exact path="/product"
