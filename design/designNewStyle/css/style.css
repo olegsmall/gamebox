@@ -14,14 +14,14 @@ a:hover {
     text-decoration: none;
 }
 
-/*menu*/
-header nav.stickytop {
+/* Menu */
+header nav.stickytop{
     transform: translateY(0px);
     width: 100%;
     border-radius: 0 0 5px 5px;
 }
 
-header nav {
+header nav{
     position: fixed;
     transform: translateY(20px);
     transition: transform .6s, width .6s;
@@ -32,13 +32,27 @@ header nav {
 
 }
 
-.navbar {
-    padding: 2px !important;
-    padding-right: 2rem !important;
-    padding-left: 2rem !important;
+.navbar{
+    padding: 2px!important;
+    padding-right: 2rem!important;
+    padding-left: 2rem!important;
 }
 
-#dropdownMenu i.fa.fa-user-plus {
+.btnSearch {
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+}
+
+.inputSearch {
+    display: none;
+    background-color: unset;
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 22rem;
+}
+
+#dropdownMenu i.fa.fa-user-plus{
     color: #000000;
     font-size: 23px;
 
@@ -48,175 +62,129 @@ header nav {
     color: white;
 }
 
-/*promo on main page*/
-
-.promo {
-    position: absolute;
-    top: 0%;
-    left: 55%;
-    width: 100%;
-}
-.promo h5 {
-    color:white;
-    text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.2);
- }
-
-.promo button.mt-5.mr-4.ml-5{
-     background-color: transparent!important;
-     border-color: #000000;
-     padding: 5px 32px;
-     text-decoration: none;
-     margin: 4px 2px;
-     opacity: 1;
-     border-radius: 3px;
-
- }
-
-.promo button.ml-1:hover{
-    padding: 10px 45px;
-
-
-}
-.promo button.ml-1{
-    background-color: #81836d!important;
-    border-color: #81836d;
-    padding: 5px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    opacity: 1;
-    border-radius: 3px;
-
-}
-
-
-.promo button:hover{
-    transition: background-color .7s;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
-}
-
-.promo button a{
-    color: black;
-}
-
 .mid {
-    background: rgba(0, 0, 0, 1);
+    background: rgba(0,0,0,1);
 }
 
-/*a.nav-link.h5{*/
-/*tab-size: 20px;*/
-/*}*/
+a.nav-link.h5 {
+    tab-size: 20px;
+}
 
-/*i.fa.fa-star-o {*/
-/*color: orange!important;*/
-/*font-size: 20px;*/
-/*}*/
-.card-text {
-    height: 50% !important;
+.card-text{
+    height: 50%!important;
 }
 
 img.searchImg {
-    /*width: 30px;*/
-    /*box-sizing: border-box;*/
-    /*border: 2px solid #ccc;*/
-    /*border-radius: 4px;*/
-    /*font-size: 11px;*/
-    /*background-color: white;*/
-    /*background-image: url('.image/search-icon.png');*/
     background-position: 10px 10px;
     background-repeat: no-repeat;
-    /*padding: 5px 10px 5px 10px;*/
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     margin-right: 2rem;
 }
 
-a #loupe:focus {
+a #loupe:focus{
     width: 70%;
 }
 
 /* Log in and Sign Up*/
-#login, #signUp {
-    font-size: 10px !important;
-    /*margin-bottom: 12rem;*/
+#login, #signUp{
+    font-size: 10px!important;
 }
 
-.dropdown-menu {
-    padding-left: 5% !important;
-    right: 0;
+.dropdown-menu{
+    padding-left: 5%!important;
+    right:0;
     left: auto;
 }
 
-.fa.fa-bars, .fa.fa-search {
+.fa.fa-bars, .fa.fa-search{
     color: black;
-    margin-top: 5px;
+    margin-top: 5px ;
 }
 
-#lienLogin, #lienSignUp {
+#lienLogin, #lienSignUp{
     color: inherit;
 }
 
-#lienLogin:hover, #lienSignUp {
+#lienLogin:hover, #lienSignUp{
     text-decoration: none;
 }
 
-/*member page*/
-#hi-bg {
-    margin-top: 5.4rem;
-    background: linear-gradient(to top, #026E00, #0a568c);
-    background-color: #333333 !important;
-    border-color: #333333;
-}
-
-/*editAccount*/
-h3 form button.mt-3.btn.btn-sm.btn-block.mb-3 {
-    background-color: #026E00 !important;
-}
-
-/*allGames*/
-#games {
-    margin-top: 8rem !important;
-}
-
-/* Yours articles */
-
-.cardArticle {
-    background-color: transparent !important;
-    border-color: #026E00 !important;
-    width: 450px;
-    height: 110px;
-
-    overflow: hidden;
-}
-
-.card-body {
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-}
-
-.card-body:hover {
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-}
-
-.imageArticle {
+/* User Page*/
+h5 button.mt-5.mr-4.ml-5.btn-block {
     width: 150px;
-    height: 70px !important;
 }
 
-/*card product*/
+div i.fa.fa-star-o {
+    color: #b86607;
+}
+
+.btnEditProf {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnEditProf:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Edit Profile Page*/
+.w-30 {
+    width: 35%;
+}
+
+input.form-control.mt-3.w-30 {
+    display: inline;
+!important;
+    margin-left: 10px;
+}
+
+/* All Games Page */
+.imageStar{
+    display: block;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: -1px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+.btnPrice{
+    text-decoration: none;
+    color: black;
+    font-size: small;
+}
+
+.card {
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
+}
+
+.card:hover {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+/* Card Product*/
 .product {
     position: relative;
     width: 280px;
     height: 300px;
-    /*background-image: url("../image/img1.jpg");*/
     background-size: cover;
     background-position: center;
+    border-radius: unset !important;
 }
 
-.card {
-    border-radius: 0 !important;
+.imgBorder {
+    border-radius: unset !important;
+    border: none;
+
+}
+.imgBody{
+    border: 1px solid #a5afaf;
 }
 
 .inner {
@@ -226,12 +194,12 @@ h3 form button.mt-3.btn.btn-sm.btn-block.mb-3 {
     height: 100%;
 }
 
-.product:hover .inner {
+.product:hover .inner{
     background-color: rgba(0, 0, 0, 0.7);
-    -webkit-transition: background-color .7s;
+    -webkit-transition: background-color  .7s;
     -ms-transition: background-color .7s;
     transition: background-color .7s;
-    box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 4px 10px 10px rgba(0,0,0,0.5);
 }
 
 div.paragraphV {
@@ -246,7 +214,6 @@ div.paragraphV {
 
 .paragraph {
     display: none;
-
 }
 
 .product:hover .paragraph {
@@ -255,22 +222,13 @@ div.paragraphV {
 }
 
 @keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 h4.paragraphV {
     color: white;
 }
-
-/*a:hover {*/
-/*color: black;*/
-/*text-decoration: none!important;*/
-/*}*/
 
 .button {
     display: none;
@@ -282,7 +240,6 @@ h4.paragraphV {
 }
 
 .button:hover {
-    /*background-color: lightgreen;*/
     transition: background-color .7s;
     box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3);
 }
@@ -291,15 +248,15 @@ h4.paragraphV {
     display: inline-block;
     animation: fadein 1.5s;
 
-}
 
-button.button.mt-5 a {
+}
+button.button.mt-5 a{
     color: #ffffff;
 }
 
-/*info*/
+/* Info */
 .infoCard {
-    background-color: rgba(211, 211, 211, 0.2);
+    background-color: rgba(211,211,211,0.2);
 }
 
 .imgInfo {
@@ -316,19 +273,23 @@ button.button.mt-5 a {
     height: 100px;
 }
 
-/*footer*/
-.page-footer {
+/* Footer Main Page*/
+.page-footer{
     background-color: #000000;
 }
 
-.footer-copyright {
+.footer-copyright{
     font-size: 13px;
+}
+
+footer.page-footer .line-border {
+    border-right: 1px solid white;
 }
 
 /* Log in Page */
 #log {
-    margin-top: 3rem;
-    margin-bottom: 7rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
 }
 
 .inputLog {
@@ -337,17 +298,17 @@ button.button.mt-5 a {
 }
 
 .btnLog {
-    background-color: rgba(211, 211, 211, 0.2);
+    background-color: rgba(211,211,211,0.2);
     border: 1px solid black;
     border-radius: unset;
 }
 
 .inputLog:hover {
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 }
 
 .btnLog:hover {
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 }
 
 .line {
@@ -368,14 +329,14 @@ button.button.mt-5 a {
     border-right: 1px solid black;
 }
 
-#footerLog {
+#footerLog{
     font-size: 13px;
 }
 
 /* Sign up Page */
 #sign {
-    margin-top: 3rem;
-    margin-bottom: 4rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
 }
 
 .imgAvatar {
@@ -387,10 +348,201 @@ button.button.mt-5 a {
     padding-right: 5rem;
 }
 
+/* Change Password Page*/
+.inputPass {
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnPass {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.inputPass:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btnPass:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Edit Profale Page*/
+.inputEdit {
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnEdit {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.inputEdit:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btnEdit:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Game Page */
+#gamePage {
+    margin-top: 2rem;
+}
+
+.imgMain {
+    height: 100%;
+    max-height: 400px;
+    width: auto;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+
+.imageMainGame {
+    border: 1px solid gray;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
+}
+
+.imageMainGame:hover {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.btnProduct, .btnGameComments {
+    background-color: rgba(211,211,211,0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnProduct {
+    margin-left: 1rem;
+}
+
+.btnProduct:hover, .btnGameComments:hover {
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+#rate {
+    font-size: 1.25rem;
+}
+
+.fa-star-o {
+    color: rgba(0,0,0,0.5);
+    font-size: 20px;
+}
+
+.price {
+    font-weight: bold;
+    background-color: orange;
+    border: 1px solid gray;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    padding: 5px 10px 5px 10px;
+}
+
+.fa-pencil {
+    color: black;
+}
+
+#marginCom {
+    margin-bottom: 1rem;
+}
+
+.sectionMostPopular {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.btnViewMore {
+    background-color: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: unset;
+    height: 3rem;
+}
+
+.btnViewMore:hover {
+    border: 2px solid black;
+    transition: color 0.25s;
+}
+
+/* All articles Page */
+#article {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.linkArticle {
+    color: black;
+}
+
+hr {
+    border-color: gray;;
+}
+
+.cardBodyArticle {
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
+}
+
+.cardBodyArticle:hover {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.imageArticle {
+    width: 250px;
+    height: 150px;
+}
+
+/* Article Page */
+.articlePage {
+    margin-top: 3rem;
+}
+
+/* About */
+.map {
+    height: 400px;
+}
+
 /* Style mobile */
+@media only screen and (min-width: 600px) {
+	/* User Page */
+    .footerFix {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width: 600px) {
+    /* Header */
+    .inputSearch {
+        width: 10rem;
+    }
+
+    /* Log in and Sign up Pages */
     #log, #sign {
         margin-top: 2rem;
     }
 
+    /* All articles Page */
+    #article {
+        margin-top: 3rem;
+    }
+
+    .imageArticle {
+        margin-bottom: 2rem;
+        width: 650px;
+        height: 250px;
+    }
 }
+
