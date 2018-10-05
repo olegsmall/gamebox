@@ -89,6 +89,8 @@ app.use('/admin', require('./app/routes/admin.route'));
 app.use('/genre', require('./app/routes/genre.route'));
 app.use('/product', require('./app/routes/product.route'));
 app.use('/article', require('./app/routes/article.route'));
+app.use('/cart', require('./app/routes/cart.route'));
+app.use('/order', require('./app/routes/order.route'));
 
 app.listen(port, () =>{
   console.info('Express listening on port ', port);

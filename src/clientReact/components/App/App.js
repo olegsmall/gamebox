@@ -118,7 +118,10 @@ class App extends React.Component {
             />
             <Route
               exac path="/user"
-              render={() => <UserPage user={this.state.user}/>}
+              render={() => <UserPage
+                user={this.state.user}
+                updateUser={this.updateUser}
+              />}
             />
             <Route
               exact path="/product"

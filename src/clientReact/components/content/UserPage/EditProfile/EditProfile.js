@@ -8,16 +8,9 @@ import Thumb from "../../../common/Thumb/Thumb";
 require('./EditProfile.scss');
 
 class EditProfile extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     avatarFromServer: this.props.user.avatar,
-  //   };
-  // }
 
   handleSubmit(values, actions) {
     let formData = new FormData();
-    // debugger;
     if (values.avatar) {
       formData.append('avatar', values.avatar, values.avatar.name);
     }
@@ -26,14 +19,17 @@ class EditProfile extends React.Component {
     formData.append('phone', values.phone);
     formData.append('address', values.address);
 
+    const self = this;
     Axios.put('/user', formData)
       .then((res) => {
-        this.props.showMessage(res.data.message);
+        self.props.showMessage(res.data.message);
         actions.setSubmitting(false);
+        self.props.updateUser({user: res.data.user});
+        self.props.changeInner('Profile');
       })
       .catch((error) => {
         console.log(error);
-        this.props.showMessage(error.message);
+        self.props.showMessage(error.message);
         actions.setSubmitting(false);
       });
   }
@@ -78,7 +74,7 @@ class EditProfile extends React.Component {
             <form className="mt-3" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group col-md-6">
-                  <Thumb file={values.avatar} user={this.props.user}/>
+                  <Thumb file={values.avatar} object={this.props.user}/>
                   <input
                     name="file"
                     type="file"

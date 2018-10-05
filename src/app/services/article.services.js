@@ -2,12 +2,18 @@ const Article = require('../models/article.model');
 
 exports.createArticle = function (req) {
   try {
+    let image;
+    if (req.file){
+      image = '/image/articles/' + req.file.filename;
+    } else {
+      image = '/image/default/article.jpg';
+    }
+
     return new Article({
       author: req.user._id,
       title: req.body.title,
       content: req.body.content,
-      images: req.body.images,
-      video: req.body.video,
+      image: image,
       tags: req.body.tags
     }).save();
 
