@@ -7,7 +7,7 @@ const MainPage = () => {
   return (
     <div className={"MainPage"}>
       <div className="imageMain">
-        <img className="d-block w-100" src="image/back4.jpg" alt="First image"/>
+        <img className="d-block w-100 imgMain" src="image/back4.jpg" alt="First image"/>
       </div>
       <h5 className="text-center pt-4 mt-2">Welcome to GameBox!</h5>
       <div className="infoCard mt-4">

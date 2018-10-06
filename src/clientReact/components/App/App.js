@@ -12,6 +12,7 @@ import GamePage from '../content/GamePage/GamePage';
 import UserPage from '../content/UserPage/UserPage';
 import AllArticlesPage from '../content/AllArticlesPage/AllArticlesPage';
 import ArticlePage from '../content/ArticlePage/ArticlePage';
+import AboutPage from '../content/AboutPage/AboutPage';
 
 require('./App.scss');
 
@@ -138,6 +139,10 @@ class App extends React.Component {
             <Route
               path="/article/:articleId"
               component={ArticlePage}
+            />
+            <Route
+              exact path="/about"
+              render={() => <AboutPage/>}
             />
           </Switch>
         </div>
