@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Game Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="mr-5 ml-5">
+        <nav class="navbar navbar-expand-lg  navbar-lignt bg-light fixed-top navbar-inverse mid">
+            <a class="navbar-brand" href="#"><img src="image/logo1.png" width="40" height="40"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="false"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav mr-auto mt-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                </ul>
+
+                <form>
+                    <input type="text" name="search" class="inputSearch">
+                        <img id="btn" src="image/loupe.png" width="25" class="mr-4 btnSearch" alt="">
+                </form>
+
+
+                <div class="dropdown">
+                    <a class="dropdown" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <a class="dropdown-item" id="Login" href="login.html">Log in</a>
+                        <a class="dropdown-item" id="SignUp" href="signUp.html">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Game -->
+<div>
+    <img class="d-block w-100 imgMain" src="image/Trine_-_Wizard_Knight_Caverns.jpg" alt="Game image">
+</div>
+<div id="gamePage">
+    <h3 class="text-center mb-4 mb-sm-5">Minecraft</h3>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-md-6 sectionImage">
+                <img class="img-fluid imageMainGame" src="image/minecraft-529458_1280.jpg" alt="First slide">
+            </div>
+            <div class="col-md-6 text-center text-md-left">
+                <form class=" mt-4 mt-md-0 mb-3 pl-3">
+                    <div class="form-check form-check-inline">
+                        <span><i class="fa fa-star-o"></i></span>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <span><i class="fa fa-star-o"></i></span>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <span><i class="fa fa-star-o"></i></span>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <span><i class="fa fa-star-o"></i></span>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <span><i class="fa fa-star-o"></i></span>
+                    </div>
+                </form>
+                <p class="pl-3">Product seller : Markus Persson</p>
+                <p class="pl-3">Genre : Strategy, Adventure, etc.</p>
+                <p class="pl-3">Purchase price : <span class="price">300$</span></p>
+                <p class="pl-3">Rent price : <span class="price">30$</span></p>
+                <form class="mb-3 pl-3">
+                    <input type="radio"  name="radio"> Buy
+                    <input type="radio" class="ml-3" name="radio"> Rent
+                </form>
+                <button class="btn w-50 mt-2 btnProduct">Add to cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="my-4 text-center">Discover the world of Minecraft</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores beatae dicta enim et ex facere
+                id necessitatibus odit omnis, optio quae quam qui quia quis quisquam saepe unde vitae?
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="swiper-container mb-3">
+                <div class="swiper-wrapper mt-3">
+                    <div class="swiper-slide">
+                        <img class="img-fluid imageMainGame" src="image/minecraft-1618089_1280.jpg" alt="First slide">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img-fluid imageMainGame" src="image/minecraft-529458_1280.jpg" alt="Second slide">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img-fluid imageMainGame" src="image/minecraft-1988580_1280.jpg" alt="Third slide">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img-fluid imageMainGame" src="image/minecraft-655957_1280.jpg" alt="First slide">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img-fluid imageMainGame" src="image/minecraft-1106253_1280.png" alt="Second slide">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img-fluid imageMainGame" src="image/minecraft-1746541_1280.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Comments -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 text-nowrap">
+                <form>
+                    <h5 id="marginCom">Write a comment</h5>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-pencil"></i></span>
+                        </div>
+                        <textarea class="form-control form-control-lg font-input" name="comments" placeholder="Your comments" rows="5"></textarea>
+                    </div>
+                    <input type="submit" value="Send" class="btn btn-sm btn-block btnGameComments">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<!--cards-row2-->
+<div class="container mb-5">
+    <h5 class="mt-4 ml-5 text-center">Most popular</h5>
+    <div class="card-deck mt-4">
+        <div class="card product text-center" style="background-image: url(image/overwatch-1610865_1280.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
+            </div>
+        </div>
+        <div class="card product text-center"
+             style="background-image: url(image/science-fiction-965258_1280.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
+            </div>
+        </div>
+        <div class="card product text-center" style="background-image: url(image/img5.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5 ">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<footer class="page-footer font-small teal pt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center py-2">
+            <div class="line text-light">
+                <div class="line-border"><a href="#" class="text-light">Home</a></div>
+                <div class="line-border"><a href="#" class="text-light">About</a></div>
+                <div class="line-border"><a href="#" class="text-light">Games</a></div>
+                <div class="line-border"><a href="#" class="text-light">Help</a></div>
+                <div><a href="#" class="text-light">Blog</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Elements -->
+    <div class="container text-center">
+        <div class="py-4">
+            <div>
+                <a class="fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3"> </i></a>
+                <a class="tw-ic"> <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3"></i></a>
+                <a class="gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3"></i> </a>
+                <a class="li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3"></i></a>
+                <a class="ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3"></i> </a>
+                <a class="pin-ic"><i class="fa fa-pinterest fa-lg white-text"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-3 text-light">© 2018 Copyright: Dream Team #1 with love</div>
+</footer>
+
+
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+<script>
+  //menu
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').addClass('stickytop');
+    } else {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').removeClass('stickytop');
+    }
+  });
+
+  $(document).ready(function(){
+    $(".btnSearch").click(function(){
+      $(".inputSearch").toggle(1000, "linear");
+    });
+  });
+</script>
+
+<!-- Carousel script -->
+<script>
+  let mySwiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+</body>
+</html>

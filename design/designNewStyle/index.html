@@ -41,7 +41,10 @@
                     </li>
                 </ul>
 
-                <a href="#"><img id="loupe" src="image/loupe.png" width="25" class="mr-4" alt=""></a>
+                <form>
+                    <input type="text" name="search" class="inputSearch">
+                    <img id="btn" src="image/loupe.png" width="25" class="mr-4 btnSearch" alt="">
+                </form>
 
                 <div class="dropdown">
                     <a class="dropdown" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
@@ -58,209 +61,223 @@
     </div>
 </header>
 <!-- Content -->
-<div>
-    <div class="imageMain">
-        <img class="d-block w-100" src="image/back4.jpg" alt="First image">
+<div class="imageMain">
+    <img class="d-block w-100" src="image/back4.jpg" alt="First image">
+</div>
+<h5 class="text-center pt-4 mt-2">Welcome to GameBox!</h5>
+<div class="infoCard mt-4">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid imgWork my-2 mr-4 ml-2 float-left" src="image/itWorks.png">
+                <!--<p class="mt-4">You must register or log in to be able to sell, buy or rent games and be our-->
+                <!--member.-->
+                <!--As a member, you can also write the comments or rate the games and other members,-->
+                <!--post articles or tips and show certain statistics. In addition, our member can communicate-->
+                <!--with other members through our chat system, complain to the site administrator about some-->
+                <!--members and be blocked by the site administrator. And finally, the site administrator can-->
+                <!--give our member the right to be the site administrator.-->
+                <h5 class="mt-2">You can sell, buy or rent games</h5>
+                <h5>And our members can communicate with each other</h5>
+                <h5><span>See our new games right now!</span></h5>
+                <!--<div class="promo">-->
+                <!--<button class="mt-5 mr-4 ml-5"><a href="#" class="pr-3 pl-3">Articles</a></button>-->
+                <!--<button class="ml-1"><a href="#" class="pr-3 pl-3 text-light">Games</a></button>-->
+                <!--</div>-->
+            </div>
+        </div>
     </div>
 </div>
-    <h5 class="text-center pt-4 mt-2">Welcome to GameBox!</h5>
-    <div class="infoCard mt-4">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col">
-                    <img class="img-fluid imgWork my-2 mr-4 ml-2 float-left" src="image/itWorks.png">
-                    <!--<p class="mt-4">You must register or log in to be able to sell, buy or rent games and be our-->
-                    <!--member.-->
-                    <!--As a member, you can also write the comments or rate the games and other members,-->
-                    <!--post articles or tips and show certain statistics. In addition, our member can communicate-->
-                    <!--with other members through our chat system, complain to the site administrator about some-->
-                    <!--members and be blocked by the site administrator. And finally, the site administrator can-->
-                    <!--give our member the right to be the site administrator.-->
-                    <h5 class="mt-2">You can sell, buy or rent games</h5>
-                    <h5>And our members can communicate with each other</h5>
-                    <h5><span>See our new games right now!</span></h5>
-                    <div class="promo">
-                        <button class="mt-5 mr-4 ml-5"><a href="#" class="pr-3 pl-3">Articles</a></button>
-                        <button class="ml-1"><a href="#" class="pr-3 pl-3 text-light">Games</a></button>
-                    </div>
-                </div>
+<div class="container mb-5">
+    <h5 class="mt-4 text-center">Recently released</h5>
+    <div class="card-deck mt-4 ">
+        <div class="card product text-center" style="background-image: url(image/img4.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
+            </div>
+        </div>
+        <div class="card product text-center" style="background-image: url(image/img2.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
+            </div>
+        </div>
+        <div class="card product text-center"
+             style="background-image: url(image/bar-billiards-gambling-261043.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
             </div>
         </div>
     </div>
-    <div class="container mb-5">
-        <h5 class="mt-4 text-center">Recently released</h5>
-        <div class="card-deck mt-4 ">
-            <div class="card product text-center" style="background-image: url(image/img4.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
-            </div>
-            <div class="card product text-center" style="background-image: url(image/img2.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
-            </div>
-            <div class="card product text-center"
-                 style="background-image: url(image/bar-billiards-gambling-261043.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
+    <div class="card-deck mt-4">
+        <div class="card product text-center" style="background-image: url(image/outdoors-3106126_1280.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
             </div>
         </div>
-        <div class="card-deck mt-4">
-            <div class="card product text-center" style="background-image: url(image/outdoors-3106126_1280.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
+        <div class="card product text-center" style="background-image: url(image/minecraft-1106252_1280.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
             </div>
-            <div class="card product text-center" style="background-image: url(image/minecraft-1106252_1280.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
-            </div>
-            <div class="card product text-center" style="background-image: url(image/img5.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
+        </div>
+        <div class="card product text-center" style="background-image: url(image/img5.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
             </div>
         </div>
     </div>
+</div>
 
-    <!--info-->
-    <div class="infoCard">
-        <h3 class="text-center pt-4">How it works</h3>
-        <div class="container pb-4">
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <img class="img-fluid imgInfo my-4" src="image/information-41225_640.png">
-                    <p>General info</p>
-                    <p class="text">This is a platform for sharing games between players.
-                        Our members can sell, buy, rent the games and comment / rate these games and other members.
-                    </p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <img class="img-fluid imgInfo my-4" src="image/profile2-512.png">
-                    <p>Join us</p>
-                    <p class="text">Being a member of our great platform means to have access to the most
-                        interesting
-                        games of various genres and play in real time.
-                    </p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <img class="img-fluid imgInfo my-4" src="image/img_343397.png">
-                    <p>Payment</p>
-                    <p class="text">Secure payment can be made in cash, by check or Paypal.
-                        Choose your game and go ahead!
-                    </p>
-                </div>
+<!--info-->
+<div class="infoCard">
+    <h3 class="text-center pt-4">How it works</h3>
+    <div class="container pb-4">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img class="img-fluid imgInfo my-4" src="image/information-41225_640.png">
+                <p>General info</p>
+                <p class="text">This is a platform for sharing games between players.
+                    Our members can sell, buy, rent the games and comment / rate these games and other members.
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img class="img-fluid imgInfo my-4" src="image/profile2-512.png">
+                <p>Join us</p>
+                <p class="text">Being a member of our great platform means to have access to the most
+                    interesting
+                    games of various genres and play in real time.
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img class="img-fluid imgInfo my-4" src="image/img_343397.png">
+                <p>Payment</p>
+                <p class="text">Secure payment can be made in cash, by check or Paypal.
+                    Choose your game and go ahead!
+                </p>
             </div>
         </div>
     </div>
+</div>
 
-    <!--cards-row2-->
-    <div class="container mb-5">
-        <h5 class="mt-4 ml-5 text-center">Most popular</h5>
-        <div class="card-deck mt-4">
-            <div class="card product text-center" style="background-image: url(image/img1.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
-            </div>
-            <div class="card product text-center" style="background-image: url(image/img6.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
-            </div>
-            <div class="card product text-center" style="background-image: url(image/war-venue-494345_1280.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
+<!--cards-row2-->
+<div class="container mb-5">
+    <h5 class="mt-4 ml-5 text-center">Most popular</h5>
+    <div class="card-deck mt-4">
+        <div class="card product text-center" style="background-image: url(image/img1.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
             </div>
         </div>
-        <div class="card-deck mt-4">
-            <div class="card product text-center" style="background-image: url(image/overwatch-1610865_1280.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
+        <div class="card product text-center" style="background-image: url(image/img6.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
             </div>
-            <div class="card product text-center"
-                 style="background-image: url(image/science-fiction-965258_1280.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
-            </div>
-            <div class="card product text-center" style="background-image: url(image/img5.jpg)">
-                <div class="inner">
-                    <div class="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 class="paragraphV pt-5 ">Game's Name</h4></a>
-                    <button class="button mt-5"><a href="#">View More</a></button>
-                </div>
+        </div>
+        <div class="card product text-center" style="background-image: url(image/war-venue-494345_1280.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
             </div>
         </div>
     </div>
-
-    <!--footer-->
-    <footer class="page-footer font-small teal pt-2">
-        <!-- Footer Elements -->
-        <div class="container text-center">
-            <div class="py-4">
-                <div>
-                    <a class="fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3"> </i></a>
-                    <a class="tw-ic"> <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3"></i></a>
-                    <a class="gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3"></i> </a>
-                    <a class="li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3"></i></a>
-                    <a class="ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3"></i> </a>
-                    <a class="pin-ic"><i class="fa fa-pinterest fa-lg white-text"></i></a>
-                </div>
+    <div class="card-deck mt-4">
+        <div class="card product text-center" style="background-image: url(image/overwatch-1610865_1280.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
             </div>
         </div>
-        <div class="footer-copyright text-center py-3 text-light">© 2018 Copyright: Dream Team #1 with love</div>
-    </footer>
+        <div class="card product text-center"
+             style="background-image: url(image/science-fiction-965258_1280.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
+            </div>
+        </div>
+        <div class="card product text-center" style="background-image: url(image/img5.jpg)">
+            <div class="inner">
+                <div class="paragraphV text-light">4,5</div>
+                <a href="#"><h4 class="paragraphV pt-5 ">Game's Name</h4></a>
+                <button class="button mt-5"><a href="#">View More</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<footer class="page-footer font-small teal pt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center py-2">
+            <div class="line text-light">
+                <div class="line-border"><a href="#" class="text-light">Home</a></div>
+                <div class="line-border"><a href="#" class="text-light">About</a></div>
+                <div class="line-border"><a href="#" class="text-light">Games</a></div>
+                <div class="line-border"><a href="#" class="text-light">Help</a></div>
+                <div><a href="#" class="text-light">Blog</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Elements -->
+    <div class="container text-center">
+        <div class="py-4">
+            <div>
+                <a class="fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3"> </i></a>
+                <a class="tw-ic"> <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3"></i></a>
+                <a class="gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3"></i> </a>
+                <a class="li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3"></i></a>
+                <a class="ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3"></i> </a>
+                <a class="pin-ic"><i class="fa fa-pinterest fa-lg white-text"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-3 text-light">© 2018 Copyright: Dream Team #1 with love</div>
+</footer>
 
 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 
-    <script>
-      //menu
-      $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-          $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').addClass('stickytop');
-        } else {
-          $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').removeClass('stickytop');
-        }
-      });
+<script>
+  //menu
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').addClass('stickytop');
+    } else {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').removeClass('stickytop');
+    }
+  });
 
-    </script>
+  $(document).ready(function(){
+    $(".btnSearch").click(function(){
+      $(".inputSearch").toggle(50, "linear");
+    });
+  });
+</script>
 </body>
 </html>
