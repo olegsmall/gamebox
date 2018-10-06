@@ -41,7 +41,10 @@
                     </li>
                 </ul>
 
-                <a href="#"><img id="loupe" src="image/loupe.png" width="25" class="mr-4" alt=""></a>
+                <form>
+                    <input type="text" name="search" class="inputSearch">
+                    <img id="btn" src="image/loupe.png" width="25" class="mr-4 btnSearch" alt="">
+                </form>
 
                 <div class="dropdown">
                     <a class="dropdown" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
@@ -270,6 +273,11 @@
     }
   });
 
+  $(document).ready(function(){
+    $(".btnSearch").click(function(){
+      $(".inputSearch").toggle(1000, "linear");
+    });
+  });
 </script>
 </body>
 </html>
