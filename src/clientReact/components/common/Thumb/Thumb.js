@@ -25,10 +25,16 @@ class Thumb extends React.Component {
   }
 
   render() {
-    const {file, object} = this.props;
+    const {file, object, defaultImage, className, size: {width, height}} = this.props;
 
     if (!file && !object) {
-      return null;
+      return (<img
+        src={defaultImage}
+        alt={'image'}
+        className={className}
+        width={width}
+        height={height}
+      />);
     }
 
     let thumb = '';
@@ -41,9 +47,9 @@ class Thumb extends React.Component {
     return (<img
       src={thumb}
       alt={'image'}
-      className="img-thumbnail mt-2"
-      height={200}
-      width={200}
+      className={className}
+      width={width}
+      height={height}
     />);
   }
 }

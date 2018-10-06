@@ -71,7 +71,7 @@ class LoginPage extends React.Component {
         <div id="log" className="container">
           <div className="row justify-content-center">
             <div className="col-md-4 text-center">
-              <a href="#"><img src="/image/logo1.png" width="80" height="80"/></a>
+              <img src="/image/logo1.png" width="80" height="80"/>
               <p className="mt-1">GameBox</p>
               <Formik
                 initialValues={{email: '', password: ''}}
