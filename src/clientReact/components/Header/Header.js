@@ -64,13 +64,10 @@ class Header extends React.Component {
                   <Link className="nav-link" to={'/'}>Home</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">About</a>
+                  <Link className="nav-link" to={'/about'}>About</Link>
                 </li>
                 <li className=" nav-item">
                   <Link className=" nav-link" to={'/product'}>Games</Link>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Help</a>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to={'/article'}>Blog</Link>
