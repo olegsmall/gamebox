@@ -92,7 +92,7 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className={'App'}>
+      <div className={'App d-flex flex-column h-100'}>
         <Header
           history={this.props.history}
           logoutUser={this.logoutUser}
