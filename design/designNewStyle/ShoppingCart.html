@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Game Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="mr-5 ml-5">
+        <nav class="navbar navbar-expand-lg  navbar-lignt bg-light fixed-top navbar-inverse mid">
+            <a class="navbar-brand" href="#"><img src="image/logo1.png" width="40" height="40"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="false"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav mr-auto mt-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                </ul>
+
+                <form>
+                    <input type="text" name="search" class="inputSearch">
+                    <img id="btn" src="image/loupe.png" width="25" class="mr-4 btnSearch" alt="">
+                </form>
+                <div class="dropdown">
+                    <a class="dropdown" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <a class="dropdown-item" id="Login" href="login.html">Log in</a>
+                        <a class="dropdown-item" id="SignUp" href="signUp.html">Sign up</a>
+                    </div>
+                </div>
+                <div class="img-fluid">
+                    <div class="imagePannier">
+                        <div class="basketNumber">5</div>
+                    </div>
+                    <a href="#"><img src="image/shopBag1.png" width="25" class="imgBasket"></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div>
+    <img class="img-fluid d-block w-100 imgMain" src="image/back11.jpg" alt="Article image">
+</div>
+<h5 class="pt-4 mt-2 ml-5">Hi, user</h5>
+<div id="myOrders" class="container">
+    <h2 class="ml-5 mb-2 text-center text-sm-left">My shopping cart</h2>
+    <hr>
+    <div class="container">
+
+        <a class="linkArticle" href="#">
+            <div class="card border-0">
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3"><img class="img-fluid mr-5 imageShopCart"
+                                                   src="image/outdoors-3106126_1280.jpg"
+                                                   alt="Card image"/>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="card-title mb-2">Title : </h5>
+                            <div class="mb-1">Quantity : 1</div>
+                            <div class="text-muted">Seller :</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-1">Rent price :</div>
+                            <div class="mb-1">Rent duration :</div>
+                            <div class="mb-1">Buy price :</div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn-block btnShopCart">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <hr>
+        <a class="linkArticle" href="#">
+            <div class="card border-0">
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3"><img class="img-fluid mr-5 imageShopCart"
+                                                   src="image/scifi-3617337_1280.jpg"
+                                                   alt="Card image"/>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="card-title mb-2">Title : </h5>
+                            <div class="mb-1">Quantity : 1</div>
+                            <div class="text-muted">Seller :</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-1">Rent price :</div>
+                            <div class="mb-1">Rent duration :</div>
+                            <div class="mb-1">Buy price :</div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn-block btnShopCart">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <hr>
+        <a class="linkArticle" href="#">
+            <div class="card border-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3"><img class="img-fluid mr-5 imageShopCart"
+                                                   src="image/tank-2902209_1280.jpg"
+                                                   alt="Card image"/>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="card-title mb-2">Title : </h5>
+                            <div class="mb-1">Quantity : 1</div>
+                            <div class="text-muted">Seller :</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-1">Rent price :</div>
+                            <div class="mb-1">Rent duration :</div>
+                            <div class="mb-1">Buy price :</div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn-block btnShopCart">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <hr>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-2">
+                        <div class="card-title mb-1">Your name : </div>
+                        <div class="mb-1">Address :</div>
+                        <div class="mb-1">Phone number :</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-1">Select a payment</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="checkRadio" value="option1"
+                                   checked>
+                            <label class="form-check-label" for="checkRadio">
+                                Check
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="cashRadio" value="option2">
+                            <label class="form-check-label" for="cashRadio">
+                                Cash
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="paypalRadios"
+                                   value="option3">
+                            <label class="form-check-label" for="paypalRadios">
+                                PayPal
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn-block btnShopCart">Confirm order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer-->
+<footer id="footerLog" class="mt-5">
+    <!-- Footer Elements -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="line">
+                    <div class="line-border"><a href="#">Home</a></div>
+                    <div class="line-border"><a href="#">About</a></div>
+                    <div class="line-border"><a href="#">Games</a></div>
+                    <div class="line-border"><a href="#">Help</a></div>
+                    <div><a href="#">Blog</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-2">
+            <div class="col-md-6 text-center">
+                <div class="line">
+                    <p>© 2018 Copyright: Dream Team #1 with love</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+<script>
+  //menu
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').addClass('stickytop');
+    } else {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').removeClass('stickytop');
+    }
+  });
+
+  $(document).ready(function () {
+    $(".btnSearch").click(function () {
+      $(".inputSearch").toggle(1000, "linear");
+    });
+  });
+</script>
+
+<!-- Carousel script -->
+<script>
+  let mySwiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+</body>
+</html>

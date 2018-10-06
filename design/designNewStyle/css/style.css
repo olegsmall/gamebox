@@ -96,6 +96,7 @@ a #loupe:focus{
     margin-bottom: -22px;
     margin-left: 11px;
     color: red;
+    font-weight: bold ;
 }
 @media only screen and (min-width: 769px) {
     .imgBasket {
@@ -175,13 +176,13 @@ input.form-control.mt-3.w-30 {
     font-size: small;
 }
 
-.card {
+.cardAllGame {
     -moz-transition: all 0.7s;
     -webkit-transition: all 0.7s;
     transition: all 0.7s;
 }
 
-.card:hover {
+.cardAllGame:hover {
     -moz-transform: scale(1.05);
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
@@ -190,6 +191,14 @@ input.form-control.mt-3.w-30 {
 }
 
 /* Card Product*/
+.aBlack{
+    color: black;
+}
+.btnPrice{
+    font-weight: bold;
+    color: red;
+    font-size: large;
+}
 .product {
     position: relative;
     width: 280px;
@@ -552,17 +561,31 @@ hr {
     margin-top: 1rem;
     margin-bottom: 5rem;
 }
-.cardBodyYourArticle {
-    -moz-transition: all 0.7s;
-    -webkit-transition: all 0.7s;
-    transition: all 0.7s;
+
+/*ShoppingCart page*/
+#myOrders{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
 }
 
-.cardBodyYouArticle:hover {
-    -moz-transform: scale(1.01);
-    -webkit-transform: scale(1.01);
-    transform: scale(1.01);
+.imageShopCart {
+    width: 200px;
+
 }
+.btnShopCart{
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnShopCart:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
 
 /* Style mobile */
 @media only screen and (min-width: 600px) {
