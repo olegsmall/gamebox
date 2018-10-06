@@ -42,7 +42,8 @@ class AddProduct extends React.Component {
     for (let i = 0; i < values.genres.length; i++) {
       formData.append('genres[]', values.genres[i]);
     }
-    formData.append('price', JSON.stringify(values.price));
+    formData.append('price[]', JSON.stringify({sell: values.sellPrice!== '' ? values.sellPrice : null}));
+    formData.append('price[]', JSON.stringify({rent: values.rentPrice !== '' ? values.rentPrice : null}));
     // formData.append('rentPrice', values.forRent && values.RentPrice);
 
 
@@ -104,12 +105,8 @@ class AddProduct extends React.Component {
         genres: [(genres.length > 0) ? genres[0]._id : undefined ],
         forSell: false,
         forRent: false,
-        price: {
-          sell: '',
-          rent: '',
-        },
-        // SellPrice: '',
-        // RentPrice: '',
+        sellPrice: '',
+        rentPrice: '',
       };
     }
 
@@ -129,26 +126,26 @@ class AddProduct extends React.Component {
             genres: Yup.array()
               .of(Yup.string()
                 .required('You have to choose at least one genre')),
-            // forSell: Yup.boolean(),
-            // SellPrice: Yup.number()
-            //   .when('forSell', {
-            //     is: true,
-            //     then: Yup.number()
-            //       .required('Sell price is required')
-            //       .positive('Price must be positive')
-            //       .min(1, 'Minimum price is 1 CAD'),
-            //     otherwise: Yup.number().notRequired(),
-            //   }),
-            // forRent: Yup.boolean(),
-            // RentPrice: Yup.number()
-            //   .when('forRent', {
-            //     is: true,
-            //     then: Yup.number()
-            //       .required('Sell price is required')
-            //       .positive('Price must be positive')
-            //       .min(1, 'Minimum price is 1 CAD'),
-            //     otherwise: Yup.number().notRequired(),
-            //   })
+            forSell: Yup.boolean(),
+            sellPrice: Yup.number()
+              .when('forSell', {
+                is: true,
+                then: Yup.number()
+                  .required('Sell price is required')
+                  .positive('Sell price must be positive')
+                  .min(1, 'Minimum sell price is 1 CAD'),
+                otherwise: Yup.number().notRequired(),
+              }),
+            forRent: Yup.boolean(),
+            rentPrice: Yup.number()
+              .when('forRent', {
+                is: true,
+                then: Yup.number()
+                  .required('Rent price is required')
+                  .positive('Rent price must be positive')
+                  .min(1, 'Minimum retn price is 1 CAD'),
+                otherwise: Yup.number().notRequired(),
+              })
           })}
           onSubmit={(values, actions) => this.handleSubmit(values, actions)}
         >
@@ -197,11 +194,11 @@ class AddProduct extends React.Component {
               <div className="form-group">
                 <Field name="forSell" type="checkbox" checked={values.forSell}/>Sell
                 <Field name="forRent" type="checkbox" checked={values.forRent}/>Rent
-                {values.forSell && <Field name="price.sell" type="number"/>}
-                {values.forRent && <Field name="price.rent" type="number"/>}
+                {values.forSell && <Field name="sellPrice" type="number"/>}
+                {values.forRent && <Field name="rentPrice" type="number"/>}
               </div>
-              <ErrorMessage name="price.sell">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
-              <ErrorMessage name="price.rent">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+              <ErrorMessage name="sellPrice">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+              <ErrorMessage name="rentPrice">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
 
               <div className="form-group">
                 <Field name="content" component="textarea" className="form-control" placeholder="Content"/>
