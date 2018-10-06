@@ -86,6 +86,27 @@ a #loupe:focus{
     width: 70%;
 }
 
+/*basket in menu*/
+.imgBasket {
+    margin-bottom: 8px;
+
+}
+
+.basketNumber{
+    margin-bottom: -22px;
+    margin-left: 11px;
+    color: red;
+}
+@media only screen and (min-width: 769px) {
+    .imgBasket {
+        margin-left: 16px;
+    }
+    .basketNumber {
+        margin-left: 27px;
+    }
+}
+
+
 /* Log in and Sign Up*/
 #login, #signUp{
     font-size: 10px!important;
@@ -335,7 +356,7 @@ footer.page-footer .line-border {
 
 /* Sign up Page */
 #sign {
-    margin-top: 8rem;
+    margin-top: 3rem;
     margin-bottom: 8rem;
 }
 
@@ -510,6 +531,37 @@ hr {
 /* About */
 .map {
     height: 400px;
+}
+
+/*yourArticle page*/
+.btnAddArticle {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnAddArticle:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.imageYourArticle {
+    width: 100px;
+    /*height: 150px;*/
+}
+#yourArticle {
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+}
+.cardBodyYourArticle {
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
+}
+
+.cardBodyYouArticle:hover {
+    -moz-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01);
 }
 
 /* Style mobile */
