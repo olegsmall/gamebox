@@ -75,7 +75,18 @@ class UserPage extends React.Component {
           user={this.props.user}/>;
         break;
       case 'AddProduct':
-        inner = <AddProduct/>;
+        inner = <AddProduct
+          showMessage={this.showMessage.bind(this)}
+          changeInner={this.changeInner.bind(this)}
+          pageType={'AddProduct'}
+        />;
+        break;
+      case 'EditProduct':
+        inner = <AddProduct
+          showMessage={this.showMessage.bind(this)}
+          changeInner={this.changeInner.bind(this)}
+          pageType={'EditProduct'}
+        />;
         break;
       case 'Orders':
         inner = <Orders/>;

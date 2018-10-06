@@ -1,128 +1,219 @@
 import React from 'react';
+import axios from 'axios';
+import {Formik, Field, Form, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import Thumb from '../../../common/Thumb/Thumb';
 
 require('./AddProduct.scss');
 
 class AddProduct extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fetchedDataIsReady: false,
+      genres: [],
+    };
+  }
+
+  componentDidMount() {
+
+    axios.get('/genre')
+      .then((res) => {
+        this.setState({
+          genres: res.data.genres,
+          fetchedDataIsReady: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  handleSubmit(values, actions) {
+    let formData = new FormData();
+    if (values.image) {
+      formData.append('image', values.image, values.image.name);
+    }
+    formData.append('title', values.title);
+    formData.append('content', values.content);
+    // formData.append('genres', values.genres);
+    for (let i = 0; i < values.genres.length; i++) {
+      formData.append('genres[]', values.genres[i]);
+    }
+    formData.append('price', JSON.stringify(values.price));
+    // formData.append('rentPrice', values.forRent && values.RentPrice);
+
+
+    const self = this;
+    if (this.props.pageType === 'EditProduct') {
+      axios.put('/product/' + this.props.product._id, formData)
+        .then((res) => {
+          console.log(res.data);
+          self.props.showMessage(res.data.message);
+          actions.setSubmitting(false);
+          self.props.changeInner('Products');
+        })
+        .catch((error) => {
+          console.log(error);
+          self.props.showMessage(error.message);
+          actions.setSubmitting(false);
+        });
+    } else {
+      axios.post('/product', formData)
+        .then((res) => {
+          console.log(res.data);
+          self.props.showMessage(res.data.message);
+          actions.setSubmitting(false);
+          self.props.changeInner('Products');
+        })
+        .catch((error) => {
+          console.log(error);
+          self.props.showMessage(error.message);
+          actions.setSubmitting(false);
+        });
+    }
+  }
 
   render() {
+
+    if (!this.state.fetchedDataIsReady) {
+      return null;
+    }
+
+    const {pageType, product} = this.props;
+    const genres = this.state.genres;
+
+    let initialValues = {};
+
+    if (pageType === 'EditProduct' && product) {
+      initialValues = {
+        image: undefined,
+        title: product.title,
+        content: product.content,
+        forSell: product.sell,
+
+
+      };
+    } else {
+      initialValues = {
+        image: undefined,
+        title: '',
+        content: '',
+        genres: [(genres.length > 0) ? genres[0]._id : undefined ],
+        forSell: false,
+        forRent: false,
+        price: {
+          sell: '',
+          rent: '',
+        },
+        // SellPrice: '',
+        // RentPrice: '',
+      };
+    }
 
     return (
       <div>
         <h3 className="text-light text-center">Add game</h3>
-
-        <form className="input-group">
-          <label htmlFor="gameTitle"></label>
-          <div className="input-group mb-1">
-            <div className="input-group-prepend">
-              <span className="input-group-text" id="gameTitle">game title</span>
-            </div>
-            <input type="text" className="form-control" id="gameTitle" aria-describedby="gameTitle"/>
-          </div>
-
-          <label htmlFor="gameDescription"></label>
-          <div className="input-group mb-1">
-            <div className="input-group-prepend">
-              <span className="input-group-text">game description</span>
-            </div>
-            <textarea className="form-control" id="gameDescription" aria-label="With textarea"></textarea>
-          </div>
-
-          <div className="input-group mb-1">
-            <div className="input-group-prepend">
-              <label className="input-group-text" htmlFor="genreSelect">genre</label>
-            </div>
-            <select className="form-control" id="genreSelect">
-              <option value="Action">Action</option>
-              <option value="Role-Playing Game">Role-Playing Game</option>
-              <option value="Horror">Horror</option>
-              <option value="Real-Time Strategy">Real-Time Strategy</option>
-              <option value="Survival">Survival</option>
-              <option value="Fighting">Fighting</option>
-              <option value="Shooter">Shooter</option>
-              <option value="Simulator">Simulator</option>
-            </select>
-          </div>
-
-          <label htmlFor="gameStatus"></label>
-          <div className="input-group mb-1">
-            <div className="input-group-prepend">
-              <span className="input-group-text" id="gameStatus">status</span>
-            </div>
-            <input type="text" className="form-control" id="gameOwner" aria-describedby="gameStatus"/>
-          </div>
-        </form>
-
-        <form className="form-inline">
-          <label className="sr-only" htmlFor="priceSell"></label>
-          <div className="input-group mb-2 mr-sm-3">
-            <div className="input-group-prepend">
-              <div className="input-group-text">
-                <input className="form-input" type="radio" name="gridRadios" id="gridRadios1"
-                       value="option1"/>
-                <label className="form-label" htmlFor="gridRadios1">
-                </label>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={Yup.object().shape({
+            title: Yup.string()
+              .min(4)
+              .max(40)
+              .required('Required'),
+            content: Yup.string()
+              .min(10)
+              .max(1500),
+            genres: Yup.array()
+              .of(Yup.string()
+                .required('You have to choose at least one genre')),
+            // forSell: Yup.boolean(),
+            // SellPrice: Yup.number()
+            //   .when('forSell', {
+            //     is: true,
+            //     then: Yup.number()
+            //       .required('Sell price is required')
+            //       .positive('Price must be positive')
+            //       .min(1, 'Minimum price is 1 CAD'),
+            //     otherwise: Yup.number().notRequired(),
+            //   }),
+            // forRent: Yup.boolean(),
+            // RentPrice: Yup.number()
+            //   .when('forRent', {
+            //     is: true,
+            //     then: Yup.number()
+            //       .required('Sell price is required')
+            //       .positive('Price must be positive')
+            //       .min(1, 'Minimum price is 1 CAD'),
+            //     otherwise: Yup.number().notRequired(),
+            //   })
+          })}
+          onSubmit={(values, actions) => this.handleSubmit(values, actions)}
+        >
+          {({values, setFieldValue, isSubmitting}) => (
+            <Form className="mb-5">
+              <div className="form-row mb-3">
+                <div className="col-9">
+                  <Thumb file={values.image} object={this.props.product}/>
+                  <input
+                    name="image"
+                    type="file"
+                    className="form-control form-control-sm"
+                    placeholder="Load image"
+                    onChange={event => setFieldValue('image', event.currentTarget.files[0])}
+                  />
+                </div>
               </div>
-            </div>
-            <input type="text" className="form-control" id="priceSell" placeholder="sell price"/>
-          </div>
 
-          <label className="sr-only" htmlFor="priceRent"></label>
-          <div className="input-group mb-2 mr-sm-3">
-            <div className="input-group-prepend">
-              <div className="input-group-text">
-                <input className="form-input" type="radio" name="gridRadios" id="gridRadios2"
-                       value="option1"/>
-                <label className="form-label" htmlFor="gridRadios2">
-                </label>
+              <div className="form-group">
+                <Field name="title" type="text" className="form-control form-control-sm" placeholder="Games's title"/>
+                <ErrorMessage name="title">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
               </div>
-            </div>
-            <input type="text" className="form-control" id="priceRent" placeholder="rent price"/>
-          </div>
-        </form>
 
-        <form className="form-inline">
-          <label className="sr-only" htmlFor="GroupDate"></label>
-          <div className="input-group mb-2 mr-sm-3">
-            <div className="input-group-prepend">
-              <div className="input-group-text"><i className="fa fa-calendar-o" aria-hidden="true"></i></div>
-            </div>
-            <input type="text" className="form-control" id="GroupDate" placeholder="date added"/>
-          </div>
+              <div className="form-group">
+                <Field
+                  name="genres"
+                  component="select"
+                  multiple="true"
+                  size="5"
+                  onChange={evt =>
+                    setFieldValue(
+                      'genres',
+                      [].slice
+                        .call(evt.target.selectedOptions)
+                        .map(option => option.value)
+                    )
+                  }
+                >
+                  {genres.map((genre)=>(
+                    <option key={genre._id} value={genre._id}>{genre.name}</option>
+                  ))}
+                </Field>
+                <ErrorMessage name="genres">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+              </div>
 
-          <label className="sr-only" htmlFor="GroupUsername"></label>
-          <div className="input-group mb-2 mr-sm-3">
-            <div className="input-group-prepend">
-              <div className="input-group-text"><i className="fa fa-user-o" aria-hidden="true"></i></div>
-            </div>
-            <input type="text" className="form-control" id="GroupUsername" placeholder="Username"/>
-          </div>
-        </form>
-        <form>
-          <div className="text-light mb-2 mt-4">
-            <a href=""><img src="/image/upload_img.png" alt="avatar" width="100" height="100" className="mr-2"/></a>
-            <a href=""><img src="/image/upload_img.png" alt="avatar" width="100" height="100" className="mr-2"/></a>
-            <a href=""><img src="/image/upload_img.png" alt="avatar" width="100" height="100" className="mr-2"/></a>
-            <a href=""><img src="/image/upload_img.png" alt="avatar" width="100" height="100" className="mr-2"/></a>
-            <a href=""><img src="/image/upload_img.png" alt="avatar" width="100" height="100" className="mr-2"/></a>
-            <a href=""><img src="/image/upload_img.png" alt="avatar" width="100" height="100" className=""/></a>
-          </div>
+              <div className="form-group">
+                <Field name="forSell" type="checkbox" checked={values.forSell}/>Sell
+                <Field name="forRent" type="checkbox" checked={values.forRent}/>Rent
+                {values.forSell && <Field name="price.sell" type="number"/>}
+                {values.forRent && <Field name="price.rent" type="number"/>}
+              </div>
+              <ErrorMessage name="price.sell">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+              <ErrorMessage name="price.rent">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
 
+              <div className="form-group">
+                <Field name="content" component="textarea" className="form-control" placeholder="Content"/>
+                <ErrorMessage name="content">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+              </div>
+              <button type="submit" disabled={isSubmitting}>Save</button>
+            </Form>
 
-          <label htmlFor="gameVideo"></label>
-          <div className="input-group mb-1">
-            <div className="input-group-prepend">
-              <span className="input-group-text" id="gameVideo">video</span>
-            </div>
-            <input type="text" className="form-control" id="gameTitle" aria-describedby="gameVideo"
-                   placeholder="upload your video to your ad"/>
-          </div>
-
-        </form>
-        <button type="submit" className="btn btn-secondary mb-5 text-center">Add</button>
+          )}
+        </Formik>
       </div>
-    )
-      ;
+    );
   }
 
 }
