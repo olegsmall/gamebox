@@ -3,13 +3,14 @@ import OrderController from '../controllers/order.controller';
 
 const router = express.Router();
 
-router.post('/', OrderController.createOrder); //Create an order
+router.get('/', OrderController.createOrder); //Create an order
+// TODO: Change to POST & readapt all routes
+router.get('/:id/payment', OrderController.paymentExecute); //Create an order
 
-router.get('/', OrderController.getOrders); //Get list of all orders
-router.get('/:id', OrderController.getOrder); //Get one specific order
+// router.get('/', OrderController.pay); //Create an order
+// router.get('/', OrderController.paymentCheck); //Create an order
 
-// router.get('/', OrderController.getOrder); //Get list of all articles
-// router.get('/:id', OrderController.getOrder); // Get One articles
-// router.put('/:id', OrderController.updateOrder); //Update articles
+// router.get('/', OrderController.getOrders); //Get list of all orders
+// router.get('/:id', OrderController.getOrder); //Get one specific order
 
 module.exports = router;
