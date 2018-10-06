@@ -1,37 +1,35 @@
-
-@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat');
-
-  body {
+body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif!important;
-  background-color: #46485a!important;
-  //background-color: #1D224B!important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  background-color: #ffffff;
+  opacity: 0.9;
 }
 
-  a {
-    color: black;
-  }
+a:hover {
+  color: black;
+  text-decoration: none;
+}
 
-  a:hover {
-    color: black;
-    text-decoration: none;
-  }
+.fa {
+  color: white;
+}
 
-  p {
-    font-family: 'Merriweather Sans', sans-serif;
-  }
+.line {
+  list-style-type: none;
+}
 
-  .fa {
-    color: white;
-  }
+.line div {
+  display: inline;
+}
 
-  i.fa.fa-star-o {
-    color: orange !important;
-    font-size: 20px;
-  }
+.line div a {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+}
 
-  .card-text {
-    height: 50% !important;
-  }
+.line-border {
+  border-right: 1px solid black;
+}
 
 //.App{}
