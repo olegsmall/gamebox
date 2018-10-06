@@ -78,10 +78,9 @@ class Header extends React.Component {
               </ul>
               <form>
                 <input type="text" name="search" className="inputSearch" ref="inputSearch"/>
+                <img src="image/loupe.png" width="25" className="mr-4 btnSearch" alt="Loupe"
+                     onClick={this.showSearchPanel.bind(this)}/>
               </form>
-              <img src="image/loupe.png" width="25" className="mr-4 btnSearch" alt="Loupe"
-                   onClick={this.showSearchPanel.bind(this)}/>
-
               <div className="dropdown">
                 <a className="dropdown"
                    id="dropdownMenu"

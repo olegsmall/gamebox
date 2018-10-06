@@ -22,6 +22,11 @@
     padding-left: 2rem !important;
   }
 
+  .fa.fa-bars {
+    color: black;
+    margin-top: 5px;
+  }
+
   li.nav-item .nav-link {
     color: black;
   }
@@ -55,5 +60,11 @@
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     margin-right: 2rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .inputSearch {
+      width: 10rem;
+    }
   }
 }
