@@ -1,16 +1,12 @@
 .AllBlogPage {
   #article {
-    margin-top: 8rem;
-    margin-bottom: 10rem;
-  }
-
-  hr {
-    border-color: #026E00;;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
   }
 
   @media only screen and (max-width: 600px) {
     #article {
-      margin-top: 12rem;
+      margin-top: 3rem;
     }
   }
 }
