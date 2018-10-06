@@ -42,6 +42,8 @@ class AddProduct extends React.Component {
     for (let i = 0; i < values.genres.length; i++) {
       formData.append('genres[]', values.genres[i]);
     }
+    formData.append('status[]', values.forSell ? 'for sale' : null);
+    formData.append('status[]', values.forRent ? 'for rent' : null);
     formData.append('price[]', JSON.stringify({sell: values.sellPrice!== '' ? values.sellPrice : null}));
     formData.append('price[]', JSON.stringify({rent: values.rentPrice !== '' ? values.rentPrice : null}));
     // formData.append('rentPrice', values.forRent && values.RentPrice);
@@ -153,7 +155,11 @@ class AddProduct extends React.Component {
             <Form className="mb-5">
               <div className="form-row mb-3">
                 <div className="col-9">
-                  <Thumb file={values.image} object={this.props.product}/>
+                  <Thumb
+                    file={values.image}
+                    object={this.props.product}
+
+                  />
                   <input
                     name="image"
                     type="file"
