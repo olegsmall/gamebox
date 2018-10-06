@@ -1,21 +1,59 @@
 .Header {
-  .mid {
-    background: rgba(38, 28, 28, 0.85);
+  .stickytop {
+    transform: translateY(0px);
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+  }
+
+  nav {
+    position: fixed;
+    transform: translateY(20px);
+    transition: transform .6s, width .6s;
+    border-radius: 5px;
+    width: calc(100% - 60px);
+    margin: 0 auto;
+    background: rgba(248, 249, 250, 0.95);
+
+  }
+
+  .navbar {
+    padding: 2px !important;
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
+  }
+
+  li.nav-item .nav-link {
+    color: black;
   }
 
   a.nav-link.h5 {
     tab-size: 20px;
   }
 
-  .fa-user-o {
-    color: green;
+  .btnSearch {
+    background-color: unset;
+    border: none;
+    cursor: pointer;
   }
 
-  #linkLogin, #linkSignUp{
-    color: inherit;
+  .inputSearch {
+    display: none;
+    background-color: unset;
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 22rem;
   }
 
-  #linkLogin:hover, #linkSignUp{
-    text-decoration: none;
+  #dropdownMenu i.fa.fa-user-plus {
+    color: #000000;
+    font-size: 23px;
+  }
+
+  img.searchImg {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin-right: 2rem;
   }
 }
