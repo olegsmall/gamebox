@@ -6,32 +6,9 @@
   .cardArticle {
     background-color: transparent!important;
     border-color: #026E00!important;
-    width: 400px;
-    height: 80px;
-
-    overflow: hidden;
   }
 
-  .card-body {
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-  }
-
-  .card-body:hover{
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-
-  .imageArticle {
-    width: 80px;
-    height: 50px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    .titleArticle {
-      margin-top: 5rem;
-    }
+  .page-footer {
+    margin-top: 10rem;
   }
 }

@@ -12,6 +12,7 @@ import GamePage from '../content/GamePage/GamePage';
 import UserPage from '../content/UserPage/UserPage';
 import AllArticlesPage from '../content/AllArticlesPage/AllArticlesPage';
 import ArticlePage from '../content/ArticlePage/ArticlePage';
+import AboutPage from '../content/AboutPage/AboutPage';
 
 require('./App.scss');
 
@@ -92,7 +93,7 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className={'App'}>
+      <div className={'App d-flex flex-column h-100'}>
         <Header
           history={this.props.history}
           logoutUser={this.logoutUser}
@@ -138,6 +139,10 @@ class App extends React.Component {
             <Route
               path="/article/:articleId"
               component={ArticlePage}
+            />
+            <Route
+              exact path="/about"
+              render={() => <AboutPage/>}
             />
           </Switch>
         </div>

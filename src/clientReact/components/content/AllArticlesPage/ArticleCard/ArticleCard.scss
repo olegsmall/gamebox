@@ -1,31 +1,31 @@
 .ArticleCard {
-  .card {
-    background-color: transparent;
-    border: none;
-
-    overflow: visible;
+  .linkArticle {
+    color: black;
   }
 
-  .card-body {
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
+  .cardBodyArticle {
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
   }
 
-  .card-body:hover{
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+  .cardBodyArticle:hover {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
   }
 
-  hr {
-    border-color: #026E00;;
+
+  .imageArticle {
+    width: 250px;
+    height: 150px;
   }
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 800px) {
     .imageArticle {
       margin-bottom: 2rem;
+      width: 650px;
+      height: 250px;
     }
   }
-
 }

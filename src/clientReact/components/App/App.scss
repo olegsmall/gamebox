@@ -1,37 +1,79 @@
-
-@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat');
-
-  body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif!important;
-  background-color: #46485a!important;
-  //background-color: #1D224B!important;
+html {
+  height: 100%;
 }
 
-  a {
-    color: black;
-  }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif !important;
+  background-color: #ffffff;
+  opacity: 0.9;
+  height: 100%;
+}
 
-  a:hover {
-    color: black;
-    text-decoration: none;
-  }
+a:hover {
+  color: black;
+  text-decoration: none;
+}
 
-  p {
-    font-family: 'Merriweather Sans', sans-serif;
-  }
+.fa {
+  color: white;
+}
 
-  .fa {
-    color: white;
-  }
+hr {
+  border-color: gray;;
+}
 
-  i.fa.fa-star-o {
-    color: orange !important;
-    font-size: 20px;
-  }
+//Forms
+.inputLog {
+  border: 1px solid black;
+  border-radius: unset;
+}
 
-  .card-text {
-    height: 50% !important;
-  }
+.btnLog {
+  background-color: rgba(211,211,211,0.2);
+  border: 1px solid black;
+  border-radius: unset;
+}
+
+.inputLog:hover {
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.btnLog:hover {
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+//Error
+.error {
+  color: red;
+  margin-left: 10px;
+}
+
+//Main Picture
+.imgMain {
+  height: 100%;
+  max-height: 300px;
+  width: auto;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+//Footer
+.line {
+  list-style-type: none;
+}
+
+.line div {
+  display: inline;
+}
+
+.line div a {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+.line-border {
+  border-right: 1px solid black;
+}
 
 //.App{}

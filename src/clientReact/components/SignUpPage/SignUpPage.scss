@@ -1,10 +1,15 @@
 .SignUp{
-  #signUp{
-    margin-top: 12rem;
-    margin-bottom: 12rem;
+  #sign {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
   }
 
-  .btn.btn-sm.btn-block.mt-3 {
-    background-color: #026E00;
+  .imgAvatar {
+    border: 1px solid black;
+    border-radius: unset;
+  }
+
+  .custom-file-label {
+    padding-right: 5rem;
   }
 }

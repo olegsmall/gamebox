@@ -1,4 +1,13 @@
-.Footer{
-  padding: 20px;
-  background: #1d1616;
+.Footer {
+  .page-footer{
+    background-color: #000000;
+  }
+
+  .footer-copyright{
+    font-size: 13px;
+  }
+
+  .line-border {
+    border-right: 1px solid white;
+  }
 }
