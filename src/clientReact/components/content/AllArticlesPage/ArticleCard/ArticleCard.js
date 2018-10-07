@@ -7,7 +7,7 @@ class ArticleCard extends React.Component {
   render() {
     const article = this.props.article;
 
-    let author = (article.author) ? article.author.firstName + ' ' + article.author.lastName : 'Anonymous';
+    let author = (article.author) ? article.author : 'Anonymous';
     let date = (article.created) ? article.created : '2018-10-07';
 
     return (
