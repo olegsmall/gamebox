@@ -27,7 +27,6 @@ header nav{
     transition: transform .6s, width .6s;
     border-radius: 5px;
     width: calc(100% - 60px);
-    left: auto;
     margin: 0 auto;
 
 }

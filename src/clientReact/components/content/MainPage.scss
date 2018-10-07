@@ -1,0 +1,133 @@
+.MainPage {
+
+  //Background
+  .cardPopular-1 {
+    background-image: url("/image/img1.jpg");
+  }
+
+  .cardPopular-2 {
+    background-image: url("/image/img6.jpg");
+  }
+
+  .cardPopular-3 {
+    background-image: url("/image/war-venue-494345_1280.jpg");
+  }
+
+  .cardPopular-4 {
+    background-image: url("/image/overwatch-1610865_1280.jpg");
+  }
+
+  .cardPopular-5 {
+    background-image: url("/image/science-fiction-965258_1280.jpg");
+  }
+
+  .cardPopular-6 {
+    background-image: url("/image/img5.jpg");
+  }
+
+  //Card Product
+  .product {
+    position: relative;
+    width: 280px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: unset !important;
+  }
+
+  .imgBorder {
+    border-radius: unset !important;
+    border: none;
+
+  }
+  .imgBody{
+    border: 1px solid #a5afaf;
+  }
+
+  .inner {
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+  }
+
+  .product:hover .inner{
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: background-color  .7s;
+    -ms-transition: background-color .7s;
+    transition: background-color .7s;
+    box-shadow: 4px 10px 10px rgba(0,0,0,0.5);
+  }
+
+  div.paragraphV {
+    background-color: #ff6e00;
+    padding-right: 5px;
+    width: 40px;
+    margin-left: -8px;
+    margin-top: 6px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+
+  }
+
+  .paragraph {
+    display: none;
+  }
+
+  .product:hover .paragraph {
+    display: block;
+    animation: fadein 1.5s;
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  h4.paragraphV {
+    color: white;
+  }
+
+  .button {
+    display: none;
+    background-color: #81836d;
+    border-color: #81836d;
+    padding: 5px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+  }
+
+  .button:hover {
+    transition: background-color .7s;
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .product:hover .button {
+    display: inline-block;
+    animation: fadein 1.5s;
+
+
+  }
+
+  button.button.mt-5 a{
+    color: #ffffff;
+  }
+
+  //Info
+  .infoCard {
+    background-color: rgba(211,211,211,0.2);
+  }
+
+  .imgInfo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  .imgWork {
+    width: 100px;
+    height: 100px;
+  }
+}

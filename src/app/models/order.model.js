@@ -9,7 +9,7 @@ const OrderSchema = new Schema({
   payment_method: {type: String, enum: ['cash', 'check', 'paypal'], required: [true, 'Choose payment method']},
   opened: {type: Date, default: Date.now()},
   closed: {type: Date},
-  transaction: [{
+  transactions: [{
     product: {type: Schema.Types.ObjectId, ref: 'Product', required: [true, 'Product is required']},
     price: Number,
     rent_duration: Number,

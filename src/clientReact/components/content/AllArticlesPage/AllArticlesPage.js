@@ -25,8 +25,11 @@ class AllArticlesPage extends React.Component {
   render() {
     return (
       <div className={"AllBlogPage"}>
+        <div>
+          <img className="img-fluid d-block w-100 imgMain" src="image/back3.jpg" alt="Article image"/>
+        </div>
         <div id="article" className="container">
-          <h2 className="ml-5 mb-5 text-light">All articles</h2>
+          <h2 className="ml-5 mb-5 text-center text-sm-left">All articles</h2>
           <hr/>
           {this.state.articles.map((article) => (
             <ArticleCard key={article._id} article={article}/>

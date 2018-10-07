@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect, withRouter} from 'react-router-dom';
+import {Redirect, Link, withRouter} from 'react-router-dom';
 import Axios from 'axios';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -68,18 +68,19 @@ class LoginPage extends React.Component {
   render() {
     return (
       <div className={"LoginPage"}>
-        <div id="LoginPage" className="container">
+        <div id="log" className="container">
           <div className="row justify-content-center">
-            <div className="col-md-5">
-              <h3 className="text-center text-light mb-4">Log in</h3>
+            <div className="col-md-4 text-center">
+              <img src="/image/logo1.png" width="80" height="80"/>
+              <p className="mt-1">GameBox</p>
               <Formik
                 initialValues={{email: '', password: ''}}
                 validationSchema={Yup.object().shape({
                   email: Yup.string()
-                    .email()
-                    .required('Required'),
+                    .email('* Email is not correct')
+                    .required('* Email is required'),
                   password: Yup.string()
-                    .required('Required'),
+                    .required('* Password is required'),
                 })}
                 onSubmit={(values, actions) => this.handleSubmit(values, actions)}
               >
@@ -94,42 +95,43 @@ class LoginPage extends React.Component {
                     /* and other goodies */
                   }) => (
 
-                  <form className="mt-3" onSubmit={handleSubmit}>
+                  <form className="mt-5" onSubmit={handleSubmit}>
                     <div className="form-group">
                       <input
                         type="email"
                         name="email"
-                        className="form-control form-control-sm"
+                        className="form-control inputLog"
                         placeholder="Enter email"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.email}
                         formNoValidate={true}
                       />
-                      {errors.email && touched.email && errors.email}
+                      <small className="form-text text-left error">{errors.email && touched.email && errors.email}</small>
                     </div>
                     <div className="form-group">
                       <input
                         name="password"
                         type="password"
-                        className="form-control form-control-sm"
+                        className="form-control inputLog"
                         placeholder="Password"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.password}
                       />
-                      {errors.password && touched.password && errors.password}
+                      <small className="form-text text-left error">{errors.password && touched.password && errors.password}</small>
                     </div>
                     <button
                       type="submit"
-                      className="btn btn-sm btn-block mt-4"
+                      className="btn btn-block mt-3 btnLog"
                       disabled={isSubmitting}
                     >
-                      Submit
+                      Log in to GameBox
                     </button>
                   </form>
                 )}
               </Formik>
+              <Link to={'/user/signup'}><p className="mt-3">Create your free GameBox Account</p></Link>
               {/*<form>*/}
                 {/*<div className="form-row">*/}
                   {/*<div className="form-group col-md-6">*/}

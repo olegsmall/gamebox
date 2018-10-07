@@ -1,230 +1,190 @@
 import React from 'react';
 import ReactPropTypes from 'prop-types';
+import axios from "axios";
 
-const MainPage = () => {
-  return (
-    <div className={"MainPage"}>
-      <div className="swiper-container">
-        <div className="swiper-wrapper">
-          <div className="swiper-slide">
-            <img className="d-block w-100" src="image/image_carusel3.jpg" alt="First slide"/>
-          </div>
-          <div className="swiper-slide">
-            <img className="d-block w-100" src="image/image_carusel1.jpg" alt="Second slide"/>
-          </div>
-          <div className="swiper-slide">
-            <img className="d-block w-100" src="image/image_carusel2.jpg" alt="Third slide"/>
-          </div>
-        </div>
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-button-next"></div>
-      </div>
-      <h2 className="mt-5 ml-5 text-light">Recently released</h2>
-      <h4 className="ml-5 text-light">
-        Integer faucibus quam quis massa condimentum, ut vestibulum nisl gravida.
-        Suspendisse potenti.
-      </h4>
-      <div className="card-deck m-5">
-        <div className="card">
-          <img className="card-img-top" src="image/img6.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-        <div className="card">
-          <img className="card-img-top" src="image/img1.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-        <div className="card">
-          <img className="card-img-top" src="image/img2.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-        <div className="card">
-          <img className="card-img-top" src="image/img3.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-        <div className="card">
-          <img className="card-img-top" src="image/img3.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-      </div>
-      <h2 className="mt-5 ml-5 text-light">Most popular</h2>
-      <h4 className="ml-5 text-light">
-        Integer faucibus quam quis massa condimentum, ut vestibulum nisl gravida.
-        Suspendisse potenti.
-      </h4>
-      <div className="card-deck m-5">
-        <div className="card">
-          <img className="card-img-top" src="image/img1.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-        <div className="card">
-          <img className="card-img-top" src="image/img4.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-        <div className="card">
-          <img className="card-img-top" src="image/img5.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-        <div className="card">
-          <img className="card-img-top" src="image/img6.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-        <div className="card">
-          <img className="card-img-top" src="image/img6.jpg" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-center">Game's name</h5>
-              <p className="text-center">Genre : Action shooter</p>
-              <p className="text-center">Rent/Buy : 25$/300$</p>
-              <div className="text-center">
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-                <i className="fa fa-star-o"></i>
-              </div>
-              <div className="text-center mt-2">
-                <button type="button" className="btn btn-success">rent</button>
-                <button type="button" className="btn btn-success ml-1">buy</button>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+require('./MainPage.scss');
 
-export default MainPage;
+export default class MainPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lastAddedIsReady: false,
+      lastAddedProducts: [],
+    };
+  }
+
+  componentDidMount() {
+    this.fetchLastAdded();
+  }
+
+  fetchLastAdded() {
+    axios.get('/product?sort_by=date&limit=6')
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          lastAddedProducts: res.data.products.docs,
+          lastAddedIsReady: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  render() {
+
+    const {lastAddedIsReady, lastAddedProducts} = this.state;
+
+    if (lastAddedProducts.length === 0) return null;
+
+    return (
+      <div className={'MainPage'}>
+        <div className="imageMain">
+          <img className="d-block w-100 imgMain" src="/image/back4.jpg" alt="First image"/>
+        </div>
+        <h5 className="text-center pt-4 mt-2">Welcome to GameBox!</h5>
+        <div className="infoCard mt-4">
+          <div className="container py-4">
+            <div className="row">
+              <div className="col">
+                <img className="img-fluid imgWork my-2 mr-4 ml-2 float-left" src="image/itWorks.png"/>
+                <h5 className="mt-2">You can sell, buy or rent games</h5>
+                <h5>And our members can communicate with each other</h5>
+                <h5><span>See our new games right now!</span></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="container mb-5">
+          <h5 className="mt-4 text-center">Recently released</h5>
+          <div className="card-deck mt-4 row">
+
+            {lastAddedProducts.map((product) => {
+              const backgroundImage = {
+                backgroundImage: `url("${product.images[0]}")`,
+              };
+              return (
+                <div
+                  key={product._id}
+                  className="card product text-center col-sm-6"
+                  style={backgroundImage}
+                >
+                  <div className="inner">
+                    <div className="paragraphV text-light">4,5</div>
+                    <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
+                    <button className="button mt-5"><a href="#">View More</a></button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {/*<div className="card-deck mt-4">*/}
+          {/*<div className="card product text-center cardRecently-4">*/}
+          {/*<div className="inner">*/}
+          {/*<div className="paragraphV text-light">4,5</div>*/}
+          {/*<a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>*/}
+          {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+          {/*</div>*/}
+          {/*</div>*/}
+          {/*<div className="card product text-center cardRecently-5">*/}
+          {/*<div className="inner">*/}
+          {/*<div className="paragraphV text-light">4,5</div>*/}
+          {/*<a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>*/}
+          {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+          {/*</div>*/}
+          {/*</div>*/}
+          {/*<div className="card product text-center cardRecently-6">*/}
+          {/*<div className="inner">*/}
+          {/*<div className="paragraphV text-light">4,5</div>*/}
+          {/*<a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>*/}
+          {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+          {/*</div>*/}
+          {/*</div>*/}
+          {/*</div>*/}
+        </div>
+
+        <div className="infoCard">
+          <h3 className="text-center pt-4">How it works</h3>
+          <div className="container pb-4">
+            <div className="row">
+              <div className="col-md-4 text-center">
+                <img className="img-fluid imgInfo my-4" src="image/information-41225_640.png"/>
+                <p>General info</p>
+                <p className="text">This is a platform for sharing games between players.
+                  Our members can sell, buy, rent the games and comment / rate these games and other members.
+                </p>
+              </div>
+              <div className="col-md-4 text-center">
+                <img className="img-fluid imgInfo my-4" src="image/profile2-512.png"/>
+                <p>Join us</p>
+                <p className="text">Being a member of our great platform means to have access to the most
+                  interesting
+                  games of various genres and play in real time.
+                </p>
+              </div>
+              <div className="col-md-4 text-center">
+                <img className="img-fluid imgInfo my-4" src="image/img_343397.png"/>
+                <p>Payment</p>
+                <p className="text">Secure payment can be made in cash, by check or Paypal.
+                  Choose your game and go ahead!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="container mb-5">
+          <h5 className="mt-4 ml-5 text-center">Most popular</h5>
+          <div className="card-deck mt-4">
+            <div className="card product text-center cardPopular-1">
+              <div className="inner">
+                <div className="paragraphV text-light">4,5</div>
+                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
+                <button className="button mt-5"><a href="#">View More</a></button>
+              </div>
+            </div>
+            <div className="card product text-center cardPopular-2">
+              <div className="inner">
+                <div className="paragraphV text-light">4,5</div>
+                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
+                <button className="button mt-5"><a href="#">View More</a></button>
+              </div>
+            </div>
+            <div className="card product text-center cardPopular-3">
+              <div className="inner">
+                <div className="paragraphV text-light">4,5</div>
+                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
+                <button className="button mt-5"><a href="#">View More</a></button>
+              </div>
+            </div>
+          </div>
+          <div className="card-deck mt-4">
+            <div className="card product text-center cardPopular-4">
+              <div className="inner">
+                <div className="paragraphV text-light">4,5</div>
+                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
+                <button className="button mt-5"><a href="#">View More</a></button>
+              </div>
+            </div>
+            <div className="card product text-center cardPopular-5">
+              <div className="inner">
+                <div className="paragraphV text-light">4,5</div>
+                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
+                <button className="button mt-5"><a href="#">View More</a></button>
+              </div>
+            </div>
+            <div className="card product text-center cardPopular-6">
+              <div className="inner">
+                <div className="paragraphV text-light">4,5</div>
+                <a href="#"><h4 className="paragraphV pt-5 ">Game's Name</h4></a>
+                <button className="button mt-5"><a href="#">View More</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    );
+  }
+}
