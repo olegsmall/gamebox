@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from "./Carousel/Carousel";
+import {Link} from "react-router-dom";
 
 require('./GamePage.scss');
 
@@ -140,7 +141,9 @@ class GamePage extends React.Component {
         <div className="container my-4">
           <div className="row justify-content-center">
             <div className="col-md-2">
-              <button className="btn btn-block btnViewMore">View more</button>
+              <button className="btn btn-block btnViewMore">
+                <Link className="nav-link linkViewMore" to={'/product'}>View more</Link>
+              </button>
             </div>
           </div>
         </div>
