@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 require('./ArticlePage.scss');
 
@@ -28,6 +29,7 @@ class ArticlePage extends  React.Component {
     const image = (this.state.article !== null) ? this.state.article.images[0] : '';
     const author = (this.state.article !== null) ? this.state.article.author : 'Anonymous';
     const date = (this.state.article !== null) ? this.state.article.created : '';
+    const tags = (this.state.article !== null) ? this.state.article.tags : '';
 
     return (
 
@@ -42,6 +44,7 @@ class ArticlePage extends  React.Component {
               <p className="text-muted">Written by : {author} | {date}</p>
               <img className="img-fluid mt-3" src={"/image/" + image} alt="image"/>
               <p className="mt-5">{content}</p>
+              <p className="my-5"><Link to={''}>{tags}</Link></p>
             </div>
           </div>
         </div>
