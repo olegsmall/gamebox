@@ -15,6 +15,8 @@ exports.createProduct = function (req) {
       image.push('/image/default/product.jpg');
     }
 
+    req.body.price = JSON.parse(req.body.price)
+
     return promise.then((docs) => {
       let product = new Product({
         title: req.body.title,
@@ -23,7 +25,7 @@ exports.createProduct = function (req) {
         genres: docs,
         owner: req.user._id,
         price: req.body.price,
-        // status: req.body.status,
+        status: req.body.status,
         // esrb: req.body.esrb,
         // rating: req.body.rating,
         // producer: req.body.producer

@@ -25,7 +25,7 @@ class Thumb extends React.Component {
   }
 
   render() {
-    const {file, object, defaultImage, className, size: {width, height}} = this.props;
+    const {file, object, defaultImage, className, size: {width=200, height=200} = {}} = this.props;
 
     if (!file && !object) {
       return (<img
