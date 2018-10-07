@@ -20,12 +20,12 @@ const Footer = () => {
         <div className="container text-center">
           <div className="py-4">
             <div>
-              <a className="fb-ic"> <i className="fa fa-facebook fa-lg white-text mr-md-5 mr-3"> </i></a>
-              <a className="tw-ic"> <i className="fa fa-twitter fa-lg white-text mr-md-5 mr-3"></i></a>
-              <a className="gplus-ic"> <i className="fa fa-google-plus fa-lg white-text mr-md-5 mr-3"></i> </a>
-              <a className="li-ic"> <i className="fa fa-linkedin fa-lg white-text mr-md-5 mr-3"></i></a>
-              <a className="ins-ic"> <i className="fa fa-instagram fa-lg white-text mr-md-5 mr-3"></i> </a>
-              <a className="pin-ic"> <i className="fa fa-pinterest fa-lg white-text"></i></a>
+              <a className="fb-ic" target="_blank" href={"https://www.facebook.com/"}> <i className="fa fa-facebook fa-lg white-text mr-md-5 mr-3"> </i></a>
+              <a className="tw-ic" target="_blank" href={"https://twitter.com/"}> <i className="fa fa-twitter fa-lg white-text mr-md-5 mr-3"></i></a>
+              <a className="gplus-ic" target="_blank" href={"https://plus.google.com/"}> <i className="fa fa-google-plus fa-lg white-text mr-md-5 mr-3"></i> </a>
+              <a className="li-ic" target="_blank" href={"https://www.linkedin.com"}> <i className="fa fa-linkedin fa-lg white-text mr-md-5 mr-3"></i></a>
+              <a className="ins-ic" target="_blank" href={"https://www.instagram.com/"}> <i className="fa fa-instagram fa-lg white-text mr-md-5 mr-3"></i> </a>
+              <a className="pin-ic" target="_blank" href={"https://www.pinterest.ca/"}> <i className="fa fa-pinterest fa-lg white-text"></i></a>
             </div>
           </div>
         </div>
