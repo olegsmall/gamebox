@@ -43,6 +43,7 @@ const UserSchema = new mongoose.Schema({
     deal_type: {type: String, enum: ['for rent', 'for sale'], required: [true, 'Choose deal type']},
     date: {type: Date}
   }],
+  average_rating: {type: Number, default: 0},
   creation_date: {type: Date, default: Date.now()}
 });
 
