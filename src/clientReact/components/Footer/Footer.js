@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 require('./Footer.scss');
 
@@ -9,11 +10,10 @@ const Footer = () => {
         <div className="row justify-content-center">
           <div className="col-md-6 text-center py-2">
             <div className="line text-light">
-              <div className="line-border"><a href="#" className="text-light"> Home</a></div>
-              <div className="line-border"><a href="#" className="text-light"> About</a></div>
-              <div className="line-border"><a href="#" className="text-light"> Games</a></div>
-              <div className="line-border"><a href="#" className="text-light"> Help</a></div>
-              <div><a href="#" className="text-light"> Blog</a></div>
+              <div className="line-border"><Link className="text-light" to={'/'}> Home</Link></div>
+              <div className="line-border"><Link className="text-light" to={'/about'}> About</Link></div>
+              <div className="line-border"><Link className="text-light" to={'/product'}> Games</Link></div>
+              <div><Link className="text-light" to={'/article'}> Blog</Link></div>
             </div>
           </div>
         </div>
