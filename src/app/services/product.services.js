@@ -191,7 +191,7 @@ exports.rateProduct = function (req) {
     });
 
   } catch (e) {
-    throw {error: e, message: 'Error at rate user services'};
+    throw {error: e, message: 'Error at rate product services'};
 
   }
 };
