@@ -30,6 +30,7 @@ export default class ArticlePage extends  React.Component {
     }
 
     const {_id, title, image, content, author, created, tags} = this.state.article;
+    const date = new Date(created).toLocaleDateString();
 
     return (
 
@@ -41,7 +42,7 @@ export default class ArticlePage extends  React.Component {
           <div className="row">
             <div className="col">
               <h2>{title}</h2>
-              <p className="text-muted">Written by : {`${author.firstName} ${author.lastName}`} | {created.toString()}</p>
+              <p className="text-muted">Written by : {`${author.firstName} ${author.lastName}`} | {date}</p>
               <img className="img-fluid mt-3" src={image} alt="image"/>
               <HtmlContent content={content}/>
               {/*<div className="mt-5" dangerouslySetInnerHTML={{ __html: content }}> </div>*/}
