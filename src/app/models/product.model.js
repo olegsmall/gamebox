@@ -28,7 +28,7 @@ const ProductSchema = new Schema({
   description: {
     type: String,
     required: true,
-    minlength: [10, 'Description minimum lenght is 10 symbols'],
+    minlength: [10, 'Description minimum length is 10 symbols'],
     maxlength: [500, 'Description maximum length is 500 symbols']
   },
   images: [{

@@ -33,6 +33,8 @@ import UserController from '../controllers/user.controller';
 import ProductController from '../controllers/product.controller';
 import ArticleController from '../controllers/article.controller';
 import OrderController from "../controllers/order.controller";
+import MessageController from '../controllers/message.controller';
+
 
 router.post('/', upload.single('avatar'), UserController.createUser);
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
@@ -49,7 +51,9 @@ router.put('/role', UserController.updateUserRole); //Change user role
 router.put('/:id/status', UserController.updateUserStatus); //Change user status
 router.put('/:id/rating', UserController.rateUser); //Rate user
 
-
+router.get('/:id/inbox', MessageController.getInboxMessages); // Get inbox messages
+router.get('/:id/outbox', MessageController.getOutboxMessages); // Get outbox messages
+router.delete('/:id/message', MessageController.deleteMessage); // Delete message from user messages
 
 // router.get('/:id/order', OrderController.getOrders); //Get user orders
 

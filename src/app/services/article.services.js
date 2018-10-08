@@ -28,22 +28,18 @@ exports.getArticles = function (req) {
   let query = {}; // Mongoose query options
 
   let sort = 'desc'; // Default sorting method -> Descending
-  // Populate query fields
-  queryOptions.populate = {path: 'author', select: '_id name firstName lastName e-mail'};
-  // Check the existence of the query parameters, If the exists doesn't exists assign a default value
-  //Page option
-  req.query.page ? queryOptions.page = Number(req.query.page) : 1;
-  // Limit number of returning objects
-  req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10;
-  // Check if sort option is different from default(desc)
-  if(req.query.sort === 'asc') { sort = 'asc'; }
-  // Check if sorting by title is chosen
-  if(req.query.sort_by === 'title') { queryOptions.sort = { title: sort}; }
-  // Check if sorting by date is chosen
-  if(req.query.sort_by === 'date') { queryOptions.sort = { created: sort}; }
 
-  // Check if searching by title (uses %LIKE%)
-  if(req.query.title) { query.title = new RegExp(req.query.title,'i'); }
+  queryOptions.populate = {path: 'author', select: '_id name firstName lastName e-mail'};   // Populate query fields
+
+  // Check the existence of the query parameters, If the exists doesn't exists assign a default value
+  req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
+  req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10; // Limit number of returning objects
+
+  if(req.query.sort_by === 'title') { queryOptions.sort = { title: sort}; } // Check if sorting by title is chosen
+  if(req.query.sort_by === 'date') { queryOptions.sort = { created: sort}; } // Check if sorting by date is chosen
+
+  if(req.query.title) { query.title = new RegExp(req.query.title,'i'); } // Check if searching by title (uses %LIKE%)
+  if(req.query.sort === 'asc') { sort = 'asc'; } // Check if sort option is different from default(desc)
   if(req.query.tags) { query.tags = new RegExp(req.query.tags ,'i'); }
 
   try {
