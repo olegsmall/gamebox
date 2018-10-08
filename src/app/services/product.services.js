@@ -8,16 +8,18 @@ exports.createProduct = function (req) {
   try {
     let promise = Genre.find({_id: {$in: req.body.genres}}, '_id').exec();
 
-    let image = [];
-    if (req.file){
-      image.push('/image/products/' + req.file.filename);
-    } else {
-      image.push('/image/default/product.jpg');
-    }
-
-    req.body.price = JSON.parse(req.body.price)
 
     return promise.then((docs) => {
+
+      let image = [];
+      if (req.file){
+        image.push('/image/products/' + req.file.filename);
+      } else {
+        image.push('/image/default/product.jpg');
+      }
+
+      req.body.price = JSON.parse(req.body.price);
+
       let product = new Product({
         title: req.body.title,
         description: req.body.description,
