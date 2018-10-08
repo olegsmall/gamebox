@@ -17,7 +17,7 @@ class Articles extends React.Component {
     this.getArticles();
   }
 
-  getArticles(){
+  getArticles() {
     axios.get('/user/' + this.props.user.id + '/articles')
       .then((res) => {
         // handle success
@@ -39,23 +39,19 @@ class Articles extends React.Component {
     return (
       <div className={"Articles"}>
         <h2 className="text-center mt-4">My articles</h2>
-        <button className={'btn btn-block mt-2 btnAddArticle'} onClick={this.handleAddArticle.bind(this)}>Add article</button>
+        <button className={'btn btn-block mt-2 btnAddArticle'} onClick={this.handleAddArticle.bind(this)}>Add article
+        </button>
         <div id="yourArticle" className="container">
-          <a className="linkArticle" href="#">
-            <div className="card border-0">
-              {this.state.articles.map((article) => (
-                <ArticleRow
-                  key={article._id}
-                  article={article}
-                  getArticles={this.getArticles.bind(this)}
-                  showMessage={this.props.showMessage}
-                  setArticleState={this.props.setArticleState}
-                  changeInner={this.props.changeInner}
-                />
-              ))}
-            </div>
-          </a>
-          <hr/>
+          {this.state.articles.map((article) => (
+            <ArticleRow
+              key={article._id}
+              article={article}
+              getArticles={this.getArticles.bind(this)}
+              showMessage={this.props.showMessage}
+              setArticleState={this.props.setArticleState}
+              changeInner={this.props.changeInner}
+            />
+          ))}
         </div>
       </div>
     );

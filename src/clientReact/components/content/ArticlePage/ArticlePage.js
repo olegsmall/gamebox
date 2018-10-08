@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 require('./ArticlePage.scss');
 
-class ArticlePage extends  React.Component {
+export default class ArticlePage extends  React.Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +30,6 @@ class ArticlePage extends  React.Component {
     }
 
     const {_id, title, image, content, author, created, tags} = this.state.article;
-    // const {title, content, image, author, date, tags} = this.state.article;
 
     return (
 
@@ -44,7 +43,8 @@ class ArticlePage extends  React.Component {
               <h2>{title}</h2>
               <p className="text-muted">Written by : {`${author.firstName} ${author.lastName}`} | {created.toString()}</p>
               <img className="img-fluid mt-3" src={image} alt="image"/>
-              <p className="mt-5">{content}</p>
+              <HtmlContent content={content}/>
+              {/*<div className="mt-5" dangerouslySetInnerHTML={{ __html: content }}> </div>*/}
               <p className="my-5"><span>{tags.join(' ')}</span></p>
             </div>
           </div>
@@ -54,4 +54,20 @@ class ArticlePage extends  React.Component {
   }
 }
 
-export default ArticlePage;
+class HtmlContent extends React.Component{
+  constructor(props){
+    super(props);
+    this.contentArea = React.createRef();
+  }
+
+  componentDidMount(){
+    this.contentArea.current.innerHTML = this.props.content;
+  }
+
+  render(){
+    return (
+      <div className="mt-5" ref={this.contentArea}> </div>
+    );
+  }
+
+}

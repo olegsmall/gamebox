@@ -14,6 +14,7 @@ class AddArticle extends React.Component {
       formData.append('image', values.image, values.image.name);
     }
     formData.append('title', values.title);
+    // debugger;
     formData.append('content', values.content);
     formData.append('tags', values.tags);
 
@@ -21,12 +22,14 @@ class AddArticle extends React.Component {
     if (this.props.pageType === 'EditArticle') {
       axios.put('/article/' + this.props.article._id, formData)
         .then((res) => {
+          // debugger;
           console.log(res.data);
           self.props.showMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Articles');
         })
         .catch((error) => {
+          // debugger
           console.log(error);
           self.props.showMessage(error.message);
           actions.setSubmitting(false);
@@ -80,8 +83,7 @@ class AddArticle extends React.Component {
               .max(40)
               .required('Required'),
             content: Yup.string()
-              .min(10)
-              .max(1500),
+              .min(10),
           })}
           onSubmit={(values, actions) => this.handleSubmit(values, actions)}
         >
