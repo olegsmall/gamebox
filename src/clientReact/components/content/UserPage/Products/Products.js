@@ -37,7 +37,7 @@ class Products extends React.Component {
     return (
       <div>
         <div className={'d-flex flex-row flex-nowrap justify-content-between mb-5'}>
-          <h3 className="text-center text-light">Your games:</h3>
+          <h3 className="text-center">Your games:</h3>
           <button className={'btn btn-success'} onClick={this.handleAddProduct.bind(this)}>Add game</button>
         </div>
 

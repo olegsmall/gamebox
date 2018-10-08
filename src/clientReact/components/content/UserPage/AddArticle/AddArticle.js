@@ -86,7 +86,7 @@ class AddArticle extends React.Component {
           onSubmit={(values, actions) => this.handleSubmit(values, actions)}
         >
           {({values, setFieldValue, isSubmitting}) => (
-            <Form className="mb-5">
+            <Form className="mb-5 text-left">
               <div id="imageAdd"></div>
               <div className="form-row mb-3">
                 <div className="col-9">
