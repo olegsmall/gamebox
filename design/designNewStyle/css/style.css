@@ -85,6 +85,28 @@ a #loupe:focus{
     width: 70%;
 }
 
+/*basket in menu*/
+.imgBasket {
+    margin-bottom: 8px;
+
+}
+
+.basketNumber{
+    margin-bottom: -22px;
+    margin-left: 11px;
+    color: red;
+    font-weight: bold ;
+}
+@media only screen and (min-width: 769px) {
+    .imgBasket {
+        margin-left: 16px;
+    }
+    .basketNumber {
+        margin-left: 27px;
+    }
+}
+
+
 /* Log in and Sign Up*/
 #login, #signUp{
     font-size: 10px!important;
@@ -153,13 +175,13 @@ input.form-control.mt-3.w-30 {
     font-size: small;
 }
 
-.card {
+.cardAllGame {
     -moz-transition: all 0.7s;
     -webkit-transition: all 0.7s;
     transition: all 0.7s;
 }
 
-.card:hover {
+.cardAllGame:hover {
     -moz-transform: scale(1.05);
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
@@ -168,10 +190,19 @@ input.form-control.mt-3.w-30 {
 }
 
 /* Card Product*/
+.aBlack{
+    color: black;
+}
+.btnPrice{
+    font-weight: bold;
+    color: red;
+    font-size: large;
+}
+
 .product {
     position: relative;
     width: 280px;
-    height: 300px;
+    height: 270px;
     background-size: cover;
     background-position: center;
     border-radius: unset !important;
@@ -334,7 +365,7 @@ footer.page-footer .line-border {
 
 /* Sign up Page */
 #sign {
-    margin-top: 8rem;
+    margin-top: 3rem;
     margin-bottom: 8rem;
 }
 
@@ -510,6 +541,51 @@ hr {
 .map {
     height: 400px;
 }
+
+/*yourArticle page*/
+.btnAddArticle {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnAddArticle:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.imageYourArticle {
+    width: 100px;
+    /*height: 150px;*/
+}
+#yourArticle {
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+}
+
+/*ShoppingCart page*/
+#myOrders{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+.imageShopCart {
+    width: 150px;
+
+}
+.btnShopCart{
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+}
+
+.btnShopCart:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
 
 /* Style mobile */
 @media only screen and (min-width: 600px) {

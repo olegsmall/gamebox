@@ -20,31 +20,20 @@ class Profile extends React.Component {
 
 
     return (
-      <div>
-        <div className={'d-flex flex-row flex-nowrap justify-content-between mb-5'}>
-          <h3 className="text-center text-light">Your account</h3>
-          <button className={'btn btn-success'} onClick={this.handleEditPrifile.bind(this)}>Edit profile</button>
+      <div className={"Profile"}>
+        <img src={avatar} alt="avatar" width="100" height="100" className="mt-4"/>
+        <div className="mt-2 mb-2">
+          <i className="fa fa-star-o"></i>
+          <i className="fa fa-star-o"></i>
+          <i className="fa fa-star-o"></i>
+          <i className="fa fa-star-o"></i>
+          <i className="fa fa-star-o"></i>
         </div>
-        <div className={'justify-content-center'}>
-          <div className={'text-center'}>
-            <div className="text-light text-center mb-2">
-              <img src={avatar} alt="avatar" width="100" height="100" className="ml-3"/>
-            </div>
-            <div className="text-light mb-2">
-              <i className=" ml-3 fa fa-star-o"></i>
-              <i className="fa fa-star-o"></i>
-              <i className="fa fa-star-o"></i>
-              <i className="fa fa-star-o"></i>
-              <i className="fa fa-star-o"></i>
-            </div>
-            <div className="text-light mb-2">First name : {firstName}</div>
-            <div className="text-light mb-2">Last Name : {lastName}</div>
-            <div className="text-light mb-2">Email : {email}</div>
-            <div className="text-light mb-2">Phone : {phone}</div>
-            <div className="text-light mb-2">Address : {address}</div>
-
-          </div>
-        </div>
+        <div>First name : {firstName}</div>
+        <div className="mt-2">Last Name : {lastName}</div>
+        <div className="mt-2">Email : {email}</div>
+        <div className="mt-2">Phone : {phone}</div>
+        <button className={'mt-2 mb-2 btn btnEditProf'} onClick={this.handleEditPrifile.bind(this)}>Edit profile</button>
       </div>
     );
   }

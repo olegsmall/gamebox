@@ -1,17 +1,20 @@
 .EditProfile {
-
-  h3 form button.mt-3.btn.btn-sm.btn-block.mb-3 {
-    background-color: #026E00 !important;
+  .inputEdit {
+    border: 1px solid black;
+    border-radius: unset;
   }
 
-  .buttonEditProfile {
-    background-color:#026E00;
-    color: #FFFFFF;
+  .btnEdit {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
   }
 
-  .buttonEditClose {
-    background-color:#026CAE;
-    color: #FFFFFF;
+  .inputEdit:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   }
 
+  .btnEdit:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
 }

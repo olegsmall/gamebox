@@ -135,60 +135,54 @@ class UserPage extends React.Component {
 
     return (
       <div className={'UserPage'}>
-        <div id="hi-bg" className="alert alert-secondary h3 text-light" role="alert">
-          <div className={'container d-flex flex-row flex-nowrap justify-content-between'}>
-            <div>Hi, {firstName + ' ' + lastName}</div>
-            <div>{this.state.message}</div>
-          </div>
+        <div className="imageMain">
+          <img className="d-block w-100 imgMain" src="image/back6.jpg" alt="Main image"/>
         </div>
-
-        <div className="container d-flex flex-row mt-5">
-          <div className="col-4">
-            <a onClick={(e) => this.handleChangeInner(e, 'Profile')} href="">
-              <p className="text-light">
-                <img src="/image/history.png" alt="orders" width="50" height="50" className="mr-3"/>
-                Profile
-              </p>
-            </a>
-            <a onClick={(e) => this.handleChangeInner(e, 'ChangePassword')} href="">
-              <p className="text-light">
-                <img src="/image/history.png" alt="orders" width="50" height="50" className="mr-3"/>
-                Change password
-              </p>
-            </a>
-            <a onClick={(e) => this.handleChangeInner(e, 'Orders')} href="">
-              <p className="text-light">
-                <img src="/image/history.png" alt="orders" width="50" height="50" className="mr-3"/>
-                Your Orders
-              </p>
-            </a>
-            <a onClick={(e) => this.handleChangeInner(e, 'Products')} href="">
-              <p className="text-light">
-                <img src="/image/list.png" alt="games-list" width="50" height="50" className="mr-3"/>
-                Your games
-              </p>
-            </a>
-            <a onClick={(e) => this.handleChangeInner(e, 'Articles')} href="">
-              <p className="text-light">
-                <img src="/image/add.png" alt="add-game" width="50" height="50" className="mr-3"/>
-                Your articles
-              </p>
-            </a>
-            {/*<a onClick={(e)=>this.handleChangeInner(e, 'EditProfile')} href={''}>*/}
-            {/*<p className="text-light">*/}
-            {/*<img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>*/}
-            {/*Edit Profile*/}
-            {/*</p>*/}
-            {/*</a>*/}
-            <a href="">
-              <p className="text-light">
-                <img src="/image/logout.png" alt="logout" width="50" height="50" className="mr-3"/>
-                Logout
-              </p>
-            </a>
-          </div>
-          <div className="col-8 justify-content-center">
-            {inner}
+        <h5 className="pt-4 mt-2 ml-5">Hi, {firstName + ' ' + lastName}</h5>
+        <div>{this.state.message}</div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3 text-center">
+              <button className="mt-5  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Profile')} href="">
+                  Profile
+                </a>
+              </button>
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'ChangePassword')} href="">
+                    Change password
+                </a>
+              </button>
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Orders')} href="">
+                    Your Orders
+                </a>
+              </button>
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Products')} href="">
+                    Your games
+                </a>
+              </button>
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Articles')} href="">
+                    Your articles
+                </a>
+              </button>
+              {/*<a onClick={(e)=>this.handleChangeInner(e, 'EditProfile')} href={''}>*/}
+              {/*<p className="text-light">*/}
+              {/*<img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>*/}
+              {/*Edit Profile*/}
+              {/*</p>*/}
+              {/*</a>*/}
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" href="">
+                   Logout
+                </a>
+              </button>
+            </div>
+              <div className="col-md-8 text-center">
+                  {inner}
+              </div>
           </div>
         </div>
       </div>

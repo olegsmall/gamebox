@@ -113,7 +113,7 @@ class AddArticle extends React.Component {
               </div>
 
               <div className="form-group">
-                <Field name="tags" type="text" className="form-control form-control-sm" placeholder="Article's title"/>
+                <Field name="tags" type="text" className="form-control form-control-sm" placeholder="Tags"/>
               </div>
 
               <button type="submit" className="btn btn-success btn-block" disabled={isSubmitting}>Save</button>

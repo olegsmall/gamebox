@@ -8,18 +8,6 @@ const PriceSubSchema = new Schema({
   rent: Number
 },{ _id : false });
 
-// const RentSubSchema = new Schema({
-//   from:  {type: Date, default: Date.now()},
-//   to: {type: Date, required: [true, 'You should indicate end date of the rent']},
-//   returned: Date,
-//   holder: {type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Renter/holder id is required']}
-// },{ _id : false });
-//
-// const SoldSubSchema = new Schema({
-//   to_user: {type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Buyer id is required']},
-//   date: {type: Date, default: Date.now()}
-// },{ _id : false });
-
 const RatingSubSchema = new Schema({
   mark: {
     type: Number,
@@ -57,6 +45,7 @@ const ProductSchema = new Schema({
   },
   esrb: {type: String, enum: ['e', 'e10', 't', 'm', 'a']},
   rating: [RatingSubSchema],
+  average_rating: {type: Number, default: 0},
   price: PriceSubSchema,
   producer: String,
   comment: [{
@@ -64,8 +53,6 @@ const ProductSchema = new Schema({
     content: {type:String, minlength:10, maxlength:150},
     date: {type: Date, default: Date.now()}
   }],
-  // rented: [RentSubSchema],
-  // sold: SoldSubSchema,
   added: {type: Date, default: Date.now()},
   edited: {type: Date}
 });

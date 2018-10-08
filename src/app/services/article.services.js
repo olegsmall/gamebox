@@ -92,20 +92,18 @@ exports.getArticle = function (id) {
 
 exports.updateArticle = function (req) {
   try {
-    let promise = Article.findByIdAndUpdate(req.params.id, {
-      title: req.body.title,
-      content: req.body.content,
-      images: req.body.images,
-      video: req.body.video,
-      tags: req.body.tags,
-      edited: Date.now()
-    }, { new: true });
+    let promise = Article.findById(req.params.id);
 
     return promise.then((doc) => {
-      if(doc === null) {
-        throw Error('Article not found');
-      }
-      return doc;
+      if(doc === null) { throw Error('Article not found');}
+      doc.title = req.body.title;
+      doc.content = req.body.content;
+      doc.images = req.body.images;
+      doc.video = req.body.video;
+      doc.tags = req.body.tags;
+      doc.edited = Date.now();
+
+      return doc.save();
     });
 
   } catch(e){
@@ -136,11 +134,10 @@ exports.addArticleComment = function (req) {
 
     return promise.then((article, err) => {
       if(article === null || err) { throw Error('Article not found'); }
-
       article.comment.push({user: req.user._id, content: req.body.content});
 
       return article.save();
-    }, {new: true})
+    });
   } catch(e) {
     throw {error: e, message: 'Error on add article comment'};
   }

@@ -50,7 +50,7 @@ class EditProfile extends React.Component {
             firstName: Yup.string()
               .min(3)
               .max(30)
-              .required('Required'),
+              .required('* Required'),
             lastName: Yup.string()
               .min(3)
               .max(30),
@@ -71,70 +71,68 @@ class EditProfile extends React.Component {
               isSubmitting,
               setFieldValue,
             }) => (
-            <form className="mt-3" onSubmit={handleSubmit}>
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <Thumb file={values.avatar} object={this.props.user}/>
+            <form className="text-center" onSubmit={handleSubmit}>
+                  <Thumb className="mt-2" file={values.avatar} object={this.props.user}/>
                   <input
                     name="file"
                     type="file"
-                    className="form-control form-control-sm"
+                    className="mt-3 w-30"
                     placeholder="Avatar"
                     onChange={event => setFieldValue('avatar', event.currentTarget.files[0])}
                   />
-                </div>
+              <div className="form-row mt-2">
                 <div className="form-group col-md-6">
                   <input
                     name="firstName"
                     type="text"
-                    className="form-control form-control-sm"
+                    className="form-control inputEdit"
                     placeholder="First Name"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.firstName}
                   />
-                  {errors.firstName && touched.firstName && errors.firstName}
+                  <small className="form-text text-left error">{errors.firstName && touched.firstName && errors.firstName}</small>
                 </div>
                 <div className="form-group col-md-6">
                   <input
                     name="lastName"
                     type="text"
-                    className="form-control form-control-sm"
+                    className="form-control inputEdit"
                     placeholder="Last Name"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.lastName}
                   />
-                  {errors.lastName && touched.lastName && errors.lastName}
+                  <small className="form-text text-left error">{errors.lastName && touched.lastName && errors.lastName}</small>
                 </div>
-                <div className="form-group col-md-6">
-                  <input
-                    name="phone"
-                    type="text"
-                    className="form-control form-control-sm"
-                    placeholder="Phone number"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.phone}
-                  />
-                  {errors.phone && touched.phone && errors.phone}
-                </div>
-                <div className="form-group col-md-6">
+                <div className="form-group col-md-12">
                   <input
                     name="address"
                     type="text"
-                    className="form-control form-control-sm"
+                    className="form-control inputEdit"
                     placeholder="Address"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.address}
                   />
-                  {errors.address && touched.address && errors.address}
+                  <small className="form-text text-left error">{errors.address && touched.address && errors.address}</small>
+                </div>
+                <div className="form-group col-md-12">
+                  <input
+                    name="phone"
+                    type="text"
+                    className="form-control inputEdit"
+                    placeholder="Phone number"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.phone}
+                  />
+                  <small className="form-text text-left error">{errors.phone && touched.phone && errors.phone}</small>
                 </div>
               </div>
               <button
                 type="submit"
-                className="btn btn-sm btn-block mb-3 buttonEditProfile">
+                className="btn btn-block my-2 btnEdit">
                 Save profile
               </button>
             </form>
