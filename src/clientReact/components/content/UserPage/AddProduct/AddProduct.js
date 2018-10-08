@@ -42,15 +42,11 @@ class AddProduct extends React.Component {
     for (let i = 0; i < values.genres.length; i++) {
       formData.append('genres[]', values.genres[i]);
     }
-    formData.append('status[]', values.forSell && 'for sale');
-    formData.append('status[]', values.forRent && 'for rent');
-    if (values.sellPrice!== '') {
-      formData.append('sellPrice', values.sellPrice);
-    }
-    if (values.rentPrice!== '') {
-      formData.append('rentPrice', values.rentPrice);
-    }
+    if (values.forSell){formData.append('status[]', 'for sale');}
+    if (values.forRent){formData.append('status[]', 'for rent');}
 
+    if (values.sellPrice!== '') {formData.append('sellPrice', values.sellPrice);}
+    if (values.rentPrice!== '') {formData.append('rentPrice', values.rentPrice);}
 
     const self = this;
     if (this.props.pageType === 'EditProduct') {
