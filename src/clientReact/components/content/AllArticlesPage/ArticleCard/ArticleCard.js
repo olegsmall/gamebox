@@ -21,7 +21,7 @@ class ArticleCard extends React.Component {
 
   render() {
     const {_id, title, image, content, author, created} = this.props.article;
-    let date = new Date(created).toLocaleDateString();
+    const date = new Date(created).toLocaleDateString();
 
     return (
       <div className={'ArticleCard'}>

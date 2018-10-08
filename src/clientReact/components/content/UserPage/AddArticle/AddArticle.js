@@ -79,11 +79,11 @@ class AddArticle extends React.Component {
           initialValues={initialValues}
           validationSchema={Yup.object().shape({
             title: Yup.string()
-              .min(4)
-              .max(40)
-              .required('* Required'),
+              .min(4, '* Minimum length is 4 symbols')
+              .max(40, '* Maximum length is 40 symbols')
+              .required('* Title is required'),
             content: Yup.string()
-              .min(10),
+              .min(10, '* Minimum length is 10 symbols'),
           })}
           onSubmit={(values, actions) => this.handleSubmit(values, actions)}
         >
@@ -110,7 +110,7 @@ class AddArticle extends React.Component {
 
               <div className="form-group">
                 <Field name="content" component="textarea" className="form-control inputEditArticle" rows="5" placeholder="Content"/>
-                <ErrorMessage name="title">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
+                <ErrorMessage name="content">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
 
               <div className="form-group">
