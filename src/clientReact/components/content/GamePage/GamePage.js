@@ -10,17 +10,22 @@ class GamePage extends React.Component {
     super(props);
 
 
-
     this.state = {
-      product: {}
+      product: {},
+      fetchedDataIsReady: false,
     };
   }
 
   componentDidMount() {
     axios.get('/product/' + this.props.match.params.gameId)
       .then((res) => {
-        console.log(res.data);
-        this.setState({product: res.data.product});
+        console.log(res.data.product);
+        this.setState({
+            product: res.data.product,
+            fetchedDataIsReady: true,
+          }
+        );
+
       })
       .catch((error) => {
         console.log(error);
@@ -28,22 +33,28 @@ class GamePage extends React.Component {
   }
 
   render() {
-    const mainImage = (this.state.product.images && this.state.product.images.length > 0)? this.state.product.images[0] : '';
-    const mainImageSrc = '/image/' + mainImage;
+
+    if (!this.state.fetchedDataIsReady) return null;
+
+    const {product: {title, images, description, owner, genres}} = this.state;
+
+    let genresStr = genres.reduce((accum, current)=> ', ' + current.name, '');
+
+// debugger
     return (
       <div className={"GamePage"}>
         <div>
           <img className="d-block w-100 imgMain" src="/image/Trine_-_Wizard_Knight_Caverns.jpg" alt="Game image"/>
         </div>
         <div id="gamePage">
-          <h3 className="text-center mb-4 mb-sm-5">{this.state.product.title}</h3>
+          <h3 className="text-center mb-4 mb-sm-5">{title}</h3>
           <div className="container mb-4">
             <div className="row">
               <div className="col-md-6 sectionImage">
-                <img className="img-fluid imageMainGame" src={mainImageSrc} alt={this.state.product.title}/>
+                <img className="img-fluid imageMainGame" src={images[0]} alt={title}/>
               </div>
               <div className="col-md-6 text-center text-md-left">
-                <form className=" mt-4 mt-md-0 mb-3 pl-3">
+                <div className=" mt-4 mt-md-0 mb-3 pl-3">
                   <div className="form-check form-check-inline">
                     <span><i className="fa fa-star-o"></i></span>
                   </div>
@@ -59,9 +70,9 @@ class GamePage extends React.Component {
                   <div className="form-check form-check-inline">
                     <span><i className="fa fa-star-o"></i></span>
                   </div>
-                </form>
-                <p className="pl-3">Product seller : Markus Persson</p>
-                <p className="pl-3">Genre : Strategy, Adventure, etc.</p>
+                </div>
+                <p className="pl-3">Product seller : {owner.firstName + owner.lastName}</p>
+                <p className="pl-3">Genre : {genresStr}</p>
                 <p className="pl-3">Purchase price : <span className="price">300$</span></p>
                 <p className="pl-3">Rent price : <span className="price">30$</span></p>
                 <form className="mb-3 pl-3">
@@ -76,9 +87,9 @@ class GamePage extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col">
-              <h3 className="my-4 text-center">Discover the world of {this.state.product.title}</h3>
+              <h3 className="my-4 text-center">Discover the world of {title}</h3>
               <p>
-                {this.state.product.description}
+                {description}
               </p>
             </div>
           </div>
@@ -86,7 +97,7 @@ class GamePage extends React.Component {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col">
-            <Carousel/>
+              <Carousel/>
             </div>
           </div>
         </div>
