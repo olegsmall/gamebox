@@ -78,7 +78,7 @@ class AddArticle extends React.Component {
             title: Yup.string()
               .min(4)
               .max(40)
-              .required('Required'),
+              .required('* Required'),
             content: Yup.string()
               .min(10)
               .max(1500),
@@ -103,12 +103,12 @@ class AddArticle extends React.Component {
 
               <div className="form-group">
                 <Field name="title" type="text" className="form-control inputEditArticle" placeholder="Article's title"/>
-                <ErrorMessage name="title">{msg => <div className='error'>{msg}</div>}</ErrorMessage>
+                <ErrorMessage name="title">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
 
               <div className="form-group">
                 <Field name="content" component="textarea" className="form-control inputEditArticle" rows="5" placeholder="Content"/>
-                <ErrorMessage name="title">{msg => <div className='error'>{msg}</div>}</ErrorMessage>
+                <ErrorMessage name="title">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
 
               <div className="form-group">
