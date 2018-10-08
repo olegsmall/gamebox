@@ -53,40 +53,41 @@ class ChangePassword extends React.Component {
 
     return (
       <div className={'ChangePassword'}>
-        <form onSubmit={this.handleSubmitPassword.bind(this)}>
-          <p className="text-light">
-            Change password
-          </p>
-          <div className="form-row">
+        <form className="text-center formChangePassword" onSubmit={this.handleSubmitPassword.bind(this)}>
+          <div className="form-row mt-2">
             <div className="form-group col-md-6">
               <input
                 name="password"
                 type="password"
-                className="form-control form-control-sm"
+                className="form-control inputPass"
                 placeholder="Your password"
                 value={this.state.password}
                 onChange={this.handleInputChange}/>
+              <small className="form-text text-left error">*Please enter your password</small>
             </div>
             <div className="form-group col-md-6">
               <input
                 type="password"
                 name="passwordConf"
-                className="form-control form-control-sm"
+                className="form-control inputPass"
                 placeholder="Your new password"
                 value={this.state.passwordConf}
                 onChange={this.handleInputChange}/>
+              <small className="form-text text-left error">*Please enter your new password</small>
             </div>
-            <button
-              type="submit"
-              className="btn btn-sm btn-block buttonEditProfile">
-              Save
-            </button>
-            <a
-              className="btn btn-sm btn-block buttonEditClose mb-4"
-              href={''}
-              onClick={this.props.goToProfile}>
-              Close
-            </a>
+            <div className="form-group col-md-12">
+              <button
+                type="submit"
+                className="btn-block btn mt-2 btnPass">
+                Save new password
+              </button>
+              <a
+                className="btn-block btn mt-2 btnPass"
+                href={''}
+                onClick={this.props.goToProfile}>
+                Close
+              </a>
+            </div>
           </div>
         </form>
       </div>
