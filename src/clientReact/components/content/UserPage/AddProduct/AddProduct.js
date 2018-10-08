@@ -47,10 +47,12 @@ class AddProduct extends React.Component {
     // formData.append('price[]', JSON.stringify({sell: values.sellPrice!== '' ? values.sellPrice : null}));
     // formData.append('price[]', JSON.stringify({rent: values.rentPrice !== '' ? values.rentPrice : null}));
     // formData.append('rentPrice', values.forRent && values.RentPrice);
-    const price = {};
-    if (values.sellPrice!== '') {price.sell = values.sellPrice;}
-    if (values.rentPrice!== '') {price.rent = values.rentPrice;}
-    formData.append('price', JSON.stringify(price));
+    if (values.sellPrice!== '') {
+      formData.append('sellPrice', values.sellPrice);
+    }
+    if (values.rentPrice!== '') {
+      formData.append('rentPrice', values.rentPrice);
+    }
 
 
     const self = this;

@@ -18,7 +18,14 @@ exports.createProduct = function (req) {
         image.push('/image/default/product.jpg');
       }
 
-      req.body.price = JSON.parse(req.body.price);
+      // req.body.price = JSON.parse(req.body.price);
+      const price = {};
+      if (req.body.sellPrice){
+        price.sell = parseFloat(req.body.sellPrice);
+      }
+      if (req.body.rentPrice){
+        price.rent = parseFloat(req.body.rentPrice);
+      }
 
       let product = new Product({
         title: req.body.title,
@@ -26,7 +33,7 @@ exports.createProduct = function (req) {
         images: image,
         genres: docs,
         owner: req.user._id,
-        price: req.body.price,
+        price: price,
         status: req.body.status,
         // esrb: req.body.esrb,
         // producer: req.body.producer
