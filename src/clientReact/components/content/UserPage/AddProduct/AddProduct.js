@@ -205,8 +205,8 @@ class AddProduct extends React.Component {
               <div className="form-check form-check-inline mb-3">
                 <Field name="forSell" type="checkbox" class="form-check-input" checked={values.forSell}/>Sell
                 <Field name="forRent" type="checkbox" class="form-check-input ml-3" checked={values.forRent}/>Rent
-                {values.forSell && <Field name="sellPrice" type="number"/>}
-                {values.forRent && <Field name="rentPrice" type="number"/>}
+                {values.forSell && <Field name="sellPrice" type="number" class="ml-3"/>}
+                {values.forRent && <Field name="rentPrice" type="number" class="ml-3"/>}
               </div>
               <ErrorMessage name="sellPrice">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               <ErrorMessage name="rentPrice">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
