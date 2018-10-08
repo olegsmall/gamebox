@@ -43,7 +43,7 @@ class ArticleRow extends React.Component {
           <img className="img-fluid float-md-left mr-5 imageYourArticle" src={image} alt={article.title}/>
           <h5 className={'card-title text-left mt-3 mt-md-0'}>{article.title}</h5>
           <p className="card-text text-left">{article.content}</p>
-          <p className="card-text text-left mt-3 mt-md-5">tags : </p>
+          <p className="card-text text-left mt-3 mt-md-5">tags : {article.tags.join(' ')}</p>
           <button className="btn w-25 mt-2 btnAddArticle mr-3"><a className="linkArticle" href={''} onClick={this.handleArticleEdit.bind(this)}>Edit</a></button>
           <button className="btn w-25 mt-2 btnAddArticle"><a className="linkArticle" href={''} onClick={this.handleArticleDelete.bind(this)}>Delete</a></button>
         {/*<td><a className="btn btn-link" href={''}>Delete article</a></td>*/}
