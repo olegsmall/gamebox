@@ -50,7 +50,7 @@ class ArticleRow extends React.Component {
               <div className="card-body">
                 <img className="img-fluid float-md-left mr-5 imageYourArticle" src={image} alt={title}/>
                 <h5 className={'card-title text-left mt-3 mt-md-0'}>{title}</h5>
-                <div className="card-text text-left" ref={this.contentArea}></div>
+                <div className="card-text text-left" ref={this.contentArea}> </div>
                 <div className="card-title text-left">Created: {date}</div>
                 <a className="btn w-25 mt-2 btnAddArticle mr-3 linkArticle" href={''}
                    onClick={this.handleArticleEdit.bind(this)}>Edit</a>
