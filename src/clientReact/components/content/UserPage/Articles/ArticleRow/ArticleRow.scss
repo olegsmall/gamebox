@@ -1,27 +1,19 @@
 .ArticleRow {
-  .cardArticle {
-    background-color: transparent !important;
-    border-color: #026E00 !important;
-    width: 450px;
-    height: 110px;
-
-    overflow: hidden;
+  .imageYourArticle {
+    width: 100px;
   }
 
-  //.card-body {
-  //  -moz-transition: all 0.5s;
-  //  -webkit-transition: all 0.5s;
-  //  transition: all 0.5s;
-  //}
+  .btnAddArticle {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+  }
 
-  //.card-body:hover {
-  //  -moz-transform: scale(1.1);
-  //  -webkit-transform: scale(1.1);
-  //  transform: scale(1.1);
-  //}
+  .btnAddArticle:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
 
-  .imageArticle {
-    width: 150px;
-    height: 70px !important;
+  .linkArticle {
+    color: black;
   }
 }

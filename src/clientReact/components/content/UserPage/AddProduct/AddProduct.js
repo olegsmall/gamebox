@@ -37,7 +37,7 @@ class AddProduct extends React.Component {
       formData.append('image', values.image, values.image.name);
     }
     formData.append('title', values.title);
-    formData.append('description', values.content);
+    formData.append('description', JSON.stringify(values.content));
     // formData.append('genres', values.genres);
     for (let i = 0; i < values.genres.length; i++) {
       formData.append('genres[]', values.genres[i]);
@@ -47,10 +47,12 @@ class AddProduct extends React.Component {
     // formData.append('price[]', JSON.stringify({sell: values.sellPrice!== '' ? values.sellPrice : null}));
     // formData.append('price[]', JSON.stringify({rent: values.rentPrice !== '' ? values.rentPrice : null}));
     // formData.append('rentPrice', values.forRent && values.RentPrice);
-    formData.append('price', JSON.stringify({
-      sell: values.sellPrice!== '' ? values.sellPrice : undefined,
-      rent: values.rentPrice !== '' ? values.rentPrice : undefined,
-    }));
+    if (values.sellPrice!== '') {
+      formData.append('sellPrice', values.sellPrice);
+    }
+    if (values.rentPrice!== '') {
+      formData.append('rentPrice', values.rentPrice);
+    }
 
 
     const self = this;
@@ -117,29 +119,29 @@ class AddProduct extends React.Component {
     }
 
     return (
-      <div>
-        <h3 className="text-light text-center">Add game</h3>
+      <div className={'AddProduct'}>
+        <h2 className="text-center mt-4">Add game</h2>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object().shape({
             title: Yup.string()
               .min(4)
               .max(40)
-              .required('Required'),
+              .required('* Required'),
             content: Yup.string()
               .min(10)
               .max(1500),
             genres: Yup.array()
               .of(Yup.string()
-                .required('You have to choose at least one genre')),
+                .required('* You have to choose at least one genre')),
             forSell: Yup.boolean(),
             sellPrice: Yup.number()
               .when('forSell', {
                 is: true,
                 then: Yup.number()
-                  .required('Sell price is required')
-                  .positive('Sell price must be positive')
-                  .min(1, 'Minimum sell price is 1 CAD'),
+                  .required('* Sell price is required')
+                  .positive('* Sell price must be positive')
+                  .min(1, '* Minimum sell price is 1 CAD'),
                 otherwise: Yup.number().notRequired(),
               }),
             forRent: Yup.boolean(),
@@ -147,19 +149,19 @@ class AddProduct extends React.Component {
               .when('forRent', {
                 is: true,
                 then: Yup.number()
-                  .required('Rent price is required')
-                  .positive('Rent price must be positive')
-                  .min(1, 'Minimum retn price is 1 CAD'),
+                  .required('* Rent price is required')
+                  .positive('* Rent price must be positive')
+                  .min(1, '* Minimum retn price is 1 CAD'),
                 otherwise: Yup.number().notRequired(),
               })
           })}
           onSubmit={(values, actions) => this.handleSubmit(values, actions)}
         >
           {({values, setFieldValue, isSubmitting}) => (
-            <Form className="mb-5">
+            <Form className="mb-5 text-left">
               <div className="form-row mb-3">
                 <div className="col-9">
-                  <Thumb
+                  <Thumb className="mb-3"
                     file={values.image}
                     object={this.props.product}
 
@@ -167,7 +169,7 @@ class AddProduct extends React.Component {
                   <input
                     name="image"
                     type="file"
-                    className="form-control form-control-sm"
+                    className="form-control inputAddProduct"
                     placeholder="Load image"
                     onChange={event => setFieldValue('image', event.currentTarget.files[0])}
                   />
@@ -175,13 +177,14 @@ class AddProduct extends React.Component {
               </div>
 
               <div className="form-group">
-                <Field name="title" type="text" className="form-control form-control-sm" placeholder="Games's title"/>
-                <ErrorMessage name="title">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+                <Field name="title" type="text" className="form-control inputAddProduct" placeholder="Games's title"/>
+                <ErrorMessage name="title">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
 
               <div className="form-group">
                 <Field
                   name="genres"
+                  className="form-control inputAddProduct"
                   component="select"
                   multiple="true"
                   size="5"
@@ -198,23 +201,23 @@ class AddProduct extends React.Component {
                     <option key={genre._id} value={genre._id}>{genre.name}</option>
                   ))}
                 </Field>
-                <ErrorMessage name="genres">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+                <ErrorMessage name="genres">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
 
-              <div className="form-group">
-                <Field name="forSell" type="checkbox" checked={values.forSell}/>Sell
-                <Field name="forRent" type="checkbox" checked={values.forRent}/>Rent
-                {values.forSell && <Field name="sellPrice" type="number"/>}
-                {values.forRent && <Field name="rentPrice" type="number"/>}
+              <div className="form-check form-check-inline mb-3">
+                <Field name="forSell" type="checkbox" class="form-check-input" checked={values.forSell}/>Sell
+                <Field name="forRent" type="checkbox" class="form-check-input ml-3" checked={values.forRent}/>Rent
+                {values.forSell && <Field name="sellPrice" type="number" class="ml-3"/>}
+                {values.forRent && <Field name="rentPrice" type="number" class="ml-3"/>}
               </div>
-              <ErrorMessage name="sellPrice">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
-              <ErrorMessage name="rentPrice">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+              <ErrorMessage name="sellPrice">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
+              <ErrorMessage name="rentPrice">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
 
               <div className="form-group">
-                <Field name="content" component="textarea" className="form-control" placeholder="Content"/>
-                <ErrorMessage name="content">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+                <Field name="content" component="textarea" className="form-control inputAddProduct" placeholder="Content"/>
+                <ErrorMessage name="content">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
-              <button type="submit" disabled={isSubmitting}>Save</button>
+              <button type="submit" className="btn btn-block btnAddProduct" disabled={isSubmitting}>Save</button>
             </Form>
 
           )}

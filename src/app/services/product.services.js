@@ -8,26 +8,34 @@ exports.createProduct = function (req) {
   try {
     let promise = Genre.find({_id: {$in: req.body.genres}}, '_id').exec();
 
-    let image = [];
-    if (req.file){
-      image.push('/image/products/' + req.file.filename);
-    } else {
-      image.push('/image/default/product.jpg');
-    }
-
-    req.body.price = JSON.parse(req.body.price)
 
     return promise.then((docs) => {
+
+      let image = [];
+      if (req.file){
+        image.push('/image/products/' + req.file.filename);
+      } else {
+        image.push('/image/default/product.jpg');
+      }
+
+      // req.body.price = JSON.parse(req.body.price);
+      const price = {};
+      if (req.body.sellPrice){
+        price.sell = parseFloat(req.body.sellPrice);
+      }
+      if (req.body.rentPrice){
+        price.rent = parseFloat(req.body.rentPrice);
+      }
+
       let product = new Product({
         title: req.body.title,
         description: req.body.description,
         images: image,
         genres: docs,
         owner: req.user._id,
-        price: req.body.price,
+        price: price,
         status: req.body.status,
         // esrb: req.body.esrb,
-        // rating: req.body.rating,
         // producer: req.body.producer
       });
       return product.save();
@@ -41,6 +49,9 @@ exports.getProducts = function (req) {
 
   let queryOptions = {}; // Mongoose-paginator query options
   let query = {}; // Mongoose query options
+
+  query.status = {$in: ['for sale', 'for rent']};
+
 
   let sort = 'desc'; // Default sorting method -> Descending
   // Populate query fields
@@ -63,6 +74,12 @@ exports.getProducts = function (req) {
 
   // Check if searching by title (uses %LIKE%)
   if(req.query.title) { query.title = new RegExp(req.query.title,'i'); }
+
+  if(req.query.sort_by === 'rating') { queryOptions.sort = { 'average_rating': sort}; }
+  if(req.query.rating) { query.average_rating = req.query.rating; }
+
+  if(req.query.sort_by === 'popular') { query.average_rating = {$gte: 4}; }
+
   // Check if searching by product status (for rent, for sale, sold, rented)
   if(req.query.status === 'for rent' || req.query.status === 'for sale' || req.query.status === 'rented' || req.query.status === 'sold') {
     query.status = req.query.status;
@@ -70,13 +87,11 @@ exports.getProducts = function (req) {
 
   try {
     // Search objects with user options
-    let promise = Product.paginate(query, queryOptions);
+    return Product.paginate(query, queryOptions).then((docs) => {
+      if(docs === null) { throw Error('No products found'); }
 
-    return promise.then((doc) => {
-      if(doc === null) { throw Error('No products found'); }
-      return doc;
+      return docs;
     });
-
   } catch (e) {
     throw {error: e, message: 'Error on get products'};
   }
@@ -84,8 +99,8 @@ exports.getProducts = function (req) {
 
 exports.getUserProducts = async function(req) {
   try {
-    let page = req.body.page ? req.body.page : 1;
-    let limit = req.body.limit ? req.body.limit : 10;
+    let page = req.query.page ? req.query.page : 1;
+    let limit = req.query.limit ? req.query.limit : 10;
 
     let promise = Product.paginate({owner: req.params.id}, {page: page, limit: limit, populate: {path: 'owner genres', select: 'name avatar role _id firstName lastName email'}});
 
@@ -101,13 +116,11 @@ exports.getUserProducts = async function(req) {
 
 exports.getProduct = function (id) {
   try {
-    let promise = Product.findById(id).populate('genres').exec();
-
-    return promise.then((doc) => {
+    return Product.findById(id).populate('genres').then((doc) => {
       if(doc === null) { throw Error('Product not found'); }
+
       return doc;
     });
-
   } catch (e) {
     throw {error: e, message: 'Error on get product'};
   }
@@ -116,21 +129,22 @@ exports.getProduct = function (id) {
 
 exports.updateProduct = async function(req) {
   try {
-    let promise = Product.findByIdAndUpdate(req.params.id, {
-      title: req.body.title,
-      description: req.body.description,
-      images: req.body.images,
-      genres: req.body.genres,
-      price: req.body.price,
-      status: req.body.status,
-      edited: Date.now(),
-      producer: req.body.producer,
-      esrb: req.body.esrb
-    }, { new: true });
+    let promise = Product.findById(req.params.id);
 
-    return promise.then((doc) => {
-      if(doc === null) { throw Error('Product not found'); }
-      return doc;
+    return promise.then((product) => {
+      if(product === null) { throw Error('Product not found'); }
+
+      product.title= req.body.title;
+      product.description= req.body.description;
+      product.images= req.body.images;
+      product.genres= req.body.genres;
+      product.price= req.body.price;
+      product.status= req.body.status;
+      product.edited= Date.now();
+      product.producer= req.body.producer;
+      product.esrb= req.body.esrb;
+
+      return product.save();
     });
   } catch(e){
     throw {error: e, message: 'Error on product update'};
@@ -153,7 +167,7 @@ exports.deleteProduct = function(id) {
 
 exports.rateProduct = function (req) {
   try {
-    let promise = Product.findById(req.params.id, {password: 0});
+    let promise = Product.findById(req.params.id);
 
     return promise.then((product) => {
       if(product === null) { throw Error('Product not found'); }
@@ -168,40 +182,26 @@ exports.rateProduct = function (req) {
       //Add new rating
       product.rating.push({mark: req.body.mark, rated_by: req.user._id});
 
-      return product.save();
-    }, {new: true});
-
-  } catch (e) {
-    throw {error: e, message: 'Error at rate user services'};
-
-  }
-};
-
-exports.getProductRating = async function (req) {
-
-  // Try Catch the awaited promise to handle the error
-  try {
-    // Retrieve user data
-    let product = Product.find({_id: req.params.id}).select('rating');
-    // Return the user list that was returned by the mongoose promise
-    return product.then((product) => {
-      if(product === null) { throw Error('No product found'); }
-
+      // Calculate average rating
       let summ = 0,
-        count = 0,
-        marks = product[0].rating;
+        count = 0;
+      let marks = product.rating;
 
-      // Calculating rating
-      for(let i=0; i < marks.length; i++) {
-        summ = summ + marks[i].mark;
-        count++;
+      // Check if product was rated
+      if(marks.length > 0) {
+        // Calculating rating
+        for(let i=0; i < marks.length; i++) {
+          summ = summ + marks[i].mark;
+          count++;
+          product.average_rating = (summ / count).toFixed(1);
+        }
       }
-      // Returning calculated rating
-      return (summ / count).toFixed(1);
+      return product.save();
     });
+
   } catch (e) {
-    // return a Error message describing the reason
-    throw Error('Error at get product rating services');
+    throw {error: e, message: 'Error at rate product services'};
+
   }
 };
 
@@ -210,15 +210,12 @@ exports.addProductComment = function (req) {
     let promise = Product.findById({_id: req.params.id});
 
     return promise.then((product, err) => {
-      if(product === null || err) { throw Error('Product not found'); }
-
+      if (product === null || err) { throw Error('Product not found'); }
       product.comment.push({user: req.user._id, content: req.body.content});
 
       return product.save();
-    }, {new: true})
+    });
   } catch(e) {
     throw {error: e, message: 'Error on add product comment'};
   }
 };
-
-

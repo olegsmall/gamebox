@@ -73,7 +73,6 @@ exports.updateUserInfo = function (req) {
   try {
     let promise = User.findById(req.user._id, {password: 0});
 
-
     return promise.then((user) => {
       if(user === null) { throw Error('User not found'); }
 
@@ -82,7 +81,6 @@ exports.updateUserInfo = function (req) {
       }
       user.firstName = req.body.firstName;
       user.lastName = req.body.lastName;
-      // user.email = req.body.email;
       user.phone = req.body.phone;
       user.address = req.body.address;
 
@@ -126,17 +124,13 @@ exports.updateUserStatus = function (req) {
     let promise = User.findById(req.params.id, {password: 0});
     return promise.then((user) => {
       if(user === null) { throw Error('User not found'); }
-      console.log(user);
 
       user.status.state = req.body.state;
-      console.log(user.status.state);
       if(req.body.expires) {
         user.status.expires = req.body.expires;
       }
-
       return user.save();
-    }, {new: true});
-
+    });
   } catch (e) {
     throw {error: e, message: 'Error at update user status services'};
 
@@ -161,44 +155,25 @@ exports.rateUser = function (req) {
       //Add new rating
       user.rating.push({mark: req.body.mark, rated_by: req.user._id});
 
+      // Calculate average rating
+      let summ = 0,
+        count = 0;
+      let marks = user.rating;
+
+      // Check if product was rated
+      if(marks.length > 0) {
+        // Calculating rating
+        for(let i=0; i < marks.length; i++) {
+          summ = summ + marks[i].mark;
+          count++;
+          user.average_rating = (summ / count).toFixed(1);
+        }
+      }
       return user.save();
-    }, {new: true});
+    });
 
   } catch (e) {
     throw {error: e, message: 'Error at rate user services'};
 
   }
 };
-
-
-exports.getUserRating = async function (req) {
-
-  // Try Catch the awaited promise to handle the error
-  try {
-    // Retrieve user data
-    let users = User.find({_id: req.params.id}).select('rating');
-    // Return the user list that was returned by the mongoose promise
-    return users.then((user) => {
-      if(user === null) { throw Error('No users found'); }
-
-      let summ = 0,
-        count = 0,
-        marks = user[0].rating;
-
-      // Calculating rating
-      for(let i=0; i < marks.length; i++) {
-        summ = summ + marks[i].mark;
-        count++;
-      }
-      // Returning calculated rating
-      return (summ / count).toFixed(1);
-    });
-  } catch (e) {
-    // return a Error message describing the reason
-    throw Error('Error at get user rating services');
-  }
-};
-
-// exports.authenticate = function (req, res) {
-//
-// };

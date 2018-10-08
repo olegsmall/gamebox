@@ -1,51 +1,25 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Axios from "axios";
+import {Formik, Form, Field, ErrorMessage} from 'formik';
+import * as Yup from "yup";
 
 require('./ChangePassword.scss');
 
 class ChangePassword extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      password: '',
-      passwordConf: '',
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    // const value = target.type === 'checkbox' ? target.checked : target.value;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleSubmitPassword(event) {
-    event.preventDefault();
-    if (this.state.password === '') {
-      this.props.showMessage('Password can not be empty');
-      return;
-    }
-    if (this.state.password !== this.state.passwordConf) {
-      this.props.showMessage('Passwords are not match');
-      return;
-    }
-
+  handleSubmit(values, actions) {
     Axios.put('/user/password', {
-      password: this.state.password,
+      password: values.password,
     })
       .then((res) => {
         this.props.showMessage(res.data.message);
         this.props.changeInner('Profile');
+        actions.setSubmitting(false);
       })
       .catch((error) => {
         this.props.showMessage(res.data.message);
+        actions.setSubmitting(false);
       });
   }
 
@@ -53,42 +27,55 @@ class ChangePassword extends React.Component {
 
     return (
       <div className={'ChangePassword'}>
-        <form onSubmit={this.handleSubmitPassword.bind(this)}>
-          <p className="text-light">
-            Change password
-          </p>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input
-                name="password"
-                type="password"
-                className="form-control form-control-sm"
-                placeholder="Your password"
-                value={this.state.password}
-                onChange={this.handleInputChange}/>
-            </div>
-            <div className="form-group col-md-6">
-              <input
-                type="password"
-                name="passwordConf"
-                className="form-control form-control-sm"
-                placeholder="Your new password"
-                value={this.state.passwordConf}
-                onChange={this.handleInputChange}/>
-            </div>
-            <button
-              type="submit"
-              className="btn btn-sm btn-block buttonEditProfile">
-              Save
-            </button>
-            <a
-              className="btn btn-sm btn-block buttonEditClose mb-4"
-              href={''}
-              onClick={this.props.goToProfile}>
-              Close
-            </a>
-          </div>
-        </form>
+        <Formik
+          initialValues={{
+            password: '',
+            passwordConf: '',
+
+          }}
+          validationSchema={Yup.object().shape({
+            password: Yup.string()
+              .required('* Password is required'),
+            passwordConf: Yup.string()
+              .oneOf([Yup.ref('password'), null], 'Passwords don\'t match')
+              .required('* Password confirmation is required'),
+          })}
+          onSubmit={(values, actions) => this.handleSubmit(values, actions)}
+        >
+          {({values, setFieldValue, isSubmitting}) => (
+            <Form className="text-center formChangePassword">
+              <div className="form-row mt-2">
+                <div className="form-group col-md-6">
+                  <Field name="password" type="password" className="form-control inputPass"
+                         placeholder="Your password"/>
+                  <ErrorMessage name="password">{msg => <small
+                    className='form-text text-left error'>{msg}</small>}</ErrorMessage>
+                </div>
+                <div className="form-group col-md-6">
+                  <Field name="passwordConf" type="password" className="form-control inputPass"
+                         placeholder="Your new password"/>
+                  <ErrorMessage name="passwordConf">{msg => <small
+                    className='form-text text-left error'>{msg}</small>}</ErrorMessage>
+                </div>
+                <div className="form-group col-md-12">
+                  <button
+                    type="submit"
+                    className="btn-block btn mt-2 btnPass"
+                    disabled={isSubmitting}
+                  >
+                    Save new password
+                  </button>
+                  <a
+                    className="btn-block btn mt-2 btnPass"
+                    href=''
+                    onClick={this.props.goToProfile}>
+                    Close
+                  </a>
+                </div>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
     );
   }

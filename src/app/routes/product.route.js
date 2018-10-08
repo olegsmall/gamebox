@@ -36,7 +36,6 @@ router.post('/', upload.single('image'), ProductController.createProduct); //Cre
 router.put('/:id', ProductController.updateProduct); //Update product
 router.delete('/:id', ProductController.deleteProduct); //Delete product
 
-router.get('/:id/rating', ProductController.getProductRating); //Get product rating
 router.put('/:id/rating', ProductController.rateProduct); //Rate product
 
 router.put('/:id/comment', ProductController.addProductComment); //Comment a product

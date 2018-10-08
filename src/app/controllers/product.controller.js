@@ -75,15 +75,6 @@ exports.rateProduct = async function (req, res) {
   }
 };
 
-exports.getProductRating = async function (req, res) {
-  try {
-    let rating = await ProductService.getProductRating(req);
-    return res.status(201).json({status: 201, rating: rating, message: 'Product rating received'});
-  } catch (e) {
-    return res.status(400).json({status: 400, message: e.message});
-  }
-};
-
 exports.addProductComment = async function (req, res) {
   try {
     let product = await ProductService.addProductComment(req);

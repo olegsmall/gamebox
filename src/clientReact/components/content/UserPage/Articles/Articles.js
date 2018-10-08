@@ -17,7 +17,7 @@ class Articles extends React.Component {
     this.getArticles();
   }
 
-  getArticles(){
+  getArticles() {
     axios.get('/user/' + this.props.user.id + '/articles')
       .then((res) => {
         // handle success
@@ -37,13 +37,11 @@ class Articles extends React.Component {
   render() {
 
     return (
-      <div>
-        <div className={'d-flex flex-row flex-nowrap justify-content-between mb-5'}>
-          <h3 className="text-center text-light">Your atricles:</h3>
-          <button className={'btn btn-success'} onClick={this.handleAddArticle.bind(this)}>Add article</button>
-        </div>
-
-        <table className="table table-bordered">
+      <div className={"Articles"}>
+        <h2 className="text-center mt-4">My articles</h2>
+        <button className={'btn btn-block mt-2 btnAddArticle'} onClick={this.handleAddArticle.bind(this)}>Add article
+        </button>
+        <div id="yourArticle" className="container">
           {this.state.articles.map((article) => (
             <ArticleRow
               key={article._id}
@@ -54,7 +52,7 @@ class Articles extends React.Component {
               changeInner={this.props.changeInner}
             />
           ))}
-        </table>
+        </div>
       </div>
     );
   }

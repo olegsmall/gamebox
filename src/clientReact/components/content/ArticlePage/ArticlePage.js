@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 require('./ArticlePage.scss');
 
-class ArticlePage extends  React.Component {
+export default class ArticlePage extends  React.Component {
   constructor(props) {
     super(props);
 
@@ -23,77 +24,29 @@ class ArticlePage extends  React.Component {
   }
 
   render(){
-    const title = (this.state.article !== null) ? this.state.article.title : '';
-    const content = (this.state.article !== null) ? this.state.article.content : '';
-    const image = (this.state.article !== null) ? this.state.article.images[0] : '';
-    const author = (this.state.article !== null) ? this.state.article.author.firstName + ' ' + this.state.article.author.lastName : 'Anonymous';
+
+    if (this.state.article === null) {
+      return null;
+    }
+
+    const {_id, title, image, content, author, created, tags} = this.state.article;
+    const date = new Date(created).toLocaleDateString();
 
     return (
 
       <div className={"ArticlePage"}>
+        <div>
+          <img className="d-block w-100 imgMain" src="/image/38562f8a6333f76.jpg" alt="Article image"/>
+        </div>
         <div className="container articlePage">
           <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-7">
-              <h2 className="text-light titleArticle">{title}</h2>
-              <p className="text-muted text-light">Written by : {author}</p>
-              <img className="img-fluid" src={"/image/" + image} alt="image"/>
-              <p className="text-light mt-5">{content}</p>
-              <div className="embed-responsive embed-responsive-16by9">
-                <iframe className="embed-responsive-item mt-5" src="video/Woman Taking A Photo.mp4"></iframe>
-              </div>
-              <p className="text-light mt-5">{content}</p>
-              {/*<div className="swiper-container mt-5">*/}
-                {/*<div className="swiper-wrapper">*/}
-                  {/*<div className="swiper-slide">*/}
-                    {/*<img className="img-fluid" src={"/image/image_carusel3.jpg"} alt="First slide"/>*/}
-                  {/*</div>*/}
-                  {/*<div className="swiper-slide">*/}
-                    {/*<img className="img-fluid" src="image/image_carusel1.jpg" alt="Second slide"/>*/}
-                  {/*</div>*/}
-                  {/*<div className="swiper-slide">*/}
-                    {/*<img className="img-fluid" src="image/image_carusel2.jpg" alt="Third slide"/>*/}
-                  {/*</div>*/}
-                {/*</div>*/}
-                {/*<div className="swiper-button-prev"></div>*/}
-                {/*<div className="swiper-button-next"></div>*/}
-              {/*</div>*/}
-              <p className="text-light mt-5">{content}</p>
-            </div>
-
-            <div className="col-sm-12 col-md-6 col-lg-5 d-none d-md-block">
-              <h5 className="text-light ml-5">All Articles</h5>
-              <a href="#">
-                <div className="card ml-5 cardArticle">
-                  <div className="card-body">
-                    <img className="img-fluid float-md-left mr-4 imageArticle" src="/image/minecraft.jpg" alt="Card image"/>
-                    <h5 className="card-title text-light">Article's Name</h5>
-                  </div>
-                </div>
-              </a>
-              <a href="#">
-                <div className="card ml-5 cardArticle">
-                  <div className="card-body">
-                    <img className="img-fluid float-md-left mr-4 imageArticle" src="/image/minecraft.jpg" alt="Card image"/>
-                    <h5 className="card-title text-light">Article's Name</h5>
-                  </div>
-                </div>
-              </a>
-              <a href="#">
-                <div className="card ml-5 cardArticle">
-                  <div className="card-body">
-                    <img className="img-fluid float-md-left mr-4 imageArticle" src="/image/minecraft.jpg" alt="Card image"/>
-                    <h5 className="card-title text-light">Article's Name</h5>
-                  </div>
-                </div>
-              </a>
-              <a href="#">
-                <div className="card ml-5 cardArticle">
-                  <div className="card-body">
-                    <img className="img-fluid float-md-left mr-4 imageArticle" src="/image/minecraft.jpg" alt="Card image"/>
-                    <h5 className="card-title text-light">Article's Name</h5>
-                  </div>
-                </div>
-              </a>
+            <div className="col">
+              <h2>{title}</h2>
+              <p className="text-muted">Written by : {`${author.firstName} ${author.lastName}`} | {date}</p>
+              <img className="img-fluid mt-3" src={image} alt="image"/>
+              <HtmlContent content={content}/>
+              {/*<div className="mt-5" dangerouslySetInnerHTML={{ __html: content }}> </div>*/}
+              <p className="my-5"><span>{tags.join(' ')}</span></p>
             </div>
           </div>
         </div>
@@ -102,4 +55,20 @@ class ArticlePage extends  React.Component {
   }
 }
 
-export default ArticlePage;
+class HtmlContent extends React.Component{
+  constructor(props){
+    super(props);
+    this.contentArea = React.createRef();
+  }
+
+  componentDidMount(){
+    this.contentArea.current.innerHTML = this.props.content;
+  }
+
+  render(){
+    return (
+      <div className="mt-5" ref={this.contentArea}> </div>
+    );
+  }
+
+}

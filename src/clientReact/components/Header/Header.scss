@@ -67,4 +67,26 @@
       width: 10rem;
     }
   }
+
+  .imgBasket {
+    margin-bottom: 8px;
+
+  }
+
+  //Cart
+  .basketNumber{
+    margin-bottom: -22px;
+    margin-left: 11px;
+    color: red;
+    font-weight: bold ;
+  }
+  @media only screen and (min-width: 769px) {
+    .imgBasket {
+      margin-left: 16px;
+    }
+    .basketNumber {
+      margin-left: 27px;
+    }
+  }
+
 }

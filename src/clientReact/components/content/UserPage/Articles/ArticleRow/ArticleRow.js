@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import {Link} from 'react-router-dom';
 
 require('./ArticleRow.scss');
 
@@ -7,12 +8,15 @@ class ArticleRow extends React.Component {
 
   constructor(props) {
     super(props);
+    this.contentArea = React.createRef();
   }
 
   componentDidMount() {
-
+    let content = this.props.article.content.replace(/<[^>]*>/g, '');
+    this.contentArea.current.innerHTML = content.substring(0, 200) + '...';
   }
-  handleArticleEdit(e){
+
+  handleArticleEdit(e) {
     e.preventDefault();
     this.props.setArticleState({
       articleForEdit: this.props.article,
@@ -20,7 +24,7 @@ class ArticleRow extends React.Component {
     this.props.changeInner('EditArticle');
   }
 
-  handleArticleDelete(e){
+  handleArticleDelete(e) {
     e.preventDefault();
     const self = this;
     axios.delete('/article/' + this.props.article._id)
@@ -35,18 +39,29 @@ class ArticleRow extends React.Component {
   }
 
   render() {
-    const article = this.props.article;
-    const image = article.image;
+    const {_id, title, image, created} = this.props.article;
+    let date = new Date(created).toLocaleDateString();
+
     return (
-      <tbody className={'ArticleRow'}>
-      <tr>
-        <td><img className="img-fluid imageArticle text-light" src={image} alt={article.title}/></td>
-        <td className={'text-light'}>{article.title}</td>
-        <td><a className="btn btn-link text-light" href={''} onClick={this.handleArticleEdit.bind(this)}>Edit</a></td>
-        <td><a className="btn btn-link text-light" href={''} onClick={this.handleArticleDelete.bind(this)}>Delete</a></td>
-        {/*<td><a className="btn btn-link" href={''}>Delete article</a></td>*/}
-      </tr>
-      </tbody>
+      <div>
+        <Link className="linkArticle" to={`/article/${_id}`}>
+          <div className="card border-0">
+            <div className={'ArticleRow'}>
+              <div className="card-body">
+                <img className="img-fluid float-md-left mr-5 imageYourArticle" src={image} alt={title}/>
+                <h5 className={'card-title text-left mt-3 mt-md-0'}>{title}</h5>
+                <div className="card-text text-left" ref={this.contentArea}> </div>
+                <div className="card-title text-left">Created: {date}</div>
+                <a className="btn w-25 mt-2 btnAddArticle mr-3 linkArticle" href={''}
+                   onClick={this.handleArticleEdit.bind(this)}>Edit</a>
+                <a className="linkArticle btn w-25 mt-2 btnAddArticle" href={''}
+                   onClick={this.handleArticleDelete.bind(this)}>Delete</a>
+              </div>
+            </div>
+          </div>
+        </Link>
+        <hr/>
+      </div>
     );
   }
 }

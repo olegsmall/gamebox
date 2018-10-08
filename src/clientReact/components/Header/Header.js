@@ -93,6 +93,12 @@ class Header extends React.Component {
                   user={this.props.user}
                 />
               </div>
+              <div className="img-fluid">
+                <div>
+                  <div className="basketNumber">5</div>
+                </div>
+                <Link to={'/cart'}><img src="image/shopBag1.png" width="25" className="imgBasket"/></Link>
+              </div>
             </div>
 
             {/*<form className="form-inline mt-2">*/}

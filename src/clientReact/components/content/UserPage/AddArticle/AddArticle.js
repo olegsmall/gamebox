@@ -14,6 +14,7 @@ class AddArticle extends React.Component {
       formData.append('image', values.image, values.image.name);
     }
     formData.append('title', values.title);
+    // debugger;
     formData.append('content', values.content);
     formData.append('tags', values.tags);
 
@@ -21,12 +22,14 @@ class AddArticle extends React.Component {
     if (this.props.pageType === 'EditArticle') {
       axios.put('/article/' + this.props.article._id, formData)
         .then((res) => {
+          // debugger;
           console.log(res.data);
           self.props.showMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Articles');
         })
         .catch((error) => {
+          // debugger
           console.log(error);
           self.props.showMessage(error.message);
           actions.setSubmitting(false);
@@ -71,31 +74,29 @@ class AddArticle extends React.Component {
 
     return (
       <div className={'EditArticle'}>
-        <h1>Add Article:</h1>
+        <h2 className="text-center mt-4">Add Article</h2>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object().shape({
             title: Yup.string()
-              .min(4)
-              .max(40)
-              .required('Required'),
+              .min(4, '* Minimum length is 4 symbols')
+              .max(40, '* Maximum length is 40 symbols')
+              .required('* Title is required'),
             content: Yup.string()
-              .min(10)
-              .max(1500),
+              .min(10, '* Minimum length is 10 symbols'),
           })}
           onSubmit={(values, actions) => this.handleSubmit(values, actions)}
         >
           {({values, setFieldValue, isSubmitting}) => (
-            <Form className="mb-5">
-
-              <div id="imageAdd" className="text-light"></div>
+            <Form className="mb-5 text-left">
+              <div id="imageAdd"></div>
               <div className="form-row mb-3">
                 <div className="col-9">
-                  <Thumb file={values.image} object={this.props.article}/>
+                  <Thumb className="mb-3" file={values.image} object={this.props.article}/>
                   <input
                     name="image"
                     type="file"
-                    className="form-control form-control-sm"
+                    className="form-control inputEditArticle"
                     placeholder="Load image"
                     onChange={event => setFieldValue('image', event.currentTarget.files[0])}
                   />
@@ -103,20 +104,20 @@ class AddArticle extends React.Component {
               </div>
 
               <div className="form-group">
-                <Field name="title" type="text" className="form-control form-control-sm" placeholder="Article's title"/>
-                <ErrorMessage name="title">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+                <Field name="title" type="text" className="form-control inputEditArticle" placeholder="Article's title"/>
+                <ErrorMessage name="title">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
 
               <div className="form-group">
-                <Field name="content" component="textarea" className="form-control" rows="5" placeholder="Content"/>
-                <ErrorMessage name="title">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+                <Field name="content" component="textarea" className="form-control inputEditArticle" rows="5" placeholder="Content"/>
+                <ErrorMessage name="content">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
 
               <div className="form-group">
-                <Field name="tags" type="text" className="form-control form-control-sm" placeholder="Article's title"/>
+                <Field name="tags" type="text" className="form-control inputEditArticle" placeholder="Tags"/>
               </div>
 
-              <button type="submit" className="btn btn-success btn-block" disabled={isSubmitting}>Save</button>
+              <button type="submit" className="btn btn-block btnEditArticle" disabled={isSubmitting}>Save</button>
 
             </Form>
           )}

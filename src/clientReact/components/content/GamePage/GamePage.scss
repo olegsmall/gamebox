@@ -1,15 +1,60 @@
 .GamePage{
-
   #gamePage {
-    margin-top: 8rem;
+    margin-top: 2rem;
   }
 
-  .btnGamePage {
-    background-color: #026E00;
+  //Main Picture
+  .imgMain {
+    height: 100%;
+    max-height: 400px;
+    width: auto;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  }
+
+
+  .imageMainGame {
+    border: 1px solid gray;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
+  }
+
+  .imageMainGame:hover {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  .btnProduct, .btnGameComments {
+    background-color: rgba(211,211,211,0.2);
+    border: 1px solid black;
+    border-radius: unset;
+  }
+
+  .btnProduct {
+    margin-left: 1rem;
+  }
+
+  .btnProduct:hover, .btnGameComments:hover {
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
   }
 
   #rate {
     font-size: 1.25rem;
+  }
+
+  .fa-star-o {
+    color: rgba(0,0,0,0.5);
+    font-size: 20px;
+  }
+
+  .price {
+    font-weight: bold;
+    background-color: orange;
+    border: 1px solid gray;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    padding: 5px 10px 5px 10px;
   }
 
   .fa-pencil {
@@ -20,11 +65,124 @@
     margin-bottom: 1rem;
   }
 
-  @media only screen and (max-width: 600px) {
-    #gamePage {
-      margin-top: 10rem;
-    }
 
+  .btnViewMore {
+    background-color: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: unset;
+    height: 3rem;
+  }
+
+  .btnViewMore:hover {
+    border: 2px solid black;
+    transition: color 0.25s;
+  }
+
+  //Most Populer section
+  .cardPopular-1 {
+    background-image: url("/image/overwatch-1610865_1280.jpg");
+  }
+
+  .cardPopular-2 {
+    background-image: url("/image/science-fiction-965258_1280.jpg");
+  }
+
+  .cardPopular-3 {
+    background-image: url("/image/img5.jpg");
+  }
+
+  .sectionMostPopular {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  .product {
+    position: relative;
+    /*width: 280px;*/
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: unset !important;
+  }
+
+  .imgBorder {
+    border-radius: unset !important;
+    border: none;
+
+  }
+  .imgBody{
+    border: 1px solid #a5afaf;
+  }
+
+  .inner {
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+  }
+
+  .product:hover .inner{
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: background-color  .7s;
+    -ms-transition: background-color .7s;
+    transition: background-color .7s;
+    box-shadow: 4px 10px 10px rgba(0,0,0,0.5);
+  }
+
+  div.paragraphV {
+    background-color: #ff6e00;
+    padding-right: 5px;
+    width: 40px;
+    margin-left: -8px;
+    margin-top: 6px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+
+  }
+
+  .paragraph {
+    display: none;
+  }
+
+  .product:hover .paragraph {
+    display: block;
+    animation: fadein 1.5s;
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  h4.paragraphV {
+    color: white;
+  }
+
+  .button {
+    display: none;
+    background-color: #81836d;
+    border-color: #81836d;
+    padding: 5px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+  }
+
+  .button:hover {
+    transition: background-color .7s;
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .product:hover .button {
+    display: inline-block;
+    animation: fadein 1.5s;
+
+
+  }
+  button.button.mt-5 a{
+    color: #ffffff;
+  }
+
+  .linkViewMore {
+    color: black;
   }
 }
 

@@ -4,21 +4,34 @@ import {Link} from 'react-router-dom';
 require('./ArticleCard.scss');
 
 class ArticleCard extends React.Component {
-  render() {
-    const article = this.props.article;
 
-    let author = (article.author) ? article.author.firstName + ' ' + article.author.lastName : 'Anonymous';
-    let date = (article.created) ? article.created : '2018-10-07';
+  constructor(props){
+    super(props);
+    this.contentArea = React.createRef();
+  }
+
+  showContent(){
+
+  }
+
+  componentDidMount(){
+    let content = this.props.article.content.replace(/<[^>]*>/g, '');
+    this.contentArea.current.innerHTML = content.substring(0, 380) + '...';
+  }
+
+  render() {
+    const {_id, title, image, content, author, created} = this.props.article;
+    const date = new Date(created).toLocaleDateString();
 
     return (
-      <div className={"ArticleCard"}>
-        <Link className="linkArticle" to={'/article/' + article._id} href={''}>
+      <div className={'ArticleCard'}>
+        <Link className="linkArticle" to={`/article/${_id}`}>
           <div className="card border-0">
             <div className="card-body cardBodyArticle">
-              <img className="img-fluid float-md-left mr-5 imageArticle" src="image/outdoors-3106126_1280.jpg" alt="Card image"/>
-              <h5 className="card-title">{article.title}</h5>
-              <p className="card-text">{article.content.substring(0, 250) + '...'}</p>
-              <p className="card-text text-muted">Written by : {author} | {date}</p>
+              <img className="img-fluid float-md-left mr-5 imageArticle" src={image} alt="Card image"/>
+              <h5 className="card-title">{title}</h5>
+              <div className="card-text" ref={this.contentArea}> </div>
+              <p className="card-text text-muted">Written by : {`${author.firstName} ${author.lastName}`} | {date}</p>
             </div>
           </div>
         </Link>

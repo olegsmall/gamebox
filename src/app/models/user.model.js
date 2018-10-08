@@ -18,6 +18,10 @@ const StatusSubSchema = new mongoose.Schema({
   expires: {type: Date}
 },{ _id : false });
 
+const MessageSubSchema = new mongoose.Schema({
+  inbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}],
+  outbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}]
+}, {_id: false});
 
 
 const UserSchema = new mongoose.Schema({
@@ -43,6 +47,12 @@ const UserSchema = new mongoose.Schema({
     deal_type: {type: String, enum: ['for rent', 'for sale'], required: [true, 'Choose deal type']},
     date: {type: Date}
   }],
+  // messages: [MessageSubSchema],
+  messages: {
+    inbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}],
+    outbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}]
+  },
+  average_rating: {type: Number, default: 0},
   creation_date: {type: Date, default: Date.now()}
 });
 
@@ -58,7 +68,9 @@ UserSchema.methods = {
 };
 
 UserSchema.pre('save', function(next) {
-  // console.log('saving');
+  // Check if pass is modified
+  if (!this.isModified('password')) return next();
+  //TODO: to remove this verification (it is checked in model)
   if (!this.password) {
     // console.log('models/user.model.js ---- No password provided ----');
     next();

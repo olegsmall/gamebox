@@ -26,7 +26,7 @@ class AllArticlesPage extends React.Component {
     return (
       <div className={"AllBlogPage"}>
         <div>
-          <img className="img-fluid d-block w-100 imgMain" src="image/back3.jpg" alt="Article image"/>
+          <img className="img-fluid d-block w-100 imgMain" src="/image/back3.jpg" alt="Article image"/>
         </div>
         <div id="article" className="container">
           <h2 className="ml-5 mb-5 text-center text-sm-left">All articles</h2>
