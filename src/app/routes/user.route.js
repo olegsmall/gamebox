@@ -35,46 +35,30 @@ import ArticleController from '../controllers/article.controller';
 import OrderController from "../controllers/order.controller";
 import MessageController from '../controllers/message.controller';
 
+const Auth = require('../services/auth.services');
+
 
 router.post('/', upload.single('avatar'), UserController.createUser);
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
-router.get('/', UserController.getUsers); // Get list of all users
+router.get('/', Auth.checkAuth, Auth.checkAdminRole, UserController.getUsers); // Get list of all users
 router.get('/session', UserController.getSessionUser); // Get user from session
-router.get('/:id', UserController.getUser); // Get user by it's id
+router.get('/:id', Auth.checkAuth, UserController.getUser); // Get user by it's id
 
 router.get('/:id/articles', ArticleController.getUserArticles); //Get articles list of a user
 router.get('/:id/products', ProductController.getUserProducts); //Get products list of a user
 
-router.put('/', upload.single('avatar'), UserController.updateUserInfo); //Update user data without password
-router.put('/password', UserController.updateUserPassword); //Change user password
-router.put('/role', UserController.updateUserRole); //Change user role
-router.put('/:id/status', UserController.updateUserStatus); //Change user status
-router.put('/:id/rating', UserController.rateUser); //Rate user
+router.put('/', Auth.checkAuth, upload.single('avatar'), UserController.updateUserInfo); //Update user data without password
+router.put('/password', Auth.checkAuth, UserController.updateUserPassword); //Change user password
+router.put('/role', Auth.checkAuth, Auth.checkSuperUserRole, UserController.updateUserRole); //Change user role
+router.put('/:id/status', Auth.checkAuth, Auth.checkAdminRole, UserController.updateUserStatus); //Change user status
+router.put('/:id/rating', Auth.checkAuth, UserController.rateUser); //Rate user
 
-router.get('/:id/inbox', MessageController.getInboxMessages); // Get inbox messages
-router.get('/:id/outbox', MessageController.getOutboxMessages); // Get outbox messages
-router.delete('/:id/message', MessageController.deleteMessage); // Delete message from user messages
+router.get('/:id/inbox', Auth.checkAuth, MessageController.getInboxMessages); // Get inbox messages
+router.get('/:id/outbox', Auth.checkAuth, MessageController.getOutboxMessages); // Get outbox messages
+router.delete('/:id/message', Auth.checkAuth, MessageController.deleteMessage); // Delete message from user messages
 
 // router.get('/:id/order', OrderController.getOrders); //Get user orders
 
-
-
-router.post('/logout', (req, res) => {
-  if (req.user) {
-    req.logout();
-    res.send({msg: 'logging out'});
-  } else {
-    res.send({msg: 'no user to log out'});
-  }
-});
-
-// router.get('/logout',UserController.logout);
-
-router.get('/profile',
-  UserController.checkAuth,
-  (req, res) => {
-    res.send('profile page');
-  });
-
+router.post('/logout', Auth.checkAuth, UserController.logout);
 
 module.exports = router;
