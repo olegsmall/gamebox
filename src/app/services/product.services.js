@@ -15,7 +15,7 @@ exports.createProduct = function (req) {
       image.push('/image/default/product.jpg');
     }
 
-    req.body.price = JSON.parse(req.body.price)
+    req.body.price = JSON.parse(req.body.price);
 
     return promise.then((docs) => {
       let product = new Product({

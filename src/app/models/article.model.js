@@ -28,6 +28,6 @@ const ArticleSchema = new Schema({
 });
 
 ArticleSchema.plugin(mongoosePaginate);
-const Product = mongoose.model('Article', ArticleSchema);
+const Article = mongoose.model('Article', ArticleSchema);
 
-module.exports = Product;
+module.exports = Article;
