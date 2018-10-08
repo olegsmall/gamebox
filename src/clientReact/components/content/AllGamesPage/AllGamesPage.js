@@ -29,9 +29,12 @@ class AllGamesPage extends React.Component {
   render() {
     return (
       <div className={"AllGamesPage"}>
-        <div id="games" className="container mt-5 mb-5">
-          <h2 className="mt-5 ml-5 mb-5 text-light">Games</h2>
-          <div className="card-deck m-5">
+        <div className="imageMain">
+          <img className="d-block w-100" src="image/back5.jpg" alt="Main image"/>
+        </div>
+        <div id="games" className="container mb-5">
+          <h2 className="mb-4 mt-4 text-center">Games</h2>
+          <div className="card-deck">
 
             {this.state.products.map((product, index) => (
               <ProductCard key={product._id} product={product}/>
