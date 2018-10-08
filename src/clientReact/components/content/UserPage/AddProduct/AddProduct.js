@@ -37,16 +37,13 @@ class AddProduct extends React.Component {
       formData.append('image', values.image, values.image.name);
     }
     formData.append('title', values.title);
-    formData.append('description', JSON.stringify(values.content));
+    formData.append('description', values.content);
     // formData.append('genres', values.genres);
     for (let i = 0; i < values.genres.length; i++) {
       formData.append('genres[]', values.genres[i]);
     }
-    formData.append('status[]', values.forSell ? 'for sale' : null);
-    formData.append('status[]', values.forRent ? 'for rent' : null);
-    // formData.append('price[]', JSON.stringify({sell: values.sellPrice!== '' ? values.sellPrice : null}));
-    // formData.append('price[]', JSON.stringify({rent: values.rentPrice !== '' ? values.rentPrice : null}));
-    // formData.append('rentPrice', values.forRent && values.RentPrice);
+    formData.append('status[]', values.forSell && 'for sale');
+    formData.append('status[]', values.forRent && 'for rent');
     if (values.sellPrice!== '') {
       formData.append('sellPrice', values.sellPrice);
     }
@@ -60,26 +57,26 @@ class AddProduct extends React.Component {
       axios.put('/product/' + this.props.product._id, formData)
         .then((res) => {
           console.log(res.data);
-          self.props.showMessage(res.data.message);
+          self.props.showSystemMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Products');
         })
         .catch((error) => {
           console.log(error);
-          self.props.showMessage(error.message);
+          self.props.showSystemMessage(error.message, 'error');
           actions.setSubmitting(false);
         });
     } else {
       axios.post('/product', formData)
         .then((res) => {
           console.log(res.data);
-          self.props.showMessage(res.data.message);
+          self.props.showSystemMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Products');
         })
         .catch((error) => {
           console.log(error);
-          self.props.showMessage(error.message);
+          self.props.showSystemMessage(error.message, 'error');
           actions.setSubmitting(false);
         });
     }
