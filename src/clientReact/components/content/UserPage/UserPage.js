@@ -76,14 +76,14 @@ class UserPage extends React.Component {
         break;
       case 'AddProduct':
         inner = <AddProduct
-          showMessage={this.showMessage.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
           changeInner={this.changeInner.bind(this)}
           pageType={'AddProduct'}
         />;
         break;
       case 'EditProduct':
         inner = <AddProduct
-          showMessage={this.showMessage.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
           changeInner={this.changeInner.bind(this)}
           pageType={'EditProduct'}
         />;
@@ -96,34 +96,36 @@ class UserPage extends React.Component {
           user={this.props.user}
           changeInner={this.changeInner.bind(this)}
           goToProfile={this.goToProfile.bind(this)}
-          showMessage={this.showMessage.bind(this)}
-          updateUser={this.props.updateUser}/>;
+          showSystemMessage={this.props.showSystemMessage}
+          updateUser={this.props.updateUser}
+        />;
         break;
       case 'ChangePassword':
         inner = <ChangePassword
           user={this.props.user}
           changeInner={this.changeInner.bind(this)}
           goToProfile={this.goToProfile.bind(this)}
-          showMessage={this.showMessage.bind(this)}/>;
+          showSystemMessage={this.props.showSystemMessage}
+        />;
         break;
       case 'Articles':
         inner = <Articles
           changeInner={this.changeInner.bind(this)}
-          showMessage={this.showMessage.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
           setArticleState={this.setArticleState.bind(this)}
           user={this.props.user}/>;
         break;
       case 'AddArticle':
         inner = <AddArticle
           changeInner={this.changeInner.bind(this)}
-          showMessage={this.showMessage.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
           pageType={'AddArticle'}
         />;
         break;
       case 'EditArticle':
         inner = <AddArticle
           changeInner={this.changeInner.bind(this)}
-          showMessage={this.showMessage.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
           pageType={'EditArticle'}
           setArticleState={this.setArticleState.bind(this)}
           article={this.state.articleForEdit}
