@@ -13,12 +13,12 @@ class ChangePassword extends React.Component {
       password: values.password,
     })
       .then((res) => {
-        this.props.showMessage(res.data.message);
+        this.props.showSystemMessage(res.data.message);
         this.props.changeInner('Profile');
         actions.setSubmitting(false);
       })
       .catch((error) => {
-        this.props.showMessage(res.data.message);
+        this.props.showSystemMessage(res.data.message);
         actions.setSubmitting(false);
       });
   }

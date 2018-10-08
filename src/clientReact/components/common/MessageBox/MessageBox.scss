@@ -1,0 +1,42 @@
+.MessageBox{
+  .alert {
+    //display: none;
+    position:fixed;
+    background-color: white;
+    width: 60%;
+    top:15%;
+    left:20%;
+    border: 1px solid lightgray;
+    //box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    animation-name: fadeInOut;
+    animation-duration: 5s;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .imgWindow {
+    width: 30px;
+    height: 30px;
+  }
+}
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+
