@@ -13,6 +13,7 @@ import UserPage from '../content/UserPage/UserPage';
 import AllArticlesPage from '../content/AllArticlesPage/AllArticlesPage';
 import ArticlePage from '../content/ArticlePage/ArticlePage';
 import AboutPage from '../content/AboutPage/AboutPage';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 require('./App.scss');
 
@@ -143,6 +144,10 @@ class App extends React.Component {
             <Route
               exact path="/about"
               render={() => <AboutPage/>}
+            />
+            <Route
+              exact path="/cart"
+              render={() => <ShoppingCart/>}
             />
           </Switch>
         </div>
