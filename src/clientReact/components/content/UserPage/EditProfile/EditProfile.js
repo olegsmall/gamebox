@@ -22,14 +22,14 @@ class EditProfile extends React.Component {
     const self = this;
     Axios.put('/user', formData)
       .then((res) => {
-        self.props.showMessage(res.data.message);
+        self.props.showSystemMessage(res.data.message);
         actions.setSubmitting(false);
         self.props.updateUser({user: res.data.user});
         self.props.changeInner('Profile');
       })
       .catch((error) => {
         console.log(error);
-        self.props.showMessage(error.message);
+        self.props.showSystemMessage(error.message, 'error');
         actions.setSubmitting(false);
       });
   }

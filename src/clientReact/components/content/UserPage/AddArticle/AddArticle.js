@@ -24,27 +24,27 @@ class AddArticle extends React.Component {
         .then((res) => {
           // debugger;
           console.log(res.data);
-          self.props.showMessage(res.data.message);
+          self.props.showSystemMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Articles');
         })
         .catch((error) => {
           // debugger
           console.log(error);
-          self.props.showMessage(error.message);
+          self.props.showSystemMessage(error.message, 'error');
           actions.setSubmitting(false);
         });
     } else {
       axios.post('/article', formData)
         .then((res) => {
           console.log(res.data);
-          self.props.showMessage(res.data.message);
+          self.props.showSystemMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Articles');
         })
         .catch((error) => {
           console.log(error);
-          self.props.showMessage(error.message);
+          self.props.showSystemMessage(error.message, 'error');
           actions.setSubmitting(false);
         });
     }
