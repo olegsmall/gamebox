@@ -118,7 +118,7 @@ class AddProduct extends React.Component {
 
     return (
       <div className={'AddProduct'}>
-        <h3 className="text-center">Add game</h3>
+        <h2 className="text-center mt-4">Add game</h2>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object().shape({
