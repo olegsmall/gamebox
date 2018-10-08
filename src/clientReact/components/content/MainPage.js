@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPropTypes from 'prop-types';
 import axios from "axios";
+import Swiper from 'react-id-swiper';
 
 require('./MainPage.scss');
 
@@ -32,6 +33,17 @@ export default class MainPage extends React.Component {
   }
 
   render() {
+    const params = {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      slidesPerView: 3,
+      spaceBetween: 20,
+      loop: true,
+      loopFillGroupWithBlank: true
+    };
+
 
     const {lastAddedIsReady, lastAddedProducts} = this.state;
 
@@ -57,28 +69,59 @@ export default class MainPage extends React.Component {
         </div>
 
         <div className="container mb-5">
-          <h5 className="mt-4 text-center">Recently released</h5>
-          <div className="card-deck mt-4 row">
-
-            {lastAddedProducts.map((product) => {
-              const backgroundImage = {
-                backgroundImage: `url("${product.images[0]}")`,
-              };
-              return (
-                <div
-                  key={product._id}
-                  className="card product text-center col-sm-6"
-                  style={backgroundImage}
-                >
-                  <div className="inner">
-                    <div className="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
-                    <button className="button mt-5"><a href="#">View More</a></button>
-                  </div>
-                </div>
-              );
-            })}
+          <h5 className="mt-5 text-center">Recently released</h5>
+          <div className="row justify-content-center mt-4">
+            <div className="col">
+              <Swiper {...params}>
+                {lastAddedProducts.map((product) => {
+                  const backgroundImage = {
+                    backgroundImage: `url("${product.images[0]}")`,
+                  };
+                  return (
+                    <div
+                      key={product._id}
+                      className="card product text-center"
+                      style={backgroundImage}
+                    >
+                      <div className="inner">
+                        <div className="paragraphV text-light">4,5</div>
+                        <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
+                        <button className="button mt-5"><a href="#">View More</a></button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </Swiper>
+            </div>
           </div>
+        </div>
+
+        {/*<div className="container mb-5">*/}
+          {/*<h5 className="mt-5 text-center">Recently released</h5>*/}
+            {/*<div className="row mt-4">*/}
+              {/*<div className="col-md-4 mb-3 mb-sm-0">*/}
+                {/*{lastAddedProducts.map((product) => {*/}
+                  {/*const backgroundImage = {*/}
+                    {/*backgroundImage: `url("${product.images[0]}")`,*/}
+                  {/*};*/}
+                  {/*return (*/}
+                    {/*<div*/}
+                      {/*key={product._id}*/}
+                      {/*className="card product text-center"*/}
+                      {/*style={backgroundImage}*/}
+                    {/*>*/}
+                      {/*<div className="inner">*/}
+                        {/*<div className="paragraphV text-light">4,5</div>*/}
+                        {/*<a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>*/}
+                        {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                      {/*</div>*/}
+                    {/*</div>*/}
+                  {/*);*/}
+                {/*})}*/}
+              {/*</div>*/}
+          {/*</div>*/}
+
+
           {/*<div className="card-deck mt-4">*/}
           {/*<div className="card product text-center cardRecently-4">*/}
           {/*<div className="inner">*/}
@@ -102,7 +145,7 @@ export default class MainPage extends React.Component {
           {/*</div>*/}
           {/*</div>*/}
           {/*</div>*/}
-        </div>
+        {/*</div>*/}
 
         <div className="infoCard">
           <h3 className="text-center pt-4">How it works</h3>
@@ -135,51 +178,53 @@ export default class MainPage extends React.Component {
         </div>
 
         <div className="container mb-5">
-          <h5 className="mt-4 ml-5 text-center">Most popular</h5>
-          <div className="card-deck mt-4">
-            <div className="card product text-center cardPopular-1">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
-            </div>
-            <div className="card product text-center cardPopular-2">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
-            </div>
-            <div className="card product text-center cardPopular-3">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
-            </div>
-          </div>
-          <div className="card-deck mt-4">
-            <div className="card product text-center cardPopular-4">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
-            </div>
-            <div className="card product text-center cardPopular-5">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
-            </div>
-            <div className="card product text-center cardPopular-6">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5 ">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
+          <h5 className="mt-5 text-center">Most popular</h5>
+          <div className="row justify-content-center mt-4">
+            <div className="col">
+              <Swiper {...params}>
+                <div className="card product text-center cardPopular-1">
+                  <div className="inner">
+                    <div className="paragraphV text-light">4,5</div>
+                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
+                    <button className="button mt-5"><a href="#">View More</a></button>
+                  </div>
+                </div>
+                <div className="card product text-center cardPopular-2">
+                  <div className="inner">
+                    <div className="paragraphV text-light">4,5</div>
+                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
+                    <button className="button mt-5"><a href="#">View More</a></button>
+                  </div>
+                </div>
+                <div className="card product text-center cardPopular-3">
+                  <div className="inner">
+                    <div className="paragraphV text-light">4,5</div>
+                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
+                    <button className="button mt-5"><a href="#">View More</a></button>
+                  </div>
+                </div>
+                <div className="card product text-center cardPopular-4">
+                  <div className="inner">
+                    <div className="paragraphV text-light">4,5</div>
+                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
+                    <button className="button mt-5"><a href="#">View More</a></button>
+                  </div>
+                </div>
+                <div className="card product text-center cardPopular-5">
+                  <div className="inner">
+                    <div className="paragraphV text-light">4,5</div>
+                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
+                    <button className="button mt-5"><a href="#">View More</a></button>
+                  </div>
+                </div>
+                <div className="card product text-center cardPopular-6">
+                  <div className="inner">
+                    <div className="paragraphV text-light">4,5</div>
+                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
+                    <button className="button mt-5"><a href="#">View More</a></button>
+                  </div>
+                </div>
+              </Swiper>
             </div>
           </div>
         </div>
