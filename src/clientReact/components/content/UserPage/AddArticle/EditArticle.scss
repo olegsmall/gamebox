@@ -1,0 +1,20 @@
+.EditArticle {
+  .inputEditArticle {
+    border: 1px solid black;
+    border-radius: unset;
+  }
+
+  .inputEditArticle:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .btnEditArticle {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+  }
+
+  .btnEditArticle:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+}

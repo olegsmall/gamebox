@@ -71,7 +71,7 @@ class AddArticle extends React.Component {
 
     return (
       <div className={'EditArticle'}>
-        <h1>Add Article:</h1>
+        <h2 className="text-center mt-4">Add Article</h2>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object().shape({
@@ -87,15 +87,14 @@ class AddArticle extends React.Component {
         >
           {({values, setFieldValue, isSubmitting}) => (
             <Form className="mb-5">
-
-              <div id="imageAdd" className="text-light"></div>
+              <div id="imageAdd"></div>
               <div className="form-row mb-3">
                 <div className="col-9">
-                  <Thumb file={values.image} object={this.props.article}/>
+                  <Thumb className="mb-3" file={values.image} object={this.props.article}/>
                   <input
                     name="image"
                     type="file"
-                    className="form-control form-control-sm"
+                    className="form-control inputEditArticle"
                     placeholder="Load image"
                     onChange={event => setFieldValue('image', event.currentTarget.files[0])}
                   />
@@ -103,20 +102,20 @@ class AddArticle extends React.Component {
               </div>
 
               <div className="form-group">
-                <Field name="title" type="text" className="form-control form-control-sm" placeholder="Article's title"/>
-                <ErrorMessage name="title">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+                <Field name="title" type="text" className="form-control inputEditArticle" placeholder="Article's title"/>
+                <ErrorMessage name="title">{msg => <div className='error'>{msg}</div>}</ErrorMessage>
               </div>
 
               <div className="form-group">
-                <Field name="content" component="textarea" className="form-control" rows="5" placeholder="Content"/>
-                <ErrorMessage name="title">{msg => <div className='field-error'>{msg}</div>}</ErrorMessage>
+                <Field name="content" component="textarea" className="form-control inputEditArticle" rows="5" placeholder="Content"/>
+                <ErrorMessage name="title">{msg => <div className='error'>{msg}</div>}</ErrorMessage>
               </div>
 
               <div className="form-group">
-                <Field name="tags" type="text" className="form-control form-control-sm" placeholder="Tags"/>
+                <Field name="tags" type="text" className="form-control inputEditArticle" placeholder="Tags"/>
               </div>
 
-              <button type="submit" className="btn btn-success btn-block" disabled={isSubmitting}>Save</button>
+              <button type="submit" className="btn btn-block btnEditArticle" disabled={isSubmitting}>Save</button>
 
             </Form>
           )}
