@@ -61,7 +61,7 @@ exports.getMessage = function (req) {
 exports.getInboxMessages = function (req) {
 
   let queryOptions = {}; // Mongoose-paginator query options
-  let query = {receiver: req.params.id}; // Mongoose query options
+  let query = {}; // Mongoose query options
 
   req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
   req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10; // Limit number of returning objects
@@ -69,10 +69,14 @@ exports.getInboxMessages = function (req) {
   queryOptions.populate = {path: 'sender', select: 'firstName lastName'};   // Populate query fields
 
   try {
-    return Message.paginate(query, queryOptions).then((doc) => {
-      if(doc === null) { throw Error('No messages found'); }
+    return User.findById(req.params.id).select('messages.inbox').then((msg) => {
+      let inbox = msg.messages.inbox;
 
-      return doc;
+      query = {_id: {$in: inbox}};
+
+      return Message.paginate(query, queryOptions).then((docs) => {
+        return docs;
+      });
     });
   } catch (e) {
     throw Error('Error on get messages.');
@@ -82,7 +86,7 @@ exports.getInboxMessages = function (req) {
 exports.getOutboxMessages = function (req) {
 
   let queryOptions = {}; // Mongoose-paginator query options
-  let query = {sender: req.params.id}; // Mongoose query options
+  let query = {}; // Mongoose query options
 
   req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
   req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10; // Limit number of returning objects
@@ -90,10 +94,14 @@ exports.getOutboxMessages = function (req) {
   queryOptions.populate = {path: 'receiver', select: 'firstName lastName'};   // Populate query fields
 
   try {
-    return Message.paginate(query, queryOptions).then((doc) => {
-      if(doc === null) { throw Error('No messages found'); }
+    return User.findById(req.params.id).select('messages.outbox').then((msg) => {
+      let outbox = msg.messages.outbox;
 
-      return doc;
+      query = {_id: {$in: outbox}};
+
+      return Message.paginate(query, queryOptions).then((docs) => {
+        return docs;
+      });
     });
   } catch (e) {
     throw Error('Error on get messages.');
@@ -109,7 +117,8 @@ exports.deleteMessage = function (req) {
 
       if(inbox.indexOf(req.body.message_id) > -1) {
         inbox.splice(inbox.indexOf(req.body.message_id), 1);
-      } else {
+      }
+      if (outbox.indexOf(req.body.message_id) > -1) {
         outbox.splice(outbox.indexOf(req.body.message_id), 1);
       }
 
