@@ -1,0 +1,25 @@
+.ShoppingCart {
+  #myOrders{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  .linkArticle {
+    color: black;
+  }
+
+  .imageShopCart {
+    width: 150px;
+
+  }
+  .btnShopCart{
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+  }
+
+  .btnShopCart:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+
+}
