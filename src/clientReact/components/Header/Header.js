@@ -35,8 +35,9 @@ class Header extends React.Component {
     this.headerAnimation();
   }
 
-
   render() {
+
+    console.log(this.props.shoppingCart);
 
     // let headerNavClasses = "navbar navbar-expand-lg  navbar-lignt bg-light fixed-top navbar-inverse mid";
     // headerNavClasses += this.state.headerStickToTop ? "stickytop" : "";
@@ -97,7 +98,7 @@ class Header extends React.Component {
               </div>
               <div className="img-fluid">
                 <div>
-                  <div className="basketNumber">{this.props.shoppingCartProducts.length}</div>
+                  <div className="basketNumber">{this.props.shoppingCart.products ? this.props.shoppingCart.products.length : 0}</div>
                 </div>
                 <Link to={'/cart'}><img src="image/shopBag1.png" width="25" className="imgBasket"/></Link>
               </div>

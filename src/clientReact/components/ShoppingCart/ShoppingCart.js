@@ -53,7 +53,7 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    const {shoppingCartProducts: shopProducts, user} = this.props;
+    const {shoppingCart: shopProducts, user} = this.props;
 
     return (
       <div className={'ShoppingCart'}>
@@ -63,11 +63,11 @@ class ShoppingCart extends React.Component {
         <div id="myOrders" className="container">
           <div className="h5 ml-5 mb-2 text-center text-sm-left">My shopping cart</div>
           <hr/>
-          {shopProducts.length <= 1
+          {shopProducts.products.length === 0
             ? <div>Shopping cart is empty</div>
             : <div className="container">
-              {shopProducts.map(({product, deal_type, rent_duration, _id: cardItemId}) => {
-                if (product === undefined) return null;
+              {shopProducts.products.map(({product, deal_type, rent_duration, _id: cardItemId}) => {
+                // if (product === undefined) return null;
                 return (
                   <div key={product._id}>
                     <a className="linkArticle" href="#">

@@ -32,7 +32,7 @@ class App extends React.Component {
       email: null,
       user: null,
       systemMessage: undefined,
-      shoppingCartProducts: [],
+      shoppingCart: {},
     };
 
     this.getUser();
@@ -89,7 +89,7 @@ class App extends React.Component {
     axios.get('/cart')
       .then(res => {
         this.setState({
-          shoppingCartProducts: res.data.cart,
+          shoppingCart: res.data.cart,
         });
       })
       .catch((error) => {
@@ -110,7 +110,7 @@ class App extends React.Component {
           loggedIn: false,
           email: null,
           user: null,
-          shoppingCartProducts: [],
+          shoppingCart: {},
         });
       }
     })
@@ -145,7 +145,7 @@ class App extends React.Component {
           logoutUser={this.logoutUser}
           loggedIn={this.state.loggedIn}
           user={this.state.user}
-          shoppingCartProducts={this.state.shoppingCartProducts}
+          shoppingCart={this.state.shoppingCart}
         />
         <div id="mainContent">
           {/* Routes to different components */}
@@ -200,7 +200,7 @@ class App extends React.Component {
               exact path="/cart"
               render={() => <ShoppingCart
                 getShoppingCart={this.getShoppingCart}
-                shoppingCartProducts={this.state.shoppingCartProducts}
+                shoppingCart={this.state.shoppingCart}
                 showSystemMessage={this.showSystemMessage}
                 user={this.state.user}
               />}
