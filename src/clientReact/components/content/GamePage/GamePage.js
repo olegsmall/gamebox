@@ -35,19 +35,21 @@ class GamePage extends React.Component {
   }
 
   handleSubmit(values, actions) {
-    console.log(values)
-    axios.post('/cart/' + this.state.product._id, {
-      deal_type: 'for sale',
-    })
+    const{buyRent, duration} = values;
+    const req = {};
+    req.deal_type = buyRent === 'buy' ? 'for sale' : 'for rent';
+    req.rent_duration = duration !== '' ? duration : undefined;
+
+    axios.post('/cart/' + this.state.product._id, req)
       .then((res) => {
         console.log(res);
         this.props.showSystemMessage(res.data.message);
-        // this.props.changeInner('Profile');
         actions.setSubmitting(false);
+        this.props.history.push('/product');
       })
       .catch((error) => {
-        console.log(error);
-        this.props.showSystemMessage(res.data.message);
+        console.log(error.response);
+        this.props.showSystemMessage(error.response.data.message, 'error');
         actions.setSubmitting(false);
       });
   }
@@ -117,7 +119,7 @@ class GamePage extends React.Component {
                       {sellPrice && <label><Field type="radio" name="buyRent" value="buy"/>Buy</label>}
                       {rentPrice && <label><Field type="radio" className="ml-3" name="buyRent" value="rent"/>Rent</label>}
                       <ErrorMessage name="buyRent">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
-                      <button type="submit" className="btn w-50 mt-2 btnProduct">Add to cart</button>
+                      <button type="submit" className="btn w-50 mt-2 btnProduct" disabled={isSubmitting}>Add to cart</button>
                     </Form>
                   )}
                 </Formik>
