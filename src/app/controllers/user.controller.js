@@ -65,7 +65,7 @@ exports.getSessionUser = function(req, res){
       };
       res.status(200).json({status: 200, user: user, message: 'Authenticate granted'});
     } else {
-      return res.status(403.21).json({status: 403.21, message: 'Source access denied'});
+      return res.status(200).json({status: 200, user: null, message: 'Source access denied'});
     }
   } catch(e) {
     //Return an Error Response Message with Code and the Error Message.
