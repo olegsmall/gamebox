@@ -38,7 +38,7 @@ class GamePage extends React.Component {
     const{buyRent, duration} = values;
     const req = {};
     req.deal_type = buyRent === 'buy' ? 'for sale' : 'for rent';
-    req.rent_duration = duration !== '' ? duration : undefined;
+    req.rent_duration = buyRent === 'rent' ? duration : undefined;
 
     axios.post('/cart/' + this.state.product._id, req)
       .then((res) => {
@@ -81,7 +81,9 @@ class GamePage extends React.Component {
           <div className="container mb-4">
             <div className="row">
               <div className="col-md-6 sectionImage">
-                <img className="img-fluid imageMainGame mb-3" src={images[0]} alt={title}/>
+                <div className="blowup">
+                  <img className="img-fluid imageMainGame mb-3" src={images[0]} alt={title}/>
+                </div>
                 <Carousel/>
               </div>
               <div className="col-md-6 text-center text-md-left">
@@ -109,6 +111,7 @@ class GamePage extends React.Component {
                 <Formik
                   initialValues={{
                     buyRent: '',
+                    duration: 10,
                   }}
                   validationSchema={Yup.object().shape({
                     buyRent: Yup.string()
@@ -118,10 +121,16 @@ class GamePage extends React.Component {
                 >
                   {({values, isSubmitting}) => (
                     <Form className="mb-3 pl-3">
-                      {sellPrice && <label><Field type="radio" name="buyRent" value="buy"/>Buy</label>}
-                      {rentPrice && <label><Field type="radio" className="mr-2" name="buyRent" value="rent"/>Rent</label>}
+                      {sellPrice && <div><label><Field type="radio" name="buyRent" value="buy"/>Buy</label></div>}
+                      {rentPrice &&
+                      <div>
+                        <label>
+                          <Field type="radio" className="mr-2" name="buyRent" value="rent"/>Rent
+                        </label>
+                        <Field type="number" className="ml-3" name="duration" placeholder="Enter the number of days"/>
+                      </div>
+                      }
                       <ErrorMessage name="buyRent">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
-                      <input type="number" className="ml-3" name="rentalDuration" placeholder="Enter the number of days"/>
                       <br/>
                       <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to cart</button>
                     </Form>
