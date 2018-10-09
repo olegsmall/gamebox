@@ -45,6 +45,7 @@ class GamePage extends React.Component {
         console.log(res);
         this.props.showSystemMessage(res.data.message);
         actions.setSubmitting(false);
+        this.props.getShoppingCart();
         this.props.history.push('/product');
       })
       .catch((error) => {

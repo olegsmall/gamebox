@@ -32,8 +32,12 @@ class App extends React.Component {
       email: null,
       user: null,
       systemMessage: undefined,
+      shoppingCartProducts: [],
     };
 
+    this.getUser();
+
+    this.getShoppingCart = this.getShoppingCart.bind(this);
     this.updateUser = this.updateUser.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
     this.showSystemMessage = this.showSystemMessage.bind(this);
@@ -48,7 +52,7 @@ class App extends React.Component {
   // Life cycle methods
   //component mount method, guaranteed that component was mounted
   componentDidMount() {
-    this.getUser();
+    this.getShoppingCart();
   }
 
   componentWillUnmount() {
@@ -59,7 +63,7 @@ class App extends React.Component {
     this.setState(userObject);
   }
 
-  showSystemMessage(message, type='success'){
+  showSystemMessage(message, type = 'success') {
     this.setState({
       systemMessage: {
         message,
@@ -67,19 +71,32 @@ class App extends React.Component {
         show: true,
       },
     });
-    setTimeout(()=> this.hideSystemMessage(), 5000);
+    setTimeout(() => this.hideSystemMessage(), 5000);
   }
 
-  hideSystemMessage(){
+  hideSystemMessage() {
     const systemMessage = this.state.systemMessage;
     systemMessage.show = false;
     this.setState({systemMessage});
   }
 
+  getShoppingCart() {
+
+    if (!this.state.user) return;
+
+    axios.get('/cart')
+      .then(res => {
+        this.setState({
+          shoppingCartProducts: res.data.cart,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }
+
   getUser() {
     axios.get('/user/session').then(res => {
-
-      console.log(res.data.user);
       if (res.data.user) {
         this.setState({
           loggedIn: true,
@@ -90,10 +107,14 @@ class App extends React.Component {
         this.setState({
           loggedIn: false,
           email: null,
-          user: null
+          user: null,
+          shoppingCartProducts: [],
         });
       }
-    });
+    })
+      .catch((error) => {
+        console.log(error.response);
+      });
   }
 
   logoutUser() {
@@ -122,6 +143,7 @@ class App extends React.Component {
           logoutUser={this.logoutUser}
           loggedIn={this.state.loggedIn}
           user={this.state.user}
+          shoppingCartProducts={this.state.shoppingCartProducts}
         />
         <div id="mainContent">
           {/* Routes to different components */}
@@ -154,9 +176,10 @@ class App extends React.Component {
             />
             <Route
               path="/product/:gameId"
-              render={(props)=><GamePage
+              render={(props) => <GamePage
                 {...props}
                 showSystemMessage={this.showSystemMessage}
+                getShoppingCart={this.getShoppingCart}
               />}
             />
             <Route
