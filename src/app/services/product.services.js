@@ -116,7 +116,7 @@ exports.getUserProducts = async function(req) {
 
 exports.getProduct = function (id) {
   try {
-    return Product.findById(id).populate('genres owner', 'firstName lastName').then((doc) => {
+    return Product.findById(id).populate('genres owner', 'name firstName lastName').then((doc) => {
       if(doc === null) { throw Error('Product not found'); }
 
       return doc;

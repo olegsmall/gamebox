@@ -1,48 +1,301 @@
-@import url(https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat);
-.Header .mid {
-  background: rgba(38, 28, 28, 0.85); }
+.Header .stickytop {
+  transform: translateY(0px);
+  width: 100%;
+  border-radius: 0 0 5px 5px; }
+
+.Header nav {
+  position: fixed;
+  transform: translateY(20px);
+  transition: transform .6s, width .6s;
+  border-radius: 5px;
+  width: calc(100% - 60px);
+  margin: 0 auto;
+  background: rgba(248, 249, 250, 0.95); }
+
+.Header .navbar {
+  padding: 2px !important;
+  padding-right: 2rem !important;
+  padding-left: 2rem !important; }
+
+.Header .fa.fa-bars {
+  color: black;
+  margin-top: 5px; }
+
+.Header li.nav-item .nav-link {
+  color: black; }
 
 .Header a.nav-link.h5 {
   tab-size: 20px; }
 
-.Header .fa-user-o {
-  color: green; }
+.Header .btnSearch {
+  background-color: unset;
+  border: none;
+  cursor: pointer; }
 
-.Header #linkLogin, .Header #linkSignUp {
-  color: inherit; }
+.Header .inputSearch {
+  display: none;
+  background-color: unset;
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 22rem; }
 
-.Header #linkLogin:hover, .Header #linkSignUp {
+.Header #dropdownMenu i.fa.fa-user-plus {
+  color: #000000;
+  font-size: 23px; }
+
+.Header img.searchImg {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  margin-right: 2rem; }
+
+@media only screen and (max-width: 600px) {
+  .Header .inputSearch {
+    width: 10rem; } }
+
+.Header .imgBasket {
+  margin-bottom: 8px; }
+
+.Header .basketNumber {
+  margin-bottom: -22px;
+  margin-left: 11px;
+  color: red;
+  font-weight: bold; }
+
+@media only screen and (min-width: 769px) {
+  .Header .imgBasket {
+    margin-left: 16px; }
+  .Header .basketNumber {
+    margin-left: 27px; } }
+
+.MainPage .cardPopular-1 {
+  background-image: url("/image/img1.jpg"); }
+
+.MainPage .cardPopular-2 {
+  background-image: url("/image/img6.jpg"); }
+
+.MainPage .cardPopular-3 {
+  background-image: url("/image/war-venue-494345_1280.jpg"); }
+
+.MainPage .cardPopular-4 {
+  background-image: url("/image/overwatch-1610865_1280.jpg"); }
+
+.MainPage .cardPopular-5 {
+  background-image: url("/image/science-fiction-965258_1280.jpg"); }
+
+.MainPage .cardPopular-6 {
+  background-image: url("/image/img5.jpg"); }
+
+.MainPage .product {
+  position: relative;
+  width: 280px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: unset !important; }
+
+.MainPage .imgBorder {
+  border-radius: unset !important;
+  border: none; }
+
+.MainPage .imgBody {
+  border: 1px solid #a5afaf; }
+
+.MainPage .inner {
+  position: absolute;
+  background-color: transparent;
+  width: 100%;
+  height: 100%; }
+
+.MainPage .product:hover .inner {
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-transition: background-color  .7s;
+  -ms-transition: background-color .7s;
+  transition: background-color .7s;
+  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5); }
+
+.MainPage div.paragraphV {
+  background-color: #ff6e00;
+  padding-right: 5px;
+  width: 40px;
+  margin-left: -8px;
+  margin-top: 6px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); }
+
+.MainPage .paragraph {
+  display: none; }
+
+.MainPage .product:hover .paragraph {
+  display: block;
+  animation: fadein 1.5s; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.MainPage h4.paragraphV {
+  color: white; }
+
+.MainPage .button {
+  display: none;
+  background-color: #81836d;
+  border-color: #81836d;
+  padding: 5px 32px;
+  text-decoration: none;
+  margin: 4px 2px; }
+
+.MainPage .button:hover {
+  transition: background-color .7s;
+  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3); }
+
+.MainPage .product:hover .button {
+  display: inline-block;
+  animation: fadein 1.5s; }
+
+.MainPage button.button.mt-5 a {
+  color: #ffffff; }
+
+.MainPage .infoCard {
+  background-color: rgba(211, 211, 211, 0.2); }
+
+.MainPage .imgInfo {
+  width: 40px;
+  height: 40px; }
+
+.MainPage .text {
+  font-size: 13px; }
+
+.MainPage .imgWork {
+  width: 100px;
+  height: 100px; }
+
+.Footer .page-footer {
+  background-color: #000000; }
+
+.Footer .footer-copyright {
+  font-size: 13px; }
+
+.Footer .line-border {
+  border-right: 1px solid white; }
+
+.LoginPage #log {
+  margin-top: 8rem;
+  margin-bottom: 8rem; }
+
+.SignUp #sign {
+  margin-top: 8rem;
+  margin-bottom: 8rem; }
+
+.SignUp .imgAvatar {
+  border: 1px solid black;
+  border-radius: unset; }
+
+.SignUp .custom-file-label {
+  padding-right: 5rem; }
+
+.ProductCard .aBlack {
+  color: black; }
+
+.ProductCard .imgBorder {
+  border-radius: unset !important;
+  border: none; }
+
+.ProductCard .cardAllGame {
+  -moz-transition: all 0.7s;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s; }
+
+.ProductCard .cardAllGame:hover {
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5); }
+
+.ProductCard .imageStar {
+  display: block;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: -1px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); }
+
+.ProductCard div.paragraphV {
+  background-color: #ff6e00;
+  padding-right: 5px;
+  width: 40px;
+  margin-left: -8px;
+  margin-top: 6px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); }
+
+.ProductCard .imgBody {
+  border: 1px solid #a5afaf; }
+
+.ProductCard .btnPrice {
+  font-weight: bold;
+  color: red;
+  font-size: large;
   text-decoration: none; }
 
-.Footer {
-  padding: 20px;
-  background: #1d1616; }
 
-.LoginPage #LoginPage {
-  margin-top: 12rem;
-  margin-bottom: 12rem; }
+.Carousel .imageMainGame {
+  border: 1px solid gray;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  -moz-transition: all 0.7s;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s; }
 
-.LoginPage .btn.btn-sm.btn-block.mt-4 {
-  background-color: #026E00; }
-
-.SignUp #signUp {
-  margin-top: 12rem;
-  margin-bottom: 12rem; }
-
-.SignUp .btn.btn-sm.btn-block.mt-3 {
-  background-color: #026E00; }
-
-.AllGamesPage #games {
-  margin-top: 8rem !important; }
+.Carousel .imageMainGame:hover {
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05); }
 
 .GamePage #gamePage {
-  margin-top: 8rem; }
+  margin-top: 2rem; }
 
-.GamePage .btnGamePage {
-  background-color: #026E00; }
+.GamePage .imgMain {
+  height: 100%;
+  max-height: 400px;
+  width: auto;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.GamePage .imageMainGame {
+  border: 1px solid gray;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  -moz-transition: all 0.7s;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s; }
+
+.GamePage .imageMainGame:hover {
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05); }
+
+.GamePage .btnProduct, .GamePage .btnGameComments {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.GamePage .btnProduct {
+  margin-left: 1rem; }
+
+.GamePage .btnProduct:hover, .GamePage .btnGameComments:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
 .GamePage #rate {
   font-size: 1.25rem; }
+
+.GamePage .fa-star-o {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px; }
+
+.GamePage .price {
+  font-weight: bold;
+  background-color: orange;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 5px 10px 5px 10px; }
 
 .GamePage .fa-pencil {
   color: black; }
@@ -50,128 +303,330 @@
 .GamePage #marginCom {
   margin-bottom: 1rem; }
 
-@media only screen and (max-width: 600px) {
-  .GamePage #gamePage {
-    margin-top: 10rem; } }
-
-
-
-
-
-.EditProfile h3 form button.mt-3.btn.btn-sm.btn-block.mb-3 {
-  background-color: #026E00 !important; }
-
-.EditProfile .buttonEditProfile {
-  background-color: #026E00;
-  color: #FFFFFF; }
-
-.EditProfile .buttonEditClose {
-  background-color: #026CAE;
-  color: #FFFFFF; }
-
-.ArticleRow .cardArticle {
-  background-color: transparent !important;
-  border-color: #026E00 !important;
-  width: 450px;
-  height: 110px;
-  overflow: hidden; }
-
-.ArticleRow .imageArticle {
-  width: 150px;
-  height: 70px !important; }
-
-
-
-
-.UserPage #hi-bg {
-  margin-top: 5.4rem;
-  background: linear-gradient(to top, #026E00, #0a568c);
-  background-color: #333333 !important;
-  border-color: #333333; }
-
-.ArticleCard .card {
+.GamePage .btnViewMore {
   background-color: transparent;
-  border: none;
-  overflow: visible; }
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: unset;
+  height: 3rem; }
 
-.ArticleCard .card-body {
-  -moz-transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s; }
+.GamePage .btnViewMore:hover {
+  border: 2px solid black;
+  transition: color 0.25s; }
 
-.ArticleCard .card-body:hover {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1); }
+.GamePage .cardPopular-1 {
+  background-image: url("/image/overwatch-1610865_1280.jpg"); }
 
-.ArticleCard hr {
-  border-color: #026E00; }
+.GamePage .cardPopular-2 {
+  background-image: url("/image/science-fiction-965258_1280.jpg"); }
 
-@media only screen and (max-width: 1000px) {
+.GamePage .cardPopular-3 {
+  background-image: url("/image/img5.jpg"); }
+
+.GamePage .sectionMostPopular {
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+
+.GamePage .product {
+  position: relative;
+  /*width: 280px;*/
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: unset !important; }
+
+.GamePage .imgBorder {
+  border-radius: unset !important;
+  border: none; }
+
+.GamePage .imgBody {
+  border: 1px solid #a5afaf; }
+
+.GamePage .inner {
+  position: absolute;
+  background-color: transparent;
+  width: 100%;
+  height: 100%; }
+
+.GamePage .product:hover .inner {
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-transition: background-color  .7s;
+  -ms-transition: background-color .7s;
+  transition: background-color .7s;
+  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5); }
+
+.GamePage div.paragraphV {
+  background-color: #ff6e00;
+  padding-right: 5px;
+  width: 40px;
+  margin-left: -8px;
+  margin-top: 6px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); }
+
+.GamePage .paragraph {
+  display: none; }
+
+.GamePage .product:hover .paragraph {
+  display: block;
+  animation: fadein 1.5s; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.GamePage h4.paragraphV {
+  color: white; }
+
+.GamePage .button {
+  display: none;
+  background-color: #81836d;
+  border-color: #81836d;
+  padding: 5px 32px;
+  text-decoration: none;
+  margin: 4px 2px; }
+
+.GamePage .button:hover {
+  transition: background-color .7s;
+  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3); }
+
+.GamePage .product:hover .button {
+  display: inline-block;
+  animation: fadein 1.5s; }
+
+.GamePage button.button.mt-5 a {
+  color: #ffffff; }
+
+.GamePage .linkViewMore {
+  color: black; }
+
+.Profile div i.fa.fa-star-o {
+  color: #b86607; }
+
+.Profile .btnEditProf {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.Profile .btnEditProf:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+
+
+
+.EditProfile .inputEdit {
+  border: 1px solid black;
+  border-radius: unset; }
+
+.EditProfile .btnEdit {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.EditProfile .inputEdit:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.EditProfile .btnEdit:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.ArticleRow .imageYourArticle {
+  width: 100px; }
+
+.ArticleRow .btnAddArticle {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.ArticleRow .btnAddArticle:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.ArticleRow .linkArticle {
+  color: black; }
+
+.Articles .btnAddArticle {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.Articles .btnAddArticle:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.Articles #yourArticle {
+  margin-top: 0.5rem;
+  margin-bottom: 3rem; }
+
+.Articles .linkArticle {
+  color: black; }
+
+.AddProduct .inputAddProduct {
+  border: 1px solid black;
+  border-radius: unset; }
+
+.AddProduct .inputAddProduct:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.AddProduct .btnAddProduct {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.AddProduct .btnAddProduct:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.EditArticle .inputEditArticle {
+  border: 1px solid black;
+  border-radius: unset; }
+
+.EditArticle .inputEditArticle:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.EditArticle .btnEditArticle {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.EditArticle .btnEditArticle:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.ChangePassword .formChangePassword {
+  margin-top: 4rem;
+  margin-left: 1rem; }
+
+.ChangePassword .inputPass {
+  border: 1px solid black;
+  border-radius: unset; }
+
+.ChangePassword .btnPass {
+  color: black;
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.ChangePassword .inputPass:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.ChangePassword .btnPass:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+
+.ArticleCard .linkArticle {
+  color: black; }
+
+.ArticleCard .cardBodyArticle {
+  -moz-transition: all 0.7s;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s; }
+
+.ArticleCard .cardBodyArticle:hover {
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05); }
+
+.ArticleCard .imageArticle {
+  width: 250px;
+  height: 150px; }
+
+@media only screen and (max-width: 800px) {
   .ArticleCard .imageArticle {
-    margin-bottom: 2rem; } }
+    margin-bottom: 2rem;
+    width: 650px;
+    height: 250px; } }
 
 .AllBlogPage #article {
-  margin-top: 8rem;
-  margin-bottom: 10rem; }
-
-.AllBlogPage hr {
-  border-color: #026E00; }
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
 
 @media only screen and (max-width: 600px) {
   .AllBlogPage #article {
-    margin-top: 12rem; } }
+    margin-top: 3rem; } }
 
 .ArticlePage .articlePage {
   margin-top: 8rem; }
 
 .ArticlePage .cardArticle {
   background-color: transparent !important;
-  border-color: #026E00 !important;
-  width: 400px;
-  height: 80px;
-  overflow: hidden; }
+  border-color: #026E00 !important; }
 
-.ArticlePage .card-body {
-  -moz-transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s; }
+.ArticlePage .page-footer {
+  margin-top: 10rem; }
 
-.ArticlePage .card-body:hover {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1); }
+.AboutPage .map {
+  height: 400px; }
 
-.ArticlePage .imageArticle {
-  width: 80px;
-  height: 50px; }
+.ShoppingCart #myOrders {
+  margin-top: 2rem;
+  margin-bottom: 5rem; }
 
-@media only screen and (max-width: 600px) {
-  .ArticlePage .titleArticle {
-    margin-top: 5rem; } }
+.ShoppingCart .linkArticle {
+  color: black; }
+
+.ShoppingCart .imageShopCart {
+  width: 150px; }
+
+.ShoppingCart .btnShopCart {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.ShoppingCart .btnShopCart:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+html {
+  height: 100%; }
 
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif !important;
-  background-color: #46485a !important; }
-
-a {
-  color: black; }
+  font-family: Arial, Helvetica, sans-serif !important;
+  background-color: #ffffff;
+  opacity: 0.9;
+  height: 100%; }
 
 a:hover {
   color: black;
   text-decoration: none; }
 
-p {
-  font-family: 'Merriweather Sans', sans-serif; }
-
 .fa {
   color: white; }
 
-i.fa.fa-star-o {
-  color: orange !important;
-  font-size: 20px; }
+hr {
+  border-color: gray; }
 
-.card-text {
-  height: 50% !important; }
+.inputLog {
+  border: 1px solid black;
+  border-radius: unset; }
+
+.btnLog {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.inputLog:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.btnLog:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.error {
+  color: red;
+  margin-left: 10px; }
+
+.imgMain {
+  height: 100%;
+  max-height: 300px;
+  width: auto;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.line {
+  list-style-type: none; }
+
+.line div {
+  display: inline; }
+
+.line div a {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none; }
+
+.line-border {
+  border-right: 1px solid black; }
 
