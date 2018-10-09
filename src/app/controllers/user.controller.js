@@ -153,13 +153,6 @@ exports.rateUser = async function (req, res) {
 };
 
 exports.logout = async function(req, res) {
-  req.logout();
-  res.redirect('/');
-};
-
-exports.checkAuth = function (req, res, next){
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/');
+    req.logout();
+    res.send({msg: 'Logged out'});
 };

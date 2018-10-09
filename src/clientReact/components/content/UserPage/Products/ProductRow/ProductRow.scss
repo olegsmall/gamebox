@@ -1,0 +1,24 @@
+.ProductRow {
+  .linkArticle {
+    color: black;
+  }
+
+  .cardProduct {
+    border-radius: unset;
+    border: 1px solid gray;
+  }
+
+  .imgProduct {
+    border-radius: unset;
+  }
+
+  .btnAddGame {
+    background-color: rgba(211, 211, 211, 0.2);
+    border: 1px solid black;
+    border-radius: unset;
+  }
+
+  .btnAddGame:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+}

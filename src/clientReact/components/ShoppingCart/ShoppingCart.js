@@ -128,8 +128,8 @@ class ShoppingCart extends React.Component {
                             <div className="mb-1">Estimated tax (GST + QST) — 14.975% :</div>
                             <div className="mb-1">Order total : CAD $</div>
                         <div className="row">
-                            <div className="col-md-2">
-                              <button className="btn-block btn btnShopCart mt-3">Confirm</button>
+                            <div className="col-md-4">
+                              <button className="btn-block btn btnShopCart mt-3">Confirm order</button>
                             </div>
                             <div className="col-md-4">
                               <button className="btn-block btn btnShopCart mt-3 mr-3">Continue shopping</button>

@@ -14,6 +14,7 @@ import AllArticlesPage from '../content/AllArticlesPage/AllArticlesPage';
 import ArticlePage from '../content/ArticlePage/ArticlePage';
 import AboutPage from '../content/AboutPage/AboutPage';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
+import MessageBox from "../common/MessageBox/MessageBox";
 
 require('./App.scss');
 
@@ -30,10 +31,13 @@ class App extends React.Component {
       loggedIn: false,
       email: null,
       user: null,
+      systemMessage: undefined,
     };
 
     this.updateUser = this.updateUser.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
+    this.showSystemMessage = this.showSystemMessage.bind(this);
+    this.hideSystemMessage = this.hideSystemMessage.bind(this);
   }
 
   //Using class property for a state
@@ -53,6 +57,23 @@ class App extends React.Component {
 
   updateUser(userObject) {
     this.setState(userObject);
+  }
+
+  showSystemMessage(message, type='success'){
+    this.setState({
+      systemMessage: {
+        message,
+        type,
+        show: true,
+      },
+    });
+    setTimeout(()=> this.hideSystemMessage(), 5000);
+  }
+
+  hideSystemMessage(){
+    const systemMessage = this.state.systemMessage;
+    systemMessage.show = false;
+    this.setState({systemMessage});
   }
 
   getUser() {
@@ -92,6 +113,7 @@ class App extends React.Component {
   }
 
   render() {
+    const {systemMessage, showSystemMessage} = this.state;
 
     return (
       <div className={'App d-flex flex-column h-100'}>
@@ -123,6 +145,7 @@ class App extends React.Component {
               render={() => <UserPage
                 user={this.state.user}
                 updateUser={this.updateUser}
+                showSystemMessage={this.showSystemMessage}
               />}
             />
             <Route
@@ -131,7 +154,10 @@ class App extends React.Component {
             />
             <Route
               path="/product/:gameId"
-              component={GamePage}
+              render={(props)=><GamePage
+                {...props}
+                showSystemMessage={this.showSystemMessage}
+              />}
             />
             <Route
               exact path="/article"
@@ -152,6 +178,8 @@ class App extends React.Component {
           </Switch>
         </div>
         <Footer/>
+        {/* Show sysem messages component */}
+        <MessageBox systemMessage={systemMessage} hideSystemMessage={this.hideSystemMessage}/>
       </div>
     );
   }

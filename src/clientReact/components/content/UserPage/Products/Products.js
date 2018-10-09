@@ -35,18 +35,18 @@ class Products extends React.Component {
   render() {
 
     return (
-      <div>
-        <div className={'d-flex flex-row flex-nowrap justify-content-between mb-5'}>
-          <h3 className="text-center">Your games:</h3>
-          <button className={'btn btn-success'} onClick={this.handleAddProduct.bind(this)}>Add game</button>
-        </div>
+      <div className={'Products'}>
+        <h2 className="text-center mt-4">Your games</h2>
+        <button className={'btn btn-block mt-2 btnAddGame'} onClick={this.handleAddProduct.bind(this)}>Add game
+        </button>
+        <div id="yourGame" className="container mt-3">
+          <div className="row">
 
-        <div>
-          {this.state.products.map((product) => (
-            <ProductRow key={product._id} product={product}/>
-            
+                {this.state.products.map((product) => (
+                  <ProductRow key={product._id} product={product}/>
+                  ))}
 
-            ))}
+          </div>
         </div>
       </div>
     );
