@@ -40,13 +40,11 @@ class Products extends React.Component {
         <button className={'btn btn-block mt-2 btnAddGame'} onClick={this.handleAddProduct.bind(this)}>Add game
         </button>
         <div id="yourGame" className="container mt-3">
-          <div className="row">
 
                 {this.state.products.map((product) => (
                   <ProductRow key={product._id} product={product}/>
                   ))}
 
-          </div>
         </div>
       </div>
     );
