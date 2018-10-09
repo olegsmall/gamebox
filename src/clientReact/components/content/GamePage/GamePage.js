@@ -80,7 +80,8 @@ class GamePage extends React.Component {
           <div className="container mb-4">
             <div className="row">
               <div className="col-md-6 sectionImage">
-                <img className="img-fluid imageMainGame" src={images[0]} alt={title}/>
+                <img className="img-fluid imageMainGame mb-3" src={images[0]} alt={title}/>
+                <Carousel/>
               </div>
               <div className="col-md-6 text-center text-md-left">
                 <div className=" mt-4 mt-md-0 mb-3 pl-3">
@@ -117,9 +118,11 @@ class GamePage extends React.Component {
                   {({values, isSubmitting}) => (
                     <Form className="mb-3 pl-3">
                       {sellPrice && <label><Field type="radio" name="buyRent" value="buy"/>Buy</label>}
-                      {rentPrice && <label><Field type="radio" className="ml-3" name="buyRent" value="rent"/>Rent</label>}
+                      {rentPrice && <label><Field type="radio" className="mr-2" name="buyRent" value="rent"/>Rent</label>}
                       <ErrorMessage name="buyRent">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
-                      <button type="submit" className="btn w-50 mt-2 btnProduct" disabled={isSubmitting}>Add to cart</button>
+                      <input type="number" className="ml-3" name="rentalDuration" placeholder="Enter the number of days"/>
+                      <br/>
+                      <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to cart</button>
                     </Form>
                   )}
                 </Formik>
@@ -137,13 +140,13 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col">
-              <Carousel/>
-            </div>
-          </div>
-        </div>
+        {/*<div className="container">*/}
+          {/*<div className="row justify-content-center">*/}
+            {/*<div className="col">*/}
+              {/**/}
+            {/*</div>*/}
+          {/*</div>*/}
+        {/*</div>*/}
         <div className="container mt-5">
           <div className="row">
             <div className="col-md-6 text-nowrap">
