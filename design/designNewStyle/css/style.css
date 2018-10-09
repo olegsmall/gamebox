@@ -536,6 +536,11 @@ hr {
 .articlePage {
     margin-top: 3rem;
 }
+.css-adaptive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 
 /* About */
 .map {
