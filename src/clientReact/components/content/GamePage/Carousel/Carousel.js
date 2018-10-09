@@ -12,7 +12,7 @@ class Carousel extends React.Component {
         prevEl: '.swiper-button-prev'
       },
       slidesPerView: 3,
-      spaceBetween: 20,
+      spaceBetween: 10,
       loop: true,
       loopFillGroupWithBlank: true
     };
