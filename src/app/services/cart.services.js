@@ -95,7 +95,7 @@ function calcCartTotals (user) {
     totalItems += 1;
   }
   // Assign total items & total price of items in cart
-  cartBuffer.push({total_items: totalItems, total_price: cartTotal});
+  // cartBuffer.push({total_items: totalItems, total_price: cartTotal});
 
-  return cartBuffer;
+  return {products: cartBuffer, total_items: totalItems, total_price: cartTotal};
 }
