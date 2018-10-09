@@ -36,7 +36,7 @@ export default class ArticlePage extends  React.Component {
 
       <div className={"ArticlePage"}>
         <div>
-          <img className="d-block w-100 imgMain" src="/image/38562f8a6333f76.jpg" alt="Article image"/>
+          <img className="d-block w-100 imgMain css-adaptive" src="/image/38562f8a6333f76.jpg" alt="Article image"/>
         </div>
         <div className="container articlePage">
           <div className="row">
