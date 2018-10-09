@@ -52,7 +52,11 @@ class App extends React.Component {
   // Life cycle methods
   //component mount method, guaranteed that component was mounted
   componentDidMount() {
-    this.getShoppingCart();
+    // this.getShoppingCart();
+  }
+
+  componentDidUpdate() {
+
   }
 
   componentWillUnmount() {
@@ -82,8 +86,6 @@ class App extends React.Component {
 
   getShoppingCart() {
 
-    if (!this.state.user) return;
-
     axios.get('/cart')
       .then(res => {
         this.setState({
@@ -102,7 +104,7 @@ class App extends React.Component {
           loggedIn: true,
           email: res.data.user.email,
           user: res.data.user,
-        });
+        }, this.getShoppingCart);
       } else {
         this.setState({
           loggedIn: false,
@@ -196,7 +198,12 @@ class App extends React.Component {
             />
             <Route
               exact path="/cart"
-              render={() => <ShoppingCart/>}
+              render={() => <ShoppingCart
+                getShoppingCart={this.getShoppingCart}
+                shoppingCartProducts={this.state.shoppingCartProducts}
+                showSystemMessage={this.showSystemMessage}
+                user={this.state.user}
+              />}
             />
           </Switch>
         </div>
