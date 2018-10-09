@@ -154,7 +154,10 @@ class App extends React.Component {
             />
             <Route
               path="/product/:gameId"
-              component={GamePage}
+              render={(props)=><GamePage
+                {...props}
+                showSystemMessage={this.showSystemMessage}
+              />}
             />
             <Route
               exact path="/article"

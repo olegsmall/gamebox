@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Carousel from "./Carousel/Carousel";
 import {Link} from "react-router-dom";
+import {Formik, Form, Field, ErrorMessage} from 'formik';
+import * as Yup from "yup";
 
 require('./GamePage.scss');
 
@@ -32,13 +34,38 @@ class GamePage extends React.Component {
       });
   }
 
+  handleSubmit(values, actions) {
+    console.log(values)
+    axios.post('/cart/' + this.state.product._id, {
+      deal_type: 'for sale',
+    })
+      .then((res) => {
+        console.log(res);
+        this.props.showSystemMessage(res.data.message);
+        // this.props.changeInner('Profile');
+        actions.setSubmitting(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.props.showSystemMessage(res.data.message);
+        actions.setSubmitting(false);
+      });
+  }
+
   render() {
 
     if (!this.state.fetchedDataIsReady) return null;
 
-    const {product: {title, images, description, owner, genres}} = this.state;
+    const {product: {title, images, description, owner, genres, status, price}} = this.state;
 
-    let genresStr = genres.reduce((accum, current)=> ', ' + current.name, '');
+    let genresStr = genres.map((item) => {
+      // debugger
+      return item.name;
+    }, []).join(', ');
+
+    const sellPrice = status.indexOf('for sale') !== -1 ? price.sell : null;
+    const rentPrice = status.indexOf('for rent') !== -1 ? price.rent : null;
+
 
 // debugger
     return (
@@ -71,15 +98,29 @@ class GamePage extends React.Component {
                     <span><i className="fa fa-star-o"></i></span>
                   </div>
                 </div>
-                <p className="pl-3">Product seller : {owner.firstName + owner.lastName}</p>
+                <p className="pl-3">Product seller : {`${owner.firstName} ${owner.lastName}`}</p>
                 <p className="pl-3">Genre : {genresStr}</p>
-                <p className="pl-3">Purchase price : <span className="price">300$</span></p>
-                <p className="pl-3">Rent price : <span className="price">30$</span></p>
-                <form className="mb-3 pl-3">
-                  <input type="radio" name="radio"/> Buy
-                  <input type="radio" className="ml-3" name="radio"/> Rent
-                </form>
-                <button className="btn w-50 mt-2 btnProduct">Add to cart</button>
+                {sellPrice && <p className="pl-3">Purchase price : <span className="price">{sellPrice}$</span></p>}
+                {rentPrice && <p className="pl-3">Rent price : <span className="price">{rentPrice}$</span></p>}
+                <Formik
+                  initialValues={{
+                    buyRent: '',
+                  }}
+                  validationSchema={Yup.object().shape({
+                    buyRent: Yup.string()
+                      .required('* Select the type of purchase'),
+                  })}
+                  onSubmit={(values, actions) => this.handleSubmit(values, actions)}
+                >
+                  {({values, isSubmitting}) => (
+                    <Form className="mb-3 pl-3">
+                      {sellPrice && <label><Field type="radio" name="buyRent" value="buy"/>Buy</label>}
+                      {rentPrice && <label><Field type="radio" className="ml-3" name="buyRent" value="rent"/>Rent</label>}
+                      <ErrorMessage name="buyRent">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
+                      <button type="submit" className="btn w-50 mt-2 btnProduct">Add to cart</button>
+                    </Form>
+                  )}
+                </Formik>
               </div>
             </div>
           </div>

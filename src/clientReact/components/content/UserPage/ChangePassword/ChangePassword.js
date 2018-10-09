@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Axios from "axios";
+import axios from "axios";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from "yup";
 
@@ -9,7 +9,7 @@ require('./ChangePassword.scss');
 class ChangePassword extends React.Component {
 
   handleSubmit(values, actions) {
-    Axios.put('/user/password', {
+    axios.put('/user/password', {
       password: values.password,
     })
       .then((res) => {
