@@ -80,7 +80,9 @@ class GamePage extends React.Component {
           <div className="container mb-4">
             <div className="row">
               <div className="col-md-6 sectionImage">
-                <img className="img-fluid imageMainGame mb-3" src={images[0]} alt={title}/>
+                <div className="blowup">
+                  <img className="img-fluid imageMainGame mb-3" src={images[0]} alt={title}/>
+                </div>
                 <Carousel/>
               </div>
               <div className="col-md-6 text-center text-md-left">
