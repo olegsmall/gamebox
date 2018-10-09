@@ -36,9 +36,9 @@ class ShoppingCart extends React.Component {
     debugger;
     let formData = new FormData();
 
-    formData.append('payment', values.payment);
+    formData.append('payment_method', values.payment);
 
-    axios.put('/order/', formData)
+    axios.post('/order/', formData)
       .then((res) => {
         console.log(res.data);
         // self.props.showSystemMessage(res.data.message);
