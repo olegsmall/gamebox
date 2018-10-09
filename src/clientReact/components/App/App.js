@@ -71,7 +71,9 @@ class App extends React.Component {
   }
 
   hideSystemMessage(){
-    this.setState({systemMessage: undefined});
+    const systemMessage = this.state.systemMessage;
+    systemMessage.show = false;
+    this.setState({systemMessage});
   }
 
   getUser() {

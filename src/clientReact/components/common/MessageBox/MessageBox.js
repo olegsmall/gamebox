@@ -7,9 +7,9 @@ export default class MessageBox extends React.Component {
   render() {
     const {hideSystemMessage, systemMessage: {message = '', type = '', show = false} = {}} = this.props;
 
-    const showHideClassName = show ? 'display-block' : 'display-none';
+    const showHideClassName = show ? 'showMessage' : 'hideMessage';
 
-    if (type === '') return null;
+    // if (type === '') return null;
 
     let messageImage = '';
     let alertClass = '';
