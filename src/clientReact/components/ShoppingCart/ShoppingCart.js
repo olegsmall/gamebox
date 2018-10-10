@@ -33,21 +33,16 @@ class ShoppingCart extends React.Component {
   }
 
   handleSubmit(values, actions) {
-    let formData = new FormData();
-
-    formData.append('payment_method', values.payment);
-
-    axios.post('/order/', formData)
+    axios.post('/order', {payment_method: values.payment})
       .then((res) => {
-        console.log(res.data);
-        // self.props.showSystemMessage(res.data.message);
-        // actions.setSubmitting(false);
-        // self.props.changeInner('Products');
+        this.props.showSystemMessage(res.data.message);
+        this.props.getShoppingCart();
+        this.props.history.push('/product');
       })
       .catch((error) => {
         console.log(error.response);
-        // self.props.showSystemMessage(error.message, 'error');
-        // actions.setSubmitting(false);
+        this.props.showSystemMessage(error.response.data.message, 'error');
+        actions.setSubmitting(false);
       });
   }
 

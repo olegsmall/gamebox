@@ -198,7 +198,8 @@ class App extends React.Component {
             />
             <Route
               exact path="/cart"
-              render={() => <ShoppingCart
+              render={(props) => <ShoppingCart
+                {...props}
                 getShoppingCart={this.getShoppingCart}
                 shoppingCart={this.state.shoppingCart}
                 showSystemMessage={this.showSystemMessage}
