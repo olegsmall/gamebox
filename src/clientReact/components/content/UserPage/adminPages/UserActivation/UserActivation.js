@@ -28,19 +28,37 @@ export default class UserActivation extends React.Component {
   getDeactivatedUsersList() {
     axios.get('/user/?user=deactivated')
       .then((res) => {
-        console.log(res.data)
-        this.props.showSystemMessage(res.data.message);
-        // this.props.changeInner('Profile');
-        // actions.setSubmitting(false);
+        this.setState({usersList: res.data.users.docs});
       })
       .catch((error) => {
+        console.log(error.response)
+        this.props.showSystemMessage(error.response.data.message, 'error');
+      });
+  }
+
+  activateUser(userId) {
+    // console.log(userId)
+    axios.put(`/user/${userId}/status`, {state: 'activated'})
+      .then((res) => {
+        this.getDeactivatedUsersList();
         this.props.showSystemMessage(res.data.message);
-        // actions.setSubmitting(false);
+
+      })
+      .catch((error) => {
+        console.log(error.response)
+        this.props.showSystemMessage(error.response.data.message, 'error');
       });
   }
 
   render() {
-    if (!this.state.usersList) return null;
+    const {usersList} = this.state;
+    if (!usersList) {
+      return (
+        <div className="col-md-8 text-center mt-5">
+          No new users for activation
+        </div>
+      );
+    }
 
     return (
       <div className="col-md-8 text-center mt-5">
@@ -54,16 +72,20 @@ export default class UserActivation extends React.Component {
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Svitlana</td>
-            <td>Svitlana@gmail.com</td>
-            <td><a href="">Not active</a></td>
-          </tr>
-          <tr>
-            <td>Fred</td>
-            <td>Fred@gmail.com</td>
-            <td><a href="">Not active</a></td>
-          </tr>
+          {usersList.map((user) => {
+            return (
+              <tr key={user._id}>
+                <td>{`${user.firstName} ${user.lastName}`}</td>
+                <td>{user.email}</td>
+                <td><a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.activateUser(user._id);
+                  }}
+                  href="">Activate</a></td>
+              </tr>
+            )
+          })}
           </tbody>
         </table>
       </div>

@@ -22,7 +22,7 @@ class UserPage extends React.Component {
       innerComponent: 'Profile',
       message: '',
       articleForEdit: null,
-      isSuperAdmin: true
+      // isSuperAdmin: true
     };
     this.handleChangeInner.bind(this);
   }
@@ -195,7 +195,7 @@ class UserPage extends React.Component {
                 </a>
               </button>
 
-              {this.state.isSuperAdmin
+              {this.props.user.role === 'Administrator' || this.props.user.role === 'SuperUser'
                 ? <div>
                   <span><strong>Administration:</strong></span>
                   <button className="mt-2  btn-block">
