@@ -6,16 +6,29 @@
   .imgBorder {
     border-radius: unset !important;
     border: none;
+    height: 191px;
+  }
 
+  .cardDiv {
+    position: relative;
+    min-height: 458px;
   }
 
   .cardAllGame {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
     -moz-transition: all 0.7s;
     -webkit-transition: all 0.7s;
     transition: all 0.7s;
   }
 
   .cardAllGame:hover {
+    position: absolute;
+    z-index: 100;
+    height: inherit;
+    min-height: 400px;
+    overflow: visible;
     -moz-transform: scale(1.05);
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
@@ -34,10 +47,9 @@
     background-color: #ff6e00;
     padding-right: 5px;
     width: 40px;
-    margin-left: -8px;
+    //margin-left: -8px;
     margin-top: 6px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
-
   }
 
   .imgBody{

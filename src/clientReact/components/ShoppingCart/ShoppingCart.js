@@ -33,7 +33,6 @@ class ShoppingCart extends React.Component {
   }
 
   handleSubmit(values, actions) {
-    debugger;
     let formData = new FormData();
 
     formData.append('payment_method', values.payment);

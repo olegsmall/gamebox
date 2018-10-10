@@ -34,7 +34,7 @@ class AllGamesPage extends React.Component {
         </div>
         <div id="games" className="container mb-5">
           <h2 className="mb-4 mt-4 text-center">Games</h2>
-          <div className="card-deck">
+          <div className="row">
 
             {this.state.products.map((product, index) => (
               <ProductCard key={product._id} product={product}/>
