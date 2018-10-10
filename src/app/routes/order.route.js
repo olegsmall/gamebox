@@ -3,9 +3,10 @@ import OrderController from '../controllers/order.controller';
 
 const router = express.Router();
 
-router.get('/', OrderController.createOrder); //Create an order
+router.post('/', OrderController.placeOrder); //Create an order
 // TODO: Change to POST & readapt all routes
-router.get('/:id/payment', OrderController.paymentExecute); //Create an order
+router.patch('/', OrderController.completeOrder); //Create an order
+// router.get('/:id/payment', OrderController.paymentExecute); //Create an order
 
 // router.get('/', OrderController.pay); //Create an order
 // router.get('/', OrderController.paymentCheck); //Create an order
