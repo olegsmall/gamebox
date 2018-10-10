@@ -8,6 +8,9 @@ import Articles from './Articles/Articles';
 import AddProduct from './AddProduct/AddProduct';
 import AddArticle from './AddArticle/AddArticle';
 import ChangePassword from './ChangePassword/ChangePassword';
+import UserActivation from "./adminPages/UserActivation/UserActivation";
+import UsersList from "./adminPages/UsersList/UsersList";
+import PaymentConfirmation from "./adminPages/PaymentConfirmation/PaymentConfirmation";
 
 require('./UserPage.scss');
 
@@ -19,6 +22,7 @@ class UserPage extends React.Component {
       innerComponent: 'Profile',
       message: '',
       articleForEdit: null,
+      isSuperAdmin: true
     };
     this.handleChangeInner.bind(this);
   }
@@ -61,6 +65,8 @@ class UserPage extends React.Component {
 
     const firstName = (this.props.user !== null) ? this.props.user.firstName : '';
     const lastName = (this.props.user !== null) ? this.props.user.lastName : '';
+
+    console.log(this.props.user)
 
     let inner = '';
     switch (this.state.innerComponent) {
@@ -131,6 +137,24 @@ class UserPage extends React.Component {
           article={this.state.articleForEdit}
         />;
         break;
+      case 'UserActivation':
+        inner = <UserActivation
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
+      case 'UserList':
+        inner = <UsersList
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
+      case 'PaymentConfirmation':
+        inner = <PaymentConfirmation
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
       default :
         inner = <Profile user={this.props.user}/>;
     }
@@ -152,39 +176,55 @@ class UserPage extends React.Component {
               </button>
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'ChangePassword')} href="">
-                    Change password
+                  Change password
                 </a>
               </button>
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Orders')} href="">
-                    Your Orders
+                  Your Orders
                 </a>
               </button>
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Products')} href="">
-                    Your games
+                  Your games
                 </a>
               </button>
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Articles')} href="">
-                    Your articles
+                  Your articles
                 </a>
               </button>
-              {/*<a onClick={(e)=>this.handleChangeInner(e, 'EditProfile')} href={''}>*/}
-              {/*<p className="text-light">*/}
-              {/*<img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>*/}
-              {/*Edit Profile*/}
-              {/*</p>*/}
-              {/*</a>*/}
+
+              {this.state.isSuperAdmin
+                ? <div>
+                  <span><strong>Administration:</strong></span>
+                  <button className="mt-2  btn-block">
+                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UserActivation')} href="">
+                      User activation
+                    </a>
+                  </button>
+                  <button className="mt-2  btn-block">
+                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UserList')} href="">
+                      User list
+                    </a>
+                  </button>
+                  <button className="mt-2  btn-block">
+                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'PaymentConfirmation')} href="">
+                      Payment confirmation
+                    </a>
+                  </button>
+                </div>
+                : ''}
+
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" href="">
-                   Logout
+                  Logout
                 </a>
               </button>
             </div>
-              <div className="col-md-8 text-center">
-                  {inner}
-              </div>
+            <div className="col-md-8 text-center">
+              {inner}
+            </div>
           </div>
         </div>
       </div>
