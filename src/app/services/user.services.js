@@ -41,7 +41,7 @@ exports.getUsers = async function (req) {
   let query = {}; // Mongoose query options
 
   let sort = 'desc'; // Default sorting method -> Descending
-  queryOptions.select = '_id avatar role firstName lastName status';
+  queryOptions.select = '_id avatar role firstName lastName status email';
   // Check the existence of the query parameters, If the exists doesn't exists assign a default value
   //Page option
   req.query.page ? queryOptions.page = Number(req.query.page) : 1;
