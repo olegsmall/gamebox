@@ -8,9 +8,7 @@ exports.placeOrder = function (req) {
   if(req.body.payment_method !== 'cash' && req.body.payment_method !== 'check' && req.body.payment_method !== 'paypal') {
     throw Error('Unsupported payment method. Accepted payment methods are: PayPal, Cash, Check!');
   }
-
   try {
-
     // console.log(req.);
     let order = new Order({
       status: 'pending',
@@ -41,6 +39,10 @@ exports.placeOrder = function (req) {
           pre_order_info.price = user.cart[i].product.price.rent; // rent price
           pre_order_info.rent_duration = user.cart[i].rent_duration; // rent duration
           total_price += pre_order_info.price * pre_order_info.rent_duration; // calculate & add total price for rent
+
+          let date = new Date();
+          Product.updateOne({_id: user.cart[i].product}, {$set : {rented_until: date.addDays(user.cart[i].rent_duration)}}).exec();
+
         } else {
           pre_order_info.price = user.cart[i].product.price.sell; // selling price
           total_price += pre_order_info.price; // add selling price to the total
@@ -56,6 +58,7 @@ exports.placeOrder = function (req) {
           status = ['sold']; // change product.status to 'Sold'
         }
         // Execute query for status changes
+
         Product.updateOne({_id: user.cart[i].product}, {$set : {status: status}}).exec();
       }
 
@@ -176,3 +179,9 @@ function preparePaymentInfo (cart) {
     description: 'Payment for gamebox services'
   }];
 }
+
+Date.prototype.addDays = function(days) {
+  let date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+};
