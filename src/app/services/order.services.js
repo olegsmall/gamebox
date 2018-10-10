@@ -46,16 +46,27 @@ exports.placeOrder = function (req) {
           total_price += pre_order_info.price; // add selling price to the total
         }
         total_items++;
-        // push item to transaction object
-        transaction.push(pre_order_info);
+        transaction.push(pre_order_info); // push item to transaction object
+
+        // Update product status
+        let status = []; // create a buffer for product status
+        if(user.cart[i].deal_type === 'for rent') {  // If user chose to rent the product
+          status = ['rented']; // change product.status to 'Rented'
+        } else { // Otherwise
+          status = ['sold']; // change product.status to 'Sold'
+        }
+        // Execute query for status changes
+        Product.updateOne({_id: user.cart[i].product}, {$set : {status: status}}).exec();
       }
+
       // assigning info fields to the order
       order.transactions = transaction;
       order.total_items = total_items;
       order.total_price = total_price;
 
-      //saving order
-      return order.save().then((res) => {
+      User.updateOne({_id: order.buyer}, {$set: {cart: []}}).exec(); // Empty user's cart
+
+      return order.save().then((res) => { //saving and returning order
         // return created order & prepared info for paypal payment
         return {order: res, transactions: preparePaymentInfo(user.cart)};
       });
@@ -122,29 +133,6 @@ exports.completeOrder = function (id) {
       if(err) {throw Error(err);} // Show error in case
       order.status = 'completed'; // change order status to 'completed'
       return order.save() // Save order in DB
-        .then((res) => {
-        if(err) {throw Error(err);}
-
-        let userCart = User.findById(order.buyer).select('cart'); // Search products in user's cart
-
-        userCart.then((user) => {
-          for(let i =0; i < user.cart.length; i++) { // Start a loop for every product in user's cart
-            let status = []; // create a buffer for product status
-
-            if(user.cart[i].deal_type === 'for rent') {  // If user chose to rent the product
-              status = ['rented']; // change product.status to 'Rented'
-            } else { // Otherwise
-              status = ['sold']; // change product.status to 'Sold'
-            }
-            // Execute query for status changes
-            Product.updateOne({_id: user.cart[i].product}, {$set : {status: status}}).exec();
-          }
-        })
-          .then(()=> {
-          User.updateOne({_id: order.buyer}, {$set: {cart: []}}).exec(); // Empty user's cart
-        });
-        return res; // Return order
-      });
     });
   } catch (e) {
     throw Error('Error at Order Complete');

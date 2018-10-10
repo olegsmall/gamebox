@@ -14,7 +14,7 @@ const OrderSchema = new Schema({
     price: Number,
     rent_duration: Number,
     deal_type: {type: String, enum: ['for sale', 'for rent']},
-    seller: String,
+    seller: {type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Seller id is required']},
   }],
   total_items: Number,
   total_price: Number
