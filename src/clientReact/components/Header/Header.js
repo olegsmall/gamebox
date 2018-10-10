@@ -37,12 +37,6 @@ class Header extends React.Component {
 
   render() {
 
-    console.log(this.props.shoppingCart);
-
-    // let headerNavClasses = "navbar navbar-expand-lg  navbar-lignt bg-light fixed-top navbar-inverse mid";
-    // headerNavClasses += this.state.headerStickToTop ? "stickytop" : "";
-//     console.log("SHOPPING CART LENGHT")
-// console.log(this.props.shoppingCartProducts)
     return (
       <header className={"Header"}>
         <div className="mr-5 ml-5">
@@ -93,7 +87,6 @@ class Header extends React.Component {
                   logoutUser={this.props.logoutUser}
                   loggedIn={this.props.loggedIn}
                   user={this.props.user}
-                  // shoppingCartProducts={this.props.shoppingCartProducts}
                 />
               </div>
               <div className="img-fluid">
