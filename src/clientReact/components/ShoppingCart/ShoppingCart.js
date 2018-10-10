@@ -47,7 +47,7 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    const {shoppingCart: shopProducts, user} = this.props;
+    const {shoppingCart, user} = this.props;
 
     return (
       <div className={'ShoppingCart'}>
@@ -57,10 +57,10 @@ class ShoppingCart extends React.Component {
         <div id="myOrders" className="container">
           <div className="h5 ml-5 mb-2 text-center text-sm-left">My shopping cart</div>
           <hr/>
-          {shopProducts.products.length === 0
+          {shoppingCart.products.length === 0
             ? <div>Shopping cart is empty</div>
             : <div className="container">
-              {shopProducts.products.map(({product, deal_type, rent_duration, _id: cardItemId}) => {
+              {shoppingCart.products.map(({product, deal_type, rent_duration, _id: cardItemId}) => {
                 // if (product === undefined) return null;
                 return (
                   <div key={product._id}>
@@ -157,9 +157,7 @@ class ShoppingCart extends React.Component {
                         <ErrorMessage name="payment">{msg => <small
                           className='form-text text-left error'>{msg}</small>}</ErrorMessage>
                         <hr/>
-                        {/*<div className="card-title mb-1">Total: </div>*/}
-                        {/*<div className="mb-1">Estimated tax (GST + QST) — 14.975% :</div>*/}
-                        <div className="mb-1">Order total : $</div>
+                        <div className="mb-1">Order total : {shoppingCart.total_price}$</div>
                         <div className="row">
                           <div className="col-md-4">
                             <button type="submit" className="btn-block btn btnShopCart mt-3"
