@@ -46,7 +46,7 @@ class Header extends React.Component {
         <div className="mr-5 ml-5">
           <nav className={`navbar navbar-expand-lg  navbar-lignt fixed-top navbar-inverse mid ${this.state.headerStickToTop ? "stickytop" : ""} `}>
             <Link className="navbar-brand" to={'/'}>
-              <img src="/image/logo1.png" width="40" height="40"/>
+              <img src="/image/logo11.png" width="40" height="40"/>
             </Link>
             <button
               className="navbar-toggler"

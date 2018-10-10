@@ -89,7 +89,6 @@
 
 .MainPage .product {
   position: relative;
-  width: 280px;
   height: 300px;
   background-size: cover;
   background-position: center;
@@ -411,7 +410,35 @@
 .Profile .btnEditProf:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
+.ProductRow .linkArticle {
+  color: black; }
 
+.ProductRow .cardProduct {
+  border-radius: unset;
+  border: 1px solid gray; }
+
+.ProductRow .imgProduct {
+  border-radius: unset; }
+
+.ProductRow .btnAddGame {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.ProductRow .btnAddGame:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.Products .btnAddGame {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.Products .btnAddGame:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.Products #yourGame {
+  margin-top: 0.5rem;
+  margin-bottom: 3rem; }
 
 
 .EditProfile .inputEdit {
@@ -550,6 +577,11 @@
 .ArticlePage .page-footer {
   margin-top: 10rem; }
 
+.ArticlePage .css-adaptive {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
 .AboutPage .map {
   height: 400px; }
 
@@ -570,6 +602,40 @@
 
 .ShoppingCart .btnShopCart:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.MessageBox .alert {
+  position: fixed;
+  background-color: white;
+  width: 60%;
+  top: 15%;
+  left: 20%;
+  border: 1px solid lightgray; }
+
+.MessageBox .imgWindow {
+  width: 30px;
+  height: 30px; }
+
+.MessageBox.showMessage {
+  display: block;
+  animation-name: fadeIn;
+  animation-duration: 2s; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.MessageBox.hideMessage {
+  display: none;
+  animation-name: fadeOut;
+  animation-duration: 2s; }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 
 html {
   height: 100%; }
