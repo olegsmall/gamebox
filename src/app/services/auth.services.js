@@ -3,10 +3,13 @@ exports.checkAuth = function (req, res, next){
   if (req.isAuthenticated()) {
     if(req.user.status.state === 'deactivated') {
       req.logout();
-      return res.status(401).json({status: 400, message: 'Please log in to access this section'});
+      return res.status(401).json({status: 400, message: 'Your account is awaiting to be activated by Administrators'});
     } else if (req.user.status.state === 'banned') {
-      req.logout();
-      return res.status(401).json({status: 400, message: 'Please log in to access this section'});
+      if(req.user.status.expires > Date.now()) {
+        req.logout();
+        return res.status(401).json({status: 400, message: 'Sorry but your account is banned'});
+      }
+      return next();
     }
     return next();
   }
