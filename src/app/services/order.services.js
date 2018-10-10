@@ -1,21 +1,30 @@
 const Order = require('../models/order.model');
 const User = require('../models/user.model');
+const Product = require('../models/product.model');
 
 
-exports.createOrder = function (req) {
+exports.placeOrder = function (req) {
+  console.log(req.body.payment_method);
+  if(req.body.payment_method !== 'cash' && req.body.payment_method !== 'check' && req.body.payment_method !== 'paypal') {
+    throw Error('Unsupported payment method. Accepted payment methods are: PayPal, Cash, Check!');
+  }
+
   try {
 
+    // console.log(req.);
     let order = new Order({
       status: 'pending',
       buyer: req.user._id,
-      payment_method: 'paypal',
+      payment_method: req.body.payment_method,
       opened: Date.now()
     });
 
     let products = User.findById(req.user._id).populate('cart.product');
 
     return products.then((user, err) => {
-      if(err) {throw err;}
+      if(err) {throw Error(err);}
+      if(user.cart.length < 1) { throw Error('Your cart is empty. Nothing to order!'); }
+
       let transaction = [],
         total_price = 0,
         total_items = 0;
@@ -84,6 +93,64 @@ exports.getOrder = function (req) {
   }
 };
 
+
+exports.paymentExecute = function (req) {
+  try {
+    return Order.findById(req.params.id).then((order, err) => {
+      if(err) { throw err; }
+      if(order === null) { throw Error('Order not found'); }
+
+      return {
+        payer_id: req.query.PayerID,
+        transactions: [{
+          amount: {
+            currency: 'USD',
+            total: order.total_price
+          }
+        }]
+      };
+    });
+  } catch (e) {
+    throw {error: e, message: 'Error on get orders'};
+  }
+};
+
+exports.completeOrder = function (id) {
+  try {
+    // Find order in DB
+    return Order.findById(id).then((order, err) => {
+      if(err) {throw Error(err);} // Show error in case
+      order.status = 'completed'; // change order status to 'completed'
+      return order.save() // Save order in DB
+        .then((res) => {
+        if(err) {throw Error(err);}
+
+        let userCart = User.findById(order.buyer).select('cart'); // Search products in user's cart
+
+        userCart.then((user) => {
+          for(let i =0; i < user.cart.length; i++) { // Start a loop for every product in user's cart
+            let status = []; // create a buffer for product status
+
+            if(user.cart[i].deal_type === 'for rent') {  // If user chose to rent the product
+              status = ['rented']; // change product.status to 'Rented'
+            } else { // Otherwise
+              status = ['sold']; // change product.status to 'Sold'
+            }
+            // Execute query for status changes
+            Product.updateOne({_id: user.cart[i].product}, {$set : {status: status}}).exec();
+          }
+        })
+          .then(()=> {
+          User.updateOne({_id: order.buyer}, {$set: {cart: []}}).exec(); // Empty user's cart
+        });
+        return res; // Return order
+      });
+    });
+  } catch (e) {
+    throw Error('Error at Order Complete');
+  }
+};
+
 function preparePaymentInfo (cart) {
   let item_list = [],
     total_price = 0;
@@ -121,36 +188,3 @@ function preparePaymentInfo (cart) {
     description: 'Payment for gamebox services'
   }];
 }
-
-exports.paymentExecute = function (req) {
-  try {
-    return Order.findById(req.params.id).then((order, err) => {
-      if(err) { throw err; }
-      if(order === null) { throw Error('Order not found'); }
-
-      return {
-        payer_id: req.query.PayerID,
-        transactions: [{
-          amount: {
-            currency: 'USD',
-            total: order.total_price
-          }
-        }]
-      };
-    });
-  } catch (e) {
-    throw {error: e, message: 'Error on get orders'};
-  }
-};
-
-exports.updateOrderStatus = function (id, status) {
-  try {
-    return Order.findById(id).then((order, err) => {
-      if(err) {throw err;}
-      order.status = status;
-      return order.save();
-    });
-  } catch (e) {
-    throw Error('Error at Order Status Update');
-  }
-};
