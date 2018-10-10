@@ -21,7 +21,6 @@ export default class MainPage extends React.Component {
   fetchLastAdded() {
     axios.get('/product?sort_by=date&limit=10')
       .then((res) => {
-        console.log(res.data);
         this.setState({
           lastAddedProducts: res.data.products.docs,
           lastAddedIsReady: true,
