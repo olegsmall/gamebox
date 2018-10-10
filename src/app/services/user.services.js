@@ -41,7 +41,7 @@ exports.getUsers = async function (req) {
   let query = {}; // Mongoose query options
 
   let sort = 'desc'; // Default sorting method -> Descending
-  queryOptions.select = '_id avatar role firstName lastName';
+  queryOptions.select = '_id avatar role firstName lastName status';
   // Check the existence of the query parameters, If the exists doesn't exists assign a default value
   //Page option
   req.query.page ? queryOptions.page = Number(req.query.page) : 1;
@@ -54,6 +54,8 @@ exports.getUsers = async function (req) {
 
   // Search by firstname query
   if(req.query.firstName) { query.firstName = new RegExp(req.query.firstName,'i'); }
+
+  if(req.query.user === 'deactivated') { query.status = {state:'deactivated'} }
 
   // Try Catch the awaited promise to handle the error
   try {
