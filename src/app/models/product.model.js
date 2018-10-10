@@ -53,7 +53,8 @@ const ProductSchema = new Schema({
     date: {type: Date, default: Date.now()}
   }],
   added: {type: Date, default: Date.now()},
-  edited: {type: Date}
+  edited: {type: Date},
+  rented_until: {type: Date}
 });
 
 ProductSchema.path('genres').validate(function(value) {

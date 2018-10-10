@@ -4,7 +4,10 @@ const User = require('../models/user.model');
 const {mongoose} = require('../../config/app.config');
 const idvalidator = mongoose.Types.ObjectId.isValid; //Mongoose objectId validator
 
+
 exports.createProduct = function (req) {
+  getBackRentedProducts();
+
   try {
     let promise = Genre.find({_id: {$in: req.body.genres}}, '_id').exec();
 
@@ -18,7 +21,6 @@ exports.createProduct = function (req) {
         image.push('/image/default/product.jpg');
       }
 
-      // req.body.price = JSON.parse(req.body.price);
       const price = {};
       if (req.body.sellPrice){
         price.sell = parseFloat(req.body.sellPrice);
@@ -46,6 +48,8 @@ exports.createProduct = function (req) {
 };
 
 exports.getProducts = function (req) {
+  getBackRentedProducts();
+
 
   let queryOptions = {}; // Mongoose-paginator query options
   let query = {}; // Mongoose query options
@@ -98,6 +102,8 @@ exports.getProducts = function (req) {
 };
 
 exports.getUserProducts = async function(req) {
+  getBackRentedProducts();
+
   try {
     let page = req.query.page ? req.query.page : 1;
     let limit = req.query.limit ? req.query.limit : 10;
@@ -115,6 +121,8 @@ exports.getUserProducts = async function(req) {
 };
 
 exports.getProduct = function (id) {
+  getBackRentedProducts();
+
   try {
     return Product.findById(id).populate('genres owner', 'name firstName lastName').then((doc) => {
       if(doc === null) { throw Error('Product not found'); }
@@ -219,3 +227,12 @@ exports.addProductComment = function (req) {
     throw {error: e, message: 'Error on add product comment'};
   }
 };
+
+function getBackRentedProducts() {
+  Product.find({rented_until: {$lte: Date.now()}}).then((product, err) => {
+    if(err) {throw Error(err);}
+    product.forEach(function(item) {
+      Product.updateOne({_id: item._id}, {$set: {status: ['for rent']}, $unset: {rented_until: ''}}).exec();
+    });
+  });
+}
