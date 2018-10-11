@@ -127,11 +127,21 @@ exports.deleteProduct = async function(req, res) {
   }
 };
 
+/**
+ * Manages product rate feature
+ *
+ * @param req object - request info
+ * @param res object - response info
+ * @returns {Promise<*|Promise<json>>} A promise that returns json if resolved, otherwise json with error
+ */
 exports.rateProduct = async function (req, res) {
   try {
+    // Execute product rate method.
     let product = await ProductService.rateProduct(req);
+    // Return product with ratings and appropriate HTTP Status Code and Message.
     return res.status(201).json({status: 201, product: product, message: 'Product was successfully rated'});
   } catch (e) {
+    //Return Error Message with HTTP Status Code.
     return res.status(400).json({status: 400, message: e.message});
   }
 };
