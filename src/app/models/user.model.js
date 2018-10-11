@@ -14,7 +14,7 @@ const RatingSubSchema = new mongoose.Schema({
 },{ _id : false });
 
 const StatusSubSchema = new mongoose.Schema({
-  state: {type: String, enum: ['activated', 'deactivated', 'banned'], default: 'deactivated'},
+  state: {type: String, enum: ['activated', 'deactivated', 'banned'], default: 'deactivated', required: [true, 'Indicate user status']},
   expires: {type: Date}
 },{ _id : false });
 

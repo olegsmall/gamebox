@@ -1,6 +1,10 @@
 // const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
+const Order = require('../models/order.model');
+const Product = require('../models/product.model');
+const Article = require('../models/article.model');
+
 import ResponseException from './ResponseException';
 
 
@@ -127,9 +131,10 @@ exports.updateUserStatus = function (req) {
     return promise.then((user) => {
       if(user === null) { throw Error('User not found'); }
 
-      user.status.state = req.body.state;
+      user.status.state = req.body.status;
       if(req.body.expires) {
-        user.status.expires = req.body.expires;
+        let date = new Date();
+        user.status.expires = date.addDays(Number(req.body.expires));
       }
       return user.save();
     });
@@ -177,5 +182,59 @@ exports.rateUser = function (req) {
   } catch (e) {
     throw {error: e, message: 'Error at rate user services'};
 
+  }
+};
+
+Date.prototype.addDays = function(days) {
+  console.log('datys',days);
+  let date = new Date(this.valueOf());
+  date.setDate(date.getDate() + Number(days));
+  return date;
+};
+
+
+
+exports.userStatistics = async function (req) {
+  let statistics = {};
+  try {
+    await Product.find({owner: req.params.id}).then((products, err) => {
+      if(err) {throw Error(err);} // Show error in case
+      statistics.products_added = products.length;
+    });
+
+    await Product.find({owner: req.params.id, status: 'sold'}).then((products, err) => {
+      if(err) {throw Error(err);} // Show error in case
+      statistics.sold = products.length;
+    });
+
+    await Product.find({owner: req.params.id, status: 'rented'}).then((products, err) => {
+      if(err) {throw Error(err);} // Show error in case
+      statistics.rented = products.length;
+    });
+
+    await Order.find({buyer: req.params.id}).then((products, err) => {
+      if(err) {throw Error(err);} // Show error in case
+      statistics.ordered = products.length;
+    });
+
+    await Article.find({author: req.params.id}).then((articles, err) => {
+      if(err) {throw Error(err);} // Show error in case
+      statistics.posted_articles = articles.length;
+    });
+
+    await Article.find({'comment.user': req.params.id}).then((articles, err) => {
+      if(err) {throw Error(err);} // Show error in case
+      statistics.commented_articles = articles.length;
+    });
+
+    await Product.find({'comment.user': req.params.id}).then((products, err) => {
+      if(err) {throw Error(err);} // Show error in case
+      statistics.commented_products = products.length;
+    });
+
+    return statistics;
+
+  } catch (e) {
+    throw Error('Error at Order Statistics');
   }
 };
