@@ -64,3 +64,4 @@ typings/
 *.tmp
 ~*.docx
 package-lock.json
+build/

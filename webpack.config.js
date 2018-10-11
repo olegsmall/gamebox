@@ -2,7 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    entry: './clientReact/index.js'
+    entry: './src/clientReact/index.js'
   },
   output: {
     path: __dirname + '/public',
