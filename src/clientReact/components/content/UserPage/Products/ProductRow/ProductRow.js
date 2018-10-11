@@ -1,3 +1,12 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ProductRow.js, Product's row, the part of Products component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+
 import React from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
