@@ -11,7 +11,7 @@ router.patch('/', OrderController.completeOrder); //Create an order
 // router.get('/', OrderController.pay); //Create an order
 // router.get('/', OrderController.paymentCheck); //Create an order
 
-// router.get('/', OrderController.getOrders); //Get list of all orders
+router.get('/', OrderController.getOrders); //Get list of all orders
 // router.get('/:id', OrderController.getOrder); //Get one specific order
 
 module.exports = router;
