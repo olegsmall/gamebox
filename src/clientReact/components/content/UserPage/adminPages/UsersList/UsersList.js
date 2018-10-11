@@ -58,6 +58,8 @@ export default class UsersList extends React.Component {
           </thead>
           <tbody>
           {usersList.map((user) => {
+            if (user.role === 'SuperUser') return;
+
             return (
               <tr key={user._id}>
                 <td>{`${user.firstName} ${user.lastName}`}</td>
