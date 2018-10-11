@@ -8,7 +8,7 @@
     "buildserver": "babel -d ./build ./server ",
     "start": "npm run buildserver && npm run buildclient && node ./build/app.js",
     "client": "node_modules/.bin/webpack -wd",
-    "server": "node_modules/.bin/nodemon --exec node_modules/.bin/babel-node app.js --ignore public/",
+    "server": "node_modules/.bin/nodemon --exec node_modules/.bin/babel-node ./server/app.js --ignore public/",
     "all": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
