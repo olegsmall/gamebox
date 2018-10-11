@@ -1,8 +1,8 @@
 /**
- * Theme: Main page component
- *
- * File: MainPage.js
- * Created by: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: MainPage.js, Main page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
