@@ -14,6 +14,7 @@ export const port = env.PORT || 8080;
 
 // Database connection
 const mongoose = require('mongoose');
+console.log(nodeEnv)
 if (nodeEnv === 'development') {
   mongoose.connect('mongodb://localhost:27017/gamebox', { useNewUrlParser: true });
 } else {
