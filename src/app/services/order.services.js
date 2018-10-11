@@ -82,6 +82,7 @@ exports.placeOrder = function (req) {
 exports.getOrders = function (req) {
   let query = {};
   let queryOptions = {}; // Mongoose-paginator query options
+  queryOptions.populate = {path: 'buyer', select: 'name firstName lastName email'};
   req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
   req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10; // Limit number of returning objects
   if(req.query.status === 'pending') {query.status = 'pending'}
