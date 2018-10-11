@@ -23,8 +23,8 @@ class Orders extends React.Component {
 
   }
 
-  getOrdersWaitingPaymentConfirmation() {
-    axios.get('/order?status=pending')
+  getOrders() {
+    axios.get('/user/order')
       .then((res) => {
         console.log(res.data);
         this.setState({ordersList: res.data.orders.docs});
@@ -60,9 +60,10 @@ class Orders extends React.Component {
           </thead>
           <tbody>
           {ordersList.map((order) => {
+            const orderDate = new Date(order.opened).toLocaleDateString();
             return (
               <tr key={order._id}>
-                <td>order.opened</td>
+                <td>{orderDate}</td>
                 <td>{order._id}</td>
                 <td>{order.total_items}</td>
                 <td>{order.total_price}</td>

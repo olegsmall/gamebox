@@ -74,9 +74,10 @@ export default class PaymentConfirmation extends React.Component {
           </thead>
           <tbody>
           {ordersList.map((order) => {
+            const orderDate = new Date(order.opened).toLocaleDateString();
             return (
               <tr key={order._id}>
-                <td>order.opened</td>
+                <td>{orderDate}</td>
                 <td>{order._id}</td>
                 <td>{`${order.buyer.firstName} ${order.buyer.lastName}`}</td>
                 <td>{order.buyer.email}</td>
