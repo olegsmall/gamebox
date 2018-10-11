@@ -50,25 +50,31 @@ export default class MainPage extends React.Component {
 
     return (
       <div className={'MainPage'}>
-        <div className="imageMain">
-          <img className="d-block w-100 imgMain" src="/image/back4.jpg" alt="First image"/>
+        <div className="promoContainer">
+          <img className="d-block w-100 imageMain" src="/image/back54.jpg" alt="First image"/>
+          <div className="promo">
+            <h3 className="d-none d-lg-block w-50">DISCOVER THE WORLD OF GAMES</h3>
+            <h5 className="d-none d-lg-block w-50">We offer a unique service. You can exchange games. See our novelties</h5>
+            <button className="button btnPromo mt-5 text-light d-none d-lg-block"><a href="#">Click here</a></button>
+          </div>
         </div>
-        <h5 className="text-center pt-4 mt-2">Welcome to GameBox!</h5>
+        <h3 className="text-center pt-4 mt-2">Welcome to GameBox!</h3>
         <div className="infoCard mt-4">
           <div className="container py-4">
             <div className="row">
               <div className="col">
-                <img className="img-fluid imgWork my-2 mr-4 ml-2 float-left" src="image/itWorks.png"/>
-                <h5 className="mt-2">You can sell, buy or rent games</h5>
-                <h5>And our members can communicate with each other</h5>
-                <h5><span>See our new games right now!</span></h5>
+                <img className="img-fluid imgWork mr-4 ml-2 float-left" src="image/death.png"/>
+                {/*<h4 className="text-center"> Enjoy new games and get benefits.</h4>*/}
+                <p className="mt-2">GameBox is the most popular platform for exchanging, selling or buying games.
+                  Becoming our member you can get free access to more than 100,000 games of different genres.
+                  Our advantage : you do not need to buy the game and store it on the shelf. You can sell or rent it.</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="container mb-5">
-          <h5 className="mt-5 text-center">Recently released</h5>
+          <h3 className="mt-5 text-center">Recently released</h3>
           <div className="row justify-content-center mt-4">
             <div className="col">
               <Swiper {...params}>
@@ -146,38 +152,8 @@ export default class MainPage extends React.Component {
           {/*</div>*/}
         {/*</div>*/}
 
-        <div className="infoCard">
-          <h3 className="text-center pt-4">How it works</h3>
-          <div className="container pb-4">
-            <div className="row">
-              <div className="col-md-4 text-center">
-                <img className="img-fluid imgInfo my-4" src="image/information-41225_640.png"/>
-                <p>General info</p>
-                <p className="text">This is a platform for sharing games between players.
-                  Our members can sell, buy, rent the games and comment / rate these games and other members.
-                </p>
-              </div>
-              <div className="col-md-4 text-center">
-                <img className="img-fluid imgInfo my-4" src="image/profile2-512.png"/>
-                <p>Join us</p>
-                <p className="text">Being a member of our great platform means to have access to the most
-                  interesting
-                  games of various genres and play in real time.
-                </p>
-              </div>
-              <div className="col-md-4 text-center">
-                <img className="img-fluid imgInfo my-4" src="image/img_343397.png"/>
-                <p>Payment</p>
-                <p className="text">Secure payment can be made in cash, by check or Paypal.
-                  Choose your game and go ahead!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="container mb-5">
-          <h5 className="mt-5 text-center">Most popular</h5>
+          <h3 className="mt-5 text-center">Most popular</h3>
           <div className="row justify-content-center mt-4">
             <div className="col">
               <Swiper {...params}>
@@ -227,6 +203,69 @@ export default class MainPage extends React.Component {
             </div>
           </div>
         </div>
+
+        {/*Section Best games*/}
+        <div className="container articlePage">
+          <div className="row">
+            <div className="col">
+              <h3>Best games of 2018: Minecraft</h3>
+              <p className="text-muted">Reviews</p>
+              <img className="img-fluid mt-3" src="image/minecraft-1106252_1280.jpg" alt="image"/>
+              <h4 className="mt-5">MINECRAFT</h4>
+              <p className="mt-3">
+                There’s no one way to play Minecraft. It’s an open-ended game where players decide what they
+                want to do by themselves! We do offer several modes, though: Creative Mode, where players are
+                given limitless resources to build whatever they can imagine; and Survival Mode, where players must
+                explore the world and mine its resources to feed, house and defend themselves.
+                Or you can join your friends online and make up your own rules!
+                You can play Minecraft on a variety of platforms - find the one that suits you!</p>
+              <h4 className="mt-5">Episodes</h4>
+              <div className="row mt-3">
+                <div className="col-md-4">
+                  <img className="img-fluid mb-3" src="image/minecraft-1746541_1280.jpg" alt="image"/>
+                </div>
+                <div className="col-md-4">
+                  <img className="img-fluid mb-3" src="image/minecraft-655957_1280.jpg" alt="image"/>
+                </div>
+                <div className="col-md-4 mb-3">
+                  <img className="img-fluid mb-3" src="image/minecraft-669310_1280.jpg" alt="image"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/*Section How it work*/}
+        <div className="infoCard">
+          <h3 className="text-center pt-4">How it works</h3>
+          <div className="container pb-4">
+            <div className="row">
+              <div className="col-md-4 text-center">
+                <img className="img-fluid imgInfo my-4" src="image/information-41225_640.png"/>
+                <p>General info</p>
+                <p className="text">This is a platform for sharing games between players.
+                  Our members can sell, buy, rent the games and comment / rate these games and other members.
+                </p>
+              </div>
+              <div className="col-md-4 text-center">
+                <img className="img-fluid imgInfo my-4" src="image/profile2-512.png"/>
+                <p>Join us</p>
+                <p className="text">Being a member of our great platform means to have access to the most
+                  interesting
+                  games of various genres and play in real time.
+                </p>
+              </div>
+              <div className="col-md-4 text-center">
+                <img className="img-fluid imgInfo my-4" src="image/img_343397.png"/>
+                <p>Payment</p>
+                <p className="text">Secure payment can be made in cash, by check or Paypal.
+                  Choose your game and go ahead!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
       </div>
     );
