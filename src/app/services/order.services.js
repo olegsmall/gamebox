@@ -84,7 +84,7 @@ exports.getOrders = function (req) {
   let queryOptions = {}; // Mongoose-paginator query options
   req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
   req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10; // Limit number of returning objects
-  if(req.query.status === 'pending') {query.status = 'peniding'}
+  if(req.query.status === 'pending') {query.status = 'pending'}
 
   try {
     return Order.paginate(query, queryOptions).then((orders) => {
