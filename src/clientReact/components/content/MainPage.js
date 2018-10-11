@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPropTypes from 'prop-types';
 import axios from "axios";
+import {Link} from 'react-router-dom';
 import Swiper from 'react-id-swiper';
 
 require('./MainPage.scss');
@@ -57,7 +58,7 @@ export default class MainPage extends React.Component {
               <div className="promo">
                 <h3 className="d-none d-lg-block">DISCOVER THE WORLD OF GAMES</h3>
                 <h5 className="d-none d-lg-block">We offer a unique service. You can exchange games. See our novelties</h5>
-                <button className="button btnPromo mt-4 text-light d-none d-lg-block"><a href="#">Click here</a></button>
+                <button className="button btnPromo mt-4 text-light d-none d-lg-block"><Link to={'/product'}>Click here</Link></button>
               </div>
             </div>
 
