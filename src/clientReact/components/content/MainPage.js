@@ -50,14 +50,19 @@ export default class MainPage extends React.Component {
 
     return (
       <div className={'MainPage'}>
-        <div className="promoContainer">
-          <img className="d-block w-100 imageMain" src="/image/back54.jpg" alt="First image"/>
-          <div className="promo">
-            <h3 className="d-none d-lg-block w-50">DISCOVER THE WORLD OF GAMES</h3>
-            <h5 className="d-none d-lg-block w-50">We offer a unique service. You can exchange games. See our novelties</h5>
-            <button className="button btnPromo mt-5 text-light d-none d-lg-block"><a href="#">Click here</a></button>
-          </div>
-        </div>
+        {/*<div className="promoContainer">*/}
+          <img className="d-block w-100 imageMain card-img" src="/image/back54.jpg" alt="First image"/>
+            {/*<div className="promo">*/}
+            <div className="card-img-overlay">
+              <div className="promo">
+                <h3 className="d-none d-lg-block">DISCOVER THE WORLD OF GAMES</h3>
+                <h5 className="d-none d-lg-block">We offer a unique service. You can exchange games. See our novelties</h5>
+                <button className="button btnPromo mt-4 text-light d-none d-lg-block"><a href="#">Click here</a></button>
+              </div>
+            </div>
+
+            {/*</div>*/}
+        {/*</div>*/}
         <h3 className="text-center pt-4 mt-2">Welcome to GameBox!</h3>
         <div className="infoCard mt-4">
           <div className="container py-4">
