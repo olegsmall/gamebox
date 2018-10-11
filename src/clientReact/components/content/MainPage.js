@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: MainPage.js, Main page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import ReactPropTypes from 'prop-types';
 import axios from "axios";
@@ -51,9 +59,7 @@ export default class MainPage extends React.Component {
 
     return (
       <div className={'MainPage'}>
-        {/*<div className="promoContainer">*/}
           <img className="d-block w-100 imageMain card-img" src="/image/back54.jpg" alt="First image"/>
-            {/*<div className="promo">*/}
             <div className="card-img-overlay">
               <div className="promo">
                 <h3 className="d-none d-lg-block">DISCOVER THE WORLD OF GAMES</h3>
@@ -61,16 +67,12 @@ export default class MainPage extends React.Component {
                 <button className="button btnPromo mt-4 text-light d-none d-lg-block"><Link to={'/product'}>Click here</Link></button>
               </div>
             </div>
-
-            {/*</div>*/}
-        {/*</div>*/}
         <h3 className="text-center pt-4 mt-2">Welcome to GameBox!</h3>
         <div className="infoCard mt-4">
           <div className="container py-4">
             <div className="row">
               <div className="col">
                 <img className="img-fluid imgWork mr-4 ml-2 float-left" src="image/death.png"/>
-                {/*<h4 className="text-center"> Enjoy new games and get benefits.</h4>*/}
                 <p className="mt-2">GameBox is the most popular platform for exchanging, selling or buying games.
                   Becoming our member you can get free access to more than 100,000 games of different genres.
                   Our advantage : you do not need to buy the game and store it on the shelf. You can sell or rent it.</p>
@@ -79,6 +81,7 @@ export default class MainPage extends React.Component {
           </div>
         </div>
 
+        {/*Section Recently released*/}
         <div className="container mb-5">
           <h3 className="mt-5 text-center">Recently released</h3>
           <div className="row justify-content-center mt-4">
@@ -107,57 +110,7 @@ export default class MainPage extends React.Component {
           </div>
         </div>
 
-        {/*<div className="container mb-5">*/}
-          {/*<h5 className="mt-5 text-center">Recently released</h5>*/}
-            {/*<div className="row mt-4">*/}
-              {/*<div className="col-md-4 mb-3 mb-sm-0">*/}
-                {/*{lastAddedProducts.map((product) => {*/}
-                  {/*const backgroundImage = {*/}
-                    {/*backgroundImage: `url("${product.images[0]}")`,*/}
-                  {/*};*/}
-                  {/*return (*/}
-                    {/*<div*/}
-                      {/*key={product._id}*/}
-                      {/*className="card product text-center"*/}
-                      {/*style={backgroundImage}*/}
-                    {/*>*/}
-                      {/*<div className="inner">*/}
-                        {/*<div className="paragraphV text-light">4,5</div>*/}
-                        {/*<a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>*/}
-                        {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                      {/*</div>*/}
-                    {/*</div>*/}
-                  {/*);*/}
-                {/*})}*/}
-              {/*</div>*/}
-          {/*</div>*/}
-
-
-          {/*<div className="card-deck mt-4">*/}
-          {/*<div className="card product text-center cardRecently-4">*/}
-          {/*<div className="inner">*/}
-          {/*<div className="paragraphV text-light">4,5</div>*/}
-          {/*<a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>*/}
-          {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-          {/*<div className="card product text-center cardRecently-5">*/}
-          {/*<div className="inner">*/}
-          {/*<div className="paragraphV text-light">4,5</div>*/}
-          {/*<a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>*/}
-          {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-          {/*<div className="card product text-center cardRecently-6">*/}
-          {/*<div className="inner">*/}
-          {/*<div className="paragraphV text-light">4,5</div>*/}
-          {/*<a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>*/}
-          {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-        {/*</div>*/}
-
+        {/*Section Most popular*/}
         <div className="container mb-5">
           <h3 className="mt-5 text-center">Most popular</h3>
           <div className="row justify-content-center mt-4">

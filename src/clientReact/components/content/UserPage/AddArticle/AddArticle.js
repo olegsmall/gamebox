@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: AddArticle.js, Add and edit user article component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import axios from "axios";
 import {Formik, Field, Form, ErrorMessage} from 'formik';

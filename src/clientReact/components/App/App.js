@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: App.js, application component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 // import ReactPropTypes from 'prop-types';
 import Header from '../Header/Header';
@@ -209,7 +217,7 @@ class App extends React.Component {
           </Switch>
         </div>
         <Footer/>
-        {/* Show sysem messages component */}
+        {/* Show system messages component */}
         <MessageBox systemMessage={systemMessage} hideSystemMessage={this.hideSystemMessage}/>
       </div>
     );

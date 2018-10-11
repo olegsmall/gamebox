@@ -57,6 +57,8 @@ router.get('/:id/inbox', Auth.checkAuth, MessageController.getInboxMessages); //
 router.get('/:id/outbox', Auth.checkAuth, MessageController.getOutboxMessages); // Get outbox messages
 router.delete('/:id/message', Auth.checkAuth, MessageController.deleteMessage); // Delete message from user messages
 
+router.get('/:id/statistics', UserController.userStatistics); // Get outbox messages
+
 // router.get('/:id/order', OrderController.getOrders); //Get user orders
 
 router.post('/logout', Auth.checkAuth, UserController.logout);

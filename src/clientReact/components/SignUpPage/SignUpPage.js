@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: SignUpPage.js, Sign up page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import Axios from 'axios';
 import {Formik} from 'formik';
@@ -210,117 +218,6 @@ class SignUpPage extends React.Component {
                   </form>
                 )}
                 </Formik>
-
-                {/*//   <form className="mt-3" onSubmit={handleSubmit}>*/}
-                {/*//   <div className="form-row">*/}
-                {/*//   <div className="form-group col-md-6">*/}
-                {/*//   <Thumb file={values.avatar}/>*/}
-                {/*//   <input*/}
-                {/*//   name="file"*/}
-                {/*//   type="file"*/}
-                {/*//   className="form-control form-control-sm"*/}
-                {/*//   placeholder="Avatar"*/}
-                {/*//   onChange={event => setFieldValue('avatar', event.currentTarget.files[0])}*/}
-                {/*//   />*/}
-                {/*//   </div>*/}
-                {/*//   <div className="form-group col-md-6">*/}
-                {/*//   <input*/}
-                {/*//   name="firstName"*/}
-                {/*//   type="text"*/}
-                {/*//   className="form-control form-control-sm"*/}
-                {/*//   placeholder="First Name"*/}
-                {/*//   onChange={handleChange}*/}
-                {/*//   onBlur={handleBlur}*/}
-                {/*//   value={values.firstName}*/}
-                {/*//   />*/}
-                {/*//   {errors.firstName && touched.firstName && errors.firstName}*/}
-                {/*//   </div>*/}
-                {/*//   <div className="form-group col-md-6">*/}
-                {/*//   <input*/}
-                {/*//   name="lastName"*/}
-                {/*//   type="text"*/}
-                {/*//   className="form-control form-control-sm"*/}
-                {/*//   placeholder="Last Name"*/}
-                {/*//   onChange={handleChange}*/}
-                {/*//   onBlur={handleBlur}*/}
-                {/*//   value={values.lastName}*/}
-                {/*//   />*/}
-                {/*// {errors.lastName && touched.lastName && errors.lastName}*/}
-                {/*//   </div>*/}
-                {/*//   </div>*/}
-                {/*//   <div className="form-row">*/}
-                {/*//   <div className="form-group col-md-6">*/}
-                {/*//   <input*/}
-                {/*//   name="email"*/}
-                {/*//   type="email"*/}
-                {/*//   className="form-control form-control-sm"*/}
-                {/*//   placeholder="E-mail"*/}
-                {/*//   onChange={handleChange}*/}
-                {/*//   onBlur={handleBlur}*/}
-                {/*//   value={values.email}*/}
-                {/*//   />*/}
-                {/*//   {errors.email && touched.email && errors.email}*/}
-                {/*//   </div>*/}
-                {/*//   <div className="form-group col-md-6">*/}
-                {/*//   <input*/}
-                {/*//   name="phone"*/}
-                {/*//   type="text"*/}
-                {/*//   className="form-control form-control-sm"*/}
-                {/*//   placeholder="Phone number"*/}
-                {/*//   onChange={handleChange}*/}
-                {/*//   onBlur={handleBlur}*/}
-                {/*//   value={values.phone}*/}
-                {/*//   />*/}
-                {/*//   {errors.phone && touched.phone && errors.phone}*/}
-                {/*//   </div>*/}
-                {/*//   </div>*/}
-                {/*//   <div className="form-group">*/}
-                {/*//   <input*/}
-                {/*//   name="address"*/}
-                {/*//   type="text"*/}
-                {/*//   className="form-control form-control-sm"*/}
-                {/*//   placeholder="Address"*/}
-                {/*//   onChange={handleChange}*/}
-                {/*//   onBlur={handleBlur}*/}
-                {/*//   value={values.address}*/}
-                {/*//   />*/}
-                {/*// {errors.address && touched.address && errors.address}*/}
-                {/*//   </div>*/}
-                {/*//   <div className="form-row">*/}
-                {/*//   <div className="form-group col-md-6">*/}
-                {/*//   <input*/}
-                {/*//   name="password"*/}
-                {/*//   type="password"*/}
-                {/*//   className="form-control form-control-sm"*/}
-                {/*//   placeholder="Password"*/}
-                {/*//   onChange={handleChange}*/}
-                {/*//   onBlur={handleBlur}*/}
-                {/*//   value={values.password}*/}
-                {/*//   />*/}
-                {/*//   </div>*/}
-                {/*// {errors.password && touched.password && errors.password}*/}
-                {/*//   <div className="form-group col-md-6">*/}
-                {/*//   <input*/}
-                {/*//   name="passwordConf"*/}
-                {/*//   type="password"*/}
-                {/*//   className="form-control form-control-sm"*/}
-                {/*//   placeholder="Confirm your password"*/}
-                {/*//   onChange={handleChange}*/}
-                {/*//   onBlur={handleBlur}*/}
-                {/*//   value={values.passwordConf}*/}
-                {/*//   />*/}
-                {/*//   {errors.passwordConf && touched.passwordConf && errors.passwordConf}*/}
-                {/*//   </div>*/}
-                {/*//   </div>*/}
-                {/*//   <button*/}
-                {/*//   type="submit"*/}
-                {/*//   className="btn btn-sm btn-block mt-3"*/}
-                {/*//   disabled={isSubmitting}*/}
-                {/*//   >*/}
-                {/*//   Create your account*/}
-                {/*//   </button>*/}
-                {/*//   </form>*/}
-
         </div>
       </div>
     );
