@@ -18,12 +18,6 @@ const StatusSubSchema = new mongoose.Schema({
   expires: {type: Date}
 },{ _id : false });
 
-const MessageSubSchema = new mongoose.Schema({
-  inbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}],
-  outbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}]
-}, {_id: false});
-
-
 const UserSchema = new mongoose.Schema({
   firstName: {type: String, required: [true, 'Firstname is required'], minlength: 3, maxlength: 30},
   lastName: {type: String, required: false, minlength: 3, maxlength: 30, default: ''},
@@ -47,7 +41,6 @@ const UserSchema = new mongoose.Schema({
     deal_type: {type: String, enum: ['for rent', 'for sale'], required: [true, 'Choose deal type']},
     date: {type: Date}
   }],
-  // messages: [MessageSubSchema],
   messages: {
     inbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}],
     outbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}]

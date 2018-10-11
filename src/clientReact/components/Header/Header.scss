@@ -76,16 +76,16 @@
   //Cart
   .basketNumber{
     margin-bottom: -22px;
-    margin-left: 11px;
+    margin-left: 9px;
     color: red;
     font-weight: bold ;
   }
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 998px) {
     .imgBasket {
       margin-left: 16px;
     }
     .basketNumber {
-      margin-left: 27px;
+      margin-left: 25px;
     }
   }
 
