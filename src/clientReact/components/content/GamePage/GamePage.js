@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: GamePage.js, Game page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import axios from 'axios';
 import Carousel from "./Carousel/Carousel";
@@ -84,8 +92,10 @@ class GamePage extends React.Component {
                 <div className="blowup">
                   <img className="img-fluid imageMainGame mb-3" src={images[0]} alt={title}/>
                 </div>
+                {/*Section Carousel*/}
                 <Carousel/>
               </div>
+              {/*Section Product details*/}
               <div className="col-md-6 text-center text-md-left">
                 <div className=" mt-4 mt-md-0 mb-3 pl-3">
                   <div className="form-check form-check-inline">
@@ -160,13 +170,7 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-        {/*<div className="container">*/}
-          {/*<div className="row justify-content-center">*/}
-            {/*<div className="col">*/}
-              {/**/}
-            {/*</div>*/}
-          {/*</div>*/}
-        {/*</div>*/}
+        {/*Section Comments*/}
         <div className="container mt-5">
           <div className="row">
             <div className="col-md-6 text-nowrap">
@@ -187,7 +191,7 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-
+        {/*Section Most Popular*/}
         <div className="container mb-5">
           <h5 className="mt-4 ml-5 text-center">Most popular</h5>
           <div className="card-deck mt-4">
@@ -214,7 +218,7 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-
+        {/*Button View More*/}
         <div className="container my-4">
           <div className="row justify-content-center">
             <div className="col-md-2">
