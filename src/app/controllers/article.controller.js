@@ -1,16 +1,24 @@
 /**
- * @fileoverview Manages requests for article CRUD queries.
- * Uses methods from ArticleServices to execute queries
- *
  * Created by: Peter Yablochkin
  * Created: 15 Sept 2018
  * Edited: 11 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Manages requests for article CRUD queries.
+ * Uses methods from ArticleServices to execute queries
+ * @module controllers/article.controller
+ * @requires ArticleService
+ *
  */
 
 // Connecting Article services
 const ArticleService = require('../services/article.services');
 
-
+/**
+ * Manages acticle creation feature
+ * @param req object - request info
+ * @param res
+ * @returns {Promise<*|Promise<any>>}
+ */
 exports.createArticle = async function(req, res) {
   try {
     let newArticle = await ArticleService.createArticle(req);
