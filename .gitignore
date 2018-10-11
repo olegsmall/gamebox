@@ -65,3 +65,7 @@ typings/
 ~*.docx
 package-lock.json
 build/
+public/css/
+public/js/
+public/video/
+public/bundle.js
