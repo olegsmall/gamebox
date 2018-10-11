@@ -197,37 +197,37 @@ Date.prototype.addDays = function(days) {
 exports.userStatistics = async function (req) {
   let statistics = {};
   try {
-    await Product.find({owner: req.params.id}).then((products, err) => {
+    await Product.find({owner: req.user._id}).then((products, err) => {
       if(err) {throw Error(err);} // Show error in case
       statistics.products_added = products.length;
     });
 
-    await Product.find({owner: req.params.id, status: 'sold'}).then((products, err) => {
+    await Product.find({owner: req.user._id, status: 'sold'}).then((products, err) => {
       if(err) {throw Error(err);} // Show error in case
       statistics.sold = products.length;
     });
 
-    await Product.find({owner: req.params.id, status: 'rented'}).then((products, err) => {
+    await Product.find({owner: req.user._id, status: 'rented'}).then((products, err) => {
       if(err) {throw Error(err);} // Show error in case
       statistics.rented = products.length;
     });
 
-    await Order.find({buyer: req.params.id}).then((products, err) => {
+    await Order.find({buyer: req.user._id}).then((products, err) => {
       if(err) {throw Error(err);} // Show error in case
       statistics.ordered = products.length;
     });
 
-    await Article.find({author: req.params.id}).then((articles, err) => {
+    await Article.find({author: req.user._id}).then((articles, err) => {
       if(err) {throw Error(err);} // Show error in case
       statistics.posted_articles = articles.length;
     });
 
-    await Article.find({'comment.user': req.params.id}).then((articles, err) => {
+    await Article.find({'comment.user': req.user._id}).then((articles, err) => {
       if(err) {throw Error(err);} // Show error in case
       statistics.commented_articles = articles.length;
     });
 
-    await Product.find({'comment.user': req.params.id}).then((products, err) => {
+    await Product.find({'comment.user': req.user._id}).then((products, err) => {
       if(err) {throw Error(err);} // Show error in case
       statistics.commented_products = products.length;
     });

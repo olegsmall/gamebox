@@ -20,6 +20,8 @@ import UserActivation from "./adminPages/UserActivation/UserActivation";
 import UsersList from "./adminPages/UsersList/UsersList";
 import PaymentConfirmation from "./adminPages/PaymentConfirmation/PaymentConfirmation";
 import EditUserRights from "./adminPages/EditUserRights/EditUserRights";
+import Messenger from "./Messenger/Messenger";
+import Statistics from "./Statistics/Statistics";
 
 require('./UserPage.scss');
 
@@ -165,6 +167,18 @@ class UserPage extends React.Component {
           showSystemMessage={this.props.showSystemMessage}
         />;
         break;
+      case 'Messenger':
+        inner = <Messenger
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
+      case 'Statistics':
+        inner = <Statistics
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
       default :
         inner = <Profile user={this.props.user}/>;
     }
@@ -187,6 +201,16 @@ class UserPage extends React.Component {
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'ChangePassword')} href="">
                   Change password
+                </a>
+              </button>
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Statistics')} href="">
+                  Statistics
+                </a>
+              </button>
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Messenger')} href="">
+                  Messenger
                 </a>
               </button>
               <button className="mt-2  btn-block">

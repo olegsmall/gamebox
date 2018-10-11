@@ -29,7 +29,7 @@ export default class PaymentConfirmation extends React.Component {
     axios.get('/order?status=pending')
       .then((res) => {
         console.log(res.data)
-        this.setState({usersList: res.data.orders.docs});
+        this.setState({ordersList: res.data.orders.docs});
       })
       .catch((error) => {
         console.error(error.response);
@@ -74,9 +74,10 @@ export default class PaymentConfirmation extends React.Component {
           </thead>
           <tbody>
           {ordersList.map((order) => {
+            const orderDate = new Date(order.opened).toLocaleDateString();
             return (
               <tr key={order._id}>
-                <td></td>
+                <td>{orderDate}</td>
                 <td>{order._id}</td>
                 <td>{`${order.buyer.firstName} ${order.buyer.lastName}`}</td>
                 <td>{order.buyer.email}</td>

@@ -69,7 +69,7 @@ exports.getInboxMessages = function (req) {
   queryOptions.populate = {path: 'sender', select: 'firstName lastName'};   // Populate query fields
 
   try {
-    return User.findById(req.params.id).select('messages.inbox').then((msg) => {
+    return User.findById(req.user._id).select('messages.inbox').then((msg) => {
       let inbox = msg.messages.inbox;
 
       query = {_id: {$in: inbox}};
@@ -94,7 +94,7 @@ exports.getOutboxMessages = function (req) {
   queryOptions.populate = {path: 'receiver', select: 'firstName lastName'};   // Populate query fields
 
   try {
-    return User.findById(req.params.id).select('messages.outbox').then((msg) => {
+    return User.findById(req.user._id).select('messages.outbox').then((msg) => {
       let outbox = msg.messages.outbox;
 
       query = {_id: {$in: outbox}};
