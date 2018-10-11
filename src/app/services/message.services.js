@@ -108,6 +108,17 @@ exports.getOutboxMessages = function (req) {
   }
 };
 
+exports.getNewMessages = function (req) {
+  try {
+    return Message.find({receiver: req.user._id, read: false}).then((msg, err) => {
+      return msg.length;
+    })
+  } catch (e) {
+    throw Error('Error at get new messages.');
+
+  }
+};
+
 exports.deleteMessage = function (req) {
   try {
     return User.findById(req.params.id).select('messages').then((messages, err) => {

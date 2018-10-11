@@ -36,7 +36,7 @@ import OrderController from "../controllers/order.controller";
 import MessageController from '../controllers/message.controller';
 
 const Auth = require('../services/auth.services');
-
+router.get('/new_messages', Auth.checkAuth, MessageController.getNewMessages); // Get inbox messages
 router.get('/order', OrderController.getUserOrders); //Get user orders
 router.post('/', upload.single('avatar'), UserController.createUser);
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
