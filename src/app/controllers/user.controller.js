@@ -23,7 +23,7 @@ exports.getUsers = async function(req, res) {
   try {
     let users = await UserService.getUsers(req);
     // Return the users list with the appropriate HTTP Status Code and Message.
-    return res.status(200).json({status: 200, data: users, message: 'Successfully Users Received'});
+    return res.status(200).json({status: 200, users: users, message: 'Successfully Users Received'});
 
   } catch(e) {
 
@@ -41,7 +41,8 @@ exports.authenticate = function(req, res) {
       lastName: req.user.lastName,
       phone: req.user.phone,
       address: req.user.address,
-      avatar: req.user.avatar
+      avatar: req.user.avatar,
+      role: req.user.role,
     };
     res.status(200).json({status: 200, user: user, message: 'Authenticate successfully'});
   } catch(e) {
@@ -61,7 +62,8 @@ exports.getSessionUser = function(req, res){
         lastName: req.user.lastName,
         phone: req.user.phone,
         address: req.user.address,
-        avatar: req.user.avatar
+        avatar: req.user.avatar,
+        role: req.user.role,
       };
       res.status(200).json({status: 200, user: user, message: 'Authenticate granted'});
     } else {
@@ -84,7 +86,8 @@ exports.getUser = function(req, res){
         lastName: req.user.lastName,
         phone: req.user.phone,
         address: req.user.address,
-        avatar: req.user.avatar
+        avatar: req.user.avatar,
+        role: req.user.role,
       };
       res.status(200).json({status: 200, user: user, message: 'Authenticate granted'});
     } else {
@@ -106,7 +109,8 @@ exports.updateUserInfo = async function(req, res) {
       lastName: user.lastName,
       phone: user.phone,
       address: user.address,
-      avatar: user.avatar
+      avatar: user.avatar,
+      role: req.user.role,
     };
     return res.status(201).json({status: 201, user: user, message: 'User updated successfully'});
 

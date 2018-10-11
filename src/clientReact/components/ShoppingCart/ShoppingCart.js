@@ -16,7 +16,49 @@ class ShoppingCart extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getShoppingCart();
+    this.payPallButtonInit();
+  }
+
+  payPallButtonInit() {
+    paypal.Button.render({
+      // Configure environment
+      env: 'sandbox',
+      client: {
+        sandbox: 'AcpyaszloX0COQAbRdPXQiu5e5pJ8WRHZm3C6WKHkTvYI0CTCXj5Ca2AcbcX0DdA25689MRm2zM9hia5',
+        production: 'demo_production_client_id'
+      },
+      // Customize button (optional)
+      locale: 'en_US',
+      style: {
+        label: 'checkout',
+        size: 'medium',    // small | medium | large | responsive
+        shape: 'rect',     // pill | rect
+        color: 'gold',
+        tagline: 'false'
+      },
+      // Set up a payment
+      payment: function (data, actions) {
+        return actions.payment.create({
+          transactions: [{
+            amount: {
+              total: '100',
+              currency: 'USD'
+            }
+          }]
+        });
+      },
+      // Execute the payment
+      onAuthorize: function (data, actions) {
+        return actions.payment.execute().then(function () {
+          // Show a confirmation message to the buyer
+          // console.log(data);
+          // console.log(actions)
+          // window.alert('Thank you for your purchase!');
+          document.getElementById('sumbmit-button').click();
+        });
+
+      }
+    }, '#paypal-button');
   }
 
   deleteProduct(id) {
@@ -47,7 +89,24 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    const {shoppingCart: shopProducts, user} = this.props;
+    const {shoppingCart, user} = this.props;
+
+    const onSuccess = (payment) => {
+      console.log("Your payment was succeeded!", payment);
+    }
+    const onCancel = (data) => {
+      // User pressed "cancel" or close Paypal's popup!
+      console.log('You have cancelled the payment!', data);
+    }
+    const onError = (err) => {
+      // The main Paypal's script cannot be loaded or somethings block the loading of that script!
+      console.log("Error!", err);
+// Since the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
+// => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
+    }
+    let currency = 'USD'; // or you can set this value from your props or state
+    let total = 1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+
 
     return (
       <div className={'ShoppingCart'}>
@@ -57,10 +116,10 @@ class ShoppingCart extends React.Component {
         <div id="myOrders" className="container">
           <div className="h5 ml-5 mb-2 text-center text-sm-left">My shopping cart</div>
           <hr/>
-          {shopProducts.products.length === 0
+          {shoppingCart.products.length === 0
             ? <div>Shopping cart is empty</div>
             : <div className="container">
-              {shopProducts.products.map(({product, deal_type, rent_duration, _id: cardItemId}) => {
+              {shoppingCart.products.map(({product, deal_type, rent_duration, _id: cardItemId}) => {
                 // if (product === undefined) return null;
                 return (
                   <div key={product._id}>
@@ -120,7 +179,7 @@ class ShoppingCart extends React.Component {
                     onSubmit={(values, actions) => this.handleSubmit(values, actions)}
                   >
                     {({values, isSubmitting}) => (
-                      <Form>
+                      <Form id="checkout-form">
                         <div className="form-check">
                           <label className="form-check-label">
                             <Field className="form-check-input"
@@ -157,19 +216,23 @@ class ShoppingCart extends React.Component {
                         <ErrorMessage name="payment">{msg => <small
                           className='form-text text-left error'>{msg}</small>}</ErrorMessage>
                         <hr/>
-                        {/*<div className="card-title mb-1">Total: </div>*/}
-                        {/*<div className="mb-1">Estimated tax (GST + QST) — 14.975% :</div>*/}
-                        <div className="mb-1">Order total : $</div>
+                        <div className="mb-1">Order total : {shoppingCart.total_price}$</div>
                         <div className="row">
                           <div className="col-md-4">
-                            <button type="submit" className="btn-block btn btnShopCart mt-3"
-                                    disabled={isSubmitting}>Confirm order
+                            <button
+                              id="sumbmit-button"
+                              type="submit"
+                              className={`btn-block btn btnShopCart mt-3 ${values.payment === 'paypal' ? 'd-none' : ''}`}
+                              disabled={isSubmitting}
+                            >Confirm order
                             </button>
+                            <div id="paypal-button" className={`mt-3 ${values.payment !== 'paypal' ? 'd-none' : ''}`}> </div>
                           </div>
                           <div className="col-md-4">
                             <Link to={'/product'}>
                               <button className="btn-block btn btnShopCart mt-3 mr-3">Continue shopping</button>
                             </Link>
+
                           </div>
                         </div>
                       </Form>
