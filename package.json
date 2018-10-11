@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "buildclient": "webpack --mode production ",
-    "buildserver": "babel -d ./build ./src/server ",
-    "start": "npm run buildserver && npm run buildclient && node ./build/server.js",
+    "start": "node ./build/server.js",
+    "prepublish": "npm run buildserver && npm run buildclient",
+    "buildclient": "node_modules/.bin/webpack --mode production ",
+    "buildserver": "node_modules/.bin/babel -d ./build ./src/server ",
     "client": "node_modules/.bin/webpack -wd",
     "server": "node_modules/.bin/nodemon --exec node_modules/.bin/babel-node ./src/server/server.js --ignore public/",
     "all": "concurrently \"npm run server\" \"npm run client\""
