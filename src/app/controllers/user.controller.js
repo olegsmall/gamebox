@@ -156,6 +156,15 @@ exports.rateUser = async function (req, res) {
   }
 };
 
+exports.userStatistics = async function (req, res) {
+  try {
+    let statistics = await UserService.userStatistics(req);
+    return res.status(201).json({status: 201, statistics: statistics, message: 'Statistics received'});
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
 exports.logout = async function(req, res) {
     req.logout();
     res.send({msg: 'Logged out'});

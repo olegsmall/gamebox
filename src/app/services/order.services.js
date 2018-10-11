@@ -41,7 +41,7 @@ exports.placeOrder = function (req) {
           total_price += pre_order_info.price * pre_order_info.rent_duration; // calculate & add total price for rent
 
           let date = new Date();
-          Product.updateOne({_id: user.cart[i].product}, {$set : {rented_until: date.addDays(user.cart[i].rent_duration)}}).exec();
+          Product.updateOne({_id: user.cart[i].product}, {$set : {rented_until: date.addDays(Number(user.cart[i].rent_duration))}}).exec();
 
         } else {
           pre_order_info.price = user.cart[i].product.price.sell; // selling price
