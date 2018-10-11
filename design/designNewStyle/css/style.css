@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif !important;
+    font-family: 'Rubik', sans-serif;!important;
     background-color: #ffffff;
     opacity: 0.9;
 }
@@ -105,6 +105,47 @@ a #loupe:focus{
         margin-left: 27px;
     }
 }
+
+/*promo on main page*/
+.promo{
+    position	: absolute;
+    top		: 200px;
+    left		: 700px;
+    width		: 100%;
+    color: white;
+    /*font-family: 'Teko', sans-serif;*/
+    /*font-size: 40px;*/
+    /*font-family: 'Notable', sans-serif;*/
+    /*font-family: 'Archivo Black', sans-serif;*/
+    /*font-family: 'Orbitron', sans-serif;*/
+    font-family: 'Russo One', sans-serif;
+    text-decoration: none;
+}
+.promo button.button.btnPromo {
+    display:inline-block;
+    position:absolute;
+    top:60px;
+    /*right:500px;*/
+    background-color:transparent;
+    border:2px solid white;
+    font-size:20px;
+    font-weight:bold;
+    color:#fff;
+}
+.promo button.button.btnPromo:hover{
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+
+}
+
+
+
+.btnPromo a{
+    color: white;
+}
+
+
 
 
 /* Log in and Sign Up*/
