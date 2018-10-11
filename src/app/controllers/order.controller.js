@@ -79,6 +79,18 @@ exports.getOrders = async function(req, res) {
   }
 };
 
+exports.getUserOrders = async function(req, res) {
+  try {
+    let orders = await OrderService.getOrders(req);
+    // Return the orders list with the appropriate HTTP Status Code and Message.
+    return res.status(200).json({status: 200, orders: orders, message: 'Orders received'});
+
+  } catch(e) {
+    //Return an Error Response Message with Code and the Error Message.
+    return res.status(400).json({status: 400, message: e.message});
+  }
+};
+
 exports.getOrder = async function(req, res) {
   try {
     let order = await OrderService.getOrder(req);

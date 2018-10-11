@@ -1,3 +1,4 @@
+
 const Product = require('../models/product.model');
 const Genre = require('../models/genre.model');
 const User = require('../models/user.model');
@@ -59,7 +60,7 @@ exports.getProducts = function (req) {
 
   let sort = 'desc'; // Default sorting method -> Descending
   // Populate query fields
-  queryOptions.populate = {path: 'genres owner', select: '_id name firstName lastName e-mail'};
+  queryOptions.populate = {path: 'genres owner', select: '_id name firstName lastName email'};
   // Check the existence of the query parameters, If the exists doesn't exists assign a default value
   //Page option
   req.query.page ? queryOptions.page = Number(req.query.page) : 1;

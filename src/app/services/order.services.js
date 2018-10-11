@@ -82,10 +82,30 @@ exports.placeOrder = function (req) {
 exports.getOrders = function (req) {
   let query = {};
   let queryOptions = {}; // Mongoose-paginator query options
+  queryOptions.populate = {path: 'buyer', select: 'name firstName lastName email'};
   req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
   req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10; // Limit number of returning objects
   if(req.query.status === 'pending') {query.status = 'pending'}
 
+  try {
+    return Order.paginate(query, queryOptions).then((orders) => {
+      if(orders === null) { throw Error('No orders found'); }
+      return orders;
+    });
+
+  } catch (e) {
+    throw {error: e, message: 'Error on get orders'};
+  }
+};
+
+exports.getOrders = function (req) {
+  let query = {buyer: req.user._id};
+  let queryOptions = {}; // Mongoose-paginator query options
+  queryOptions.populate = {path: 'buyer', select: 'name firstName lastName email'};
+  req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
+  req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10; // Limit number of returning objects
+  if(req.query.status === 'pending') {query.status = 'pending'}
+  if(req.query.status === 'completed') {query.status = 'completed'}
   try {
     return Order.paginate(query, queryOptions).then((orders) => {
       if(orders === null) { throw Error('No orders found'); }

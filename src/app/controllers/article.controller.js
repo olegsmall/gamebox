@@ -1,13 +1,28 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 15 Sept 2018
+ * Edited: 11 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Manages requests for article CRUD queries.
+ * Uses methods from ArticleServices to execute queries
+ * @module controllers/article.controller
+ * @requires ArticleService
+ *
+ */
+
+// Connecting Article services
 const ArticleService = require('../services/article.services');
 
+/**
+ * Manages acticle creation feature
+ * @param req object - request info
+ * @param res
+ * @returns {Promise<*|Promise<any>>}
+ */
 exports.createArticle = async function(req, res) {
   try {
-    if (req.user){
-      let newArticle = await ArticleService.createArticle(req);
-      return res.status(201).json({status: 201, article: newArticle, message: 'Article created successfully'});
-    } else {
-      return res.status(403.21).json({status: 403.21, message: 'Source access denied'});
-    }
+    let newArticle = await ArticleService.createArticle(req);
+    return res.status(201).json({status: 201, article: newArticle, message: 'Article created successfully'});
   }catch(e){
     return res.status(400).json({status: 400, error: e.message, message: 'Article was not created'});
   }

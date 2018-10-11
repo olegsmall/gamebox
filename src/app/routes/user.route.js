@@ -37,7 +37,7 @@ import MessageController from '../controllers/message.controller';
 
 const Auth = require('../services/auth.services');
 
-
+router.get('/order', OrderController.getUserOrders); //Get user orders
 router.post('/', upload.single('avatar'), UserController.createUser);
 router.post('/login', passport.authenticate('local'), UserController.authenticate);
 router.get('/', Auth.checkAuth, Auth.checkAdminRole, UserController.getUsers); // Get list of all users
@@ -59,7 +59,6 @@ router.delete('/:id/message', Auth.checkAuth, MessageController.deleteMessage); 
 
 router.get('/:id/statistics', UserController.userStatistics); // Get outbox messages
 
-// router.get('/:id/order', OrderController.getOrders); //Get user orders
 
 router.post('/logout', Auth.checkAuth, UserController.logout);
 

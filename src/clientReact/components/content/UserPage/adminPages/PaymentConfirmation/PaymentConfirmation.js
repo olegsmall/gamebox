@@ -1,10 +1,9 @@
 /**
- * Panment comfirmation component
- *
- * file: PaymentConfirmation.js
- * Created by: Oleg Smolovyk.
- * Date: 10/10/2018
- * Time: 13:22
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: PaymentConfirmation.js, Payment confirmation component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
  */
 
 import React from 'react';

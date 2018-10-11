@@ -1,10 +1,9 @@
 /**
- * Edit user rights component
- *
- * file: EditUserRights.js
- * Created by: Oleg Smolovyk.
- * Date: 10/10/2018
- * Time: 12:49
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: EditUserRights.js, Edit user rights component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
  */
 
 import React from 'react';
