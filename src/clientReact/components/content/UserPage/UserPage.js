@@ -19,6 +19,7 @@ import ChangePassword from './ChangePassword/ChangePassword';
 import UserActivation from "./adminPages/UserActivation/UserActivation";
 import UsersList from "./adminPages/UsersList/UsersList";
 import PaymentConfirmation from "./adminPages/PaymentConfirmation/PaymentConfirmation";
+import EditUserRights from "./adminPages/EditUserRights/EditUserRights";
 
 require('./UserPage.scss');
 
@@ -30,20 +31,14 @@ class UserPage extends React.Component {
       innerComponent: 'Profile',
       message: '',
       articleForEdit: null,
-      // isSuperAdmin: true
+      userForEdit: null, // User for edit in admin part in page EditUserRights
     };
     this.handleChangeInner.bind(this);
+    this.setUserForEditState.bind(this);
   }
 
-  componentDidMount() {
-    // axios.get('/user/')
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     this.setState({user: res.data.user});
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+  setUserForEditState(user){
+    this.setState({userForEdit: user});
   }
 
   setArticleState(obj) {
@@ -147,14 +142,21 @@ class UserPage extends React.Component {
         break;
       case 'UserActivation':
         inner = <UserActivation
-          changeInner={this.changeInner.bind(this)}
           showSystemMessage={this.props.showSystemMessage}
         />;
         break;
-      case 'UserList':
+      case 'UsersList':
         inner = <UsersList
           changeInner={this.changeInner.bind(this)}
+          setUserForEditState={this.setUserForEditState.bind(this)}
           showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
+      case 'EditUserRights':
+        inner = <EditUserRights
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+          userForEdit={this.state.userForEdit}
         />;
         break;
       case 'PaymentConfirmation':
@@ -212,8 +214,8 @@ class UserPage extends React.Component {
                     </a>
                   </button>
                   <button className="mt-2  btn-block">
-                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UserList')} href="">
-                      User list
+                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UsersList')} href="">
+                      Users list
                     </a>
                   </button>
                   <button className="mt-2  btn-block">
