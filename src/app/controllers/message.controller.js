@@ -20,6 +20,16 @@ exports.getMessage = async function(req, res) {
   }
 };
 
+exports.getNewMessages = async function(req, res) {
+  try {
+    let messages = await MessageService.getNewMessages(req);
+    return res.status(201).json({status: 201, messages: messages, message: 'Messages messages received'});
+
+  } catch(e){
+    return res.status(409).json({status: 409, message: e.message});
+  }
+};
+
 exports.getInboxMessages = async function(req, res) {
   try {
     let inbox = await MessageService.getInboxMessages(req);

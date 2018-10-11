@@ -36,7 +36,7 @@ import OrderController from "../controllers/order.controller";
 import MessageController from '../controllers/message.controller';
 
 const Auth = require('../services/auth.services');
-
+router.get('/new_messages', Auth.checkAuth, MessageController.getNewMessages); // Get inbox messages
 router.get('/order', OrderController.getUserOrders); //Get user orders
 router.get('/statistics', UserController.userStatistics); // Get user statistics messages
 router.get('/inbox', Auth.checkAuth, MessageController.getInboxMessages); // Get inbox messages
