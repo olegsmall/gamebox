@@ -1,5 +1,5 @@
 /**
- * All user list component
+ * All users list component
  *
  * file: UsersList.js
  * Created by: Oleg Smolovyk.
@@ -19,34 +19,60 @@ export default class UsersList extends React.Component {
     super(props);
 
     this.state = {
-      usersList: []
+      usersList: null,
     };
-  }
-
-  componentDidMount() {
-
+    this.getUsersList();
   }
 
   getUsersList() {
-    axios.get('/user', {
-      // password: values.password,
-    })
+    axios.get('/user')
       .then((res) => {
-        this.props.showSystemMessage(res.data.message);
-        this.props.changeInner('Profile');
-        actions.setSubmitting(false);
+        console.log(res)
+        this.setState({usersList: res.data.users.docs});
       })
       .catch((error) => {
-        this.props.showSystemMessage(res.data.message);
-        actions.setSubmitting(false);
+        console.error(error.response);
+        this.props.showSystemMessage(error.response.data.message, 'error');
       });
   }
 
+  editUserRights(user){
+    this.props.setUserForEditState(user);
+    this.props.changeInner('EditUserRights');
+  }
 
   render() {
-    return (
-      <div>
+    const {usersList} = this.state;
+    if (!usersList) return null;
 
+    return (
+      <div className="col-md-8 text-center mt-5">
+        <h5 className="text-center">Users List</h5>
+        <table className="table table-hover">
+          <thead className="bg-light">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          {usersList.map((user) => {
+            return (
+              <tr key={user._id}>
+                <td>{`${user.firstName} ${user.lastName}`}</td>
+                <td>{user.email}</td>
+                <td><a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.editUserRights(user);
+                  }}
+                  href="">Edit</a></td>
+              </tr>
+            )
+          })}
+          </tbody>
+        </table>
       </div>
     );
   }

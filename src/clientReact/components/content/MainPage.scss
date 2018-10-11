@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: MainPage.scss, Styles for main page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 .MainPage {
 
   //Background
@@ -23,6 +31,31 @@
 
   .cardPopular-6 {
     background-image: url("/image/img5.jpg");
+  }
+
+  /* Promo */
+  .promo {
+    font-family: 'Russo One', sans-serif;
+    color: white;
+    margin-top: 12rem;
+    margin-left: 48rem;
+  }
+
+  .promo button.button.btnPromo {
+    font-size: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    font-weight: bold;
+  }
+
+  .promo button.button.btnPromo:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+  }
+
+  .btnPromo a{
+    color: white;
   }
 
   //Card Product
@@ -89,8 +122,8 @@
 
   .button {
     display: none;
-    background-color: #81836d;
-    border-color: #81836d;
+    background-color: #ff6e00;
+    border-color: #ff6e00;
     padding: 5px 32px;
     text-decoration: none;
     margin: 4px 2px;
@@ -112,6 +145,11 @@
     color: #ffffff;
   }
 
+  //Article Page
+  .articlePage {
+    margin-top: 3rem;
+  }
+
   //Info
   .infoCard {
     background-color: rgba(211,211,211,0.2);
@@ -123,11 +161,33 @@
   }
 
   .text {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .imgWork {
     width: 100px;
     height: 100px;
+  }
+
+  //Mobile style
+  @media only screen and (max-width: 1500px) {
+    .promo {
+      margin-top: 10rem;
+      margin-left: 40rem;
+    }
+  }
+
+  @media only screen and (max-width: 1250px) {
+    .promo {
+      margin-top: 8rem;
+      margin-left: 30rem;
+    }
+  }
+
+  @media only screen and (max-width: 1030px) {
+    .promo {
+      margin-top: 7rem;
+      margin-left: 28rem;
+    }
   }
 }

@@ -116,6 +116,16 @@ class GamePage extends React.Component {
                   validationSchema={Yup.object().shape({
                     buyRent: Yup.string()
                       .required('* Select the type of purchase'),
+                    duration: Yup.number()
+                      .when('buyRent', {
+                        is: val => val==='rent',
+                        then: Yup.number()
+                          .integer('* Duration must be an integer')
+                          .positive('* Duration must be positive')
+                          .min(1, '* You cat rent minimum for 1 day')
+                          .required('* Duration is required'),
+                        otherwise: Yup.number().notRequired(),
+                      })
                   })}
                   onSubmit={(values, actions) => this.handleSubmit(values, actions)}
                 >

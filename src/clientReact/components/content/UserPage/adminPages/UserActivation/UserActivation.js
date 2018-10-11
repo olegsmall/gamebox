@@ -68,7 +68,7 @@ export default class UserActivation extends React.Component {
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Status</th>
+            <th scope="col"></th>
           </tr>
           </thead>
           <tbody>
