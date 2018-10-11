@@ -1,3 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik|Russo+One);
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Header.scss, Styles for header and authorization panel components
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .Header .stickytop {
   transform: translateY(0px);
   width: 100%;
@@ -27,6 +35,10 @@
 .Header a.nav-link.h5 {
   tab-size: 20px; }
 
+.Header #dropdownMenu i.fa.fa-user-plus {
+  color: #000000;
+  font-size: 23px; }
+
 .Header .btnSearch {
   background-color: unset;
   border: none;
@@ -39,10 +51,6 @@
   border-bottom: 1px solid gray;
   width: 22rem; }
 
-.Header #dropdownMenu i.fa.fa-user-plus {
-  color: #000000;
-  font-size: 23px; }
-
 .Header img.searchImg {
   background-position: 10px 10px;
   background-repeat: no-repeat;
@@ -50,128 +58,151 @@
   transition: width 0.4s ease-in-out;
   margin-right: 2rem; }
 
-@media only screen and (max-width: 600px) {
-  .Header .inputSearch {
-    width: 10rem; } }
-
 .Header .imgBasket {
   margin-bottom: 8px; }
 
 .Header .basketNumber {
   margin-bottom: -22px;
-  margin-left: 11px;
+  margin-left: 9px;
   color: red;
   font-weight: bold; }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 998px) {
   .Header .imgBasket {
     margin-left: 16px; }
   .Header .basketNumber {
-    margin-left: 27px; } }
+    margin-left: 25px; } }
 
-.MainPage .cardPopular-1 {
-  background-image: url("/image/img1.jpg"); }
+@media only screen and (max-width: 600px) {
+  .Header .inputSearch {
+    width: 10rem; } }
 
-.MainPage .cardPopular-2 {
-  background-image: url("/image/img6.jpg"); }
-
-.MainPage .cardPopular-3 {
-  background-image: url("/image/war-venue-494345_1280.jpg"); }
-
-.MainPage .cardPopular-4 {
-  background-image: url("/image/overwatch-1610865_1280.jpg"); }
-
-.MainPage .cardPopular-5 {
-  background-image: url("/image/science-fiction-965258_1280.jpg"); }
-
-.MainPage .cardPopular-6 {
-  background-image: url("/image/img5.jpg"); }
-
-.MainPage .product {
-  position: relative;
-  width: 280px;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  border-radius: unset !important; }
-
-.MainPage .imgBorder {
-  border-radius: unset !important;
-  border: none; }
-
-.MainPage .imgBody {
-  border: 1px solid #a5afaf; }
-
-.MainPage .inner {
-  position: absolute;
-  background-color: transparent;
-  width: 100%;
-  height: 100%; }
-
-.MainPage .product:hover .inner {
-  background-color: rgba(0, 0, 0, 0.7);
-  -webkit-transition: background-color  .7s;
-  -ms-transition: background-color .7s;
-  transition: background-color .7s;
-  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5); }
-
-.MainPage div.paragraphV {
-  background-color: #ff6e00;
-  padding-right: 5px;
-  width: 40px;
-  margin-left: -8px;
-  margin-top: 6px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); }
-
-.MainPage .paragraph {
-  display: none; }
-
-.MainPage .product:hover .paragraph {
-  display: block;
-  animation: fadein 1.5s; }
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: MainPage.scss, Styles for main page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+.MainPage {
+  /* Promo */ }
+  .MainPage .cardPopular-1 {
+    background-image: url("/image/img1.jpg"); }
+  .MainPage .cardPopular-2 {
+    background-image: url("/image/img6.jpg"); }
+  .MainPage .cardPopular-3 {
+    background-image: url("/image/war-venue-494345_1280.jpg"); }
+  .MainPage .cardPopular-4 {
+    background-image: url("/image/overwatch-1610865_1280.jpg"); }
+  .MainPage .cardPopular-5 {
+    background-image: url("/image/science-fiction-965258_1280.jpg"); }
+  .MainPage .cardPopular-6 {
+    background-image: url("/image/img5.jpg"); }
+  .MainPage .promo {
+    font-family: 'Russo One', sans-serif;
+    color: white;
+    margin-top: 12rem;
+    margin-left: 48rem; }
+  .MainPage .promo button.button.btnPromo {
+    font-size: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    font-weight: bold; }
+  .MainPage .promo button.button.btnPromo:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1); }
+  .MainPage .btnPromo a {
+    color: white; }
+  .MainPage .product {
+    position: relative;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: unset !important; }
+  .MainPage .imgBorder {
+    border-radius: unset !important;
+    border: none; }
+  .MainPage .imgBody {
+    border: 1px solid #a5afaf; }
+  .MainPage .inner {
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100%; }
+  .MainPage .product:hover .inner {
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: background-color  .7s;
+    -ms-transition: background-color .7s;
+    transition: background-color .7s;
+    box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5); }
+  .MainPage div.paragraphV {
+    background-color: #ff6e00;
+    padding-right: 5px;
+    width: 40px;
+    margin-left: -8px;
+    margin-top: 6px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); }
+  .MainPage .paragraph {
+    display: none; }
+  .MainPage .product:hover .paragraph {
+    display: block;
+    animation: fadein 1.5s; }
 
 @keyframes fadein {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+  .MainPage h4.paragraphV {
+    color: white; }
+  .MainPage .button {
+    display: none;
+    background-color: #ff6e00;
+    border-color: #ff6e00;
+    padding: 5px 32px;
+    text-decoration: none;
+    margin: 4px 2px; }
+  .MainPage .button:hover {
+    transition: background-color .7s;
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3); }
+  .MainPage .product:hover .button {
+    display: inline-block;
+    animation: fadein 1.5s; }
+  .MainPage button.button.mt-5 a {
+    color: #ffffff; }
+  .MainPage .articlePage {
+    margin-top: 3rem; }
+  .MainPage .infoCard {
+    background-color: rgba(211, 211, 211, 0.2); }
+  .MainPage .imgInfo {
+    width: 40px;
+    height: 40px; }
+  .MainPage .text {
+    font-size: 16px; }
+  .MainPage .imgWork {
+    width: 100px;
+    height: 100px; }
+  @media only screen and (max-width: 1500px) {
+    .MainPage .promo {
+      margin-top: 10rem;
+      margin-left: 40rem; } }
+  @media only screen and (max-width: 1250px) {
+    .MainPage .promo {
+      margin-top: 8rem;
+      margin-left: 30rem; } }
+  @media only screen and (max-width: 1030px) {
+    .MainPage .promo {
+      margin-top: 7rem;
+      margin-left: 28rem; } }
 
-.MainPage h4.paragraphV {
-  color: white; }
-
-.MainPage .button {
-  display: none;
-  background-color: #81836d;
-  border-color: #81836d;
-  padding: 5px 32px;
-  text-decoration: none;
-  margin: 4px 2px; }
-
-.MainPage .button:hover {
-  transition: background-color .7s;
-  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3); }
-
-.MainPage .product:hover .button {
-  display: inline-block;
-  animation: fadein 1.5s; }
-
-.MainPage button.button.mt-5 a {
-  color: #ffffff; }
-
-.MainPage .infoCard {
-  background-color: rgba(211, 211, 211, 0.2); }
-
-.MainPage .imgInfo {
-  width: 40px;
-  height: 40px; }
-
-.MainPage .text {
-  font-size: 13px; }
-
-.MainPage .imgWork {
-  width: 100px;
-  height: 100px; }
-
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Footer.scss, Styles for footer component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .Footer .page-footer {
   background-color: #000000; }
 
@@ -181,10 +212,24 @@
 .Footer .line-border {
   border-right: 1px solid white; }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: LoginPage.scss, Styles for log in page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .LoginPage #log {
   margin-top: 8rem;
   margin-bottom: 8rem; }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: SignUpPage.scss, Styles for sign up page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .SignUp #sign {
   margin-top: 8rem;
   margin-bottom: 8rem; }
@@ -196,19 +241,39 @@
 .SignUp .custom-file-label {
   padding-right: 5rem; }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ProductCard.scss, Styles for product's card, the part of all games page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .ProductCard .aBlack {
   color: black; }
 
 .ProductCard .imgBorder {
   border-radius: unset !important;
-  border: none; }
+  border: none;
+  height: 191px; }
+
+.ProductCard .cardDiv {
+  position: relative;
+  min-height: 458px; }
 
 .ProductCard .cardAllGame {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
   -moz-transition: all 0.7s;
   -webkit-transition: all 0.7s;
   transition: all 0.7s; }
 
 .ProductCard .cardAllGame:hover {
+  position: absolute;
+  z-index: 100;
+  height: inherit;
+  min-height: 400px;
+  overflow: visible;
   -moz-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
@@ -225,7 +290,6 @@
   background-color: #ff6e00;
   padding-right: 5px;
   width: 40px;
-  margin-left: -8px;
   margin-top: 6px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); }
 
@@ -238,7 +302,21 @@
   font-size: large;
   text-decoration: none; }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: AllGamesPage.scss, Styles for all games page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Carousel.scss, Styles for carousel, the part of Game page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .Carousel .imageMainGame {
   border: 1px solid gray;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
@@ -251,6 +329,13 @@
   -webkit-transform: scale(1.05);
   transform: scale(1.05); }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: GamePage.scss, Styles for game page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .GamePage #gamePage {
   margin-top: 2rem; }
 
@@ -277,9 +362,6 @@
   border: 1px solid black;
   border-radius: unset; }
 
-.GamePage .btnProduct {
-  margin-left: 1rem; }
-
 .GamePage .btnProduct:hover, .GamePage .btnGameComments:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
@@ -302,16 +384,6 @@
 
 .GamePage #marginCom {
   margin-bottom: 1rem; }
-
-.GamePage .btnViewMore {
-  background-color: transparent;
-  border: 2px solid rgba(0, 0, 0, 0.5);
-  border-radius: unset;
-  height: 3rem; }
-
-.GamePage .btnViewMore:hover {
-  border: 2px solid black;
-  transition: color 0.25s; }
 
 .GamePage .cardPopular-1 {
   background-image: url("/image/overwatch-1610865_1280.jpg"); }
@@ -397,9 +469,26 @@
 .GamePage button.button.mt-5 a {
   color: #ffffff; }
 
+.GamePage .btnViewMore {
+  background-color: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: unset;
+  height: 3rem; }
+
+.GamePage .btnViewMore:hover {
+  border: 2px solid black;
+  transition: color 0.25s; }
+
 .GamePage .linkViewMore {
   color: black; }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Profile.scss, Styles for user profile component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .Profile div i.fa.fa-star-o {
   color: #b86607; }
 
@@ -411,9 +500,76 @@
 .Profile .btnEditProf:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ProductRow.scss, Styles for product's row, the part of Products component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+.ProductRow .imageYourGame {
+  width: 250px;
+  height: 150px; }
 
+.ProductRow .card-body {
+  padding: 0; }
 
+.ProductRow .btnAddGame {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset;
+  width: 150px; }
 
+.ProductRow .btnAddGame:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+@media all and (max-width: 991px) {
+  .ProductRow .imageYourGame {
+    width: 100px;
+    height: 60px; } }
+
+@media all and (max-width: 700px) {
+  .ProductRow .imageYourGame {
+    width: 300px;
+    height: 150px; } }
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Products.scss, Styles for all user products component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+.Products .btnAddGame {
+  background-color: rgba(211, 211, 211, 0.2);
+  border: 1px solid black;
+  border-radius: unset; }
+
+.Products .btnAddGame:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+
+.Products #yourGame {
+  margin-top: 0.5rem;
+  margin-bottom: 3rem; }
+
+.Products .linkArticle {
+  color: black; }
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Orders.scss, Styles for all user orders component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: EditProfile.scss, Styles for edit user profile component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .EditProfile .inputEdit {
   border: 1px solid black;
   border-radius: unset; }
@@ -429,6 +585,13 @@
 .EditProfile .btnEdit:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ArticleRow.scss, Styles for article's row, the part of Articles component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .ArticleRow .imageYourArticle {
   width: 100px; }
 
@@ -443,6 +606,13 @@
 .ArticleRow .linkArticle {
   color: black; }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Articles.scss, Styles for all user articles component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .Articles .btnAddArticle {
   background-color: rgba(211, 211, 211, 0.2);
   border: 1px solid black;
@@ -458,6 +628,17 @@
 .Articles .linkArticle {
   color: black; }
 
+.Articles hr {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: AddProduct.scss, Styles for add and edit user product component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .AddProduct .inputAddProduct {
   border: 1px solid black;
   border-radius: unset; }
@@ -473,6 +654,13 @@
 .AddProduct .btnAddProduct:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: EditArticle.scss, Styles for add and edit user article component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .EditArticle .inputEditArticle {
   border: 1px solid black;
   border-radius: unset; }
@@ -488,6 +676,13 @@
 .EditArticle .btnEditArticle:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ChangePassword.scss, Styles for change user password component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .ChangePassword .formChangePassword {
   margin-top: 4rem;
   margin-left: 1rem; }
@@ -508,7 +703,71 @@
 .ChangePassword .btnPass:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: UserActivation.scss, Styles for user activation component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: UsersList.scss, Styles for all user list component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: PaymentConfirmation.scss, Style for payment confirmation admin component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: EditUserRights.scss, Styles for edit user right component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+/**
+ * Styles for messanger component
+ *
+ * file: Messanger.scss
+ * Created by: Oleg Smolovyk.
+ * Date: 10/11/2018
+ * Time: 15:56
+ */
+
+/**
+ * Styles for statistics user page
+ *
+ * file: Statistics.scss
+ * Created by: Oleg Smolovyk.
+ * Date: 10/11/2018
+ * Time: 15:55
+ */
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: UserPage.scss, Styles for user component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ArticleCard.scss, Styles for article's card- the part of all articles page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .ArticleCard .linkArticle {
   color: black; }
 
@@ -532,6 +791,13 @@
     width: 650px;
     height: 250px; } }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: AllArticlesPage.scss, Styles for all articles page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .AllBlogPage #article {
   margin-top: 5rem;
   margin-bottom: 5rem; }
@@ -540,6 +806,13 @@
   .AllBlogPage #article {
     margin-top: 3rem; } }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ArticlePage.scss, Styles for blog article page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .ArticlePage .articlePage {
   margin-top: 8rem; }
 
@@ -550,9 +823,28 @@
 .ArticlePage .page-footer {
   margin-top: 10rem; }
 
+.ArticlePage .css-adaptive {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: AboutPage.scss, Styles for about page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .AboutPage .map {
   height: 400px; }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ShoppingCart.scss, Styles for shopping cart component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 .ShoppingCart #myOrders {
   margin-top: 2rem;
   margin-bottom: 5rem; }
@@ -571,12 +863,62 @@
 .ShoppingCart .btnShopCart:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
 
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: MessageBox.scss, Styles for message box component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+.MessageBox .alert {
+  position: fixed;
+  background-color: white;
+  width: 60%;
+  top: 20%;
+  left: 20%;
+  border: 3px solid #ff6e00;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.1); }
+
+.MessageBox .imgWindow {
+  width: 30px;
+  height: 30px; }
+
+.MessageBox.showMessage {
+  display: block;
+  animation-name: fadeIn;
+  animation-duration: 2s; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.MessageBox.hideMessage {
+  display: none;
+  animation-name: fadeOut;
+  animation-duration: 2s; }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: App.scss, Styles for application component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
 html {
   height: 100%; }
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: Rubik, Russo One, sans-serif !important;
+  font-size: 18px;
   background-color: #ffffff;
   opacity: 0.9;
   height: 100%; }

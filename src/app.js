@@ -77,10 +77,10 @@ app.use(cookieParser());
 */
 
 // Register handlebars as the view engine to be used to render the templates
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 
 // Set the Location of the view templates
-app.set('views', __dirname + '/app/views');
+// app.set('views', __dirname + '/app/views');
 
 // Mount the routs to the app
 app.use('/', require('./app/routes/index.route'));
