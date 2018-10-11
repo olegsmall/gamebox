@@ -1,10 +1,9 @@
 /**
- * Edit user rights component
- *
- * file: EditUserRights.js
- * Created by: Oleg Smolovyk.
- * Date: 10/10/2018
- * Time: 12:49
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: EditUserRights.js, Edit user rights component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
  */
 
 import React from 'react';
@@ -23,9 +22,15 @@ export default class EditUserRights extends React.Component {
   }
 
   handleSubmitBan(values, actions){
-    axios.put(`/user/${userId}/status`, {state: 'activated'})
+
+    const req = {state: 'banned'};
+    if (values.banType === 'temporary'){
+      req.expires = values.daysOfBan;
+    }
+
+    axios.put(`/user/${this.props.userForEdit._id}/status`, req)
       .then((res) => {
-        this.getDeactivatedUsersList();
+        // this.getDeactivatedUsersList();
         this.props.showSystemMessage(res.data.message);
 
       })
@@ -36,15 +41,20 @@ export default class EditUserRights extends React.Component {
   }
 
   handleSubmitRole(values, actions){
-    axios.put(`/user/${userId}/status`, {state: 'activated'})
+    axios.put('/user/role', {
+      id: this.props.userForEdit._id,
+      role: values.role
+    })
       .then((res) => {
-        this.getDeactivatedUsersList();
+        // this.getDeactivatedUsersList();
         this.props.showSystemMessage(res.data.message);
+        actions.setSubmitting(false);
 
       })
       .catch((error) => {
-        console.log(error.response)
+        console.error(error.response);
         this.props.showSystemMessage(error.response.data.message, 'error');
+        actions.setSubmitting(false);
       });
   }
 
@@ -127,7 +137,7 @@ export default class EditUserRights extends React.Component {
 
         <Formik
           initialValues={{
-            role: 'user',
+            role: userForEdit.role,
           }}
           validationSchema={Yup.object().shape({
             role: Yup.string()
@@ -140,8 +150,8 @@ export default class EditUserRights extends React.Component {
               <h5 className="text-center">Users Role</h5>
               <div className="form-check mt-2">
                 <Field name="role" className="form-control" component="select">
-                  <option value="user">User</option>
-                  <option value="admin">Admin</option>
+                  <option value="User" selected={userForEdit.role === 'User'}>User</option>
+                  <option value="Administrator" selected={userForEdit.role === 'Administrator'}>Administrator</option>
                 </Field>
                 <ErrorMessage name="role">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>

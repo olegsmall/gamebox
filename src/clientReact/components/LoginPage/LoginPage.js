@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: LoginPage.js, Log in page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import {Redirect, Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
@@ -108,25 +116,6 @@ class LoginPage extends React.Component {
                 )}
               </Formik>
               <Link to={'/user/signup'}><p className="mt-3">Create your free GameBox Account</p></Link>
-              {/*<form>*/}
-              {/*<div className="form-row">*/}
-              {/*<div className="form-group col-md-6">*/}
-              {/*<button className="btn btn-primary btn-block btn-sm">*/}
-              {/*<a className="text-light" href="https://www.facebook.com/">*/}
-              {/*<i className="fa fa-facebook-square mr-2"></i>Continue with Facebook*/}
-              {/*</a>*/}
-              {/*</button>*/}
-              {/*</div>*/}
-              {/*<div className="form-group col-md-6">*/}
-              {/*<button className="btn btn-primary btn-block btn-sm">*/}
-              {/*<a className="text-light" href="https://www.google.ca/">*/}
-              {/*<i className="fa fa-google-plus-square mr-2"></i>Continue with Google*/}
-              {/*</a>*/}
-              {/*</button>*/}
-              {/*</div>*/}
-              {/*</div>*/}
-              {/*</form>*/}
-              {/*<p className="text-center text-light">OR</p>*/}
             </div>
           </div>
         </div>

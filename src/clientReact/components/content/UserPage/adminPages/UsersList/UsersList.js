@@ -1,10 +1,9 @@
 /**
- * All users list component
- *
- * file: UsersList.js
- * Created by: Oleg Smolovyk.
- * Date: 10/10/2018
- * Time: 13:27
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: UsersList.js, All users list component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
  */
 
 import React from 'react';
@@ -58,6 +57,8 @@ export default class UsersList extends React.Component {
           </thead>
           <tbody>
           {usersList.map((user) => {
+            if (user.role === 'SuperUser') return;
+
             return (
               <tr key={user._id}>
                 <td>{`${user.firstName} ${user.lastName}`}</td>
