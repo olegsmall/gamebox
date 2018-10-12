@@ -75,9 +75,25 @@ exports.getUsers = async function (req) {
   }
 };
 
+exports.getUsers = async function (req) {
+  // Try Catch the awaited promise to handle the error
+  try {
+    let users = User.findOne({_id: req.params.id}).select('-password');
+    // Return the user list that was returned by the mongoose promise
+    return users.then((docs) => {
+      if(docs === null) { throw Error('No users found'); }
+      return docs;
+    });
+  } catch (e) {
+    // return a Error message describing the reason
+    throw Error('Error at get users services');
+  }
+};
+
+
 exports.updateUserInfo = function (req) {
   try {
-    let promise = User.findById(req.user._id, {password: 0});
+    let promise = User.findById(req.user._id, {password: 0}).select('-password');
 
     return promise.then((user) => {
       if(user === null) { throw Error('User not found'); }

@@ -22,7 +22,7 @@ exports.createProduct = async function(req, res) {
   try {
     // Execute create product method.
     let newProduct = await ProductService.createProduct(req);
-    // Return created product with appropriate HTTP Status Code and Message.
+    // Return created product, appropriate HTTP Status Code and Message.
     return res.status(201).json({status: 201, product: newProduct, message: 'Product created successfully'});
   }catch(e){
     //Return Error Message with HTTP Status Code.
@@ -42,7 +42,7 @@ exports.getProducts = async function(req, res) {
   try {
     // Execute product search method.
     let products = await ProductService.getProducts(req);
-    // Return products list with appropriate HTTP Status Code and Message.
+    // Return products list, appropriate HTTP Status Code and Message.
     return res.status(200).json({status: 200, products: products, message: 'Products received'});
   } catch(e) {
     //Return Error Message with HTTP Status Code.
@@ -61,7 +61,7 @@ exports.getProduct = async function(req, res) {
   try {
     // Execute product search method.
     const product = await ProductService.getProduct(req.params.id);
-    // Return product with appropriate HTTP Status Code and Message.
+    // Return product, appropriate HTTP Status Code and Message.
     return res.status(200).json({status: 200, product: product, message: 'Product received'});
   }catch (e) {
     //Return Error Message with HTTP Status Code.
@@ -100,7 +100,7 @@ exports.updateProduct = async function(req, res) {
   try {
     // Execute product update method.
     let product = await ProductService.updateProduct(req);
-    // Return updated product with appropriate HTTP Status Code and Message.
+    // Return updated product, appropriate HTTP Status Code and Message.
     return res.status(201).json({status: 201, product: product, message: 'Product updated successfully'});
   } catch(e){
     //Return Error Message with HTTP Status Code.
@@ -138,7 +138,7 @@ exports.rateProduct = async function (req, res) {
   try {
     // Execute product rate method.
     let product = await ProductService.rateProduct(req);
-    // Return product with ratings and appropriate HTTP Status Code and Message.
+    // Return product, ratings and appropriate HTTP Status Code and Message.
     return res.status(201).json({status: 201, product: product, message: 'Product was successfully rated'});
   } catch (e) {
     //Return Error Message with HTTP Status Code.
