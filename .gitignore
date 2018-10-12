@@ -68,7 +68,7 @@ build/
 public/css/
 public/js/
 public/video/
-public/image/articles/
-public/image/avatars/
-public/image/products/
+#public/image/articles/
+#public/image/avatars/
+#public/image/products/
 public/bundle.js

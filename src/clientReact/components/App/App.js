@@ -81,7 +81,7 @@ class App extends React.Component {
         show: true,
       },
     });
-    setTimeout(() => this.hideSystemMessage(), 5000);
+    setTimeout(() => this.hideSystemMessage(), 7000);
   }
 
   hideSystemMessage() {
@@ -168,7 +168,11 @@ class App extends React.Component {
             />
             <Route
               path="/user/signup"
-              render={() => <SignUpPage/>}
+              render={(props) => <SignUpPage
+                {...props}
+                showSystemMessage={this.showSystemMessage}
+              />}
+
             />
             <Route
               exac path="/user"
@@ -188,6 +192,7 @@ class App extends React.Component {
                 {...props}
                 showSystemMessage={this.showSystemMessage}
                 getShoppingCart={this.getShoppingCart}
+                user={this.state.user}
               />}
             />
             <Route

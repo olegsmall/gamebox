@@ -152,7 +152,7 @@ class GamePage extends React.Component {
                       }
                       <ErrorMessage name="buyRent">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
                       <br/>
-                      <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to cart</button>
+                      {this.props.user && <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to cart</button>}
                     </Form>
                   )}
                 </Formik>
@@ -188,6 +188,37 @@ class GamePage extends React.Component {
                 </div>
                 <input type="submit" value="Send" className="btn btn-sm btn-block btnGameComments"/>
               </form>
+            </div>
+          </div>
+        </div>
+        {/*Section User reviews*/}
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h5 className="mt-5 mb-3">User Comments</h5>
+              <hr/>
+              <p>Svitlana Melnyk</p>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+                <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eius incidunt repellendus similique totam.
+                  Aliquid asperiores, cumque deserunt error est exercitationem, fugiat in iusto modi molestias,
+                  qui quidem quod repudiandae.
+                </p>
+                <small className="text-muted">Data</small>
+                <hr/>
             </div>
           </div>
         </div>
