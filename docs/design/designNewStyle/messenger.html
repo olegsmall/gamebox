@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Game Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="mr-5 ml-5">
+        <nav class="navbar navbar-expand-lg  navbar-lignt bg-light fixed-top navbar-inverse mid">
+            <a class="navbar-brand" href="#"><img src="image/logo1.png" width="40" height="40"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="false"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav mr-auto mt-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                </ul>
+
+                <a href="#"><img id="loupe" src="image/loupe.png" width="25" class="mr-4" alt=""></a>
+
+                <div class="dropdown">
+                    <a class="dropdown" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <a class="dropdown-item" id="Login" href="login.html">Log in</a>
+                        <a class="dropdown-item" id="SignUp" href="signUp.html">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Content image -->
+
+<div class="imageMain">
+    <img class="d-block w-100 imgMain" src="image/back6.jpg" alt="Main image">
+</div>
+</div>
+<h5 class="pt-4 mt-2 ml-5">Hi, user</h5>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <button class="mt-5  btn-block"><a href="#" class="pr-3 pl-3">Profile</a></button>
+            <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Change password</a></button>
+            <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Your orders</a></button>
+            <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Your games</a></button>
+            <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Your articles</a></button>
+            <button class="mt-2  btn-block"><a href="paymentConfirmationAdmin.html" class="pr-3 pl-3">Payment
+                confirmation</a></button>
+            <button class="mt-2  btn-block"><a href="userActivationAdmin.html" class="pr-3 pl-3">User Activation</a>
+            </button>
+            <button class="mt-2  btn-block"><a href="userListAdmin.html" class="pr-3 pl-3">User List</a></button>
+            <button class="mt-2  btn-block"><a href="messenger.html" class="pr-3 pl-3">Messenger</a></button>
+            <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Logout</a></button>
+
+        </div>
+        <div class="col-md-8 text-center">
+            <div class="h5 ml-5 mb-2 text-center text-sm-left">My messenger</div>
+            <form class="row">
+                <div class="col-md-9 mt-3">
+                    <label class="sr-only" for="emailFormInput"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">@</div>
+                        </div>
+                        <input type="email" class="form-control" id="emailFormInput"
+                               placeholder="email">
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <button type="submit" class="btn btn-block">send</button>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="inputMessageTitle"></label>
+                        <input type="text" class="form-control" id="inputMessageTitle" placeholder="message title">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <textarea class="form-control" rows="5" aria-label="messagearea"
+                                  placeholder="message text"></textarea>
+                    </div>
+                </div>
+            </form>
+            <form>
+                <div class="h5 ml-5 mb-2 mt-3 text-center text-sm-left">All my letters</div>
+                <table class="table table-sm mt-3">
+                    <tr>
+                        <th scope="row"><a href="#"><img src="image/write-3722611_640_in.png" width="40"></a></th>
+                        <td><a href="#">Mark</a></td>
+                        <td><a href="#">mark@gmail.com</a></td>
+                        <td><a href="#">salut</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#"><img src="image/write-3722611_640_out.png" width="40"></a></th>
+                        <td><a href="#">Fred</a></td>
+                        <td><a href="#">fred@gmail.com</a></td>
+                        <td><a href="#">Hi</a></td>
+                    </tr>
+                    <tr class="table-active">
+                        <th scope="row"><a href="#"><img src="image/write-3722611_640_out.png" width="40"></a></th>
+                        <td><a href="#">Svitlana</a></td>
+                        <td><a href="#">svitlana@gmail.com</a></td>
+                        <td><a href="#">Bla-bla-bla</a></td>
+                    </tr>
+                </table>
+                <div class="text_message_history"></div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--footer-->
+<footer id="footerLog" class="mt-5">
+    <!-- Footer Elements -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="line">
+                    <div class="line-border"><a href="#">Home</a></div>
+                    <div class="line-border"><a href="#">About</a></div>
+                    <div class="line-border"><a href="#">Games</a></div>
+                    <div class="line-border"><a href="#">Help</a></div>
+                    <div><a href="#">Blog</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-2">
+            <div class="col-md-6 text-center">
+                <div class="line">
+                    <p>© 2018 Copyright: Dream Team #1 with love</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script>
+  //menu
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').addClass('stickytop');
+    } else {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').removeClass('stickytop');
+    }
+  });
+
+</script>
+
+</body>
+</html>
