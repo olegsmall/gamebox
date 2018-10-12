@@ -28,7 +28,6 @@ export default class Statistics extends React.Component {
   getStatistic(){
     axios.get('/user/statistics')
       .then((res) => {
-        console.log(res.data)
         this.setState({statistics: res.data.statistics});
       })
       .catch((error) => {
