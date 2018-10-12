@@ -17,16 +17,12 @@ require('./LoginPage.scss');
 class LoginPage extends React.Component {
 
   handleSubmit(values, actions) {
-    console.log("Values of login");
-    console.log(values);
     const self = this;
     axios.post('/user/login', {
       email: values.email,
       password: values.password,
     })
       .then(function (res) {
-        console.log('login response: ');
-        console.log(res);
         if (res.status === 200) {
           actions.setSubmitting(false);
           // update app.js state

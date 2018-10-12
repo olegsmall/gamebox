@@ -26,8 +26,6 @@ import MessageBox from "../common/MessageBox/MessageBox";
 
 require('./App.scss');
 
-// require('../../css/main.scss');
-
 //New syntax can be used for components with state or life cycle methods
 class App extends React.Component {
   //we can use constructor for initializing state properties
@@ -83,7 +81,7 @@ class App extends React.Component {
         show: true,
       },
     });
-    setTimeout(() => this.hideSystemMessage(), 5000);
+    setTimeout(() => this.hideSystemMessage(), 7000);
   }
 
   hideSystemMessage() {
@@ -170,7 +168,11 @@ class App extends React.Component {
             />
             <Route
               path="/user/signup"
-              render={() => <SignUpPage/>}
+              render={(props) => <SignUpPage
+                {...props}
+                showSystemMessage={this.showSystemMessage}
+              />}
+
             />
             <Route
               exac path="/user"
@@ -190,6 +192,7 @@ class App extends React.Component {
                 {...props}
                 showSystemMessage={this.showSystemMessage}
                 getShoppingCart={this.getShoppingCart}
+                user={this.state.user}
               />}
             />
             <Route

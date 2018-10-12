@@ -111,6 +111,11 @@ a #loupe:focus{
     top		: 200px;
     left		: 0;
     width		: 100%;
+    /*font-family: 'Teko', sans-serif;*/
+    /*font-family: 'Notable', sans-serif;*/
+    /*font-family: 'Archivo Black', sans-serif;*/
+    /*font-family: 'Orbitron', sans-serif;*/
+    font-family: 'Russo One', sans-serif;!important;
 }
 .promo button.button {
     position	: absolute;

@@ -81,7 +81,7 @@ class AddArticle extends React.Component {
     }
 
     return (
-      <div className={'EditArticle'}>
+      <div className={'EditArticle col-md-8 text-center'}>
         <h2 className="text-center mt-4">Add Article</h2>
         <Formik
           initialValues={initialValues}

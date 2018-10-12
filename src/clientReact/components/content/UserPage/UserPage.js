@@ -71,8 +71,6 @@ class UserPage extends React.Component {
     const firstName = (this.props.user !== null) ? this.props.user.firstName : '';
     const lastName = (this.props.user !== null) ? this.props.user.lastName : '';
 
-    console.log(this.props.user)
-
     let inner = '';
     switch (this.state.innerComponent) {
       case 'Profile':
@@ -256,9 +254,7 @@ class UserPage extends React.Component {
                 </a>
               </button>
             </div>
-            <div className="col-md-8 text-center">
-              {inner}
-            </div>
+            {inner}
           </div>
         </div>
       </div>

@@ -6,3 +6,16 @@
  * Date: 10/11/2018
  * Time: 15:56
  */
+
+.Messenger{
+  .cursor-pointer{
+    cursor: pointer;
+  }
+  .text_message_history{
+    width: auto;
+    height: 100px;
+    border: 1px solid grey;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+}
