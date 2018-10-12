@@ -191,6 +191,37 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
+        {/*Section User reviews*/}
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h5 className="mt-5 mb-3">User Comments</h5>
+              <hr/>
+              <p>Svitlana Melnyk</p>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+              <div className="form-check form-check-inline">
+                <span><i className="fa fa-star-o"></i></span>
+              </div>
+                <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eius incidunt repellendus similique totam.
+                  Aliquid asperiores, cumque deserunt error est exercitationem, fugiat in iusto modi molestias,
+                  qui quidem quod repudiandae.
+                </p>
+                <small className="text-muted">Data</small>
+                <hr/>
+            </div>
+          </div>
+        </div>
         {/*Section Most Popular*/}
         <div className="container mb-5">
           <h5 className="mt-4 ml-5 text-center">Most popular</h5>
