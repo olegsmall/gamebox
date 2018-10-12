@@ -4,10 +4,8 @@ const UserService = require('../services/user.services');
 
 exports.createUser = async function(req, res, next) {
   try {
-    console.log('Creating new User');
-    console.log(req.file);
     let newUser = await UserService.createUser(req, res, next);
-    return res.status(201).json({status: 201, data: newUser, message: 'User Created Successfully'});
+    return res.status(201).json({status: 201, data: newUser, message: 'User Created Successfully, please wait until administrator activated your account'});
 
   }catch(e){
     // if (e.code === 400)

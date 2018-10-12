@@ -28,10 +28,14 @@ class SignUpPage extends React.Component {
 
     Axios.post('/user', formData)
       .then((res) => {
+        console.log(res.data)
+        this.props.showSystemMessage(res.data.message);
         actions.setSubmitting(false);
+        this.props.history.push('/');
       })
       .catch((error) => {
         console.log(error);
+        this.props.showSystemMessage(error.response.data.message, 'error');
         actions.setSubmitting(false);
       });
   }
