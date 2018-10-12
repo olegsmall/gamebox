@@ -256,9 +256,10 @@ class UserPage extends React.Component {
                 </a>
               </button>
             </div>
-            <div className="col-md-8 text-center">
-              {inner}
-            </div>
+            {inner}
+            {/*<div className="col-md-8 text-center">*/}
+              {/**/}
+            {/*</div>*/}
           </div>
         </div>
       </div>

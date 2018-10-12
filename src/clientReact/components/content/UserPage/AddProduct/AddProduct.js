@@ -120,7 +120,7 @@ class AddProduct extends React.Component {
     }
 
     return (
-      <div className={'AddProduct'}>
+      <div className={'AddProduct col-md-8 text-center'}>
         <h2 className="text-center mt-4">Add game</h2>
         <Formik
           initialValues={initialValues}

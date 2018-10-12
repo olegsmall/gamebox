@@ -45,7 +45,7 @@ class EditProfile extends React.Component {
   render() {
 
     return (
-      <div className={'EditProfile'}>
+      <div className={'EditProfile col-md-8 text-center'}>
         <Formik
           initialValues={{
             avatar: null,

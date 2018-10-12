@@ -34,7 +34,7 @@ class ChangePassword extends React.Component {
   render() {
 
     return (
-      <div className={'ChangePassword'}>
+      <div className={'ChangePassword col-md-8 text-center'}>
         <Formik
           initialValues={{
             password: '',
