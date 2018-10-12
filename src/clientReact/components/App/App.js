@@ -26,8 +26,6 @@ import MessageBox from "../common/MessageBox/MessageBox";
 
 require('./App.scss');
 
-// require('../../css/main.scss');
-
 //New syntax can be used for components with state or life cycle methods
 class App extends React.Component {
   //we can use constructor for initializing state properties

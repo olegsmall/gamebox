@@ -19,7 +19,7 @@ export default class Statistics extends React.Component {
     super(props);
 
     this.state = {
-      statistic: null,
+      statistics: null,
     };
 
     this.getStatistic();
@@ -29,7 +29,7 @@ export default class Statistics extends React.Component {
     axios.get('/user/statistics')
       .then((res) => {
         console.log(res.data)
-        this.setState({statistic: res.data.statistics});
+        this.setState({statistics: res.data.statistics});
       })
       .catch((error) => {
         console.error(error.response);
@@ -39,8 +39,8 @@ export default class Statistics extends React.Component {
 
   render() {
 
-    const {statistic} = this.state;
-    if (!statistic) {
+    const {statistics} = this.state;
+    if (!statistics) {
       return (
         <div className="col-md-8 text-center mt-5">
           No statistic available
@@ -49,8 +49,40 @@ export default class Statistics extends React.Component {
     }
 
     return (
-      <div>
-
+      <div className="col-md-8 text-center mt-5">
+        <div className="card">
+          <h5 className="card-header text-center">Statistics</h5>
+          <ul className="list-group">
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Added products
+              <span className="badge badge-primary badge-pill">{statistics.products_added}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Sold Products
+              <span className="badge badge-primary badge-pill">{statistics.sold}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Rented products
+              <span className="badge badge-primary badge-pill">{statistics.rented}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Ordered products
+              <span className="badge badge-primary badge-pill">{statistics.ordered}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Posted articles
+              <span className="badge badge-primary badge-pill">{statistics.posted_articles}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Commented articles
+              <span className="badge badge-primary badge-pill">{statistics.commented_articles}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Commented products
+              <span className="badge badge-primary badge-pill">{statistics.commented_products}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }
