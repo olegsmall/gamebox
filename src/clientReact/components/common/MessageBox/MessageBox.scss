@@ -1,13 +1,21 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: MessageBox.scss, Styles for message box component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 .MessageBox{
   .alert {
     //display: none;
     position:fixed;
     background-color: white;
     width: 60%;
-    top:15%;
+    top:20%;
     left:20%;
-    border: 1px solid lightgray;
-    //box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    border: 3px solid #ff6e00;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     //animation-name: fadeInOut;
     //animation-duration: 5s;
   }

@@ -1,3 +1,12 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: AboutPage.js, About page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -42,22 +51,22 @@ const AboutPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-3">
-              <img src="/image/hero-select-portrait1.png" alt="" className="img-fluid rounded-circle mb-2"/>
+              <img src="/image/woman-157604_640.png" alt="" className="img-fluid rounded-circle mb-2"/>
                 <h4>Svitlana Melnyk</h4>
                 <p>Front-end Developer</p>
             </div>
             <div className="col-md-3">
-              <img src="/image/hero-select-portrait2.png" alt="" className="img-fluid rounded-circle mb-2"/>
+              <img src="/image/actress-1295681_640.png" alt="" className="img-fluid rounded-circle mb-2"/>
                 <h4>Iana Kravchenko</h4>
                 <p>Front-end Developer</p>
             </div>
             <div className="col-md-3">
-              <img src="/image/hero-select-portrait4.png" alt="" className="img-fluid rounded-circle mb-2"/>
+              <img src="/image/american-1295880_640.png" alt="" className="img-fluid rounded-circle mb-2"/>
                 <h4>Oleg Smolovyk</h4>
                 <p>Back-end Developer</p>
             </div>
             <div className="col-md-3">
-              <img src="/image/hero-select-portrait3.png" alt="" className="img-fluid rounded-circle mb-2"/>
+              <img src="/image/face-2130591_640.png" alt="" className="img-fluid rounded-circle mb-2"/>
                 <h4>Piotr Iablocichin</h4>
                 <p>Back-end Developer</p>
             </div>

@@ -1,10 +1,21 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: App.scss, Styles for application component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Rubik|Russo+One');
+
 html {
   height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: Rubik, Russo One, sans-serif !important;
+  font-size: 18px;
   background-color: #ffffff;
   opacity: 0.9;
   height: 100%;
@@ -76,4 +87,3 @@ hr {
   border-right: 1px solid black;
 }
 
-//.App{}

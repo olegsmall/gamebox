@@ -64,3 +64,11 @@ typings/
 *.tmp
 ~*.docx
 package-lock.json
+build/
+public/css/
+public/js/
+public/video/
+public/image/articles/
+public/image/avatars/
+public/image/products/
+public/bundle.js

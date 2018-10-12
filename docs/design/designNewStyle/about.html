@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Game Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="mr-5 ml-5">
+        <nav class="navbar navbar-expand-lg  navbar-lignt bg-light fixed-top navbar-inverse mid">
+            <a class="navbar-brand" href="#"><img src="image/logo1.png" width="40" height="40"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="false"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav mr-auto mt-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                </ul>
+
+                <form>
+                    <input type="text" name="search" class="inputSearch">
+                        <img id="btn" src="image/loupe.png" width="25" class="mr-4 btnSearch" alt="">
+                </form>
+
+
+                <div class="dropdown">
+                    <a class="dropdown" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <a class="dropdown-item" id="Login" href="login.html">Log in</a>
+                        <a class="dropdown-item" id="SignUp" href="signUp.html">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- About -->
+<div>
+    <img class="img-fluid d-block w-100 imgMain" src="image/junYN7V.png" alt="About image">
+</div>
+<div id="gameContent">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h3 class="my-5 text-center">About us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores beatae dicta enim et ex facere
+                    id necessitatibus odit omnis, optio quae quam qui quia quis quisquam saepe unde vitae?
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
+                    delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae, saepe,
+                    similique sit tempora voluptas.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid animi aperiam blanditiis
+                    delectus facilis harum impedit ipsam laudantium magnam obcaecati officiis omnis quidem recusandae, saepe,
+                    similique sit tempora voluptas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="my-5 text-center">Our Team</h3>
+        </div>
+    </div>
+</div>
+
+<section id="team" class="py-5 text-center bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="image/actress-1295681_640.png" alt="" class="img-fluid rounded-circle mb-2">
+                <h4>Jane Doe</h4>
+                <small>Front-end Developer</small>
+            </div>
+            <div class="col-md-3">
+                <img src="image/woman-157604_640.png" alt="" class="img-fluid rounded-circle mb-2">
+                <h4>Sara Williams</h4>
+                <small>Front-end Developer</small>
+            </div>
+            <div class="col-md-3">
+                <img src="image/american-1295880_640.png" alt="" class="img-fluid rounded-circle mb-2">
+                <h4>John Doe</h4>
+                <small>Back-end Developer</small>
+            </div>
+            <div class="col-md-3">
+                <img src="image/face-2130591_640.png" alt="" class="img-fluid rounded-circle mb-2">
+                <h4>Steve Smith</h4>
+                <small>Back-end Developer</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="my-5 text-center">Our Location</h3>
+            <div class="embed-responsive embed-responsive-21by9 mb-5 map">
+                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.7950433447754!2d-73.60585134501659!3d45.47393248108342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc910a4eeac20d9%3A0x3071b1016ea7a0e2!2s2001+Avenue+de+Marlowe%2C+Montr%C3%A9al%2C+QC+H4A+3L4!5e0!3m2!1sen!2sca!4v1504288018264" width="1110"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--footer-->
+<footer class="page-footer font-small teal pt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center py-2">
+            <div class="line text-light">
+                <div class="line-border"><a href="#" class="text-light">Home</a></div>
+                <div class="line-border"><a href="#" class="text-light">About</a></div>
+                <div class="line-border"><a href="#" class="text-light">Games</a></div>
+                <div class="line-border"><a href="#" class="text-light">Help</a></div>
+                <div><a href="#" class="text-light">Blog</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Elements -->
+    <div class="container text-center">
+        <div class="py-4">
+            <div>
+                <a class="fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3"> </i></a>
+                <a class="tw-ic"> <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3"></i></a>
+                <a class="gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3"></i> </a>
+                <a class="li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3"></i></a>
+                <a class="ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3"></i> </a>
+                <a class="pin-ic"><i class="fa fa-pinterest fa-lg white-text"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-3 text-light">© 2018 Copyright: Dream Team #1 with love</div>
+</footer>
+
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+<script>
+  //menu
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').addClass('stickytop');
+    } else {
+      $('header nav.navbar.navbar-expand-lg.navbar.fixed-top.navbar-inverse.mid').removeClass('stickytop');
+    }
+  });
+
+  $(document).ready(function(){
+    $(".btnSearch").click(function(){
+      $(".inputSearch").toggle(1000, "linear");
+    });
+  });
+</script>
+
+<!-- Carousel script -->
+<script>
+  let mySwiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+</body>
+</html>

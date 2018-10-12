@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Header.js, Header component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 // import ReactPropTypes from 'prop-types';
 import AuthPanel from './AuthPanel';
@@ -35,15 +43,12 @@ class Header extends React.Component {
     this.headerAnimation();
   }
 
-
   render() {
-
-    // let headerNavClasses = "navbar navbar-expand-lg  navbar-lignt bg-light fixed-top navbar-inverse mid";
-    // headerNavClasses += this.state.headerStickToTop ? "stickytop" : "";
 
     return (
       <header className={"Header"}>
         <div className="mr-5 ml-5">
+          {/*Logo*/}
           <nav className={`navbar navbar-expand-lg  navbar-lignt fixed-top navbar-inverse mid ${this.state.headerStickToTop ? "stickytop" : ""} `}>
             <Link className="navbar-brand" to={'/'}>
               <img src="/image/logo11.png" width="40" height="40"/>
@@ -58,6 +63,7 @@ class Header extends React.Component {
               aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"><i className="fa fa-bars" aria-hidden="false"></i></span>
             </button>
+            {/*Menu*/}
             <div className="collapse navbar-collapse" id="navbarToggler">
               <ul className="navbar-nav mr-auto mt-sm-0">
                 <li className="nav-item">
@@ -73,11 +79,13 @@ class Header extends React.Component {
                   <Link className="nav-link" to={'/article'}>Blog</Link>
                 </li>
               </ul>
+              {/*Search*/}
               <form>
                 <input type="text" name="search" className="inputSearch" ref="inputSearch"/>
                 <img src="image/loupe.png" width="25" className="mr-4 btnSearch" alt="Loupe"
                      onClick={this.showSearchPanel.bind(this)}/>
               </form>
+              {/*Dropdown Menu*/}
               <div className="dropdown">
                 <a className="dropdown"
                    id="dropdownMenu"
@@ -86,6 +94,7 @@ class Header extends React.Component {
                    aria-expanded="false">
                   <i className="fa fa-user-plus" aria-hidden="true"></i>
                 </a>
+                {/*Section for user authorization*/}
                 <AuthPanel
                   history={this.props.history}
                   logoutUser={this.props.logoutUser}
@@ -93,32 +102,14 @@ class Header extends React.Component {
                   user={this.props.user}
                 />
               </div>
+              {/*Cart*/}
               <div className="img-fluid">
                 <div>
-                  <div className="basketNumber">5</div>
+                  <div className="basketNumber">{this.props.shoppingCart.products ? this.props.shoppingCart.products.length : 0}</div>
                 </div>
                 <Link to={'/cart'}><img src="image/shopBag1.png" width="25" className="imgBasket"/></Link>
               </div>
             </div>
-
-            {/*<form className="form-inline mt-2">*/}
-            {/*<AuthPanel*/}
-            {/*history={this.props.history}*/}
-            {/*logoutUser={this.props.logoutUser}*/}
-            {/*loggedIn={this.props.loggedIn}*/}
-            {/*user={this.props.user}*/}
-            {/*/>*/}
-            {/*<input*/}
-            {/*className="form-control-sm mr-sm-2"*/}
-            {/*type="search"*/}
-            {/*placeholder="Search"*/}
-            {/*aria-label="Search"/>*/}
-            {/*<button*/}
-            {/*className="btn btn-sm btn-outline-success my-2 my-sm-0"*/}
-            {/*type="submit">*/}
-            {/*Search*/}
-            {/*</button>*/}
-            {/*</form>*/}
           </nav>
         </div>
       </header>

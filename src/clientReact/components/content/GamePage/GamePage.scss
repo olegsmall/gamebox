@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: GamePage.scss, Styles for game page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 .GamePage{
   #gamePage {
     margin-top: 2rem;
@@ -11,7 +19,7 @@
     box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
   }
 
-
+  //Product Details
   .imageMainGame {
     border: 1px solid gray;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
@@ -30,10 +38,6 @@
     background-color: rgba(211,211,211,0.2);
     border: 1px solid black;
     border-radius: unset;
-  }
-
-  .btnProduct {
-    margin-left: 1rem;
   }
 
   .btnProduct:hover, .btnGameComments:hover {
@@ -65,20 +69,7 @@
     margin-bottom: 1rem;
   }
 
-
-  .btnViewMore {
-    background-color: transparent;
-    border: 2px solid rgba(0, 0, 0, 0.5);
-    border-radius: unset;
-    height: 3rem;
-  }
-
-  .btnViewMore:hover {
-    border: 2px solid black;
-    transition: color 0.25s;
-  }
-
-  //Most Populer section
+  //Most Popular section
   .cardPopular-1 {
     background-image: url("/image/overwatch-1610865_1280.jpg");
   }
@@ -181,6 +172,18 @@
     color: #ffffff;
   }
 
+  //Button View More
+  .btnViewMore {
+    background-color: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: unset;
+    height: 3rem;
+  }
+
+  .btnViewMore:hover {
+    border: 2px solid black;
+    transition: color 0.25s;
+  }
   .linkViewMore {
     color: black;
   }

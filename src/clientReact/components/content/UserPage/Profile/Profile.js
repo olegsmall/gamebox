@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Profile.js, User profile component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 
 require('./Profile.scss');
@@ -20,7 +28,7 @@ class Profile extends React.Component {
 
 
     return (
-      <div className={"Profile"}>
+      <div className={"Profile col-md-8 text-center"}>
         <img src={avatar} alt="avatar" width="100" height="100" className="mt-4"/>
         <div className="mt-2 mb-2">
           <i className="fa fa-star-o"></i>

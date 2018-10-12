@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ProductCard.js, Product's card- the part of all games page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -9,29 +17,34 @@ class ProductCard extends React.Component {
   render() {
     const product = this.props.product;
 
-    const genres = product.genres.map(genre => genre.name + ' ');
+    const genres = product.genres.map(genre => genre.name).join(', ');
 
     return (
-      <div className="ProductCard">
+      <div className="ProductCard col-sm-6 col-lg-4 col-xl-3 mb-4 cardDiv">
         <Link className="aBlack" to={'/product/' + product._id}>
-          <div className="card h-100 imgBorder cardAllGame">
+          <div className="card imgBody cardAllGame">
             <div className="img-fluid">
-              <div className="imageStar">
-                <div className="paragraphV text-light pl-2">4,5</div>
-              </div>
-              <img className="card-img-top" src={'image/' + product.images[0]} alt={product.title}/>
+              {product.average_rating > 0
+                ? <div className="imageStar">
+                    <div className="paragraphV text-light pl-2">4,5</div>
+                  </div>
+                : ''
+              }
+              <img className="card-img-top imgBorder" src="/image/img1.jpg"/>
             </div>
-
-            <div className="card-body imgBody">
+            <div className="card-body">
               <h5 className="card-title text-center">{product.title}</h5>
-              <div className="text-center">Genre : {genres}</div>
-              <p className="text-center">Rent/Buy : {}$/{}$</p>
               <div className="text-center mt-1">
-                <div>Rent<span className="btnPrice ml-2 pl-1 pr-1">  10$/day</span></div>
-                <div>Buy<span className="btnPrice ml-2 pl-1 pr-1">  55$</span></div>
-                <button className="btn-block mt-2"><a href="#" className="pr-3 pl-3">add to cart</a>
-                </button>
+                {product.price.rent
+                  ? <div>Rent: <span className="btnPrice ml-2 pl-1 pr-1">{product.price.rent}$/day</span></div>
+                  : ''
+                }
+                {product.price.sell
+                  ? <div>Buy: <span className="btnPrice ml-2 pl-1 pr-1">{product.price.sell}$</span></div>
+                  : ''
+                }
               </div>
+              <div className="text-center">Genre : {genres}</div>
             </div>
           </div>
         </Link>

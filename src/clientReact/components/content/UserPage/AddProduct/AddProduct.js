@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: AddProduct.js, Add and edit user product component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import axios from 'axios';
 import {Formik, Field, Form, ErrorMessage} from 'formik';
@@ -112,7 +120,7 @@ class AddProduct extends React.Component {
     }
 
     return (
-      <div className={'AddProduct'}>
+      <div className={'AddProduct col-md-8 text-center'}>
         <h2 className="text-center mt-4">Add game</h2>
         <Formik
           initialValues={initialValues}

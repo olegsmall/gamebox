@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: GamePage.js, Game page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import axios from 'axios';
 import Carousel from "./Carousel/Carousel";
@@ -35,19 +43,22 @@ class GamePage extends React.Component {
   }
 
   handleSubmit(values, actions) {
-    console.log(values)
-    axios.post('/cart/' + this.state.product._id, {
-      deal_type: 'for sale',
-    })
+    const{buyRent, duration} = values;
+    const req = {};
+    req.deal_type = buyRent === 'buy' ? 'for sale' : 'for rent';
+    req.rent_duration = buyRent === 'rent' ? duration : undefined;
+
+    axios.post('/cart/' + this.state.product._id, req)
       .then((res) => {
         console.log(res);
         this.props.showSystemMessage(res.data.message);
-        // this.props.changeInner('Profile');
         actions.setSubmitting(false);
+        this.props.getShoppingCart();
+        this.props.history.push('/product');
       })
       .catch((error) => {
-        console.log(error);
-        this.props.showSystemMessage(res.data.message);
+        console.log(error.response);
+        this.props.showSystemMessage(error.response.data.message, 'error');
         actions.setSubmitting(false);
       });
   }
@@ -78,8 +89,13 @@ class GamePage extends React.Component {
           <div className="container mb-4">
             <div className="row">
               <div className="col-md-6 sectionImage">
-                <img className="img-fluid imageMainGame" src={images[0]} alt={title}/>
+                <div className="blowup">
+                  <img className="img-fluid imageMainGame mb-3" src={images[0]} alt={title}/>
+                </div>
+                {/*Section Carousel*/}
+                <Carousel/>
               </div>
+              {/*Section Product details*/}
               <div className="col-md-6 text-center text-md-left">
                 <div className=" mt-4 mt-md-0 mb-3 pl-3">
                   <div className="form-check form-check-inline">
@@ -105,19 +121,38 @@ class GamePage extends React.Component {
                 <Formik
                   initialValues={{
                     buyRent: '',
+                    duration: 10,
                   }}
                   validationSchema={Yup.object().shape({
                     buyRent: Yup.string()
                       .required('* Select the type of purchase'),
+                    duration: Yup.number()
+                      .when('buyRent', {
+                        is: val => val==='rent',
+                        then: Yup.number()
+                          .integer('* Duration must be an integer')
+                          .positive('* Duration must be positive')
+                          .min(1, '* You cat rent minimum for 1 day')
+                          .required('* Duration is required'),
+                        otherwise: Yup.number().notRequired(),
+                      })
                   })}
                   onSubmit={(values, actions) => this.handleSubmit(values, actions)}
                 >
                   {({values, isSubmitting}) => (
                     <Form className="mb-3 pl-3">
-                      {sellPrice && <label><Field type="radio" name="buyRent" value="buy"/>Buy</label>}
-                      {rentPrice && <label><Field type="radio" className="ml-3" name="buyRent" value="rent"/>Rent</label>}
+                      {sellPrice && <div><label><Field type="radio" name="buyRent" value="buy"/>Buy</label></div>}
+                      {rentPrice &&
+                      <div>
+                        <label>
+                          <Field type="radio" className="mr-2" name="buyRent" value="rent"/>Rent
+                        </label>
+                        <Field type="number" className="ml-3" name="duration" placeholder="Enter the number of days"/>
+                      </div>
+                      }
                       <ErrorMessage name="buyRent">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
-                      <button type="submit" className="btn w-50 mt-2 btnProduct">Add to cart</button>
+                      <br/>
+                      <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to cart</button>
                     </Form>
                   )}
                 </Formik>
@@ -135,13 +170,7 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col">
-              <Carousel/>
-            </div>
-          </div>
-        </div>
+        {/*Section Comments*/}
         <div className="container mt-5">
           <div className="row">
             <div className="col-md-6 text-nowrap">
@@ -162,7 +191,7 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-
+        {/*Section Most Popular*/}
         <div className="container mb-5">
           <h5 className="mt-4 ml-5 text-center">Most popular</h5>
           <div className="card-deck mt-4">
@@ -189,7 +218,7 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-
+        {/*Button View More*/}
         <div className="container my-4">
           <div className="row justify-content-center">
             <div className="col-md-2">

@@ -1,3 +1,12 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ProductRow.js, Product's row, the part of Products component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
+
 import React from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -18,22 +27,21 @@ class ProductRow extends React.Component {
 
     const {product} = this.props;
     return (
-      <div className={'ProductRow col-md-6'}>
-            <Link className="linkArticle" to={`/product/${product._id}`}>
-              <div className={'card cardProduct'}>
-                <img className="card-img-top imgProduct" src={product.images[0]} alt={product.title}/>
-                <div className="card-body">
-                  <h5 className="card-title">{product.title}</h5>
-                  <p className="card-text">{product.description.substring(0, 25)}</p>
+      <div>
+        <Link className="linkArticle" to={`/product/${product._id}`}>
+          <div className={'card border-0'}>
+              <div className={'ProductRow'}>
+                <div className="card-body text-center text-md-left">
+                  <img className="img-fluid float-md-left mr-5 imageYourGame" src={product.images[0]} alt={product.title}/>
+                  <h5 className="card-title mt-3 mt-md-0">{product.title}</h5>
+                  {/*<p className="card-text text-left">{product.description.substring(0, 25)}</p>*/}
+                  <p className="card-text">{product.genres.join(' ')}</p>
+                  <a className="linkArticle btn my-2 btnAddGame" href={''}>Edit Game</a>
                 </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">{product.genres.join(' ')}</li>
-                  <li className="list-group-item">Selling price: {product.price.sell}$</li>
-                  <li className="list-group-item">Rent price: {product.price.rent}$</li>
-                </ul>
               </div>
-            </Link>
-            <a className="linkArticle btn w-50 my-3 btnAddGame" href={''}>Edit Game</a>
+          </div>
+        </Link>
+        <hr/>
       </div>
     );
   }

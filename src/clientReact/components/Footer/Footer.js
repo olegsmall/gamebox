@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Footer.js, Footer component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -5,8 +13,8 @@ require('./Footer.scss');
 
 const Footer = () => {
   return (
-    <div className={'Footer mt-auto'}>
-      <footer className="page-footer font-small teal pt-2">
+    <div className='Footer mt-auto'>
+      <footer className="page-footer font-small teal pt-2 mt-5">
         <div className="row justify-content-center">
           <div className="col-md-6 text-center py-2">
             <div className="line text-light">

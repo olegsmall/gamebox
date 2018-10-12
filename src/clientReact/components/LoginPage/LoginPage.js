@@ -1,44 +1,26 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: LoginPage.js, Log in page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import {Redirect, Link, withRouter} from 'react-router-dom';
-import Axios from 'axios';
+import axios from 'axios';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 
 require('./LoginPage.scss');
 
 class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   userEmail: '',
-    //   userPassword: '',
-    // };
-
-    // this.handleInputChange = this.handleInputChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  // handleInputChange(event) {
-  //   const target = event.target;
-  //   // const value = target.type === 'checkbox' ? target.checked : target.value;
-  //   const value = target.value;
-  //   const name = target.name;
-  //
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // }
 
   handleSubmit(values, actions) {
-    // event.preventDefault();
-
-    // setTimeout(() => {
-    //   alert(JSON.stringify(values, null, 2));
-    //   setSubmitting(false);
-    // }, 400);
-
+    console.log("Values of login");
+    console.log(values);
     const self = this;
-    Axios.post('/user/login', {
+    axios.post('/user/login', {
       email: values.email,
       password: values.password,
     })
@@ -61,7 +43,7 @@ class LoginPage extends React.Component {
         actions.setSubmitting(false);
         alert('User name or password is incorrect!');
         console.log('login error: ');
-        console.log(error);
+        console.log(error.response);
       });
   }
 
@@ -107,7 +89,8 @@ class LoginPage extends React.Component {
                         value={values.email}
                         formNoValidate={true}
                       />
-                      <small className="form-text text-left error">{errors.email && touched.email && errors.email}</small>
+                      <small
+                        className="form-text text-left error">{errors.email && touched.email && errors.email}</small>
                     </div>
                     <div className="form-group">
                       <input
@@ -119,7 +102,8 @@ class LoginPage extends React.Component {
                         onBlur={handleBlur}
                         value={values.password}
                       />
-                      <small className="form-text text-left error">{errors.password && touched.password && errors.password}</small>
+                      <small
+                        className="form-text text-left error">{errors.password && touched.password && errors.password}</small>
                     </div>
                     <button
                       type="submit"
@@ -132,25 +116,6 @@ class LoginPage extends React.Component {
                 )}
               </Formik>
               <Link to={'/user/signup'}><p className="mt-3">Create your free GameBox Account</p></Link>
-              {/*<form>*/}
-                {/*<div className="form-row">*/}
-                  {/*<div className="form-group col-md-6">*/}
-                    {/*<button className="btn btn-primary btn-block btn-sm">*/}
-                      {/*<a className="text-light" href="https://www.facebook.com/">*/}
-                        {/*<i className="fa fa-facebook-square mr-2"></i>Continue with Facebook*/}
-                      {/*</a>*/}
-                    {/*</button>*/}
-                  {/*</div>*/}
-                  {/*<div className="form-group col-md-6">*/}
-                    {/*<button className="btn btn-primary btn-block btn-sm">*/}
-                      {/*<a className="text-light" href="https://www.google.ca/">*/}
-                        {/*<i className="fa fa-google-plus-square mr-2"></i>Continue with Google*/}
-                      {/*</a>*/}
-                    {/*</button>*/}
-                  {/*</div>*/}
-                {/*</div>*/}
-              {/*</form>*/}
-              {/*<p className="text-center text-light">OR</p>*/}
             </div>
           </div>
         </div>

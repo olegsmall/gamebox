@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: AllGamesPage.js, all games page component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import axios from 'axios';
 import ProductCard from './ProductCard/ProductCard';
@@ -34,7 +42,7 @@ class AllGamesPage extends React.Component {
         </div>
         <div id="games" className="container mb-5">
           <h2 className="mb-4 mt-4 text-center">Games</h2>
-          <div className="card-deck">
+          <div className="row">
 
             {this.state.products.map((product, index) => (
               <ProductCard key={product._id} product={product}/>

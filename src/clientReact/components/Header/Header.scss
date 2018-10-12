@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Header.scss, Styles for header and authorization panel components
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 .Header {
   .stickytop {
     transform: translateY(0px);
@@ -35,6 +43,12 @@
     tab-size: 20px;
   }
 
+  #dropdownMenu i.fa.fa-user-plus {
+    color: #000000;
+    font-size: 23px;
+  }
+
+  //Search
   .btnSearch {
     background-color: unset;
     border: none;
@@ -49,23 +63,12 @@
     width: 22rem;
   }
 
-  #dropdownMenu i.fa.fa-user-plus {
-    color: #000000;
-    font-size: 23px;
-  }
-
   img.searchImg {
     background-position: 10px 10px;
     background-repeat: no-repeat;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     margin-right: 2rem;
-  }
-
-  @media only screen and (max-width: 600px) {
-    .inputSearch {
-      width: 10rem;
-    }
   }
 
   .imgBasket {
@@ -76,17 +79,26 @@
   //Cart
   .basketNumber{
     margin-bottom: -22px;
-    margin-left: 11px;
+    margin-left: 9px;
     color: red;
     font-weight: bold ;
   }
-  @media only screen and (min-width: 769px) {
+
+  //Mobile style
+  @media only screen and (min-width: 998px) {
+    //Cart
     .imgBasket {
       margin-left: 16px;
     }
     .basketNumber {
-      margin-left: 27px;
+      margin-left: 25px;
     }
   }
 
+  @media only screen and (max-width: 600px) {
+    //Search
+    .inputSearch {
+      width: 10rem;
+    }
+  }
 }

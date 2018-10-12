@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: ChangePassword.js, Change user password component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
@@ -26,7 +34,7 @@ class ChangePassword extends React.Component {
   render() {
 
     return (
-      <div className={'ChangePassword'}>
+      <div className={'ChangePassword col-md-8 text-center'}>
         <Formik
           initialValues={{
             password: '',

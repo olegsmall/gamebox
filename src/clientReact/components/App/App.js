@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: App.js, application component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 // import ReactPropTypes from 'prop-types';
 import Header from '../Header/Header';
@@ -18,8 +26,6 @@ import MessageBox from "../common/MessageBox/MessageBox";
 
 require('./App.scss');
 
-// require('../../css/main.scss');
-
 //New syntax can be used for components with state or life cycle methods
 class App extends React.Component {
   //we can use constructor for initializing state properties
@@ -32,8 +38,12 @@ class App extends React.Component {
       email: null,
       user: null,
       systemMessage: undefined,
+      shoppingCart: {},
     };
 
+    this.getUser();
+
+    this.getShoppingCart = this.getShoppingCart.bind(this);
     this.updateUser = this.updateUser.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
     this.showSystemMessage = this.showSystemMessage.bind(this);
@@ -48,7 +58,11 @@ class App extends React.Component {
   // Life cycle methods
   //component mount method, guaranteed that component was mounted
   componentDidMount() {
-    this.getUser();
+    // this.getShoppingCart();
+  }
+
+  componentDidUpdate() {
+
   }
 
   componentWillUnmount() {
@@ -59,7 +73,7 @@ class App extends React.Component {
     this.setState(userObject);
   }
 
-  showSystemMessage(message, type='success'){
+  showSystemMessage(message, type = 'success') {
     this.setState({
       systemMessage: {
         message,
@@ -67,33 +81,48 @@ class App extends React.Component {
         show: true,
       },
     });
-    setTimeout(()=> this.hideSystemMessage(), 5000);
+    setTimeout(() => this.hideSystemMessage(), 5000);
   }
 
-  hideSystemMessage(){
+  hideSystemMessage() {
     const systemMessage = this.state.systemMessage;
     systemMessage.show = false;
     this.setState({systemMessage});
   }
 
+  getShoppingCart() {
+
+    axios.get('/cart')
+      .then(res => {
+        this.setState({
+          shoppingCart: res.data.cart,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }
+
   getUser() {
     axios.get('/user/session').then(res => {
-
-      console.log(res.data.user);
       if (res.data.user) {
         this.setState({
           loggedIn: true,
           email: res.data.user.email,
           user: res.data.user,
-        });
+        }, this.getShoppingCart);
       } else {
         this.setState({
           loggedIn: false,
           email: null,
-          user: null
+          user: null,
+          shoppingCart: {},
         });
       }
-    });
+    })
+      .catch((error) => {
+        console.log(error.response);
+      });
   }
 
   logoutUser() {
@@ -122,6 +151,7 @@ class App extends React.Component {
           logoutUser={this.logoutUser}
           loggedIn={this.state.loggedIn}
           user={this.state.user}
+          shoppingCart={this.state.shoppingCart}
         />
         <div id="mainContent">
           {/* Routes to different components */}
@@ -154,9 +184,10 @@ class App extends React.Component {
             />
             <Route
               path="/product/:gameId"
-              render={(props)=><GamePage
+              render={(props) => <GamePage
                 {...props}
                 showSystemMessage={this.showSystemMessage}
+                getShoppingCart={this.getShoppingCart}
               />}
             />
             <Route
@@ -173,12 +204,18 @@ class App extends React.Component {
             />
             <Route
               exact path="/cart"
-              render={() => <ShoppingCart/>}
+              render={(props) => <ShoppingCart
+                {...props}
+                getShoppingCart={this.getShoppingCart}
+                shoppingCart={this.state.shoppingCart}
+                showSystemMessage={this.showSystemMessage}
+                user={this.state.user}
+              />}
             />
           </Switch>
         </div>
         <Footer/>
-        {/* Show sysem messages component */}
+        {/* Show system messages component */}
         <MessageBox systemMessage={systemMessage} hideSystemMessage={this.hideSystemMessage}/>
       </div>
     );

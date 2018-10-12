@@ -1,3 +1,11 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: UserPage.js, User component
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import axios from 'axios';
 import Profile from './Profile/Profile';
@@ -8,6 +16,12 @@ import Articles from './Articles/Articles';
 import AddProduct from './AddProduct/AddProduct';
 import AddArticle from './AddArticle/AddArticle';
 import ChangePassword from './ChangePassword/ChangePassword';
+import UserActivation from "./adminPages/UserActivation/UserActivation";
+import UsersList from "./adminPages/UsersList/UsersList";
+import PaymentConfirmation from "./adminPages/PaymentConfirmation/PaymentConfirmation";
+import EditUserRights from "./adminPages/EditUserRights/EditUserRights";
+import Messenger from "./Messenger/Messenger";
+import Statistics from "./Statistics/Statistics";
 
 require('./UserPage.scss');
 
@@ -19,19 +33,14 @@ class UserPage extends React.Component {
       innerComponent: 'Profile',
       message: '',
       articleForEdit: null,
+      userForEdit: null, // User for edit in admin part in page EditUserRights
     };
     this.handleChangeInner.bind(this);
+    this.setUserForEditState.bind(this);
   }
 
-  componentDidMount() {
-    // axios.get('/user/')
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     this.setState({user: res.data.user});
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+  setUserForEditState(user){
+    this.setState({userForEdit: user});
   }
 
   setArticleState(obj) {
@@ -61,6 +70,8 @@ class UserPage extends React.Component {
 
     const firstName = (this.props.user !== null) ? this.props.user.firstName : '';
     const lastName = (this.props.user !== null) ? this.props.user.lastName : '';
+
+    console.log(this.props.user)
 
     let inner = '';
     switch (this.state.innerComponent) {
@@ -131,6 +142,43 @@ class UserPage extends React.Component {
           article={this.state.articleForEdit}
         />;
         break;
+      case 'UserActivation':
+        inner = <UserActivation
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
+      case 'UsersList':
+        inner = <UsersList
+          changeInner={this.changeInner.bind(this)}
+          setUserForEditState={this.setUserForEditState.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
+      case 'EditUserRights':
+        inner = <EditUserRights
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+          userForEdit={this.state.userForEdit}
+        />;
+        break;
+      case 'PaymentConfirmation':
+        inner = <PaymentConfirmation
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
+      case 'Messenger':
+        inner = <Messenger
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
+      case 'Statistics':
+        inner = <Statistics
+          changeInner={this.changeInner.bind(this)}
+          showSystemMessage={this.props.showSystemMessage}
+        />;
+        break;
       default :
         inner = <Profile user={this.props.user}/>;
     }
@@ -152,39 +200,66 @@ class UserPage extends React.Component {
               </button>
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'ChangePassword')} href="">
-                    Change password
+                  Change password
+                </a>
+              </button>
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Statistics')} href="">
+                  Statistics
+                </a>
+              </button>
+              <button className="mt-2  btn-block">
+                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Messenger')} href="">
+                  Messenger
                 </a>
               </button>
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Orders')} href="">
-                    Your Orders
+                  Your Orders
                 </a>
               </button>
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Products')} href="">
-                    Your games
+                  Your games
                 </a>
               </button>
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Articles')} href="">
-                    Your articles
+                  Your articles
                 </a>
               </button>
-              {/*<a onClick={(e)=>this.handleChangeInner(e, 'EditProfile')} href={''}>*/}
-              {/*<p className="text-light">*/}
-              {/*<img src="/image/edit.png" alt="edit-account" width="50" height="50" className="mr-3"/>*/}
-              {/*Edit Profile*/}
-              {/*</p>*/}
-              {/*</a>*/}
+
+              {this.props.user.role === 'Administrator' || this.props.user.role === 'SuperUser'
+                ? <div>
+                  <span><strong>Administration:</strong></span>
+                  <button className="mt-2  btn-block">
+                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UserActivation')} href="">
+                      User activation
+                    </a>
+                  </button>
+                  <button className="mt-2  btn-block">
+                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UsersList')} href="">
+                      Users list
+                    </a>
+                  </button>
+                  <button className="mt-2  btn-block">
+                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'PaymentConfirmation')} href="">
+                      Payment confirmation
+                    </a>
+                  </button>
+                </div>
+                : ''}
+
               <button className="mt-2  btn-block">
                 <a className="pr-3 pl-3" href="">
-                   Logout
+                  Logout
                 </a>
               </button>
             </div>
-              <div className="col-md-8 text-center">
-                  {inner}
-              </div>
+            {inner}
+            {/*<div className="col-md-8 text-center">*/}
+              {/**/}
+            {/*</div>*/}
           </div>
         </div>
       </div>
