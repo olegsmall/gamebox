@@ -57,16 +57,20 @@ export default class MainPage extends React.Component {
 
     if (lastAddedProducts.length === 0) return null;
 
+    const mostPopularProducts = [...lastAddedProducts].reverse();
+
+
     return (
       <div className={'MainPage'}>
-          <img className="d-block w-100 imageMain card-img" src="/image/back54.jpg" alt="First image"/>
-            <div className="card-img-overlay">
-              <div className="promo">
-                <h3 className="d-none d-lg-block">DISCOVER THE WORLD OF GAMES</h3>
-                <h5 className="d-none d-lg-block">We offer a unique service. You can exchange games. See our novelties</h5>
-                <button className="button btnPromo mt-4 text-light d-none d-lg-block"><Link to={'/product'}>Click here</Link></button>
-              </div>
-            </div>
+        <img className="d-block w-100 imageMain card-img" src="/image/back54.jpg" alt="First image"/>
+        <div className="card-img-overlay">
+          <div className="promo">
+            <h3 className="d-none d-lg-block">DISCOVER THE WORLD OF GAMES</h3>
+            <h5 className="d-none d-lg-block">We offer a unique service. You can exchange games. See our novelties</h5>
+            <button className="button btnPromo mt-4 text-light d-none d-lg-block"><Link to={'/product'}>Click
+              here</Link></button>
+          </div>
+        </div>
         <h3 className="text-center pt-4 mt-2">Welcome to GameBox!</h3>
         <div className="infoCard mt-4">
           <div className="container py-4">
@@ -75,7 +79,8 @@ export default class MainPage extends React.Component {
                 <img className="img-fluid imgWork mr-4 ml-2 float-left" src="image/death.png"/>
                 <p className="mt-2">GameBox is the most popular platform for exchanging, selling or buying games.
                   Becoming our member you can get free access to more than 100,000 games of different genres.
-                  Our advantage : you do not need to buy the game and store it on the shelf. You can sell or rent it.</p>
+                  Our advantage : you do not need to buy the game and store it on the shelf. You can sell or rent
+                  it.</p>
               </div>
             </div>
           </div>
@@ -97,11 +102,13 @@ export default class MainPage extends React.Component {
                       className="card product text-center"
                       style={backgroundImage}
                     >
-                      <div className="inner">
-                        <div className="paragraphV text-light">4,5</div>
-                        <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
-                        <button className="button mt-5"><a href="#">View More</a></button>
-                      </div>
+                      {product.average_rating > 0
+                        ? <div className="inner">
+                          <div className="paragraphV text-light text-center">{product.average_rating}</div>
+                          <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
+                          <button className="button mt-5"><a href="#">View More</a></button>
+                        </div>
+                        : ''}
                     </div>
                   );
                 })}
@@ -116,48 +123,68 @@ export default class MainPage extends React.Component {
           <div className="row justify-content-center mt-4">
             <div className="col">
               <Swiper {...params}>
-                <div className="card product text-center cardPopular-1">
-                  <div className="inner">
-                    <div className="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
-                    <button className="button mt-5"><a href="#">View More</a></button>
-                  </div>
-                </div>
-                <div className="card product text-center cardPopular-2">
-                  <div className="inner">
-                    <div className="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
-                    <button className="button mt-5"><a href="#">View More</a></button>
-                  </div>
-                </div>
-                <div className="card product text-center cardPopular-3">
-                  <div className="inner">
-                    <div className="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
-                    <button className="button mt-5"><a href="#">View More</a></button>
-                  </div>
-                </div>
-                <div className="card product text-center cardPopular-4">
-                  <div className="inner">
-                    <div className="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
-                    <button className="button mt-5"><a href="#">View More</a></button>
-                  </div>
-                </div>
-                <div className="card product text-center cardPopular-5">
-                  <div className="inner">
-                    <div className="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
-                    <button className="button mt-5"><a href="#">View More</a></button>
-                  </div>
-                </div>
-                <div className="card product text-center cardPopular-6">
-                  <div className="inner">
-                    <div className="paragraphV text-light">4,5</div>
-                    <a href="#"><h4 className="paragraphV pt-5">Title</h4></a>
-                    <button className="button mt-5"><a href="#">View More</a></button>
-                  </div>
-                </div>
+                {mostPopularProducts.map((product) => {
+                  const backgroundImage = {
+                    backgroundImage: `url("${product.images[0]}")`,
+                  };
+                  return (
+                    <div
+                      key={product._id}
+                      className="card product text-center"
+                      style={backgroundImage}
+                    >
+                      {product.average_rating > 0
+                        ? <div className="inner">
+                          <div className="paragraphV text-light text-center">{product.average_rating}</div>
+                          <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
+                          <button className="button mt-5"><a href="#">View More</a></button>
+                        </div>
+                        : ''}
+                    </div>
+                  );
+                })}
+                {/*<div className="card product text-center cardPopular-1">*/}
+                  {/*<div className="inner">*/}
+                    {/*<div className="paragraphV text-light">4,5</div>*/}
+                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
+                {/*<div className="card product text-center cardPopular-2">*/}
+                  {/*<div className="inner">*/}
+                    {/*<div className="paragraphV text-light">4,5</div>*/}
+                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
+                {/*<div className="card product text-center cardPopular-3">*/}
+                  {/*<div className="inner">*/}
+                    {/*<div className="paragraphV text-light">4,5</div>*/}
+                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
+                {/*<div className="card product text-center cardPopular-4">*/}
+                  {/*<div className="inner">*/}
+                    {/*<div className="paragraphV text-light">4,5</div>*/}
+                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
+                {/*<div className="card product text-center cardPopular-5">*/}
+                  {/*<div className="inner">*/}
+                    {/*<div className="paragraphV text-light">4,5</div>*/}
+                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
+                {/*<div className="card product text-center cardPopular-6">*/}
+                  {/*<div className="inner">*/}
+                    {/*<div className="paragraphV text-light">4,5</div>*/}
+                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                  {/*</div>*/}
+                {/*</div>*/}
               </Swiper>
             </div>
           </div>

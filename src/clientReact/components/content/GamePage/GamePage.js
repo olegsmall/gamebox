@@ -24,9 +24,15 @@ class GamePage extends React.Component {
       product: {},
       fetchedDataIsReady: false,
     };
+
+    this.getProduct();
   }
 
   componentDidMount() {
+
+  }
+
+  getProduct() {
     axios.get('/product/' + this.props.match.params.gameId)
       .then((res) => {
         console.log(res.data.product);
@@ -42,8 +48,31 @@ class GamePage extends React.Component {
       });
   }
 
+  rateProduct(id, values) {
+    axios.put(`/product/${id}/rating`, {mark: values.mark})
+      .then((res) => {
+        this.props.showSystemMessage(res.data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.props.showSystemMessage(error.response.data.message, 'error');
+      });
+  }
+
+  addProductComment(id, values) {
+    axios.put(`/product/${id}/comment`, {content: values.content})
+      .then((res) => {
+        this.props.showSystemMessage(res.data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.props.showSystemMessage(error.response.data.message, 'error');
+      });
+  }
+
+
   handleSubmit(values, actions) {
-    const{buyRent, duration} = values;
+    const {buyRent, duration} = values;
     const req = {};
     req.deal_type = buyRent === 'buy' ? 'for sale' : 'for rent';
     req.rent_duration = buyRent === 'rent' ? duration : undefined;
@@ -67,7 +96,7 @@ class GamePage extends React.Component {
 
     if (!this.state.fetchedDataIsReady) return null;
 
-    const {product: {title, images, description, owner, genres, status, price}} = this.state;
+    const {product: {title, images, description, owner, genres, status, price, comment}} = this.state;
 
     let genresStr = genres.map((item) => {
       // debugger
@@ -128,7 +157,7 @@ class GamePage extends React.Component {
                       .required('* Select the type of purchase'),
                     duration: Yup.number()
                       .when('buyRent', {
-                        is: val => val==='rent',
+                        is: val => val === 'rent',
                         then: Yup.number()
                           .integer('* Duration must be an integer')
                           .positive('* Duration must be positive')
@@ -150,9 +179,12 @@ class GamePage extends React.Component {
                         <Field type="number" className="ml-3" name="duration" placeholder="Enter the number of days"/>
                       </div>
                       }
-                      <ErrorMessage name="buyRent">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
+                      <ErrorMessage name="buyRent">{msg => <small
+                        className='form-text text-left error'>{msg}</small>}</ErrorMessage>
                       <br/>
-                      {this.props.user && <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to cart</button>}
+                      {this.props.user &&
+                      <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to
+                        cart</button>}
                     </Form>
                   )}
                 </Formik>
@@ -192,36 +224,42 @@ class GamePage extends React.Component {
           </div>
         </div>
         {/*Section User reviews*/}
+        {comment.length !== 0 &&
         <div className="container">
           <div className="row">
             <div className="col">
               <h5 className="mt-5 mb-3">User Comments</h5>
               <hr/>
-              <p>Svitlana Melnyk</p>
-              <div className="form-check form-check-inline">
-                <span><i className="fa fa-star-o"></i></span>
-              </div>
-              <div className="form-check form-check-inline">
-                <span><i className="fa fa-star-o"></i></span>
-              </div>
-              <div className="form-check form-check-inline">
-                <span><i className="fa fa-star-o"></i></span>
-              </div>
-              <div className="form-check form-check-inline">
-                <span><i className="fa fa-star-o"></i></span>
-              </div>
-              <div className="form-check form-check-inline">
-                <span><i className="fa fa-star-o"></i></span>
-              </div>
-                <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eius incidunt repellendus similique totam.
-                  Aliquid asperiores, cumque deserunt error est exercitationem, fugiat in iusto modi molestias,
-                  qui quidem quod repudiandae.
-                </p>
-                <small className="text-muted">Data</small>
-                <hr/>
+              {comment.map((comm, index) => {
+
+                return (
+                  <div key={index}>
+                    <p>Svitlana Melnyk</p>
+                    {/*<div className="form-check form-check-inline">*/}
+                      {/*<span><i className="fa fa-star-o"></i></span>*/}
+                    {/*</div>*/}
+                    {/*<div className="form-check form-check-inline">*/}
+                      {/*<span><i className="fa fa-star-o"></i></span>*/}
+                    {/*</div>*/}
+                    {/*<div className="form-check form-check-inline">*/}
+                      {/*<span><i className="fa fa-star-o"></i></span>*/}
+                    {/*</div>*/}
+                    {/*<div className="form-check form-check-inline">*/}
+                      {/*<span><i className="fa fa-star-o"></i></span>*/}
+                    {/*</div>*/}
+                    {/*<div className="form-check form-check-inline">*/}
+                      {/*<span><i className="fa fa-star-o"></i></span>*/}
+                    {/*</div>*/}
+                    <p className="mt-3">{comm.content}</p>
+                    <small className="text-muted">{new Date(comm.date).toLocaleDateString()}</small>
+                    <hr/>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
+        }
         {/*Section Most Popular*/}
         <div className="container mb-5">
           <h5 className="mt-4 ml-5 text-center">Most popular</h5>
@@ -249,7 +287,6 @@ class GamePage extends React.Component {
             </div>
           </div>
         </div>
-        {/*Button View More*/}
         <div className="container my-4">
           <div className="row justify-content-center">
             <div className="col-md-2">

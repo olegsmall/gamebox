@@ -26,7 +26,7 @@ class ProductCard extends React.Component {
             <div className="img-fluid">
               {product.average_rating > 0
                 ? <div className="imageStar">
-                    <div className="paragraphV text-light pl-2">4,5</div>
+                    <div className="paragraphV text-light pl-2 text-center">{product.average_rating}</div>
                   </div>
                 : ''
               }
