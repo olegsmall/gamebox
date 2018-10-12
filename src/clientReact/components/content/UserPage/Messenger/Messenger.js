@@ -42,7 +42,6 @@ export default class Messenger extends React.Component {
 
     allMessages.sort((a, b)=> (new Date(a.created) < new Date(b.created)) ? 1 : 0);
 
-    console.log(allMessages)
     this.setState({
         inboxMessagesReady: false,
         outboxMessagesReady: false,
