@@ -102,13 +102,14 @@ export default class MainPage extends React.Component {
                       className="card product text-center"
                       style={backgroundImage}
                     >
-                      {product.average_rating > 0
-                        ? <div className="inner">
-                          <div className="paragraphV text-light text-center">{product.average_rating}</div>
-                          <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
-                          <button className="button mt-5"><a href="#">View More</a></button>
-                        </div>
-                        : ''}
+                      <div className="inner">
+                        {product.average_rating > 0
+                          ? <div className="paragraphV text-light text-center">{product.average_rating}</div>
+                          : ''}
+                        <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
+                        <button className="button mt-5"><a href="#">View More</a></button>
+                      </div>
+
                     </div>
                   );
                 })}
@@ -133,57 +134,58 @@ export default class MainPage extends React.Component {
                       className="card product text-center"
                       style={backgroundImage}
                     >
-                      {product.average_rating > 0
-                        ? <div className="inner">
-                          <div className="paragraphV text-light text-center">{product.average_rating}</div>
-                          <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
-                          <button className="button mt-5"><a href="#">View More</a></button>
-                        </div>
-                        : ''}
+                      <div className="inner">
+                        {product.average_rating > 0
+                          ? <div className="paragraphV text-light text-center">{product.average_rating}</div>
+                          : ''}
+                        <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
+                        <button className="button mt-5"><a href="#">View More</a></button>
+                      </div>
+
                     </div>
                   );
                 })}
                 {/*<div className="card product text-center cardPopular-1">*/}
-                  {/*<div className="inner">*/}
-                    {/*<div className="paragraphV text-light">4,5</div>*/}
-                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                  {/*</div>*/}
+                {/*<div className="inner">*/}
+                {/*<div className="paragraphV text-light">4,5</div>*/}
+                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                {/*</div>*/}
                 {/*</div>*/}
                 {/*<div className="card product text-center cardPopular-2">*/}
-                  {/*<div className="inner">*/}
-                    {/*<div className="paragraphV text-light">4,5</div>*/}
-                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                  {/*</div>*/}
+                {/*<div className="inner">*/}
+                {/*<div className="paragraphV text-light">4,5</div>*/}
+                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                {/*</div>*/}
                 {/*</div>*/}
                 {/*<div className="card product text-center cardPopular-3">*/}
-                  {/*<div className="inner">*/}
-                    {/*<div className="paragraphV text-light">4,5</div>*/}
-                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                  {/*</div>*/}
+                {/*<div className="inner">*/}
+                {/*<div className="paragraphV text-light">4,5</div>*/}
+                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                {/*</div>*/}
                 {/*</div>*/}
                 {/*<div className="card product text-center cardPopular-4">*/}
-                  {/*<div className="inner">*/}
-                    {/*<div className="paragraphV text-light">4,5</div>*/}
-                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                  {/*</div>*/}
+                {/*<div className="inner">*/}
+                {/*<div className="paragraphV text-light">4,5</div>*/}
+                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                {/*</div>*/}
                 {/*</div>*/}
                 {/*<div className="card product text-center cardPopular-5">*/}
-                  {/*<div className="inner">*/}
-                    {/*<div className="paragraphV text-light">4,5</div>*/}
-                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                  {/*</div>*/}
+                {/*<div className="inner">*/}
+                {/*<div className="paragraphV text-light">4,5</div>*/}
+                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                {/*</div>*/}
                 {/*</div>*/}
                 {/*<div className="card product text-center cardPopular-6">*/}
-                  {/*<div className="inner">*/}
-                    {/*<div className="paragraphV text-light">4,5</div>*/}
-                    {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                    {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                  {/*</div>*/}
+                {/*<div className="inner">*/}
+                {/*<div className="paragraphV text-light">4,5</div>*/}
+                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
+                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
+                {/*</div>*/}
                 {/*</div>*/}
               </Swiper>
             </div>
