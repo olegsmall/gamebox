@@ -5,6 +5,15 @@ const idvalidator = mongoose.Types.ObjectId.isValid; //Mongoose objectId validat
 
 
 exports.sendMessage = function (req) {
+
+  let receiver = '';
+  if (req.body.email){
+    //TODO: Найти юзера по мылу и в полу ресивер присвоить айди этого юзера.
+    receiver = '';
+  }
+
+  receiver = req.body.receiver;
+
   // Check if receiver's id format is correct
   if(!idvalidator(req.body.receiver)) {throw Error('Wrong user id');}
 

@@ -152,7 +152,7 @@ class GamePage extends React.Component {
                       }
                       <ErrorMessage name="buyRent">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
                       <br/>
-                      <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to cart</button>
+                      {this.props.user && <button type="submit" className="btn w-50 mt-3 btnProduct" disabled={isSubmitting}>Add to cart</button>}
                     </Form>
                   )}
                 </Formik>
