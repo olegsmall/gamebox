@@ -1,5 +1,3 @@
-// const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const Order = require('../models/order.model');
 const Product = require('../models/product.model');
@@ -75,7 +73,7 @@ exports.getUsers = async function (req) {
   }
 };
 
-exports.getUsers = async function (req) {
+exports.getUser = async function (req) {
   // Try Catch the awaited promise to handle the error
   try {
     let users = User.findOne({_id: req.params.id}).select('-password');

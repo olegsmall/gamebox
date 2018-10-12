@@ -12,7 +12,6 @@ exports.createProduct = function (req) {
   try {
     let promise = Genre.find({_id: {$in: req.body.genres}}, '_id').exec();
 
-
     return promise.then((docs) => {
 
       let image = [];

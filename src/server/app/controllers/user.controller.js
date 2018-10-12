@@ -64,14 +64,6 @@ exports.getUsers = async function(req, res) {
  * @returns {Promise<*|Promise<json>>} A promise that returns json if resolved, otherwise json with error
  */
 exports.authenticate = function(req, res) {
-  if(req.user.status.state === 'banned') {
-    req.logout();
-    throw Error('Your account is banned');
-  } else if(req.user.status.state === 'deactivated') {
-    req.logout();
-    throw Error('Your account is not yet activated');
-  }
-
   try {
     // Reassign user fields to skip password field
     const user = {

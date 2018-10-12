@@ -7,9 +7,9 @@ exports.checkAuth = function (req, res, next){
     } else if (req.user.status.state === 'banned') {
       if(req.user.status.expires > Date.now()) {
         req.logout();
-        return res.status(401).json({status: 400, message: 'Sorry but your account is banned'});
+        return res.status(401).json({status: 400, message: 'Sorry your account is temporary banned'});
       }
-      return next();
+      return res.status(401).json({status: 400, message: 'Sorry your account is permanently banned'});
     }
     return next();
   }

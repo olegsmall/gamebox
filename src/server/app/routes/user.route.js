@@ -37,12 +37,12 @@ import MessageController from '../controllers/message.controller';
 
 const Auth = require('../services/auth.services');
 router.get('/new_messages', Auth.checkAuth, MessageController.getNewMessages); // Get inbox messages
-router.get('/order', OrderController.getUserOrders); //Get user orders
-router.get('/statistics', UserController.userStatistics); // Get user statistics messages
+router.get('/order', Auth.checkAuth, OrderController.getUserOrders); //Get user orders
+router.get('/statistics', Auth.checkAuth, UserController.userStatistics); // Get user statistics messages
 router.get('/inbox', Auth.checkAuth, MessageController.getInboxMessages); // Get inbox messages
 router.get('/outbox', Auth.checkAuth, MessageController.getOutboxMessages); // Get outbox messages
-router.post('/', upload.single('avatar'), UserController.createUser);
-router.post('/login', passport.authenticate('local'), UserController.authenticate);
+router.post('/', Auth.checkAuth, upload.single('avatar'), UserController.createUser);
+router.post('/login', passport.authenticate('local'), Auth.checkAuth, UserController.authenticate);
 
 router.get('/', Auth.checkAuth, Auth.checkAdminRole, UserController.getUsers); // Get list of all users
 router.get('/session', UserController.getSessionUser); // Get user from session
