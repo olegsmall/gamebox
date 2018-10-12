@@ -59,9 +59,9 @@
 </header>
 <!-- Content image -->
 
-    <div class="imageMain">
-        <img class="d-block w-100 imgMain" src="image/back6.jpg" alt="Main image">
-    </div>
+<div class="imageMain">
+    <img class="d-block w-100 imgMain" src="image/back6.jpg" alt="Main image">
+</div>
 </div>
 <h5 class="pt-4 mt-2 ml-5">Hi, user</h5>
 <div class="container">
@@ -72,41 +72,68 @@
             <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Your orders</a></button>
             <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Your games</a></button>
             <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Your articles</a></button>
-            <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Payment confirmation</a></button>
-            <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">User Activation</a></button>
-            <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">User List</a></button>
+            <button class="mt-2  btn-block"><a href="paymentConfirmationAdmin.html" class="pr-3 pl-3">Payment
+                confirmation</a></button>
+            <button class="mt-2  btn-block"><a href="userActivationAdmin.html" class="pr-3 pl-3">User Activation</a>
+            </button>
+            <button class="mt-2  btn-block"><a href="userListAdmin.html" class="pr-3 pl-3">User List</a></button>
+            <button class="mt-2  btn-block"><a href="messenger.html" class="pr-3 pl-3">Messenger</a></button>
             <button class="mt-2  btn-block"><a href="#" class="pr-3 pl-3">Logout</a></button>
 
         </div>
-        <div class="col-md-8 text-center mt-3">
-            <h5 class="text-center">Status of Payment</h5>
-            <table class="table table-hover">
-                <thead class="bg-light">
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Order id</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>2018-10-10</td>
-                    <td>000000005</td>
-                    <td>Fred</td>
-                    <td>Fred@gmail.com</td>
-                    <td><a href="#">Confirm</a></td>
-                </tr>
-                <tr>
-                    <td>2018-10-09</td>
-                    <td>000000004</td>
-                    <td>Svitlana</td>
-                    <td>Svitlana@gmail.com</td>
-                    <td><a href="#">Confirm</a></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-md-8 text-center">
+            <div class="h5 ml-5 mb-2 text-center text-sm-left">My messenger</div>
+            <form class="row">
+                <div class="col-md-9 mt-3">
+                    <label class="sr-only" for="emailFormInput"></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">@</div>
+                        </div>
+                        <input type="email" class="form-control" id="emailFormInput"
+                               placeholder="email">
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <button type="submit" class="btn btn-block">send</button>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="inputMessageTitle"></label>
+                        <input type="text" class="form-control" id="inputMessageTitle" placeholder="message title">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <textarea class="form-control" rows="5" aria-label="messagearea"
+                                  placeholder="message text"></textarea>
+                    </div>
+                </div>
+            </form>
+            <form>
+                <div class="h5 ml-5 mb-2 mt-3 text-center text-sm-left">All my letters</div>
+                <table class="table table-sm mt-3">
+                    <tr>
+                        <th scope="row"><a href="#"><img src="image/write-3722611_640_in.png" width="40"></a></th>
+                        <td><a href="#">Mark</a></td>
+                        <td><a href="#">mark@gmail.com</a></td>
+                        <td><a href="#">salut</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#"><img src="image/write-3722611_640_out.png" width="40"></a></th>
+                        <td><a href="#">Fred</a></td>
+                        <td><a href="#">fred@gmail.com</a></td>
+                        <td><a href="#">Hi</a></td>
+                    </tr>
+                    <tr class="table-active">
+                        <th scope="row"><a href="#"><img src="image/write-3722611_640_out.png" width="40"></a></th>
+                        <td><a href="#">Svitlana</a></td>
+                        <td><a href="#">svitlana@gmail.com</a></td>
+                        <td><a href="#">Bla-bla-bla</a></td>
+                    </tr>
+                </table>
+                <div class="text_message_history"></div>
+            </form>
         </div>
     </div>
 </div>
