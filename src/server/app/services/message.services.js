@@ -6,29 +6,18 @@ const idvalidator = mongoose.Types.ObjectId.isValid; //Mongoose objectId validat
 
 exports.sendMessage = function (req) {
 
-  let receiver = '';
-  if (req.body.email){
-    //TODO: Найти юзера по мылу и в полу ресивер присвоить айди этого юзера.
-    receiver = '';
-  }
-
-  receiver = req.body.receiver;
-
-  // Check if receiver's id format is correct
-  if(!idvalidator(req.body.receiver)) {throw Error('Wrong user id');}
-
   try {
     // Search receiver's id in DB
-    return User.findById(req.body.receiver).select({password: 0}).then((user,err) => {
+    return User.findOne({email: req.body.email}).select({password: 0}).then((user,err) => {
       if(err) {throw err;}
-      if(user === null) {throw Error('User not found');}
+      if(user === null) {throw Error('User with email: ' + req.body.email + ' not found');}
 
       // Create message object
       let message = new Message({
         subject: req.body.subject,
         content: req.body.content,
         sender: req.user._id,
-        receiver: req.body.receiver
+        receiver: user._id
       });
 
       // Save message id in receiver's outbox messages
