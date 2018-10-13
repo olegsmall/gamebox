@@ -1,3 +1,14 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 16 Sep 2018
+ * Edited: 12 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Product Model Schema.
+ * @module models/product.model
+ * @requires mongoose
+ * @requires mongoosePaginate
+ */
+
 const { mongoose } = require('../../config/app.config');
 const mongoosePaginate = require('mongoose-paginate');
 

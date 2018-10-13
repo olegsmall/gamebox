@@ -1,3 +1,13 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 04 Sept 2018
+ * Edited: 12 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Genre Model Schema.
+ * @module models/genre.model
+ * @requires mongoose
+ */
+
 const { mongoose } = require('../../config/app.config');
 
 const Schema = mongoose.Schema;

@@ -1,3 +1,14 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 05 Oct 2018
+ * Edited: 12 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Message Model Schema.
+ * @module models/message.model
+ * @requires mongoose
+ * @requires mongoosePaginate
+ */
+
 const { mongoose } = require('../../config/app.config');
 const mongoosePaginate = require('mongoose-paginate');
 
