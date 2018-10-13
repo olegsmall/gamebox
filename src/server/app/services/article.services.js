@@ -52,7 +52,7 @@ exports.createArticle = function (req) {
  *     sort_by={date or title} - filter to apply
  *
  * @param req object - request info
- * @returns {Promise<*|Promise<json>>} A promise that returns json with created article if resolved,
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with articles if resolved,
  *    otherwise returns json with error message
  */
 exports.getArticles = function (req) {
@@ -61,7 +61,7 @@ exports.getArticles = function (req) {
   let queryOptions = {}; // Mongoose-paginator query options
   let query = {}; // Mongoose query options
   let sort = 'desc'; // Default sorting method -> Descending
-  queryOptions.populate = {path: 'author', select: '_id name firstName lastName e-mail'};   // Populate query fields
+  queryOptions.populate = {path: 'author comment.user', select: '_id avatar name firstName lastName e-mail'};   // Populate query fields
 
   // Check the existence of the query parameters, If the exists doesn't exists assign a default value
   req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
@@ -95,7 +95,7 @@ exports.getArticles = function (req) {
  */
 exports.getArticle = function (id) {
   try {
-    let promise = Article.findOne({_id: id}).populate({path: 'author', select: 'firstName lastName _id'});
+    let promise = Article.findOne({_id: id}).populate({path: 'author comment.user', select: 'avatar firstName lastName _id'});
     return promise.then((doc, err) => {
       if(err) { throw Error(err); }
       if(doc === null) { throw Error('Article not found'); }
@@ -116,7 +116,7 @@ exports.getArticle = function (id) {
  *     limit={limit} - limit number of objects per page
  *
  * @param req object - request info
- * @returns {Promise<*|Promise<json>>} A promise that returns json with created article if resolved,
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with article if resolved,
  *    otherwise returns json with error message
  */
 exports.getUserArticles = async function(req) {
@@ -124,7 +124,7 @@ exports.getUserArticles = async function(req) {
     let page = req.body.page ? req.body.page : 1;
     let limit = req.body.limit ? req.body.limit : 10;
 
-    let promise = Article.paginate({author: req.params.id}, {page: page, limit: limit, populate: {path: 'author', select: 'avatar role _id firstName lastName email'}});
+    let promise = Article.paginate({author: req.params.id}, {page: page, limit: limit, populate: {path: 'author comment.user', select: 'avatar role _id firstName lastName email'}});
     return promise.then((doc) => {
       if(doc === null) { throw Error('No articles found'); }
       return doc;
@@ -135,10 +135,10 @@ exports.getUserArticles = async function(req) {
 };
 
 /**
- * Search specific article by ID and update it with newly info
+ * Search for specific article by ID and update it with newly info
  *
  * @param req object - request info
- * @returns {Promise<*|Promise<json>>} A promise that returns json with created article if resolved,
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with updated article if resolved,
  *    otherwise returns json with error message
  */
 exports.updateArticle = function (req) {
@@ -166,7 +166,7 @@ exports.updateArticle = function (req) {
  * Search specific article by ID and delete it
  *
  * @param id string - article id
- * @returns {Promise<*|Promise<json>>} A promise that returns json with created article if resolved,
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with deleted article if resolved,
  *    otherwise returns json with error message
  */
 exports.deleteArticle = function (id) {
@@ -186,7 +186,7 @@ exports.deleteArticle = function (id) {
  * Add a comment to an article
  *
  * @param req object - request info
- * @returns {Promise<*|Promise<json>>} A promise that returns json with created article if resolved,
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with commented article if resolved,
  *    otherwise returns json with error message
  */
 exports.addArticleComment = function (req) {

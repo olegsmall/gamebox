@@ -1,15 +1,36 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 27 Sep 2018
+ * Edited: 11 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Treats received data and executes DataBase CRUD queries for orders.
+ * @module services/order.services
+ * @requires order.model
+ * @requires user.model
+ * @requires product.model
+ */
+
+// Import models
 const Order = require('../models/order.model');
 const User = require('../models/user.model');
 const Product = require('../models/product.model');
 
-
+/**
+ * Creates and saves an order in DB.
+ * To prepare an order, method loops through all products in user's cart,
+ * searches products by ids and create order with all needed information.
+ *
+ * @param req object - request info
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with created order if resolved,
+ *    otherwise returns json with error message
+ */
 exports.placeOrder = function (req) {
-  console.log(req.body.payment_method);
+  // Check chosen payment method
   if(req.body.payment_method !== 'cash' && req.body.payment_method !== 'check' && req.body.payment_method !== 'paypal') {
     throw Error('Unsupported payment method. Accepted payment methods are: PayPal, Cash, Check!');
   }
   try {
-    // console.log(req.);
+    // Create order object
     let order = new Order({
       status: 'pending',
       buyer: req.user._id,
@@ -17,7 +38,7 @@ exports.placeOrder = function (req) {
       opened: Date.now()
     });
 
-    let products = User.findById(req.user._id).populate('cart.product');
+    let products = User.findOne({_id: req.user._id}).populate('cart.product');
 
     return products.then((user, err) => {
       if(err) {throw Error(err);}
@@ -58,7 +79,6 @@ exports.placeOrder = function (req) {
           status = ['sold']; // change product.status to 'Sold'
         }
         // Execute query for status changes
-
         Product.updateOne({_id: user.cart[i].product}, {$set : {status: status}}).exec();
       }
 
@@ -67,11 +87,11 @@ exports.placeOrder = function (req) {
       order.total_items = total_items;
       order.total_price = total_price;
 
-      User.updateOne({_id: order.buyer}, {$set: {cart: []}}).exec(); // Empty user's cart
+      User.updateOne({_id: order.buyer}, {$set: {cart: []}}).exec(); // Empty user cart
 
       return order.save().then((res) => { //saving and returning order
-        // return created order & prepared info for paypal payment
-        return {order: res, transactions: preparePaymentInfo(user.cart)};
+        // return created order
+        return {order: res};
       });
     });
   } catch (e) {
@@ -80,13 +100,12 @@ exports.placeOrder = function (req) {
 };
 
 exports.getOrders = function (req) {
-  let query = {};
+  let query = {}; // mongoose query
   let queryOptions = {}; // Mongoose-paginator query options
   queryOptions.populate = {path: 'buyer', select: 'name firstName lastName email'};
   req.query.page ? queryOptions.page = Number(req.query.page) : 1; //Page option
   req.query.limit ? queryOptions.limit = Number(req.query.limit) : 10; // Limit number of returning objects
   if(req.query.status === 'pending') {query.status = 'pending'}
-
   try {
     return Order.paginate(query, queryOptions).then((orders) => {
       if(orders === null) { throw Error('No orders found'); }
@@ -98,6 +117,18 @@ exports.getOrders = function (req) {
   }
 };
 
+/**
+ * Gets all orders of predefined user.
+ * Certain filters can be applied to specify search query
+ * Accepted filters:
+ *     page={page number} - indicate page number
+ *     limit={limit} - limit number of objects per page
+ *     status={order status} - order status pending/completed
+ *
+ * @param req object - request info
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with order if resolved,
+ *    otherwise returns json with error message
+ */
 exports.getOrders = function (req) {
   let query = {buyer: req.user._id};
   let queryOptions = {}; // Mongoose-paginator query options
@@ -107,101 +138,63 @@ exports.getOrders = function (req) {
   if(req.query.status === 'pending') {query.status = 'pending'}
   if(req.query.status === 'completed') {query.status = 'completed'}
   try {
-    return Order.paginate(query, queryOptions).then((orders) => {
+    return Order.paginate(query, queryOptions).then((orders,err) => {
+      if(err) { throw Error(err); }
       if(orders === null) { throw Error('No orders found'); }
       return orders;
     });
-
   } catch (e) {
     throw {error: e, message: 'Error on get orders'};
   }
 };
 
+/**
+ * Search specific order by ID.
+ *
+ * @param req object - request info
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with searched order if resolved,
+ *    otherwise returns json with error message
+ */
 exports.getOrder = function (req) {
   try {
-    return Order.findById(req.params.id).then((order) => {
+    return Order.findOne({_id: req.params.id}).then((order,err) => {
+      if(err) { throw Error(err); }
       if(order === null) { throw Error('Order not found'); }
       return order;
     });
-
   } catch (e) {
     throw {error: e, message: 'Error on get orders'};
   }
 };
 
-
-exports.paymentExecute = function (req) {
-  try {
-    return Order.findById(req.params.id).then((order, err) => {
-      if(err) { throw err; }
-      if(order === null) { throw Error('Order not found'); }
-
-      return {
-        payer_id: req.query.PayerID,
-        transactions: [{
-          amount: {
-            currency: 'USD',
-            total: order.total_price
-          }
-        }]
-      };
-    });
-  } catch (e) {
-    throw {error: e, message: 'Error on get orders'};
-  }
-};
-
+/**
+ * Complete an order.
+ * Find an order by Id and change it's status to 'completed'
+ * Provides functionality to administrators and superUser to confirm and complete orders.
+ *
+ * @param id string - order id
+ * @returns {Promise<*|Promise<json>>} A promise that returns json with completed order if resolved,
+ *    otherwise returns json with error message
+ */
 exports.completeOrder = function (id) {
   try {
-    // Find order in DB
-    return Order.findById(id).then((order, err) => {
-      if(err) {throw Error(err);} // Show error in case
+    return Order.findOne({_id: id}).then((order, err) => {
+      if(err) {throw Error(err);}
       order.status = 'completed'; // change order status to 'completed'
-      return order.save() // Save order in DB
+      return order.save();
     });
   } catch (e) {
     throw Error('Error at Order Complete');
   }
 };
 
-function preparePaymentInfo (cart) {
-  let item_list = [],
-    total_price = 0;
-
-  for (let i = 0; i < cart.length; i++) {
-    // Item list info
-    let item = {
-      name: cart[i].product.title,
-      sku: cart[i].product._id,
-      currency: 'USD',
-      quantity: 1
-    };
-
-    // If rent
-    if (cart[i].deal_type === 'for rent') {
-      item.price = cart[i].product.price.rent * cart[i].rent_duration; // Add rent price
-      total_price += cart[i].product.price.rent * cart[i].rent_duration;
-      // If sell
-    } else {
-      item.price = cart[i].product.price.sell;
-      total_price += item.price;
-    }
-    //Form item_list
-    item_list.push(item);
-  }
-
-  return [{
-    item_list: {
-      items: item_list,
-    },
-    amount: {
-      currency: 'USD',
-      total: total_price,
-    },
-    description: 'Payment for gamebox services'
-  }];
-}
-
+/**
+ * Calculate date.
+ * Summarize actual date with days sent in parameters.
+ *
+ * @param days int - days to add to date field in DB
+ * @returns date string - actual date + number of days in Date format
+ */
 Date.prototype.addDays = function(days) {
   let date = new Date(this.valueOf());
   date.setDate(date.getDate() + days);

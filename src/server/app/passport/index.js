@@ -1,3 +1,14 @@
+/**
+ * Created by: Oleg Smolovik
+ * Created: 15 Sep 2018
+ *
+ * @fileoverview Treats received data and executes DataBase CRUD queries for orders.
+ * @module passport/index
+ * @requires passport
+ * @requires LocalStrategy
+ * @requires models/user.model
+ */
+
 const passport = require('passport');
 const LocalStrategy = require('./localStrategy');
 const User = require('../models/user.model');
@@ -17,6 +28,6 @@ passport.deserializeUser((id, done) => {
 });
 
 //  Use Strategies
-passport.use(LocalStrategy)
+passport.use(LocalStrategy);
 
 module.exports = passport;

@@ -61,8 +61,6 @@ app.use( (req, res, next) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 /*
 * Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
 * Optionally you may enable signed cookie support by passing a secret string,

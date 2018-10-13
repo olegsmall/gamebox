@@ -1,17 +1,20 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 7 Oct 2018
+ * Edited: 12 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Routes for orders
+ * @module routes/order.route
+ */
+
+// Import modules & controllers
 import express from 'express';
 import OrderController from '../controllers/order.controller';
-
 const router = express.Router();
+import Auth from '../services/auth.services';
 
-router.post('/', OrderController.placeOrder); //Create an order
-// TODO: Change to POST & readapt all routes
+router.post('/', Auth.checkAuth, OrderController.placeOrder); //Create an order
 router.patch('/', OrderController.completeOrder); //Create an order
-// router.get('/:id/payment', OrderController.paymentExecute); //Create an order
-
-// router.get('/', OrderController.pay); //Create an order
-// router.get('/', OrderController.paymentCheck); //Create an order
-
-router.get('/', OrderController.getOrders); //Get list of all orders
-// router.get('/:id', OrderController.getOrder); //Get one specific order
+router.get('/', Auth.checkAuth, OrderController.getOrders); //Get list of all orders
 
 module.exports = router;
