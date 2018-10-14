@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: AboutPage.js, About page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -12,12 +12,18 @@ import {Link} from 'react-router-dom';
 
 require('./AboutPage.scss');
 
+/**
+ * Functional(AboutPage) component, which returns a react element
+ * @returns {*}
+ * @constructor
+ */
 const AboutPage = () => {
   return (
     <div className={'AboutPage'}>
       <div>
         <img className="img-fluid d-block w-100 imgMain" src="image/junYN7V.png" alt="About image"/>
       </div>
+      {/*Section About us*/}
       <div id="gameContent">
         <div className="container">
           <div className="row justify-content-center">
@@ -39,7 +45,7 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-
+      {/*Section Our Team*/}
       <div className="container">
         <div className="row">
           <div className="col">
@@ -73,6 +79,7 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
+      {/*Section Our Location*/}
       <div className="container">
         <div className="row">
           <div className="col">
