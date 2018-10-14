@@ -67,8 +67,8 @@ class App extends React.Component {
     // clean timers and listeners
   }
 
-  updateUser(stateObject, routeCallback=null) {
-    this.setState(stateObject, ()=> routeCallback && routeCallback() );
+  updateUser(stateObject, routeCallback = null) {
+    this.setState(stateObject, () => routeCallback && routeCallback());
   }
 
   showSystemMessage(message, type = 'success') {
@@ -115,21 +115,21 @@ class App extends React.Component {
       }
     })
       .catch((error) => {
-        console.log(error.response);
+        console.error('Get User Method: ')
+        console.error(error.response);
       });
   }
 
   logoutUser() {
     axios.post('/user/logout')
       .then(response => {
-      console.info(response.data.message);
-      this.showSystemMessage(response.data.message);
-
-    }).catch(error => {
-      console.log('Logout error: ');
-      console.log(error.response);
-    });
-
+        console.info(response.data.message);
+        this.showSystemMessage(response.data.message);
+      })
+      .catch(error => {
+        console.error('Logout error: ');
+        console.error(error.response);
+      });
     this.setState({user: null});
   }
 
@@ -169,10 +169,12 @@ class App extends React.Component {
             />
             <Route
               exac path="/user"
-              render={() => <UserPage
+              render={(props) => <UserPage
+                {...props}
                 user={this.state.user}
                 updateUser={this.updateUser}
                 showSystemMessage={this.showSystemMessage}
+                logoutUser={this.logoutUser}
               />}
             />
             <Route

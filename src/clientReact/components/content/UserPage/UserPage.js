@@ -35,11 +35,12 @@ class UserPage extends React.Component {
       articleForEdit: null,
       userForEdit: null, // User for edit in admin part in page EditUserRights
     };
-    this.handleChangeInner.bind(this);
-    this.setUserForEditState.bind(this);
+    this.handleChangeInner = this.handleChangeInner.bind(this);
+    this.setUserForEditState = this.setUserForEditState.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
-  setUserForEditState(user){
+  setUserForEditState(user) {
     this.setState({userForEdit: user});
   }
 
@@ -50,6 +51,12 @@ class UserPage extends React.Component {
   handleChangeInner(e, innerName) {
     e.preventDefault();
     this.changeInner(innerName);
+  }
+
+  handleLogout(e) {
+    e.preventDefault();
+    this.props.logoutUser();
+    this.props.history.push('/');
   }
 
   changeInner(innerName) {
@@ -191,67 +198,47 @@ class UserPage extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-3 text-center">
-              <button className="mt-5  btn-block">
-                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Profile')} href="">
-                  Profile
-                </a>
+              <button className="mt-2  btn-block pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Profile')}>
+                Profile
               </button>
-              <button className="mt-2  btn-block">
-                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'ChangePassword')} href="">
-                  Change password
-                </a>
+              <button className="mt-2  btn-block pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'ChangePassword')}>
+                Change password
               </button>
-              <button className="mt-2  btn-block">
-                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Statistics')} href="">
-                  Statistics
-                </a>
+              <button className="mt-2  btn-block pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Statistics')}>
+                Statistics
               </button>
-              <button className="mt-2  btn-block">
-                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Messenger')} href="">
-                  Messenger
-                </a>
+              <button className="mt-2  btn-block pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Messenger')}>
+                Messenger
               </button>
-              <button className="mt-2  btn-block">
-                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Orders')} href="">
-                  Your Orders
-                </a>
+              <button className="mt-2  btn-block pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Orders')}>
+                Your Orders
               </button>
-              <button className="mt-2  btn-block">
-                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Products')} href="">
-                  Your games
-                </a>
+              <button className="mt-2  btn-block pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Products')}>
+                Your games
               </button>
-              <button className="mt-2  btn-block">
-                <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Articles')} href="">
-                  Your articles
-                </a>
+              <button className="mt-2  btn-block pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'Articles')}>
+                Your articles
               </button>
 
               {this.props.user.role === 'Administrator' || this.props.user.role === 'SuperUser'
                 ? <div>
                   <span><strong>Administration:</strong></span>
-                  <button className="mt-2  btn-block">
-                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UserActivation')} href="">
-                      User activation
-                    </a>
+                  <button className="mt-2  btn-block pr-3 pl-3"
+                          onClick={(e) => this.handleChangeInner(e, 'UserActivation')}>
+                    User activation
                   </button>
-                  <button className="mt-2  btn-block">
-                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UsersList')} href="">
-                      Users list
-                    </a>
+                  <button className="mt-2  btn-block pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'UsersList')}>
+                    Users list
                   </button>
-                  <button className="mt-2  btn-block">
-                    <a className="pr-3 pl-3" onClick={(e) => this.handleChangeInner(e, 'PaymentConfirmation')} href="">
-                      Payment confirmation
-                    </a>
+                  <button className="mt-2  btn-block pr-3 pl-3"
+                          onClick={(e) => this.handleChangeInner(e, 'PaymentConfirmation')}>
+                    Payment confirmation
                   </button>
                 </div>
                 : ''}
 
-              <button className="mt-2  btn-block">
-                <a className="pr-3 pl-3" href="">
-                  Logout
-                </a>
+              <button className="mt-2  btn-block pr-3 pl-3" onClick={(e)=>this.handleLogout(e)}>
+                Logout
               </button>
             </div>
             {inner}
