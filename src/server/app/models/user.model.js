@@ -44,7 +44,7 @@ const UserSchema = new mongoose.Schema({
   avatar: {type: String, default: '/image/default/default_avatar.png'},
   role: {type: String, enum: ['SuperUser', 'Administrator', 'User'], default: 'User'},
   status: StatusSubSchema,
-  phone: {type: String, maxlength: 12, required: [true, 'Enter your phone number']},
+  phone: {type: String, maxlength: 12},
   address: {type: String, minlength: 5, maxlength: 50, required: [true, 'Enter your address']},
   password: {type: String, minlength: 1},
   rating: [RatingSubSchema],
