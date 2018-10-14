@@ -26,7 +26,7 @@ class Articles extends React.Component {
   }
 
   getArticles() {
-    axios.get('/user/' + this.props.user.id + '/articles')
+    axios.get('/user/' + this.props.user._id + '/articles')
       .then((res) => {
         // handle success
         // console.log(res.data.data.docs);

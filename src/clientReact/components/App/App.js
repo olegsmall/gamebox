@@ -34,8 +34,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
-      email: null,
       user: null,
       systemMessage: undefined,
       shoppingCart: {},
@@ -69,8 +67,8 @@ class App extends React.Component {
     // clean timers and listeners
   }
 
-  updateUser(userObject) {
-    this.setState(userObject);
+  updateUser(stateObject, routeCallback=null) {
+    this.setState(stateObject, ()=> routeCallback && routeCallback() );
   }
 
   showSystemMessage(message, type = 'success') {
@@ -81,7 +79,7 @@ class App extends React.Component {
         show: true,
       },
     });
-    setTimeout(() => this.hideSystemMessage(), 7000);
+    setTimeout(() => this.hideSystemMessage(), 9000);
   }
 
   hideSystemMessage() {
@@ -107,14 +105,10 @@ class App extends React.Component {
     axios.get('/user/session').then(res => {
       if (res.data.user) {
         this.setState({
-          loggedIn: true,
-          email: res.data.user.email,
           user: res.data.user,
         }, this.getShoppingCart);
       } else {
         this.setState({
-          loggedIn: false,
-          email: null,
           user: null,
           shoppingCart: {},
         });
@@ -126,19 +120,17 @@ class App extends React.Component {
   }
 
   logoutUser() {
-    // event.preventDefault();
-    axios.post('/user/logout').then(response => {
-      console.log(response.data);
-      if (response.status === 200) {
-        this.updateUser({
-          loggedIn: false,
-          email: null,
-          user: null
-        });
-      }
+    axios.post('/user/logout')
+      .then(response => {
+      console.info(response.data.message);
+      this.showSystemMessage(response.data.message);
+
     }).catch(error => {
-      console.log('Logout error');
+      console.log('Logout error: ');
+      console.log(error.response);
     });
+
+    this.setState({user: null});
   }
 
   render() {
@@ -149,7 +141,6 @@ class App extends React.Component {
         <Header
           history={this.props.history}
           logoutUser={this.logoutUser}
-          loggedIn={this.state.loggedIn}
           user={this.state.user}
           shoppingCart={this.state.shoppingCart}
         />
@@ -161,9 +152,11 @@ class App extends React.Component {
               render={() => <MainPage/>}/>
             <Route
               path="/user/login"
-              render={() =>
+              render={(props) =>
                 <LoginPage
+                  {...props}
                   updateUser={this.updateUser}
+                  showSystemMessage={this.showSystemMessage}
                 />}
             />
             <Route

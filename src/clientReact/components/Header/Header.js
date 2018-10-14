@@ -98,7 +98,6 @@ class Header extends React.Component {
                 <AuthPanel
                   history={this.props.history}
                   logoutUser={this.props.logoutUser}
-                  loggedIn={this.props.loggedIn}
                   user={this.props.user}
                 />
               </div>

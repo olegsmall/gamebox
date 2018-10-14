@@ -8,8 +8,8 @@
  */
 
 import express from 'express';
+
 const router = express.Router();
-const passport = require('passport');
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, './public/image/avatars');
@@ -27,6 +27,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 import multer from 'multer';
+
 const upload = multer({
   storage: storage,
   limits: {fileSize: 1024 * 1024 * 4,},
@@ -47,7 +48,8 @@ router.get('/statistics', Auth.checkAuth, UserController.userStatistics); // Get
 router.get('/inbox', Auth.checkAuth, MessageController.getInboxMessages); // Get inbox messages
 router.get('/outbox', Auth.checkAuth, MessageController.getOutboxMessages); // Get outbox messages
 router.post('/', Auth.checkAuth, upload.single('avatar'), UserController.createUser); // Create new user
-router.post('/login', passport.authenticate('local'), Auth.checkAuth, UserController.authenticate); // Login
+router.post('/login', UserController.passportAuthenticate, Auth.checkAuth, UserController.authenticate); // Login
+router.post('/logout', UserController.logout); // Logout
 router.get('/', Auth.checkAuth, Auth.checkAdminRole, UserController.getUsers); // Get list of all users
 router.get('/session', UserController.getSessionUser); // Get user from session
 router.get('/:id', Auth.checkAuth, UserController.getUser); // Get specific user
@@ -59,6 +61,5 @@ router.put('/role', Auth.checkAuth, Auth.checkSuperUserRole, UserController.upda
 router.put('/:id/status', Auth.checkAuth, Auth.checkAdminRole, UserController.updateUserStatus); //Change user status
 router.put('/:id/rating', Auth.checkAuth, UserController.rateUser); //Rate user
 router.delete('/:id/message', Auth.checkAuth, MessageController.deleteMessage); // Delete message from user messages
-router.post('/logout', Auth.checkAuth, UserController.logout); // Logout
 
 module.exports = router;
