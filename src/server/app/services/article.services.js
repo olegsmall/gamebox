@@ -9,7 +9,9 @@
  */
 
 // Importing Article model
-const Article = require('../models/article.model');
+import Article from '../models/article.model';
+// Import buffer to string converter
+import BufferToString from './BufferToString';
 
 /**
  * Creates and saves an article in DB.
@@ -20,13 +22,12 @@ const Article = require('../models/article.model');
  *    otherwise returns json with error message
  */
 exports.createArticle = function (req) {
+
   try {
     // Assign main image for article
-    let image;
+    let image = '/image/default/article.jpg';
     if (req.file){
-      image = '/image/articles/' + req.file.filename;
-    } else {
-      image = '/image/default/article.jpg';
+      image = BufferToString.convert(req.file.contentType, req.file.buffer);
     }
 
     // Create article object and assign sent info
@@ -34,6 +35,7 @@ exports.createArticle = function (req) {
       author: req.user._id,
       title: req.body.title,
       content: req.body.content,
+      // image: image,
       image: image,
       tags: req.body.tags
     }).save();
@@ -79,6 +81,8 @@ exports.getArticles = function (req) {
     return promise.then((doc, err) => {
       if(err) { throw Error(err); }
       if(doc === null) { throw Error('No articles found'); }
+      // let newDoc = doc.toObject();
+      // newDoc.image =
       return doc;
     });
   } catch (e) {
@@ -95,10 +99,13 @@ exports.getArticles = function (req) {
  */
 exports.getArticle = function (id) {
   try {
-    let promise = Article.findOne({_id: id}).populate({path: 'author comment.user', select: 'avatar firstName lastName _id'});
+    let promise = Article.findOne({_id: id}).populate({path: 'author comment.user', select: 'avatar firstName lastName _id'}).lean();
     return promise.then((doc, err) => {
       if(err) { throw Error(err); }
       if(doc === null) { throw Error('Article not found'); }
+
+      // let newDoc = doc.toObject();
+      // doc.image = `data:${doc.image.contentType};base64,${base64ArrayBuffer(doc.image.data)}`;
       return doc;
     });
   } catch (e) {

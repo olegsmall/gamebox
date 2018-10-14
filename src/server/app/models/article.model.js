@@ -32,7 +32,6 @@ const ArticleSchema = new Schema({
     date: {type: Date, default: Date.now()}
   }],
   image: {type: String, required: false},
-  imageD: { data: Buffer, contentType: String }, // Field for storing images in the DataBase
   tags: [String],
   created: {type: Date, default: Date.now},
   edited: {type: Date}
