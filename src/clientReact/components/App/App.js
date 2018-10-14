@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: App.js, application component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -26,6 +26,9 @@ import MessageBox from "../common/MessageBox/MessageBox";
 
 require('./App.scss');
 
+/**
+ * Class App, application component. It's the parent component
+ */
 //New syntax can be used for components with state or life cycle methods
 class App extends React.Component {
   //we can use constructor for initializing state properties
@@ -67,10 +70,20 @@ class App extends React.Component {
     // clean timers and listeners
   }
 
+  /**
+   * Update user profile
+   * @param stateObject
+   * @param routeCallback
+   */
   updateUser(stateObject, routeCallback = null) {
     this.setState(stateObject, () => routeCallback && routeCallback());
   }
 
+  /**
+   * Show system message
+   * @param message
+   * @param type
+   */
   showSystemMessage(message, type = 'success') {
     this.setState({
       systemMessage: {
@@ -82,12 +95,18 @@ class App extends React.Component {
     setTimeout(() => this.hideSystemMessage(), 9000);
   }
 
+  /**
+   * Hide system message
+   */
   hideSystemMessage() {
     const systemMessage = this.state.systemMessage;
     systemMessage.show = false;
     this.setState({systemMessage});
   }
 
+  /**
+   * Get user shopping cart
+   */
   getShoppingCart() {
 
     axios.get('/cart')
@@ -101,6 +120,9 @@ class App extends React.Component {
       });
   }
 
+  /**
+   * Get user profile
+   */
   getUser() {
     axios.get('/user/session').then(res => {
       if (res.data.user) {
@@ -120,6 +142,9 @@ class App extends React.Component {
       });
   }
 
+  /**
+   * User logout
+   */
   logoutUser() {
     axios.post('/user/logout')
       .then(response => {
@@ -133,6 +158,7 @@ class App extends React.Component {
     this.setState({user: null});
   }
 
+  //Add to DOM
   render() {
     const {systemMessage, showSystemMessage} = this.state;
 
