@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: Carousel.js, Carousel- the part of Game page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -11,15 +11,21 @@ import Swiper from 'react-id-swiper';
 
 require('./Carousel.scss');
 
-
+/**
+ * Class Carousel, Carousel component- the part of Game page component
+ */
 class Carousel extends React.Component {
 
+  /**
+   * Switch game image when clicking on a thumbnail
+   */
   blowupImage(){
     $('.swiper-slide img').click(function () {
       $('.blowup img').attr('src', $(this).attr('src'));
     });
   }
 
+  //Add to DOM
   render() {
     const params = {
       navigation: {
