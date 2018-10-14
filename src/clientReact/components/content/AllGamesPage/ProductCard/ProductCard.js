@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: ProductCard.js, Product's card- the part of all games page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -11,9 +11,12 @@ import {Link} from 'react-router-dom';
 
 require('./ProductCard.scss');
 
+/**
+ * Class ProductCard, Product's card component- the part of all games page component
+ */
 class ProductCard extends React.Component {
 
-
+  //Add to DOM
   render() {
     const product = this.props.product;
 
