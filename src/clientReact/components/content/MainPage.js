@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: MainPage.js, Main page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -14,6 +14,9 @@ import Swiper from 'react-id-swiper';
 
 require('./MainPage.scss');
 
+/**
+ * Class MainPage, Main page component.
+ */
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -23,10 +26,14 @@ export default class MainPage extends React.Component {
     };
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount() {
     this.fetchLastAdded();
   }
 
+  /**
+   * Get last added games
+   */
   fetchLastAdded() {
     axios.get('/product?sort_by=date&limit=10')
       .then((res) => {
@@ -40,6 +47,7 @@ export default class MainPage extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
     const params = {
       navigation: {

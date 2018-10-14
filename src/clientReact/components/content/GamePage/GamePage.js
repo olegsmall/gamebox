@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: GamePage.js, Game page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -15,7 +15,11 @@ import * as Yup from "yup";
 
 require('./GamePage.scss');
 
+/**
+ * Class GamePage, Game page component
+ */
 class GamePage extends React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -32,6 +36,9 @@ class GamePage extends React.Component {
 
   }
 
+  /**
+   * Show game page
+   */
   getProduct() {
     axios.get('/product/' + this.props.match.params.gameId)
       .then((res) => {
@@ -48,6 +55,11 @@ class GamePage extends React.Component {
       });
   }
 
+  /**
+   * Rate game
+   * @param id
+   * @param values
+   */
   rateProduct(id, values) {
     axios.put(`/product/${id}/rating`, {mark: values.mark})
       .then((res) => {
@@ -59,6 +71,11 @@ class GamePage extends React.Component {
       });
   }
 
+  /**
+   * Add comments to the game
+   * @param id
+   * @param values
+   */
   addProductComment(id, values) {
     axios.put(`/product/${id}/comment`, {content: values.content})
       .then((res) => {
@@ -70,7 +87,11 @@ class GamePage extends React.Component {
       });
   }
 
-
+  /**
+   * Add game to cart
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
     const {buyRent, duration} = values;
     const req = {};
@@ -92,6 +113,7 @@ class GamePage extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
 
     if (!this.state.fetchedDataIsReady) return null;

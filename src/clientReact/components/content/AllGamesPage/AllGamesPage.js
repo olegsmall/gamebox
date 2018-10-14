@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: AllGamesPage.js, all games page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -12,8 +12,11 @@ import ProductCard from './ProductCard/ProductCard';
 
 require('./AllGamesPage.scss');
 
+/**
+ * Class AllGamesPage, all games page component
+ */
 class AllGamesPage extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +24,7 @@ class AllGamesPage extends React.Component {
     };
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount() {
     // Fetching data for product list
     axios.get('/product')
@@ -34,6 +38,7 @@ class AllGamesPage extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
     return (
       <div className={"AllGamesPage"}>

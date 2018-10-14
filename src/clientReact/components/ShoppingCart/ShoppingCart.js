@@ -25,6 +25,7 @@ class ShoppingCart extends React.Component {
   }
 
   componentDidMount() {
+    this.payPallButtonInit();
     // this.payPallButtonInit();
   }
 
@@ -100,7 +101,7 @@ class ShoppingCart extends React.Component {
   render() {
     const {shoppingCart, user} = this.props;
 
-    if (!user && !shoppingCart) {
+    // if (!user) {
 
       const onSuccess = (payment) => {
         console.log("Your payment was succeeded!", payment);
@@ -118,8 +119,8 @@ class ShoppingCart extends React.Component {
       let currency = 'USD'; // or you can set this value from your props or state
       let total = 1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
 
-      this.payPallButtonInit();
-    }
+
+    // }
 
     return (
       <div className={'ShoppingCart'}>
