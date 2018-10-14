@@ -1,8 +1,19 @@
+/**
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: index.js, Main application file
+ * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
+ */
+
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './components/App/App';
-import {MemoryRouter} from 'react-router-dom'; //don't need to specify localhost url in axios http address
+import {MemoryRouter} from 'react-router-dom';
 
+/**
+ * Rendering Application to the DOM
+ */
 ReactDom.render(
   <MemoryRouter>
     <App/>
@@ -10,9 +21,3 @@ ReactDom.render(
   document.getElementById('root')
 );
 
-// setTimeout(()=>{
-//   ReactDom.render(
-//     <h2>......</h2>,
-//     document.getElementById('root')
-//   );
-// }, 4000);

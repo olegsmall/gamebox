@@ -24,15 +24,15 @@ class ArticleRow extends React.Component {
     this.contentArea.current.innerHTML = content.substring(0, 200) + '...';
   }
 
-  handleArticleEdit(e) {
+  handleArticleEdit = (e) => {
     e.preventDefault();
     this.props.setArticleState({
       articleForEdit: this.props.article,
     });
     this.props.changeInner('EditArticle');
-  }
+  };
 
-  handleArticleDelete(e) {
+  handleArticleDelete = (e) => {
     e.preventDefault();
     const self = this;
     axios.delete('/article/' + this.props.article._id)
@@ -60,10 +60,10 @@ class ArticleRow extends React.Component {
                 <h5 className={'card-title text-left mt-3 mt-md-0'}>{title}</h5>
                 <div className="card-text text-left" ref={this.contentArea}> </div>
                 <div className="card-title text-left">Created: {date}</div>
-                <a className="btn w-25 mt-2 btnAddArticle mr-3 linkArticle" href={''}
-                   onClick={this.handleArticleEdit.bind(this)}>Edit</a>
-                <a className="linkArticle btn w-25 mt-2 btnAddArticle" href={''}
-                   onClick={this.handleArticleDelete.bind(this)}>Delete</a>
+                <button type="button" className="btn w-25 mt-2 btnAddArticle mr-3 linkArticle"
+                   onClick={this.handleArticleEdit}>Edit</button>
+                <button type="button" className="linkArticle btn w-25 mt-2 btnAddArticle"
+                   onClick={this.handleArticleDelete}>Delete</button>
               </div>
             </div>
           </div>

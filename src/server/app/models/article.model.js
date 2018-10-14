@@ -1,3 +1,13 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 05 Sept 2018
+ * Edited: 12 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Article Model Schema.
+ * @module models/article.model
+ * @requires mongoose, mongoosePaginate
+ */
+
 const { mongoose } = require('../../config/app.config');
 const mongoosePaginate = require('mongoose-paginate');
 

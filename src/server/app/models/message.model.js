@@ -1,3 +1,14 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 05 Oct 2018
+ * Edited: 12 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview Message Model Schema.
+ * @module models/message.model
+ * @requires mongoose
+ * @requires mongoosePaginate
+ */
+
 const { mongoose } = require('../../config/app.config');
 const mongoosePaginate = require('mongoose-paginate');
 
@@ -13,7 +24,7 @@ const MessageSchema = new Schema({
   content: {
     type: String,
     required: true,
-    minlength: [10, 'Content minimum length is 10 symbols']
+    minlength: [1, 'Content minimum length is 1 symbols']
   },
   read: {type: Boolean, default: false},
   sender: {type: Schema.Types.ObjectId, ref: 'User', required: true},

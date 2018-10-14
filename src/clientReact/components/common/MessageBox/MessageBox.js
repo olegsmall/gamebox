@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: MessageBox.js, Message box component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -10,8 +10,12 @@ import React from 'react';
 
 require('./MessageBox.scss');
 
+/**
+ * Class MessageBox, message box component
+ */
 export default class MessageBox extends React.Component {
 
+  //Add to DOM
   render() {
     const {hideSystemMessage, systemMessage: {message = '', type = '', show = false} = {}} = this.props;
 
@@ -22,6 +26,7 @@ export default class MessageBox extends React.Component {
     let messageImage = '';
     let alertClass = '';
 
+    //switch for displaying different types of messages
     switch (type) {
       case 'warning':
         messageImage = '/image/warning.png';

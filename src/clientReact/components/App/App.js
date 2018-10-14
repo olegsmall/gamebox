@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: App.js, application component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -26,6 +26,9 @@ import MessageBox from "../common/MessageBox/MessageBox";
 
 require('./App.scss');
 
+/**
+ * Class App, application component. It's the parent component
+ */
 //New syntax can be used for components with state or life cycle methods
 class App extends React.Component {
   //we can use constructor for initializing state properties
@@ -34,8 +37,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
-      email: null,
       user: null,
       systemMessage: undefined,
       shoppingCart: {},
@@ -69,10 +70,20 @@ class App extends React.Component {
     // clean timers and listeners
   }
 
-  updateUser(userObject) {
-    this.setState(userObject);
+  /**
+   * Update user profile
+   * @param stateObject
+   * @param routeCallback
+   */
+  updateUser(stateObject, routeCallback = null) {
+    this.setState(stateObject, () => routeCallback && routeCallback());
   }
 
+  /**
+   * Show system message
+   * @param message
+   * @param type
+   */
   showSystemMessage(message, type = 'success') {
     this.setState({
       systemMessage: {
@@ -81,15 +92,21 @@ class App extends React.Component {
         show: true,
       },
     });
-    setTimeout(() => this.hideSystemMessage(), 7000);
+    setTimeout(() => this.hideSystemMessage(), 9000);
   }
 
+  /**
+   * Hide system message
+   */
   hideSystemMessage() {
     const systemMessage = this.state.systemMessage;
     systemMessage.show = false;
     this.setState({systemMessage});
   }
 
+  /**
+   * Get user shopping cart
+   */
   getShoppingCart() {
 
     axios.get('/cart')
@@ -103,44 +120,45 @@ class App extends React.Component {
       });
   }
 
+  /**
+   * Get user profile
+   */
   getUser() {
     axios.get('/user/session').then(res => {
       if (res.data.user) {
         this.setState({
-          loggedIn: true,
-          email: res.data.user.email,
           user: res.data.user,
         }, this.getShoppingCart);
       } else {
         this.setState({
-          loggedIn: false,
-          email: null,
           user: null,
           shoppingCart: {},
         });
       }
     })
       .catch((error) => {
-        console.log(error.response);
+        console.error('Get User Method: ')
+        console.error(error.response);
       });
   }
 
+  /**
+   * User logout
+   */
   logoutUser() {
-    // event.preventDefault();
-    axios.post('/user/logout').then(response => {
-      console.log(response.data);
-      if (response.status === 200) {
-        this.updateUser({
-          loggedIn: false,
-          email: null,
-          user: null
-        });
-      }
-    }).catch(error => {
-      console.log('Logout error');
-    });
+    axios.post('/user/logout')
+      .then(response => {
+        console.info(response.data.message);
+        this.showSystemMessage(response.data.message);
+      })
+      .catch(error => {
+        console.error('Logout error: ');
+        console.error(error.response);
+      });
+    this.setState({user: null});
   }
 
+  //Add to DOM
   render() {
     const {systemMessage, showSystemMessage} = this.state;
 
@@ -149,7 +167,6 @@ class App extends React.Component {
         <Header
           history={this.props.history}
           logoutUser={this.logoutUser}
-          loggedIn={this.state.loggedIn}
           user={this.state.user}
           shoppingCart={this.state.shoppingCart}
         />
@@ -161,9 +178,11 @@ class App extends React.Component {
               render={() => <MainPage/>}/>
             <Route
               path="/user/login"
-              render={() =>
+              render={(props) =>
                 <LoginPage
+                  {...props}
                   updateUser={this.updateUser}
+                  showSystemMessage={this.showSystemMessage}
                 />}
             />
             <Route
@@ -176,10 +195,12 @@ class App extends React.Component {
             />
             <Route
               exac path="/user"
-              render={() => <UserPage
+              render={(props) => <UserPage
+                {...props}
                 user={this.state.user}
                 updateUser={this.updateUser}
                 showSystemMessage={this.showSystemMessage}
+                logoutUser={this.logoutUser}
               />}
             />
             <Route

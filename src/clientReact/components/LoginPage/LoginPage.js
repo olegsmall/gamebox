@@ -9,12 +9,17 @@
 import React from 'react';
 import {Redirect, Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
-import {Formik} from 'formik';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 
 require('./LoginPage.scss');
 
 class LoginPage extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.handleSubmit.bind(this);
+  }
 
   handleSubmit(values, actions) {
     const self = this;
@@ -26,20 +31,19 @@ class LoginPage extends React.Component {
         if (res.status === 200) {
           actions.setSubmitting(false);
           // update app.js state
-          self.props.updateUser({
-            loggedIn: true,
-            email: res.data.user.email,
-            user: res.data.user,
-          });
-          self.props.history.push('/user');
+          self.props.updateUser(
+            {
+              user: res.data.user,
+            },
+            () => self.props.history.push('/user')
+          );
         }
-
       })
       .catch((error) => {
         actions.setSubmitting(false);
-        alert('User name or password is incorrect!');
-        console.log('login error: ');
-        console.log(error.response);
+        console.error('login page error: ');
+        console.error(error.response);
+        self.props.showSystemMessage(error.response.data.message, 'error');
       });
   }
 
@@ -62,44 +66,17 @@ class LoginPage extends React.Component {
                 })}
                 onSubmit={(values, actions) => this.handleSubmit(values, actions)}
               >
-                {({
-                    values,
-                    errors,
-                    touched,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    isSubmitting,
-                    /* and other goodies */
-                  }) => (
-
-                  <form className="mt-5" onSubmit={handleSubmit}>
+                {({isSubmitting}) => (
+                  <Form className="mt-5">
                     <div className="form-group">
-                      <input
-                        type="email"
-                        name="email"
-                        className="form-control inputLog"
-                        placeholder="Enter email"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.email}
-                        formNoValidate={true}
-                      />
-                      <small
-                        className="form-text text-left error">{errors.email && touched.email && errors.email}</small>
+                      <Field type="email" name="email" className="form-control inputLog" placeholder="Enter email"/>
+                      <ErrorMessage name="email">{msg => <small
+                        className='form-text text-left error'>{msg}</small>}</ErrorMessage>
                     </div>
                     <div className="form-group">
-                      <input
-                        name="password"
-                        type="password"
-                        className="form-control inputLog"
-                        placeholder="Password"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.password}
-                      />
-                      <small
-                        className="form-text text-left error">{errors.password && touched.password && errors.password}</small>
+                      <Field name="password" type="password" className="form-control inputLog" placeholder="Password"/>
+                      <ErrorMessage name="password">{msg => <small
+                        className='form-text text-left error'>{msg}</small>}</ErrorMessage>
                     </div>
                     <button
                       type="submit"
@@ -108,7 +85,7 @@ class LoginPage extends React.Component {
                     >
                       Log in to GameBox
                     </button>
-                  </form>
+                  </Form>
                 )}
               </Formik>
               <Link to={'/user/signup'}><p className="mt-3">Create your free GameBox Account</p></Link>
@@ -120,4 +97,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default withRouter(LoginPage);
+export default LoginPage;

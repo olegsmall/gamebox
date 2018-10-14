@@ -1,8 +1,20 @@
+/**
+ * Created by: Peter Yablochkin
+ * Created: 05 Oct 2018
+ * Edited: 12 Oct 2018 by Peter Yablochkin
+ *
+ * @fileoverview User Model Schema.
+ * @module models/user.model
+ * @requires mongoose
+ * @requires mongoosePaginate
+ * @requires bcrypt
+ */
+
 const {mongoose} = require('../../config/app.config');
 const mongoosePaginate = require('mongoose-paginate');
 import bcrypt from 'bcryptjs';
 
-
+// User Rating sub-schema
 const RatingSubSchema = new mongoose.Schema({
   mark: {
     type: Number,
@@ -13,6 +25,7 @@ const RatingSubSchema = new mongoose.Schema({
   rated_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: [true, 'Voter id is required']},
 },{ _id : false });
 
+// User Status sub-schema
 const StatusSubSchema = new mongoose.Schema({
   state: {type: String, enum: ['activated', 'deactivated', 'banned'], default: 'deactivated', required: [true, 'Indicate user status']},
   expires: {type: Date}
@@ -31,8 +44,8 @@ const UserSchema = new mongoose.Schema({
   avatar: {type: String, default: '/image/default/default_avatar.png'},
   role: {type: String, enum: ['SuperUser', 'Administrator', 'User'], default: 'User'},
   status: StatusSubSchema,
-  phone: {type: String},
-  address: {type: String, minlength: 5, maxlength: 50},
+  phone: {type: String, maxlength: 12, required: [true, 'Enter your phone number']},
+  address: {type: String, minlength: 5, maxlength: 50, required: [true, 'Enter your address']},
   password: {type: String, minlength: 1},
   rating: [RatingSubSchema],
   cart: [{
@@ -51,6 +64,7 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.plugin(mongoosePaginate);
 
+// User auth verification methods
 UserSchema.methods = {
   checkPassword: function(inputPassword) {
     return bcrypt.compareSync(inputPassword, this.password);
@@ -60,15 +74,18 @@ UserSchema.methods = {
   }
 };
 
+/**
+ * Schema pre-saving method
+ * Executed on every user saving request to check/hash password and to prevent password rehashing
+ * @return void
+ */
 UserSchema.pre('save', function(next) {
-  // Check if pass is modified
+  // Check if pass is modified to prevent password rehashing
   if (!this.isModified('password')) return next();
   //TODO: to remove this verification (it is checked in model)
   if (!this.password) {
-    // console.log('models/user.model.js ---- No password provided ----');
     next();
   } else {
-    // console.log('models/user.model.js hashPassword in pre save');
     this.password = this.hashPassword(this.password);
     next();
   }

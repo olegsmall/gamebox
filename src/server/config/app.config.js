@@ -1,3 +1,10 @@
+/**
+ * Created by: Oleg Smolovik
+ * Created: 15 Sept 2018
+ *
+ * @fileoverview Defines new exception type.
+ */
+
 const env = process.env;
 
 export const nodeEnv = env.NODE_ENV || 'development';

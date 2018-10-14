@@ -19,6 +19,14 @@ class ProductRow extends React.Component {
     super(props);
   }
 
+  handleEdit(e){
+    e.preventDefault();
+    this.props.setUserPageState({
+      productForEdit: this.props.product,
+    });
+    this.props.changeInner('EditProduct');
+  };
+
   componentDidMount() {
 
   }
@@ -30,15 +38,16 @@ class ProductRow extends React.Component {
       <div>
         <Link className="linkArticle" to={`/product/${product._id}`}>
           <div className={'card border-0'}>
-              <div className={'ProductRow'}>
-                <div className="card-body text-center text-md-left">
-                  <img className="img-fluid float-md-left mr-5 imageYourGame" src={product.images[0]} alt={product.title}/>
-                  <h5 className="card-title mt-3 mt-md-0">{product.title}</h5>
-                  {/*<p className="card-text text-left">{product.description.substring(0, 25)}</p>*/}
-                  <p className="card-text">{product.genres.join(' ')}</p>
-                  <a className="linkArticle btn my-2 btnAddGame" href={''}>Edit Game</a>
-                </div>
+            <div className={'ProductRow'}>
+              <div className="card-body text-center text-md-left">
+                <img className="img-fluid float-md-left mr-5 imageYourGame" src={product.images[0]}
+                     alt={product.title}/>
+                <h5 className="card-title mt-3 mt-md-0">{product.title}</h5>
+                {/*<p className="card-text text-left">{product.description.substring(0, 25)}</p>*/}
+                <p className="card-text">{product.genres.join(' ')}</p>
+                <button className="linkArticle btn my-2 btnAddGame" onClick={this.handleEdit.bind(this)}>Edit Game</button>
               </div>
+            </div>
           </div>
         </Link>
         <hr/>
