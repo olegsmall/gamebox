@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: ArticlePage.js, Blog article page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -12,7 +12,11 @@ import {Link} from 'react-router-dom';
 
 require('./ArticlePage.scss');
 
+/**
+ * Class ArticlePage, blog article page component.
+ */
 export default class ArticlePage extends  React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -20,6 +24,8 @@ export default class ArticlePage extends  React.Component {
       article: null
     };
   }
+
+  //Component mount method, guaranteed that component was mounted
   componentDidMount(){
     axios.get('/article/' + this.props.match.params.articleId)
       .then((res) => {
@@ -31,6 +37,7 @@ export default class ArticlePage extends  React.Component {
       });
   }
 
+  //Add to DOM
   render(){
 
     if (this.state.article === null) {
