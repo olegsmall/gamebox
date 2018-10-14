@@ -46,7 +46,7 @@ export default class Messenger extends React.Component {
         inboxMessagesReady: false,
         outboxMessagesReady: false,
       },
-      () => this.setState({allMessages})
+      () => this.setState({allMessages: allMessages})
     );
   }
 
@@ -116,10 +116,8 @@ export default class Messenger extends React.Component {
       .then((res) => {
         this.props.showSystemMessage(res.data.message);
         this.getInboxMessages();
-        this.getInboxMessages();
-        values.title = '';
-        values.content = '';
-        values.email = '';
+        this.getOutboxMessages();
+        actions.resetForm();
       })
       .catch((error) => {
         console.error(error.response);
@@ -150,7 +148,7 @@ export default class Messenger extends React.Component {
               .min(1, '* Minimum length is 1 symbols')
               .required('* Message title is required'),
             content: Yup.string()
-              .min(10, '* Minimum length is 10 symbols'),
+              .min(1, '* Minimum length is 1 symbols'),
             email: Yup.string()
               .email('* Email is not correct')
               .required('* Email is required'),
@@ -186,34 +184,36 @@ export default class Messenger extends React.Component {
                 <div className="input-group">
                   <Field name="content" component="textarea" className="form-control" rows="5"
                          placeholder="message text"/>
-                  <ErrorMessage name="content">{msg => <small
-                    className='form-text text-left error'>{msg}</small>}</ErrorMessage>
                 </div>
+                <ErrorMessage name="content">{msg => <small
+                  className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
             </Form>
           )}
         </Formik>
         <div className="h5 ml-5 mb-2 mt-3 text-center text-sm-left">All my letters</div>
         <table className="table table-sm mt-3">
-          {allMessages.map((message, index) => {
+          <tbody>
+            {allMessages.map((message, index) => {
 
-            const messageDirectionImage = message.type === 'inbox' ? '/image/write-3722611_640_in.png' : '/image/write-3722611_640_out.png';
-            const user = message.type === 'inbox' ? message.sender : message.receiver;
-            const messageDate = new Date(message.created).toLocaleDateString()
-            let rowClasses = ' cursor-pointer ';
-            rowClasses += !message.read ? ' font-weight-bold ' : '';
-            rowClasses += currentMessage === message._id + message.type ? ' table-active ' : '';
+              const messageDirectionImage = message.type === 'inbox' ? '/image/write-3722611_640_in.png' : '/image/write-3722611_640_out.png';
+              const user = message.type === 'inbox' ? message.sender : message.receiver;
+              const messageDate = new Date(message.created).toLocaleDateString();
+              let rowClasses = ' cursor-pointer ';
+              rowClasses += !message.read && message.type === 'inbox' ? ' font-weight-bold ' : '';
+              rowClasses += currentMessage === message._id + message.type ? ' table-active ' : '';
 
-            return (
-              <tr key={index} className={rowClasses} onClick={() => this.getMessage(message)}>
-                <th scope="row"><img src={messageDirectionImage} width="40"/></th>
-                <td>{messageDate}</td>
-                <td>{`${user.firstName} ${user.lastName}`}</td>
-                <td>{user.email}</td>
-                <td>{message.subject}</td>
-              </tr>
-            );
-          })}
+              return (
+                <tr key={index} className={rowClasses} onClick={() => this.getMessage(message)}>
+                  <th scope="row"><img src={messageDirectionImage} width="40"/></th>
+                  <td>{messageDate}</td>
+                  <td>{`${user.firstName} ${user.lastName}`}</td>
+                  <td>{user.email}</td>
+                  <td>{message.subject}</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
         <div className="text_message_history">{currentMessageContent}</div>
       </div>

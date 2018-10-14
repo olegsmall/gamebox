@@ -24,7 +24,7 @@ const MessageSchema = new Schema({
   content: {
     type: String,
     required: true,
-    minlength: [10, 'Content minimum length is 10 symbols']
+    minlength: [1, 'Content minimum length is 1 symbols']
   },
   read: {type: Boolean, default: false},
   sender: {type: Schema.Types.ObjectId, ref: 'User', required: true},

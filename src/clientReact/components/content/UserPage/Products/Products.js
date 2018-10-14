@@ -9,6 +9,7 @@
 import React from 'react';
 import axios from "axios";
 import ProductRow from "./ProductRow/ProductRow";
+import AddProduct from "../AddProduct/AddProduct";
 
 require('./Products.scss');
 
@@ -50,7 +51,12 @@ class Products extends React.Component {
         <div id="yourGame" className="container mt-3">
 
                 {this.state.products.map((product) => (
-                  <ProductRow key={product._id} product={product}/>
+                  <ProductRow
+                    key={product._id}
+                    product={product}
+                    setUserPageState={this.props.setUserPageState}
+                    changeInner={this.props.changeInner}
+                  />
                   ))}
 
         </div>

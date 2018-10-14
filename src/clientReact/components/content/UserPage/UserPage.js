@@ -22,6 +22,7 @@ import PaymentConfirmation from "./adminPages/PaymentConfirmation/PaymentConfirm
 import EditUserRights from "./adminPages/EditUserRights/EditUserRights";
 import Messenger from "./Messenger/Messenger";
 import Statistics from "./Statistics/Statistics";
+import ProductRow from "./Products/ProductRow/ProductRow";
 
 require('./UserPage.scss');
 
@@ -33,6 +34,7 @@ class UserPage extends React.Component {
       innerComponent: 'Profile',
       message: '',
       articleForEdit: null,
+      productForEdit: null,
       userForEdit: null, // User for edit in admin part in page EditUserRights
     };
     this.handleChangeInner = this.handleChangeInner.bind(this);
@@ -48,6 +50,10 @@ class UserPage extends React.Component {
     this.setState(obj);
   }
 
+  setUserPageState = (obj)=>{
+    this.setState(obj);
+  };
+
   handleChangeInner(e, innerName) {
     e.preventDefault();
     this.changeInner(innerName);
@@ -59,7 +65,7 @@ class UserPage extends React.Component {
     this.props.history.push('/');
   }
 
-  changeInner(innerName) {
+  changeInner = (innerName)=> {
     this.setState({innerComponent: innerName});
   }
 
@@ -82,26 +88,29 @@ class UserPage extends React.Component {
     switch (this.state.innerComponent) {
       case 'Profile':
         inner = <Profile
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           user={this.props.user}/>;
         break;
       case 'Products':
         inner = <Products
-          changeInner={this.changeInner.bind(this)}
-          user={this.props.user}/>;
+          changeInner={this.changeInner}
+          user={this.props.user}
+          setUserPageState={this.setUserPageState}
+        />;
         break;
       case 'AddProduct':
         inner = <AddProduct
           showSystemMessage={this.props.showSystemMessage}
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           pageType={'AddProduct'}
         />;
         break;
       case 'EditProduct':
         inner = <AddProduct
           showSystemMessage={this.props.showSystemMessage}
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           pageType={'EditProduct'}
+          product={this.state.productForEdit}
         />;
         break;
       case 'Orders':
@@ -110,7 +119,7 @@ class UserPage extends React.Component {
       case 'EditProfile':
         inner = <EditProfile
           user={this.props.user}
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           goToProfile={this.goToProfile.bind(this)}
           showSystemMessage={this.props.showSystemMessage}
           updateUser={this.props.updateUser}
@@ -119,31 +128,30 @@ class UserPage extends React.Component {
       case 'ChangePassword':
         inner = <ChangePassword
           user={this.props.user}
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           goToProfile={this.goToProfile.bind(this)}
           showSystemMessage={this.props.showSystemMessage}
         />;
         break;
       case 'Articles':
         inner = <Articles
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           showSystemMessage={this.props.showSystemMessage}
-          setArticleState={this.setArticleState.bind(this)}
+          setArticleState={this.setUserPageState}
           user={this.props.user}/>;
         break;
       case 'AddArticle':
         inner = <AddArticle
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           showSystemMessage={this.props.showSystemMessage}
           pageType={'AddArticle'}
         />;
         break;
       case 'EditArticle':
         inner = <AddArticle
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           showSystemMessage={this.props.showSystemMessage}
           pageType={'EditArticle'}
-          setArticleState={this.setArticleState.bind(this)}
           article={this.state.articleForEdit}
         />;
         break;
@@ -154,33 +162,33 @@ class UserPage extends React.Component {
         break;
       case 'UsersList':
         inner = <UsersList
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           setUserForEditState={this.setUserForEditState.bind(this)}
           showSystemMessage={this.props.showSystemMessage}
         />;
         break;
       case 'EditUserRights':
         inner = <EditUserRights
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           showSystemMessage={this.props.showSystemMessage}
           userForEdit={this.state.userForEdit}
         />;
         break;
       case 'PaymentConfirmation':
         inner = <PaymentConfirmation
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           showSystemMessage={this.props.showSystemMessage}
         />;
         break;
       case 'Messenger':
         inner = <Messenger
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           showSystemMessage={this.props.showSystemMessage}
         />;
         break;
       case 'Statistics':
         inner = <Statistics
-          changeInner={this.changeInner.bind(this)}
+          changeInner={this.changeInner}
           showSystemMessage={this.props.showSystemMessage}
         />;
         break;

@@ -37,17 +37,17 @@ class Articles extends React.Component {
       });
   }
 
-  handleAddArticle(e) {
+  handleAddArticle = (e)=> {
     e.preventDefault();
     this.props.changeInner('AddArticle');
-  }
+  };
 
   render() {
 
     return (
       <div className={"Articles col-md-8 text-center"}>
         <h2 className="text-center mt-4">My articles</h2>
-        <button className={'btn btn-block mt-2 btnAddArticle'} onClick={this.handleAddArticle.bind(this)}>Add article
+        <button className={'btn btn-block mt-2 btnAddArticle'} onClick={this.handleAddArticle}>Add article
         </button>
         <div id="yourArticle" className="container">
           {this.state.articles.map((article) => (
