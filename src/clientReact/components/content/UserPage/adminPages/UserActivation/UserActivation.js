@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: UserActivation.js, User activation component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -13,7 +13,11 @@ import * as Yup from "yup";
 
 require('./UserActivation.scss');
 
+/**
+ * Class UserActivation, User activation component
+ */
 export default class UserActivation extends React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -24,6 +28,9 @@ export default class UserActivation extends React.Component {
     this.getDeactivatedUsersList();
   }
 
+  /**
+   * Deactivate users
+   */
   getDeactivatedUsersList() {
     axios.get('/user/?user=deactivated')
       .then((res) => {
@@ -35,6 +42,10 @@ export default class UserActivation extends React.Component {
       });
   }
 
+  /**
+   * Activate users
+   * @param userId
+   */
   activateUser(userId) {
     // console.log(userId)
     axios.put(`/user/${userId}/status`, {state: 'activated'})
@@ -49,6 +60,7 @@ export default class UserActivation extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
     const {usersList} = this.state;
     if (!usersList) {
