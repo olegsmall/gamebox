@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: index.js, Main application file
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
