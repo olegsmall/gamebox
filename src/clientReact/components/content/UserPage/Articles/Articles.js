@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: Articles.js, All user articles component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -12,8 +12,11 @@ import ArticleRow from "./ArticleRow/ArticleRow";
 
 require('./Articles.scss');
 
+/**
+ * Class Articles, All user articles component
+ */
 class Articles extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
     this.state = {
@@ -21,10 +24,14 @@ class Articles extends React.Component {
     };
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount() {
     this.getArticles();
   }
 
+  /**
+   * Show all articles
+   */
   getArticles() {
     axios.get('/user/' + this.props.user._id + '/articles')
       .then((res) => {
@@ -37,11 +44,16 @@ class Articles extends React.Component {
       });
   }
 
+  /**
+   * Add article
+   * @param e
+   */
   handleAddArticle = (e)=> {
     e.preventDefault();
     this.props.changeInner('AddArticle');
   };
 
+  //Add to DOM
   render() {
 
     return (
