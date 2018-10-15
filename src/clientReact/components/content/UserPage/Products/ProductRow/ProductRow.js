@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: ProductRow.js, Product's row, the part of Products component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -13,12 +13,19 @@ import {Link} from "react-router-dom";
 
 require('./ProductRow.scss');
 
+/**
+ * Class ProductRow, Product's row component, the part of Products component
+ */
 class ProductRow extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
   }
 
+  /**
+   * Edit product
+   * @param e
+   */
   handleEdit(e){
     e.preventDefault();
     this.props.setUserPageState({
@@ -31,6 +38,7 @@ class ProductRow extends React.Component {
 
   }
 
+  //Add to DOM
   render() {
 
     const {product} = this.props;
