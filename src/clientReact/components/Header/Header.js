@@ -7,10 +7,8 @@
  */
 
 import React from 'react';
-// import ReactPropTypes from 'prop-types';
 import AuthPanel from './AuthPanel';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 
 require('./Header.scss');
 
