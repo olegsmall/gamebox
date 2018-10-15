@@ -29,11 +29,10 @@ class Articles extends React.Component {
     axios.get('/user/' + this.props.user._id + '/articles')
       .then((res) => {
         // handle success
-        // console.log(res.data.data.docs);
         this.setState({articles: res.data.articles.docs});
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.response);
       });
   }
 
@@ -55,7 +54,7 @@ class Articles extends React.Component {
               key={article._id}
               article={article}
               getArticles={this.getArticles.bind(this)}
-              showMessage={this.props.showMessage}
+              showSystemMessage={this.props.showSystemMessage}
               setArticleState={this.props.setArticleState}
               changeInner={this.props.changeInner}
             />

@@ -8,7 +8,6 @@
 
 .MessageBox{
   .alert {
-    //display: none;
     position:fixed;
     background-color: white;
     width: 60%;
@@ -16,8 +15,6 @@
     left:20%;
     border: 3px solid #ff6e00;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-    //animation-name: fadeInOut;
-    //animation-duration: 5s;
   }
 
   .imgWindow {

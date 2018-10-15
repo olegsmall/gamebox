@@ -38,11 +38,11 @@ class ArticleRow extends React.Component {
     axios.delete('/article/' + this.props.article._id)
       .then((res) => {
         self.props.getArticles();
-        self.props.showMessage(res.data.message);
+        self.props.showSystemMessage(res.data.message);
       })
       .catch((error) => {
-        console.log(error);
-        self.props.showMessage(error.message);
+        console.error(error.response);
+        self.props.showSystemMessage(error.message);
       });
   }
 

@@ -35,7 +35,7 @@ class AddProduct extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.response);
       });
   }
 
@@ -60,26 +60,24 @@ class AddProduct extends React.Component {
     if (this.props.pageType === 'EditProduct') {
       axios.put('/product/' + this.props.product._id, formData)
         .then((res) => {
-          console.log(res.data);
           self.props.showSystemMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Products');
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error.response);
           self.props.showSystemMessage(error.message, 'error');
           actions.setSubmitting(false);
         });
     } else {
       axios.post('/product', formData)
         .then((res) => {
-          console.log(res.data);
           self.props.showSystemMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Products');
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error.response);
           self.props.showSystemMessage(error.message, 'error');
           actions.setSubmitting(false);
         });

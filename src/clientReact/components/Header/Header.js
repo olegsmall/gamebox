@@ -99,6 +99,7 @@ class Header extends React.Component {
                   history={this.props.history}
                   logoutUser={this.props.logoutUser}
                   user={this.props.user}
+                  getShoppingCart={this.props.getShoppingCart}
                 />
               </div>
               {/*Cart*/}

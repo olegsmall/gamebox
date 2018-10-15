@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
 
   constructor(props){
     super(props);
-    this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(values, actions) {
@@ -35,7 +35,10 @@ class LoginPage extends React.Component {
             {
               user: res.data.user,
             },
-            () => self.props.history.push('/user')
+            ()=>{
+              self.props.getShoppingCart();
+              self.props.history.push('/user');
+            }
           );
         }
       })

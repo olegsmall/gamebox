@@ -21,10 +21,6 @@ class ArticleCard extends React.Component {
     this.contentArea = React.createRef();
   }
 
-  showContent(){
-
-  }
-
   //Component mount method, guaranteed that component was mounted
   componentDidMount(){
     let content = this.props.article.content.replace(/<[^>]*>/g, '');

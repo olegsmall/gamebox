@@ -29,11 +29,10 @@ export default class ArticlePage extends  React.Component {
   componentDidMount(){
     axios.get('/article/' + this.props.match.params.articleId)
       .then((res) => {
-        console.log(res.data);
         this.setState({article: res.data.article});
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.response);
       });
   }
 
@@ -60,7 +59,6 @@ export default class ArticlePage extends  React.Component {
               <p className="text-muted">Written by : {`${author.firstName} ${author.lastName}`} | {date}</p>
               <img className="img-fluid mt-3" src={image} alt="image"/>
               <HtmlContent content={content}/>
-              {/*<div className="mt-5" dangerouslySetInnerHTML={{ __html: content }}> </div>*/}
               <p className="my-5"><span>{tags.join(' ')}</span></p>
             </div>
           </div>

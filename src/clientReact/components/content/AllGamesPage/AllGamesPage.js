@@ -30,11 +30,10 @@ class AllGamesPage extends React.Component {
     axios.get('/product')
       .then((res) => {
         // handle success
-        // console.log(res.data.data.docs);
         this.setState({products: res.data.products.docs});
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }
 

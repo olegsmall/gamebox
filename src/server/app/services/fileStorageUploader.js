@@ -1,5 +1,5 @@
 /**
- *
+ * File uploader middleware that uses file stystem storage
  *
  * file: imageUploader.js
  * Created by: Oleg Smolovyk.
@@ -9,6 +9,7 @@
 
 import multer from 'multer';
 
+// Creating multer middleware
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, './uploads');
@@ -17,6 +18,8 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + file.originalname);
   }
 });
+
+//File filter
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true);
@@ -25,6 +28,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+// Creating uploader
 const fileUploader = multer({
   storage: storage,
   limits: {fileSize: 1024 * 1024 * 4,},

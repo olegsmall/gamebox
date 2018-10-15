@@ -26,7 +26,6 @@ class Orders extends React.Component {
   getOrders() {
     axios.get('/user/order')
       .then((res) => {
-        console.log(res.data);
         this.setState({ordersList: res.data.orders.docs});
       })
       .catch((error) => {

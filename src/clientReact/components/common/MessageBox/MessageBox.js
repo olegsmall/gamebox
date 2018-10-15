@@ -21,8 +21,6 @@ export default class MessageBox extends React.Component {
 
     const showHideClassName = show ? 'showMessage' : 'hideMessage';
 
-    // if (type === '') return null;
-
     let messageImage = '';
     let alertClass = '';
 

@@ -5,15 +5,31 @@
  * Created by: Oleg Smolovyk.
  * Date: 10/14/2018
  * Time: 17:26
+ * Using function of jonleighton src: // https://gist.github.com/jonleighton/958841#gistcomment-1953137
+ */
+
+/**
+ * Buffer to string image converting class
  */
 export default class BufferToString {
 
+  /**
+   * Function converter buffered image to string
+   * @param mimteType
+   * @param data
+   * @returns {string}
+   */
   convert(mimteType, data) {
     return `data:${mimteType};base64,${base64ArrayBuffer(data)}`;
   }
 }
 
-// https://gist.github.com/jonleighton/958841#gistcomment-1953137
+/**
+ * Function convertor
+ * @param arrayBuffer
+ * @returns {string}
+ * src https://gist.github.com/jonleighton/958841#gistcomment-1953137
+ */
 function base64ArrayBuffer(arrayBuffer) {
   let base64 = '';
   const encodings = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';

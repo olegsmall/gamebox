@@ -27,11 +27,10 @@ class Products extends React.Component {
     axios.get('/user/' + this.props.user._id + '/products')
       .then((res) => {
         // handle success
-        // console.log(res.data.data.docs);
         this.setState({products: res.data.products.docs});
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.response);
       });
 
   }

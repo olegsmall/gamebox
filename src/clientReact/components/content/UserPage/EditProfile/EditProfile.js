@@ -36,7 +36,7 @@ class EditProfile extends React.Component {
         self.props.changeInner('Profile');
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.response);
         self.props.showSystemMessage(error.message, 'error');
         actions.setSubmitting(false);
       });
@@ -60,11 +60,9 @@ class EditProfile extends React.Component {
               .max(30)
               .required('* Required'),
             lastName: Yup.string()
-              .min(3)
               .max(30),
             phone: Yup.string(),
             address: Yup.string()
-              .min(5)
               .max(50),
           })}
           onSubmit={(values, actions) => this.handleSubmit(values, actions)}

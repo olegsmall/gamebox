@@ -1,3 +1,5 @@
+import BufferToString from "./BufferToString";
+
 /**
  * Created by: Oleg Smolovik
  * Created: 17 Sept 2018
@@ -30,16 +32,14 @@ exports.createUser = async function (req) {
     throw new ResponseException(409, 'User already exists');
   } else {
     //user profile image
-    let avatarFilePath;
+    let image = '/image/default/default_avatar.png';
     if (req.file){
-      avatarFilePath = '/image/avatars/' + req.file.filename;
-    } else {
-      avatarFilePath = '/image/default/default_avatar.png';
+      image = new BufferToString().convert(req.file.mimetype, req.file.buffer);
     }
     const newUser = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      avatar: avatarFilePath,
+      avatar: image,
       email: req.body.email,
       phone: req.body.phone,
       address: req.body.address,
@@ -127,7 +127,7 @@ exports.updateUserInfo = function (req) {
     return promise.then((user) => {
       if(user === null) { throw Error('User not found'); }
       if (req.file){
-        user.avatar = '/image/avatars/' + req.file.filename;
+        user.avatar = new BufferToString().convert(req.file.mimetype, req.file.buffer);
       }
       user.firstName = req.body.firstName;
       user.lastName = req.body.lastName;

@@ -8,8 +8,6 @@
 
 import React from 'react';
 import axios from "axios";
-import {Formik, Form, Field, ErrorMessage} from 'formik';
-import * as Yup from "yup";
 
 require('./UserActivation.scss');
 
@@ -30,21 +28,20 @@ export default class UserActivation extends React.Component {
         this.setState({usersList: res.data.users.docs});
       })
       .catch((error) => {
-        console.log(error.response)
+        console.error(error.response);
         this.props.showSystemMessage(error.response.data.message, 'error');
       });
   }
 
   activateUser(userId) {
-    // console.log(userId)
-    axios.put(`/user/${userId}/status`, {state: 'activated'})
+    axios.put(`/user/${userId}/status`, {status: 'activated'})
       .then((res) => {
         this.getDeactivatedUsersList();
         this.props.showSystemMessage(res.data.message);
 
       })
       .catch((error) => {
-        console.log(error.response)
+        console.error(error.response);
         this.props.showSystemMessage(error.response.data.message, 'error');
       });
   }

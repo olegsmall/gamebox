@@ -23,7 +23,7 @@ export default class EditUserRights extends React.Component {
 
   handleSubmitBan(values, actions){
 
-    const req = {state: 'banned'};
+    const req = {status: 'banned'};
     if (values.banType === 'temporary'){
       req.expires = values.daysOfBan;
     }
@@ -60,7 +60,6 @@ export default class EditUserRights extends React.Component {
 
   render() {
     const {userForEdit} = this.props;
-    // console.log(this.props.userForEdit);
     if (!userForEdit) return null;
 
     return (

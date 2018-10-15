@@ -8,8 +8,6 @@
 
 import React from 'react';
 import axios from "axios";
-import {Formik, Form, Field, ErrorMessage} from 'formik';
-import * as Yup from "yup";
 
 require('./PaymentConfirmation.scss');
 
@@ -28,7 +26,6 @@ export default class PaymentConfirmation extends React.Component {
   getOrdersWaitingPaymentConfirmation() {
     axios.get('/order?status=pending')
       .then((res) => {
-        console.log(res.data)
         this.setState({ordersList: res.data.orders.docs});
       })
       .catch((error) => {
@@ -45,7 +42,7 @@ export default class PaymentConfirmation extends React.Component {
 
       })
       .catch((error) => {
-        console.log(error.response)
+        console.error(error.response)
         this.props.showSystemMessage(error.response.data.message, 'error');
       });
   }

@@ -1,3 +1,5 @@
+import BufferToString from "./BufferToString";
+
 /**
  * Created by: Peter Yablochkin
  * Created: 16 Sept 2018
@@ -29,7 +31,7 @@ exports.createProduct = function (req) {
       // Define product image
       let image = [];
       if (req.file){
-        image.push('/image/products/' + req.file.filename);
+        image.push(new BufferToString().convert(req.file.mimetype, req.file.buffer));
       } else {
         image.push('/image/default/product.jpg');
       }
@@ -174,9 +176,14 @@ exports.updateProduct = async function(req) {
     return promise.then((product,err) => {
       if(product === null) { throw Error('Product not found'); }
 
+      let image = [];
+      if (req.file){
+        image.push(new BufferToString().convert(req.file.mimetype, req.file.buffer));
+        product.images= image;
+      }
+
       product.title= req.body.title;
       product.description= req.body.description;
-      product.images= req.body.images;
       product.genres= req.body.genres;
       product.price= req.body.price;
       product.status= req.body.status;

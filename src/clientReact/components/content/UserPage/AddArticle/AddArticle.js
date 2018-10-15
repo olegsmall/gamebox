@@ -22,7 +22,6 @@ class AddArticle extends React.Component {
       formData.append('image', values.image, values.image.name);
     }
     formData.append('title', values.title);
-    // debugger;
     formData.append('content', values.content);
     formData.append('tags', values.tags);
 
@@ -30,37 +29,31 @@ class AddArticle extends React.Component {
     if (this.props.pageType === 'EditArticle') {
       axios.put('/article/' + this.props.article._id, formData)
         .then((res) => {
-          // debugger;
-          console.log(res.data);
           self.props.showSystemMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Articles');
         })
         .catch((error) => {
-          // debugger
-          console.log(error);
-          self.props.showSystemMessage(error.message, 'error');
+          console.error(error.response);
+          self.props.showSystemMessage(error.response.message, 'error');
           actions.setSubmitting(false);
         });
     } else {
       axios.post('/article', formData)
         .then((res) => {
-          console.log(res.data);
           self.props.showSystemMessage(res.data.message);
           actions.setSubmitting(false);
           self.props.changeInner('Articles');
         })
         .catch((error) => {
-          console.log(error);
-          self.props.showSystemMessage(error.message, 'error');
+          console.error(error.response);
+          self.props.showSystemMessage(error.response.message, 'error');
           actions.setSubmitting(false);
         });
     }
   }
 
-
   render() {
-    // debugger;
     const {pageType, article} = this.props;
     let initialValues = {};
 

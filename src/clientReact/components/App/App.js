@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-// import ReactPropTypes from 'prop-types';
 import Header from '../Header/Header';
 import MainPage from '../content/MainPage';
 import Footer from '../Footer/Footer';
@@ -116,7 +115,7 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        console.error(error.response);
       });
   }
 
@@ -155,7 +154,10 @@ class App extends React.Component {
         console.error('Logout error: ');
         console.error(error.response);
       });
-    this.setState({user: null});
+    this.setState({
+      user: null,
+      shoppingCart: {},
+    });
   }
 
   //Add to DOM
@@ -169,6 +171,7 @@ class App extends React.Component {
           logoutUser={this.logoutUser}
           user={this.state.user}
           shoppingCart={this.state.shoppingCart}
+          getShoppingCart={this.getShoppingCart}
         />
         <div id="mainContent">
           {/* Routes to different components */}
@@ -183,6 +186,7 @@ class App extends React.Component {
                   {...props}
                   updateUser={this.updateUser}
                   showSystemMessage={this.showSystemMessage}
+                  getShoppingCart={this.getShoppingCart}
                 />}
             />
             <Route

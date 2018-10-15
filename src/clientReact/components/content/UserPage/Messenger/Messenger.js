@@ -54,7 +54,6 @@ export default class Messenger extends React.Component {
   getInboxMessages() {
     axios.get('/user/inbox')
       .then((res) => {
-        // console.log(res)
         this.setState({inboxMessages: res.data.inbox.docs}, () => {
           this.setState({inboxMessagesReady: true});
         });
@@ -72,7 +71,6 @@ export default class Messenger extends React.Component {
   getOutboxMessages() {
     axios.get('/user/outbox')
       .then((res) => {
-        // console.log(res)
         this.setState({outboxMessages: res.data.outbox.docs}, () => {
           this.setState({outboxMessagesReady: true});
         });

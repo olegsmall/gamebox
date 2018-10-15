@@ -61,9 +61,6 @@ class ShoppingCart extends React.Component {
       onAuthorize: function (data, actions) {
         return actions.payment.execute().then(function () {
           // Show a confirmation message to the buyer
-          // console.log(data);
-          // console.log(actions)
-          // window.alert('Thank you for your purchase!');
           document.getElementById('sumbmit-button').click();
         });
 
@@ -74,12 +71,11 @@ class ShoppingCart extends React.Component {
   deleteProduct(id) {
     axios.delete('/cart/' + id)
       .then((res) => {
-        console.log(res);
         this.props.showSystemMessage(res.data.message);
         this.props.getShoppingCart();
       })
       .catch((error) => {
-        console.log(error.response);
+        console.error(error.response);
         this.props.showSystemMessage(error.response.data.message);
       });
   }
@@ -92,7 +88,7 @@ class ShoppingCart extends React.Component {
         this.props.history.push('/product');
       })
       .catch((error) => {
-        console.log(error.response);
+        console.error(error.response);
         this.props.showSystemMessage(error.response.data.message, 'error');
         actions.setSubmitting(false);
       });
@@ -104,15 +100,15 @@ class ShoppingCart extends React.Component {
     // if (!user) {
 
       const onSuccess = (payment) => {
-        console.log("Your payment was succeeded!", payment);
+        console.info("Your payment was succeeded!", payment);
       }
       const onCancel = (data) => {
         // User pressed "cancel" or close Paypal's popup!
-        console.log('You have cancelled the payment!', data);
+        console.info('You have cancelled the payment!', data);
       }
       const onError = (err) => {
         // The main Paypal's script cannot be loaded or somethings block the loading of that script!
-        console.log("Error!", err);
+        console.info("Error!", err);
 // Since the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
 // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
       }

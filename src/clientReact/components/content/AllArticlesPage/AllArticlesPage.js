@@ -31,7 +31,7 @@ class AllArticlesPage extends React.Component {
         this.setState({articles: res.data.articles.docs});
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.response);
       });
   }
 

@@ -8,8 +8,6 @@
 
 import React from 'react';
 import axios from "axios";
-import {Formik, Form, Field, ErrorMessage} from 'formik';
-import * as Yup from "yup";
 
 require('./UsersList.scss');
 
@@ -26,7 +24,6 @@ export default class UsersList extends React.Component {
   getUsersList() {
     axios.get('/user')
       .then((res) => {
-        console.log(res)
         this.setState({usersList: res.data.users.docs});
       })
       .catch((error) => {

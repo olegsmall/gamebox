@@ -27,7 +27,7 @@ exports.createArticle = function (req) {
     // Assign main image for article
     let image = '/image/default/article.jpg';
     if (req.file){
-      image = BufferToString.convert(req.file.contentType, req.file.buffer);
+      image = new BufferToString().convert(req.file.mimetype, req.file.buffer);
     }
 
     // Create article object and assign sent info
@@ -35,9 +35,8 @@ exports.createArticle = function (req) {
       author: req.user._id,
       title: req.body.title,
       content: req.body.content,
-      // image: image,
       image: image,
-      tags: req.body.tags
+      tags: req.body.tags,
     }).save();
   } catch (e) {
     throw {error: e, message: 'Article creation error'};
@@ -104,8 +103,6 @@ exports.getArticle = function (id) {
       if(err) { throw Error(err); }
       if(doc === null) { throw Error('Article not found'); }
 
-      // let newDoc = doc.toObject();
-      // doc.image = `data:${doc.image.contentType};base64,${base64ArrayBuffer(doc.image.data)}`;
       return doc;
     });
   } catch (e) {
@@ -155,10 +152,12 @@ exports.updateArticle = function (req) {
       if(err) { throw Error(err); }
       if(doc === null) { throw Error('Article not found');}
 
+      if (req.file){
+        doc.image = new BufferToString().convert(req.file.mimetype, req.file.buffer);
+      }
+
       doc.title = req.body.title;
       doc.content = req.body.content;
-      doc.images = req.body.images;
-      doc.video = req.body.video;
       doc.tags = req.body.tags;
       doc.edited = Date.now();
 

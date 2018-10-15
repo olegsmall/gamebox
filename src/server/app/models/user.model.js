@@ -33,7 +33,7 @@ const StatusSubSchema = new mongoose.Schema({
 
 const UserSchema = new mongoose.Schema({
   firstName: {type: String, required: [true, 'Firstname is required'], minlength: 3, maxlength: 30},
-  lastName: {type: String, required: false, minlength: 3, maxlength: 30, default: ''},
+  lastName: {type: String, required: false, maxlength: 30, default: ''},
   email: {
     type: String,
     required: [true, 'Email is required'],
@@ -45,7 +45,7 @@ const UserSchema = new mongoose.Schema({
   role: {type: String, enum: ['SuperUser', 'Administrator', 'User'], default: 'User'},
   status: StatusSubSchema,
   phone: {type: String, maxlength: 12},
-  address: {type: String, minlength: 5, maxlength: 50, required: [true, 'Enter your address']},
+  address: {type: String, maxlength: 50},
   password: {type: String, minlength: 1},
   rating: [RatingSubSchema],
   cart: [{

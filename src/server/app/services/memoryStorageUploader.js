@@ -1,5 +1,5 @@
 /**
- *
+ * File uploader middleware that uses memory storage
  *
  * file: imageUploader.js
  * Created by: Oleg Smolovyk.
@@ -9,8 +9,10 @@
 
 import multer from 'multer';
 
+// Creating multer middleware
 const storage = multer.memoryStorage();
 
+//File filter
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true);
@@ -19,9 +21,10 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+// Creating uploader
 const fileUploader = multer({
   storage: storage,
-  limits: {fileSize: 1024 * 1024 * 4,},
+  limits: {fileSize: 1024 * 1024 * 10,},
   fileFilter: fileFilter
 });
 

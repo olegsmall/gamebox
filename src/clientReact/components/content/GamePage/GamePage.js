@@ -42,7 +42,6 @@ class GamePage extends React.Component {
   getProduct() {
     axios.get('/product/' + this.props.match.params.gameId)
       .then((res) => {
-        console.log(res.data.product);
         this.setState({
             product: res.data.product,
             fetchedDataIsReady: true,
@@ -51,7 +50,7 @@ class GamePage extends React.Component {
 
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.response);
       });
   }
 
@@ -66,7 +65,7 @@ class GamePage extends React.Component {
         this.props.showSystemMessage(res.data.message);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         this.props.showSystemMessage(error.response.data.message, 'error');
       });
   }
@@ -82,7 +81,7 @@ class GamePage extends React.Component {
         this.props.showSystemMessage(res.data.message);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         this.props.showSystemMessage(error.response.data.message, 'error');
       });
   }
@@ -100,14 +99,13 @@ class GamePage extends React.Component {
 
     axios.post('/cart/' + this.state.product._id, req)
       .then((res) => {
-        console.log(res);
         this.props.showSystemMessage(res.data.message);
         actions.setSubmitting(false);
         this.props.getShoppingCart();
         this.props.history.push('/product');
       })
       .catch((error) => {
-        console.log(error.response);
+        console.error(error.response);
         this.props.showSystemMessage(error.response.data.message, 'error');
         actions.setSubmitting(false);
       });
@@ -121,15 +119,12 @@ class GamePage extends React.Component {
     const {product: {title, images, description, owner, genres, status, price, comment}} = this.state;
 
     let genresStr = genres.map((item) => {
-      // debugger
       return item.name;
     }, []).join(', ');
 
     const sellPrice = status.indexOf('for sale') !== -1 ? price.sell : null;
     const rentPrice = status.indexOf('for rent') !== -1 ? price.rent : null;
 
-
-// debugger
     return (
       <div className={"GamePage"}>
         <div>
@@ -257,21 +252,6 @@ class GamePage extends React.Component {
                 return (
                   <div key={index}>
                     <p>Svitlana Melnyk</p>
-                    {/*<div className="form-check form-check-inline">*/}
-                      {/*<span><i className="fa fa-star-o"></i></span>*/}
-                    {/*</div>*/}
-                    {/*<div className="form-check form-check-inline">*/}
-                      {/*<span><i className="fa fa-star-o"></i></span>*/}
-                    {/*</div>*/}
-                    {/*<div className="form-check form-check-inline">*/}
-                      {/*<span><i className="fa fa-star-o"></i></span>*/}
-                    {/*</div>*/}
-                    {/*<div className="form-check form-check-inline">*/}
-                      {/*<span><i className="fa fa-star-o"></i></span>*/}
-                    {/*</div>*/}
-                    {/*<div className="form-check form-check-inline">*/}
-                      {/*<span><i className="fa fa-star-o"></i></span>*/}
-                    {/*</div>*/}
                     <p className="mt-3">{comm.content}</p>
                     <small className="text-muted">{new Date(comm.date).toLocaleDateString()}</small>
                     <hr/>
