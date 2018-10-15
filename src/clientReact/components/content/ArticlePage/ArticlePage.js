@@ -70,16 +70,22 @@ export default class ArticlePage extends  React.Component {
   }
 }
 
+/**
+ * Class HtmlContent, HtmlContent component
+ */
 class HtmlContent extends React.Component{
+  //Class constructor using for a state props and for initializing properties
   constructor(props){
     super(props);
     this.contentArea = React.createRef();
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount(){
     this.contentArea.current.innerHTML = this.props.content;
   }
 
+  //Add to DOM
   render(){
     return (
       <div className="mt-5" ref={this.contentArea}> </div>
