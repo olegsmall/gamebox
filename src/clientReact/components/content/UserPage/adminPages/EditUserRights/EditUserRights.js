@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: EditUserRights.js, Edit user rights component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -13,7 +13,11 @@ import * as Yup from "yup";
 
 require('./EditUserRights.scss');
 
+/**
+ * Class EditUserRights, Edit user rights component
+ */
 export default class EditUserRights extends React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -21,6 +25,11 @@ export default class EditUserRights extends React.Component {
 
   }
 
+  /**
+   * Bannir member
+   * @param values
+   * @param actions
+   */
   handleSubmitBan(values, actions){
 
     const req = {status: 'banned'};
@@ -40,6 +49,11 @@ export default class EditUserRights extends React.Component {
       });
   }
 
+  /**
+   * Change member role
+   * @param values
+   * @param actions
+   */
   handleSubmitRole(values, actions){
     axios.put('/user/role', {
       id: this.props.userForEdit._id,
@@ -58,6 +72,7 @@ export default class EditUserRights extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
     const {userForEdit} = this.props;
     if (!userForEdit) return null;

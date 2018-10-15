@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: AddArticle.js, Add and edit user article component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -14,8 +14,16 @@ import Thumb from "../../../common/Thumb/Thumb";
 
 require('./EditArticle.scss');
 
+/**
+ * Class AddArticle, Add and edit user article component.
+ */
 class AddArticle extends React.Component {
 
+  /**
+   * Add article
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
     let formData = new FormData();
     if (values.image) {
@@ -53,6 +61,7 @@ class AddArticle extends React.Component {
     }
   }
 
+  //Add to DOM
   render() {
     const {pageType, article} = this.props;
     let initialValues = {};

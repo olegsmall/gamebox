@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: Products.js, All user products component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -13,8 +13,11 @@ import AddProduct from "../AddProduct/AddProduct";
 
 require('./Products.scss');
 
+/**
+ * Class Products, All user products component
+ */
 class Products extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
     this.state = {
@@ -22,6 +25,7 @@ class Products extends React.Component {
     };
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount() {
 
     axios.get('/user/' + this.props.user._id + '/products')
@@ -35,6 +39,10 @@ class Products extends React.Component {
 
   }
 
+  /**
+   * Add game
+   * @param e
+   */
   handleAddProduct(e) {
     e.preventDefault();
     this.props.changeInner('AddProduct');

@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: ShoppingCart.js, Shopping cart component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -15,7 +15,11 @@ import * as Yup from "yup";
 
 require('./ShoppingCart.scss');
 
+/**
+ * Class ShoppingCart, Shopping cart component
+ */
 class ShoppingCart extends React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
     this.state = {
@@ -24,11 +28,15 @@ class ShoppingCart extends React.Component {
     this.deleteProduct = this.deleteProduct.bind(this);
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount() {
     this.payPallButtonInit();
     // this.payPallButtonInit();
   }
 
+  /**
+   * Payment by PayPal
+   */
   payPallButtonInit() {
     paypal.Button.render({
       // Configure environment
@@ -68,6 +76,9 @@ class ShoppingCart extends React.Component {
     }, '#paypal-button');
   }
 
+  /**
+   * Delete game
+   */
   deleteProduct(id) {
     axios.delete('/cart/' + id)
       .then((res) => {
@@ -80,6 +91,11 @@ class ShoppingCart extends React.Component {
       });
   }
 
+  /**
+   * Confirm order
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
     axios.post('/order', {payment_method: values.payment})
       .then((res) => {
@@ -94,6 +110,7 @@ class ShoppingCart extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
     const {shoppingCart, user} = this.props;
 

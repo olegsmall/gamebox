@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: ArticleRow.js, Article's row, the part of Articles component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -12,18 +12,26 @@ import {Link} from 'react-router-dom';
 
 require('./ArticleRow.scss');
 
+/**
+ * Class ArticleRow, Article's row component, the part of Articles component
+ */
 class ArticleRow extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
     this.contentArea = React.createRef();
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount() {
     let content = this.props.article.content.replace(/<[^>]*>/g, '');
     this.contentArea.current.innerHTML = content.substring(0, 200) + '...';
   }
 
+  /**
+   * Edit article
+   * @param e
+   */
   handleArticleEdit = (e) => {
     e.preventDefault();
     this.props.setArticleState({
@@ -32,6 +40,10 @@ class ArticleRow extends React.Component {
     this.props.changeInner('EditArticle');
   };
 
+  /**
+   * Delete article
+   * @param e
+   */
   handleArticleDelete = (e) => {
     e.preventDefault();
     const self = this;
@@ -44,8 +56,9 @@ class ArticleRow extends React.Component {
         console.error(error.response);
         self.props.showSystemMessage(error.message);
       });
-  }
+  };
 
+  //Add to DOM
   render() {
     const {_id, title, image, created} = this.props.article;
     let date = new Date(created).toLocaleDateString();

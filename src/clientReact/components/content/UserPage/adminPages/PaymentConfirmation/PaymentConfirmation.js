@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: PaymentConfirmation.js, Payment confirmation component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -11,6 +11,9 @@ import axios from "axios";
 
 require('./PaymentConfirmation.scss');
 
+/**
+ * Class PaymentConfirmation, Payment confirmation component
+ */
 export default class PaymentConfirmation extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +26,9 @@ export default class PaymentConfirmation extends React.Component {
 
   }
 
+  /**
+   * Show orders waiting payment confirmation
+   */
   getOrdersWaitingPaymentConfirmation() {
     axios.get('/order?status=pending')
       .then((res) => {
@@ -34,6 +40,10 @@ export default class PaymentConfirmation extends React.Component {
       });
   }
 
+  /**
+   * Confirm payment
+   * @param orderId
+   */
   confirmPayment(orderId) {
     axios.patch('/order', {id: orderId})
       .then((res) => {
@@ -47,6 +57,7 @@ export default class PaymentConfirmation extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
     const {ordersList} = this.state;
     if (!ordersList) {

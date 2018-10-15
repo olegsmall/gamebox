@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: Header.js, Header component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -14,8 +14,11 @@ import axios from 'axios';
 
 require('./Header.scss');
 
+/**
+ * Class Header, Header component
+ */
 class Header extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props){
     super(props);
     this.state = {
@@ -24,6 +27,9 @@ class Header extends React.Component {
     this.headerAnimation.bind(this);
   }
 
+  /**
+   * Scroll menu
+   */
   headerAnimation() {
     const self = this;
     $(window).scroll(function () {
@@ -35,14 +41,19 @@ class Header extends React.Component {
     });
   }
 
+  /**
+   * Show search panel
+   */
   showSearchPanel() {
     $(this.refs['inputSearch']).toggle(100, "linear");
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount() {
     this.headerAnimation();
   }
 
+  //Add to DOM
   render() {
 
     return (

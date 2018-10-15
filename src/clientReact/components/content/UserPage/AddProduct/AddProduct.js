@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: AddProduct.js, Add and edit user product component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -14,8 +14,11 @@ import Thumb from '../../../common/Thumb/Thumb';
 
 require('./AddProduct.scss');
 
+/**
+ * Class AddProduct, Add and edit user product component
+ */
 class AddProduct extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -25,6 +28,7 @@ class AddProduct extends React.Component {
     };
   }
 
+  //Component mount method, guaranteed that component was mounted
   componentDidMount() {
 
     axios.get('/genre')
@@ -39,6 +43,11 @@ class AddProduct extends React.Component {
       });
   }
 
+  /**
+   * Add game
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
     let formData = new FormData();
     if (values.image) {
@@ -84,6 +93,7 @@ class AddProduct extends React.Component {
     }
   }
 
+  //Add to DOM
   render() {
 
     if (!this.state.fetchedDataIsReady) {

@@ -1,10 +1,9 @@
 /**
- * Messanger component
- *
- * file: Messanger.js
- * Created by: Oleg Smolovyk.
- * Date: 10/11/2018
- * Time: 15:56
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Messanger.js, Messanger component
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
  */
 
 import React from 'react';
@@ -14,7 +13,11 @@ import * as Yup from "yup";
 
 require('./Messenger.scss');
 
+/**
+ * Class Messenger, Messenger component
+ */
 export default class Messenger extends React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -32,6 +35,9 @@ export default class Messenger extends React.Component {
     this.getOutboxMessages();
   }
 
+  /**
+   * Show all messages
+   */
   getMessages() {
     const {inboxMessages, outboxMessages} = this.state;
 
@@ -50,7 +56,9 @@ export default class Messenger extends React.Component {
     );
   }
 
-
+  /**
+   * Show Inbox messages
+   */
   getInboxMessages() {
     axios.get('/user/inbox')
       .then((res) => {
@@ -68,6 +76,9 @@ export default class Messenger extends React.Component {
       });
   }
 
+  /**
+   * Show Outbox messages
+   */
   getOutboxMessages() {
     axios.get('/user/outbox')
       .then((res) => {
@@ -85,6 +96,10 @@ export default class Messenger extends React.Component {
       });
   }
 
+  /**
+   * Show one message
+   * @param message
+   */
   getMessage(message) {
     this.setState({
       currentMessage: message._id + message.type,
@@ -104,6 +119,11 @@ export default class Messenger extends React.Component {
 
   }
 
+  /**
+   * Send message
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
     axios.post('/message', {
       subject: values.title,
@@ -124,6 +144,7 @@ export default class Messenger extends React.Component {
 
   }
 
+  //Add to DOM
   render() {
 
     const {currentMessage, outboxMessagesReady, inboxMessagesReady, allMessages, currentMessageContent} = this.state;

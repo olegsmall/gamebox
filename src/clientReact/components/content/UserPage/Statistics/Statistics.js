@@ -1,10 +1,9 @@
 /**
- * User statistics component
- *
- * file: Statistics.js
- * Created by: Oleg Smolovyk.
- * Date: 10/11/2018
- * Time: 15:54
+ * Theme: Web Project 2
+ * Description: Creating a gaming platform for exchange between players
+ * File: Statistics.js, User statistics component
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
+ * Date: October 2018
  */
 
 import React from 'react';
@@ -14,7 +13,11 @@ import * as Yup from "yup";
 
 require('./Statistics.scss');
 
+/**
+ * Class Statistics, User statistics component
+ */
 export default class Statistics extends React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -25,6 +28,9 @@ export default class Statistics extends React.Component {
     this.getStatistic();
   }
 
+  /**
+   * Show statistics
+   */
   getStatistic(){
     axios.get('/user/statistics')
       .then((res) => {
@@ -36,6 +42,7 @@ export default class Statistics extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
 
     const {statistics} = this.state;

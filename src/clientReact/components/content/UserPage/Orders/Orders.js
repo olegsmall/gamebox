@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: Orders.js, All user orders component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -11,7 +11,11 @@ import axios from 'axios';
 
 require('./Orders.scss');
 
+/**
+ * Class Orders, All user orders component
+ */
 class Orders extends React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -23,6 +27,9 @@ class Orders extends React.Component {
 
   }
 
+  /**
+   * Show all orders
+   */
   getOrders() {
     axios.get('/user/order')
       .then((res) => {
@@ -34,6 +41,7 @@ class Orders extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
     const {ordersList} = this.state;
     if (!ordersList) {

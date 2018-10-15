@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: UsersList.js, All users list component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -11,7 +11,11 @@ import axios from "axios";
 
 require('./UsersList.scss');
 
+/**
+ * Class UsersList, All users list component
+ */
 export default class UsersList extends React.Component {
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
 
@@ -21,6 +25,9 @@ export default class UsersList extends React.Component {
     this.getUsersList();
   }
 
+  /**
+   * Show all users
+   */
   getUsersList() {
     axios.get('/user')
       .then((res) => {
@@ -32,11 +39,16 @@ export default class UsersList extends React.Component {
       });
   }
 
+  /**
+   * Edit users' rights
+   * @param user
+   */
   editUserRights(user){
     this.props.setUserForEditState(user);
     this.props.changeInner('EditUserRights');
   }
 
+  //Add to DOM
   render() {
     const {usersList} = this.state;
     if (!usersList) return null;

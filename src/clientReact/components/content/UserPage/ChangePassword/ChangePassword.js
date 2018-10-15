@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: ChangePassword.js, Change user password component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -14,8 +14,16 @@ import * as Yup from "yup";
 
 require('./ChangePassword.scss');
 
+/**
+ * Class ChangePassword, Change user password component
+ */
 class ChangePassword extends React.Component {
 
+  /**
+   * Change user password
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
     axios.put('/user/password', {
       password: values.password,
@@ -31,6 +39,7 @@ class ChangePassword extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
 
     return (

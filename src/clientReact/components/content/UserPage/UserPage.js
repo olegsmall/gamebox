@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: UserPage.js, User component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -26,8 +26,11 @@ import ProductRow from "./Products/ProductRow/ProductRow";
 
 require('./UserPage.scss');
 
+/**
+ * Class UserPage, User component
+ */
 class UserPage extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
     this.state = {
@@ -42,43 +45,52 @@ class UserPage extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
+  //Update user edit status
   setUserForEditState(user) {
     this.setState({userForEdit: user});
   }
 
+  //Update article status
   setArticleState(obj) {
     this.setState(obj);
   }
 
+  //Update user status
   setUserPageState = (obj)=>{
     this.setState(obj);
   };
 
+  //Processing click on different buttons
   handleChangeInner(e, innerName) {
     e.preventDefault();
     this.changeInner(innerName);
   }
 
+  // User logout
   handleLogout(e) {
     e.preventDefault();
     this.props.logoutUser();
     this.props.history.push('/');
   }
 
+  //Change user sub-pages
   changeInner = (innerName)=> {
     this.setState({innerComponent: innerName});
   }
 
+  //Show profile
   goToProfile(e) {
     e.preventDefault();
     this.setState({innerComponent: 'Profile'});
   }
 
+  //Show message
   showMessage(message) {
     this.setState({message: message});
     setTimeout(() => this.setState({message: ''}), 5000);
   }
 
+  //Add to DOM
   render() {
 
     const firstName = (this.props.user !== null) ? this.props.user.firstName : '';
