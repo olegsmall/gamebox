@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: Footer.js, Footer component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -11,6 +11,11 @@ import {Link} from 'react-router-dom';
 
 require('./Footer.scss');
 
+/**
+ * Functional(Footer) component, which returns a react element
+ * @returns {*}
+ * @constructor
+ */
 const Footer = () => {
   return (
     <div className='Footer mt-auto'>
