@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: Profile.js, User profile component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -10,13 +10,21 @@ import React from 'react';
 
 require('./Profile.scss');
 
+/**
+ * Class Profile, User profile component
+ */
 class Profile extends React.Component {
 
+  /**
+   * Edit user profile
+   * @param e
+   */
   handleEditPrifile(e){
     e.preventDefault();
     this.props.changeInner('EditProfile');
   }
 
+  //Add to DOM
   render() {
 
     const firstName = (this.props.user !== null) ? this.props.user.firstName : '';

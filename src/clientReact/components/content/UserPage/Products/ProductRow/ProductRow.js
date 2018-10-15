@@ -23,7 +23,7 @@ class ProductRow extends React.Component {
   }
 
   /**
-   * Edit product
+   * Edit game
    * @param e
    */
   handleEdit(e){

@@ -41,7 +41,7 @@ class Products extends React.Component {
   }
 
   /**
-   * Add product
+   * Add game
    * @param e
    */
   handleAddProduct(e) {
