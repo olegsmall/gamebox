@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: SignUpPage.js, Sign up page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -14,8 +14,16 @@ import Thumb from '../common/Thumb/Thumb';
 
 require('./SignUpPage.scss');
 
+/**
+ * Class SignUpPage, Sign up page component
+ */
 class SignUpPage extends React.Component {
 
+  /**
+   * User sign up
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
 
     if (values === undefined) return;
