@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: EditProfile.js, Edit user profile component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -15,8 +15,16 @@ import Thumb from "../../../common/Thumb/Thumb";
 
 require('./EditProfile.scss');
 
+/**
+ * Class EditProfile, Edit user profile component
+ */
 class EditProfile extends React.Component {
 
+  /**
+   * Edit user profile
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
     let formData = new FormData();
     if (values.avatar) {
@@ -42,6 +50,7 @@ class EditProfile extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
 
     return (
