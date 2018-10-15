@@ -2,7 +2,7 @@
  * Theme: Web Project 2
  * Description: Creating a gaming platform for exchange between players
  * File: LoginPage.js, Log in page component
- * Authors: Oleg Smolovyk, Piotr Iablocichin, Iana Kravchenko, Svitlana Melnyk
+ * Authors: Oleg Smolovyk, Iana Kravchenko, Svitlana Melnyk
  * Date: October 2018
  */
 
@@ -14,13 +14,21 @@ import * as Yup from 'yup';
 
 require('./LoginPage.scss');
 
+/**
+ * Class LoginPage, Log in page component
+ */
 class LoginPage extends React.Component {
-
+  //Class constructor using for a state props and for initializing state properties
   constructor(props){
     super(props);
     this.handleSubmit.bind(this);
   }
 
+  /**
+   * User Login
+   * @param values
+   * @param actions
+   */
   handleSubmit(values, actions) {
     const self = this;
     axios.post('/user/login', {
@@ -47,6 +55,7 @@ class LoginPage extends React.Component {
       });
   }
 
+  //Add to DOM
   render() {
     return (
       <div className={"LoginPage"}>
