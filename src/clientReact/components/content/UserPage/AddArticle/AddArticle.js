@@ -20,7 +20,7 @@ require('./EditArticle.scss');
 class AddArticle extends React.Component {
 
   /**
-   * Save article
+   * Add article
    * @param values
    * @param actions
    */
