@@ -182,10 +182,19 @@ exports.updateProduct = async function(req) {
         product.images= image;
       }
 
+      // Define product price
+      const price = {};
+      if (req.body.sellPrice){
+        price.sell = parseFloat(req.body.sellPrice);
+      }
+      if (req.body.rentPrice){
+        price.rent = parseFloat(req.body.rentPrice);
+      }
+
       product.title= req.body.title;
       product.description= req.body.description;
       product.genres= req.body.genres;
-      product.price= req.body.price;
+      product.price= price;
       product.status= req.body.status;
       product.edited= Date.now();
       product.producer= req.body.producer;

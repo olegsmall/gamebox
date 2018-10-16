@@ -106,13 +106,16 @@ class AddProduct extends React.Component {
     let initialValues = {};
 
     if (pageType === 'EditProduct' && product) {
+
       initialValues = {
         image: undefined,
         title: product.title,
-        content: product.content,
-        forSell: product.sell,
-
-
+        content: product.description,
+        forSell: product.price.sell && true,
+        forRent: product.price.rent && true,
+        sellPrice: product.price.sell && product.price.sell,
+        rentPrice: product.price.rent && product.price.rent,
+        genres: product.genres.map(genre => genre._id),
       };
     } else {
       initialValues = {
@@ -126,7 +129,6 @@ class AddProduct extends React.Component {
         rentPrice: '',
       };
     }
-
     return (
       <div className={'AddProduct col-md-8 text-center'}>
         <h2 className="text-center mt-4">Add game</h2>
@@ -173,7 +175,6 @@ class AddProduct extends React.Component {
                   <Thumb className="mb-3"
                     file={values.image}
                     object={this.props.product}
-
                   />
                   <input
                     name="image"

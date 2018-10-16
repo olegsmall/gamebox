@@ -53,7 +53,7 @@ class Thumb extends React.Component {
 
     let thumb = '';
     if (!file) {
-      thumb = (object.avatar)? object.avatar : object.image;
+      thumb = (object.avatar)? object.avatar : (object.image) ? object.image : object.images[0];
     }else {
       thumb = this.state.thumb;
     }

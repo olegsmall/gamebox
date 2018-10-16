@@ -18,7 +18,7 @@ class ProductCard extends React.Component {
 
   //Add to DOM
   render() {
-    const product = this.props.product;
+    const {product} = this.props;
 
     const genres = product.genres.map(genre => genre.name).join(', ');
 
