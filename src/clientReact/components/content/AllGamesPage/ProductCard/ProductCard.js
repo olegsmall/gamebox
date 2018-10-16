@@ -33,7 +33,7 @@ class ProductCard extends React.Component {
                   </div>
                 : ''
               }
-              <img className="card-img-top imgBorder" src="/image/img1.jpg"/>
+              <img className="card-img-top imgBorder" src={product.images[0]}/>
             </div>
             <div className="card-body">
               <h5 className="card-title text-center">{product.title}</h5>

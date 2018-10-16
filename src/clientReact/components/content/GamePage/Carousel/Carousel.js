@@ -16,17 +16,21 @@ require('./Carousel.scss');
  */
 class Carousel extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.blowupImage = this.blowupImage.bind(this);
+  }
   /**
    * Switch game image when clicking on a thumbnail
    */
-  blowupImage(){
-    $('.swiper-slide img').click(function () {
-      $('.blowup img').attr('src', $(this).attr('src'));
-    });
+  blowupImage(image){
+    const mainImage = document.querySelector('.GamePage .imageMainGame');
+    mainImage.src = image;
   }
 
   //Add to DOM
   render() {
+    const {product} = this.props;
     const params = {
       navigation: {
         nextEl: '.swiper-button-next',
@@ -34,37 +38,19 @@ class Carousel extends React.Component {
       },
       slidesPerView: 3,
       spaceBetween: 10,
-      loop: true,
+      loop: false,
       loopFillGroupWithBlank: true
     };
 
     return (
       <div className={"Carousel"}>
         <Swiper {...params}>
-          <div className="swiper-slide">
-            <img className="img-fluid imageMainGame" src="/image/minecraft-1618089_1280.jpg" alt="First slide"
-                 onClick={this.blowupImage.bind(this)}/>
-          </div>
-          <div className="swiper-slide">
-            <img className="img-fluid imageMainGame" src="image/minecraft-529458_1280.jpg" alt="Second slide"
-                 onClick={this.blowupImage.bind(this)}/>
-          </div>
-          <div className="swiper-slide">
-            <img className="img-fluid imageMainGame" src="image/minecraft-1988580_1280.jpg" alt="Third slide"
-                 onClick={this.blowupImage.bind(this)}/>
-          </div>
-          <div className="swiper-slide">
-            <img className="img-fluid imageMainGame" src="image/minecraft-655957_1280.jpg" alt="First slide"
-                 onClick={this.blowupImage.bind(this)}/>
-          </div>
-          <div className="swiper-slide">
-            <img className="img-fluid imageMainGame" src="image/minecraft-1106253_1280.png" alt="Second slide"
-                 onClick={this.blowupImage.bind(this)}/>
-          </div>
-          <div className="swiper-slide">
-            <img className="img-fluid imageMainGame" src="image/minecraft-1746541_1280.jpg" alt="Third slide"
-                 onClick={this.blowupImage.bind(this)}/>
-          </div>
+          {product.images.map((image, item)=>(
+            <div className="swiper-slide" key={item}>
+              <img className="img-fluid imageMainGame" src={image} alt="First slide"
+                   onClick={()=>this.blowupImage(image)}/>
+            </div>
+          ))}
         </Swiper>
       </div>
     );

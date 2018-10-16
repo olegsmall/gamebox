@@ -105,6 +105,10 @@ class GamePage extends React.Component {
       });
   }
 
+  setCurrentPriviewImage(image){
+    this.setState({currentPreviewImage: image});
+  }
+
   /**
    * Add game to cart
    * @param values
@@ -135,7 +139,7 @@ class GamePage extends React.Component {
 
     if (!this.state.fetchedDataIsReady) return null;
 
-    const {product: {title, images, description, owner, genres, status, price, comment}, mostPopularProducts, mostPopularIsReady} = this.state;
+    const {product: {title, images, description, owner, genres, status, price, comment}} = this.state;
 
     let genresStr = genres.map((item) => {
       return item.name;
@@ -154,7 +158,6 @@ class GamePage extends React.Component {
       loop: true,
       loopFillGroupWithBlank: true
     };
-
     return (
       <div className={"GamePage"}>
         <div>
@@ -166,10 +169,10 @@ class GamePage extends React.Component {
             <div className="row">
               <div className="col-md-6 sectionImage">
                 <div className="blowup">
-                  <img className="img-fluid imageMainGame mb-3" src={images[0]} alt={title}/>
+                  <img className="img-fluid imageMainGame mb-3"  src={images[0]} alt={title}/>
                 </div>
                 {/*Section Carousel*/}
-                <Carousel/>
+                <Carousel product={this.state.product}/>
               </div>
               {/*Section Product details*/}
               <div className="col-md-6 text-center text-md-left">

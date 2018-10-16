@@ -176,10 +176,19 @@ exports.updateProduct = async function(req) {
     return promise.then((product,err) => {
       if(product === null) { throw Error('Product not found'); }
 
-      let image = [];
+      let images = product.images.toObject();
       if (req.file){
-        image.push(new BufferToString().convert(req.file.mimetype, req.file.buffer));
-        product.images= image;
+        let newImage = new BufferToString().convert(req.file.mimetype, req.file.buffer);
+        let isExists = false;
+        for (let dbImage of images) {
+          if (dbImage === newImage) {
+            isExists = true;
+          }
+        }
+        if (!isExists){
+          images.unshift(newImage);
+          product.images= images;
+        }
       }
 
       // Define product price
