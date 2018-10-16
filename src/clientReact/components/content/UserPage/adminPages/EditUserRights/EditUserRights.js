@@ -41,11 +41,13 @@ export default class EditUserRights extends React.Component {
       .then((res) => {
         // this.getDeactivatedUsersList();
         this.props.showSystemMessage(res.data.message);
+        actions.setSubmitting(false);
 
       })
       .catch((error) => {
         console.error(error.response);
         this.props.showSystemMessage(error.response.data.message, 'error');
+        actions.setSubmitting(false);
       });
   }
 
@@ -164,8 +166,8 @@ export default class EditUserRights extends React.Component {
               <h5 className="text-center">Users Role</h5>
               <div className="form-check mt-2">
                 <Field name="role" className="form-control" component="select">
-                  <option value="User" selected={userForEdit.role === 'User'}>User</option>
-                  <option value="Administrator" selected={userForEdit.role === 'Administrator'}>Administrator</option>
+                  <option value="User" >User</option>
+                  <option value="Administrator" >Administrator</option>
                 </Field>
                 <ErrorMessage name="role">{msg => <small className='form-text text-left error'>{msg}</small>}</ErrorMessage>
               </div>
