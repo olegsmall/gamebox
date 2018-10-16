@@ -12,6 +12,7 @@ import Carousel from "./Carousel/Carousel";
 import {Link} from "react-router-dom";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from "yup";
+import Swiper from "react-id-swiper";
 
 require('./GamePage.scss');
 
@@ -22,18 +23,36 @@ class GamePage extends React.Component {
   //Class constructor using for a state props and for initializing state properties
   constructor(props) {
     super(props);
-
+    this.state = {};
 
     this.state = {
       product: {},
       fetchedDataIsReady: false,
+      mostPopularIsReady: false,
+      mostPopularProducts: [],
     };
 
     this.getProduct();
   }
 
   componentDidMount() {
+    // this.fetchMostPopular();
+  }
 
+  /**
+   * Get most popular games
+   */
+  fetchMostPopular() {
+    axios.get('/product?sort_by=date&limit=10')
+      .then((res) => {
+        this.setState({
+          mostPopularProducts: res.data.products.docs,
+          mostPopularIsReady: true,
+        });
+      })
+      .catch((error) => {
+        console.error(error.response);
+      });
   }
 
   /**
@@ -116,7 +135,7 @@ class GamePage extends React.Component {
 
     if (!this.state.fetchedDataIsReady) return null;
 
-    const {product: {title, images, description, owner, genres, status, price, comment}} = this.state;
+    const {product: {title, images, description, owner, genres, status, price, comment}, mostPopularProducts, mostPopularIsReady} = this.state;
 
     let genresStr = genres.map((item) => {
       return item.name;
@@ -124,6 +143,17 @@ class GamePage extends React.Component {
 
     const sellPrice = status.indexOf('for sale') !== -1 ? price.sell : null;
     const rentPrice = status.indexOf('for rent') !== -1 ? price.rent : null;
+
+    const swiperMostPopularParams = {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      slidesPerView: 3,
+      spaceBetween: 20,
+      loop: true,
+      loopFillGroupWithBlank: true
+    };
 
     return (
       <div className={"GamePage"}>
@@ -262,43 +292,38 @@ class GamePage extends React.Component {
           </div>
         </div>
         }
-        {/*Section Most Popular*/}
-        <div className="container mb-5">
-          <h5 className="mt-4 ml-5 text-center">Most popular</h5>
-          <div className="card-deck mt-4">
-            <div className="card product text-center cardPopular-1">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
-            </div>
-            <div className="card product text-center cardPopular-2">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
-            </div>
-            <div className="card product text-center cardPopular-3">
-              <div className="inner">
-                <div className="paragraphV text-light">4,5</div>
-                <a href="#"><h4 className="paragraphV pt-5 ">Game's Name</h4></a>
-                <button className="button mt-5"><a href="#">View More</a></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container my-4">
-          <div className="row justify-content-center">
-            <div className="col-md-2">
-              <button className="btn btn-block btnViewMore">
-                <Link className="nav-link linkViewMore" to={'/product'}>View more</Link>
-              </button>
-            </div>
-          </div>
-        </div>
-
+        {/*Section Most popular*/}
+        {/*{mostPopularProducts.length > 0 &&*/}
+          {/*<div className="container mb-5">*/}
+            {/*<h3 className="mt-5 text-center">Most popular</h3>*/}
+            {/*<div className="row justify-content-center mt-4">*/}
+              {/*<div className="col">*/}
+                {/*<Swiper {...swiperMostPopularParams} rebuildOnUpdate={true}>*/}
+                  {/*{mostPopularProducts.map((product) => {*/}
+                    {/*const backgroundImage = {*/}
+                      {/*backgroundImage: `url("${product.images[0]}")`,*/}
+                    {/*};*/}
+                    {/*return (*/}
+                      {/*<div*/}
+                        {/*key={product._id}*/}
+                        {/*className="card product text-center"*/}
+                        {/*style={backgroundImage}*/}
+                      {/*>*/}
+                        {/*<div className="inner">*/}
+                          {/*{product.average_rating > 0*/}
+                            {/*? <div className="paragraphV text-light text-center">{product.average_rating}</div>*/}
+                            {/*: ''}*/}
+                          {/*<Link to={`/product/${product._id}`}><h4 className="paragraphV pt-5">{product.title}</h4></Link>*/}
+                          {/*<Link className="button mt-5 text-dark" to={`/product/${product._id}`}>View More</Link>*/}
+                        {/*</div>*/}
+                      {/*</div>*/}
+                    {/*);*/}
+                  {/*})}*/}
+                {/*</Swiper>*/}
+              {/*</div>*/}
+            {/*</div>*/}
+          {/*</div>*/}
+        {/*}*/}
       </div>
     );
   }

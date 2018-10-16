@@ -112,10 +112,10 @@ export default class MainPage extends React.Component {
                     >
                       <div className="inner">
                         {product.average_rating > 0
-                          ? <div className="paragraphV text-light text-center">{product.average_rating}</div>
+                          ? <div className="paragraphV text-light">{product.average_rating}</div>
                           : ''}
-                        <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
-                        <button className="button mt-5"><a href="#">View More</a></button>
+                        <Link to={`/product/${product._id}`}><h4 className="paragraphV pt-5">{product.title}</h4></Link>
+                        <Link className="button mt-5 text-dark" to={`/product/${product._id}`}>View More</Link>
                       </div>
 
                     </div>
@@ -146,55 +146,13 @@ export default class MainPage extends React.Component {
                         {product.average_rating > 0
                           ? <div className="paragraphV text-light text-center">{product.average_rating}</div>
                           : ''}
-                        <a href="#"><h4 className="paragraphV pt-5">{product.title}</h4></a>
-                        <button className="button mt-5"><a href="#">View More</a></button>
+                        <Link to={`/product/${product._id}`}><h4 className="paragraphV pt-5">{product.title}</h4></Link>
+                        <Link className="button mt-5 text-dark" to={`/product/${product._id}`}>View More</Link>
                       </div>
 
                     </div>
                   );
                 })}
-                {/*<div className="card product text-center cardPopular-1">*/}
-                {/*<div className="inner">*/}
-                {/*<div className="paragraphV text-light">4,5</div>*/}
-                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                {/*</div>*/}
-                {/*</div>*/}
-                {/*<div className="card product text-center cardPopular-2">*/}
-                {/*<div className="inner">*/}
-                {/*<div className="paragraphV text-light">4,5</div>*/}
-                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                {/*</div>*/}
-                {/*</div>*/}
-                {/*<div className="card product text-center cardPopular-3">*/}
-                {/*<div className="inner">*/}
-                {/*<div className="paragraphV text-light">4,5</div>*/}
-                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                {/*</div>*/}
-                {/*</div>*/}
-                {/*<div className="card product text-center cardPopular-4">*/}
-                {/*<div className="inner">*/}
-                {/*<div className="paragraphV text-light">4,5</div>*/}
-                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                {/*</div>*/}
-                {/*</div>*/}
-                {/*<div className="card product text-center cardPopular-5">*/}
-                {/*<div className="inner">*/}
-                {/*<div className="paragraphV text-light">4,5</div>*/}
-                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                {/*</div>*/}
-                {/*</div>*/}
-                {/*<div className="card product text-center cardPopular-6">*/}
-                {/*<div className="inner">*/}
-                {/*<div className="paragraphV text-light">4,5</div>*/}
-                {/*<a href="#"><h4 className="paragraphV pt-5">Title</h4></a>*/}
-                {/*<button className="button mt-5"><a href="#">View More</a></button>*/}
-                {/*</div>*/}
-                {/*</div>*/}
               </Swiper>
             </div>
           </div>
