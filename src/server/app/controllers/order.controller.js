@@ -80,7 +80,7 @@ exports.getOrder = async function(req, res) {
 exports.getUserOrders = async function(req, res) {
   try {
     // Execute order search method.
-    let orders = await OrderService.getOrders(req);
+    let orders = await OrderService.getOrdersUserOrders(req);
     // Return user's orders, appropriate HTTP Status Code and Message.
     return res.status(200).json({status: 200, orders: orders, message: 'Orders received'});
   } catch(e) {

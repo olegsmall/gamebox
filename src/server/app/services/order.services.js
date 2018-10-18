@@ -129,7 +129,7 @@ exports.getOrders = function (req) {
  * @returns {Promise<*|Promise<json>>} A promise that returns json with order if resolved,
  *    otherwise returns json with error message
  */
-exports.getOrders = function (req) {
+exports.getOrdersUserOrders = function (req) {
   let query = {buyer: req.user._id};
   let queryOptions = {}; // Mongoose-paginator query options
   queryOptions.populate = {path: 'buyer', select: 'name firstName lastName email'};
