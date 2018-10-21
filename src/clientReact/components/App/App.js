@@ -162,8 +162,8 @@ class App extends React.Component {
 
   //Add to DOM
   render() {
-    const {systemMessage, showSystemMessage} = this.state;
-
+    const {systemMessage} = this.state;
+    console.log('test');
     return (
       <div className={'App d-flex flex-column h-100'}>
         <Header
